@@ -101,7 +101,7 @@ gulp.task('views', function() {
 
 // This task is used for building production ready
 // minified JS/CSS files into the dist/ folder
-/*gulp.task('build', ['html', 'browserify'], function() {
+gulp.task('build', ['html', 'browserify'], function() {
   var html = gulp.src("build/index.html")
                  .pipe(gulp.dest('./dist/'));
 
@@ -110,14 +110,12 @@ gulp.task('views', function() {
                .pipe(gulp.dest('./dist/'));
 
   return merge(html,js);
-});*/
+});
 
-// Run Tasks
-gulp.task('default', ['html', 'js', 'css', 'images', 'browserify', 'tests', 'browserifyTests'], function() { 
-
-  // Uncomment below for dev mode (watch and build as you change the code)
-    // browserSync.init(['./build/**/**.**'], {
-    /*server: "./build",
+// Developer auto update file watcher.
+gulp.task('dev', ['html', 'js', 'css', 'images', 'browserify', 'tests', 'browserifyTests'], function() {
+    browserSync.init(['./build/**/**.**'], {
+    server: "./build",
     port: 4000,
     notify: false,
     ui: {
@@ -126,6 +124,10 @@ gulp.task('default', ['html', 'js', 'css', 'images', 'browserify', 'tests', 'bro
   });
   gulp.watch("src/index.html", ['html']);
   gulp.watch(viewFiles, ['views']);
-  gulp.watch(jsFiles, ['browserify']);*/
-  
+  gulp.watch(jsFiles, ['browserify']);
+});
+
+// Run Tasks
+gulp.task('default', ['html', 'js', 'css', 'images', 'browserify', 'tests', 'browserifyTests'], function() {
+  // Other tasks are run from here.
 });
