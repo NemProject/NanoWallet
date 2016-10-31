@@ -1,5 +1,6 @@
 var gulp          = require('gulp');
 var notify        = require('gulp-notify');
+var sass          = require('gulp-sass');
 var source        = require('vinyl-source-stream');
 var browserify    = require('browserify');
 var babelify      = require('babelify');
@@ -70,13 +71,13 @@ gulp.task('tests', function() {
       .pipe(gulp.dest('./build/tests'));
 });
 
-  gulp.task('js', function() {
+gulp.task('js', function() {
   return gulp.src("src/vendors/**/*.js")
       .on('error', interceptErrors)
       .pipe(gulp.dest('./build/vendors'));
 });
 
-    gulp.task('css', function() {
+gulp.task('css', function() {
     return gulp.src("src/css/**/*")
       .on('error', interceptErrors)
       .pipe(gulp.dest('./build/css'));
