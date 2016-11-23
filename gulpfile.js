@@ -1,5 +1,6 @@
 var gulp          = require('gulp');
 var notify        = require('gulp-notify');
+var sass          = require('gulp-sass');
 var source        = require('vinyl-source-stream');
 var browserify    = require('browserify');
 var babelify      = require('babelify');
@@ -70,13 +71,13 @@ gulp.task('tests', function() {
       .pipe(gulp.dest('./build/tests'));
 });
 
-  gulp.task('js', function() {
+gulp.task('js', function() {
   return gulp.src("src/vendors/**/*.js")
       .on('error', interceptErrors)
       .pipe(gulp.dest('./build/vendors'));
 });
 
-    gulp.task('css', function() {
+gulp.task('css', function() {
     return gulp.src("src/css/**/*")
       .on('error', interceptErrors)
       .pipe(gulp.dest('./build/css'));
@@ -101,7 +102,7 @@ gulp.task('views', function() {
 
 // This task is used for building production ready
 // minified JS/CSS files into the dist/ folder
-/*gulp.task('build', ['html', 'browserify'], function() {
+gulp.task('build', ['html', 'browserify'], function() {
   var html = gulp.src("build/index.html")
                  .pipe(gulp.dest('./dist/'));
 
@@ -110,14 +111,12 @@ gulp.task('views', function() {
                .pipe(gulp.dest('./dist/'));
 
   return merge(html,js);
-});*/
+});
 
-// Run Tasks
-gulp.task('default', ['html', 'js', 'css', 'images', 'browserify', 'tests', 'browserifyTests'], function() { 
-
-  // Uncomment below for dev mode (watch and build as you change the code)
-    // browserSync.init(['./build/**/**.**'], {
-    /*server: "./build",
+// Developer auto update file watcher.
+gulp.task('dev', ['html', 'js', 'css', 'images', 'browserify', 'tests', 'browserifyTests'], function() {
+    browserSync.init(['./build/**/**.**'], {
+    server: "./build",
     port: 4000,
     notify: false,
     ui: {
@@ -126,6 +125,10 @@ gulp.task('default', ['html', 'js', 'css', 'images', 'browserify', 'tests', 'bro
   });
   gulp.watch("src/index.html", ['html']);
   gulp.watch(viewFiles, ['views']);
-  gulp.watch(jsFiles, ['browserify']);*/
-  
+  gulp.watch(jsFiles, ['browserify']);
+});
+
+// Run Tasks
+gulp.task('default', ['html', 'js', 'css', 'images', 'browserify', 'tests', 'browserifyTests'], function() {
+  // Other tasks are run from here.
 });

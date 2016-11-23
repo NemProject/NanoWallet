@@ -29,7 +29,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a style="outline:0;border-left:1px solid #444;text-transform: uppercase;" ui-sref-active="active" ui-sref="app.login" show-authed="false"><small><b>{{ 'HEADER_LOGIN_BUTTON' | translate }}</b></small></a></li>
+        <li><a style="outline:0;text-transform: uppercase;" ui-sref-active="active" ui-sref="app.login" show-authed="false"><small><b>{{ 'HEADER_LOGIN_BUTTON' | translate }}</b></small></a></li>
         <li><a style="outline:0;text-transform: uppercase;" ui-sref-active="active" ui-sref="app.signup" show-authed="false"><small><b>{{ 'HEADER_SIGNUP_BUTTON' | translate }}</b></small></a></li>
         <li ng-show="$ctrl._DataBridge.accountData.meta && $ctrl._DataBridge.accountData.account"><a style="outline:0;border-left:1px solid #444;" ui-sref-active="active" ui-sref="app.account" show-authed="true"><i class="fa fa-user"></i></a></li>
         <li class="dropdown">

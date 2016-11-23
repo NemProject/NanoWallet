@@ -1,3 +1,9 @@
+:root {
+  --primary-col: #4CAF50;
+	--primary-lite: #E8F5E9;
+	--complement-col: #00BCD4;
+}
+
 html {
 	position: relative;
 	min-height: 100vh;
@@ -8,10 +14,14 @@ footer {
 	bottom: 0;
 	position: absolute;
 	padding: 15px;
-	border-top: 1px solid #444;
 	width: 100%;
-	background-color: white;
+	background-color: var(--primary-col);
+	color: #FFFFFF;
 	z-index: 10;
+}
+
+.container .ng-binding b {
+	color: #FFFFFF;
 }
 
 .navbar {
@@ -146,13 +156,13 @@ fieldset[disabled] .btn-default.focus {
 }
 
 .navbar-default .navbar-nav .open a {
-	color: white;
-	background-color: #444;
+	color: var(--primary-col);
+	background-color: #FFFFFF;
 }
 
 .navbar-default .navbar-nav .open a:hover {
-	color: white;
-	background-color: #444;
+	color: var(--primary-col);
+	background-color: #FFFFFF;
 }
 
 .navbar {
@@ -161,34 +171,35 @@ fieldset[disabled] .btn-default.focus {
 }
 
 .navbar-default .navbar-brand {
-	background-color: rgb(68, 68, 68);
-	color: white;
+	background-color: rgba(68, 68, 68, 0);
+	color: #FFFFFF;
 }
 
 .navbar-default .navbar-brand:hover {
-	background-color: rgb(68, 68, 68);
-	color: white;
+	background-color: rgba(68, 68, 68, 0);
+	color: var(--primary-lite);
 }
 
 .navbar-default .navbar-brand:focus {
-	background-color: rgb(68, 68, 68);
-	color: white;
+	background-color: rgba(68, 68, 68, 0);
+	color: var(--primary-lite);
 }
 
 .navbar-default {
 	margin-bottom: 0;
-	background-color: white;
+	background-color: var(--primary-col);
 }
 
 .navbar-default .navbar-nav li a {
-    border-right: 1px solid #444;
+    border-right: 1px solid var(--primary-col);
+		color: #FFFFFF;
 }
 
 .navbar-default .navbar-nav li a.active {
-	background-color: rgb(68, 68, 68);
-	border-left: 1px solid white;
-	border-bottom:1px solid white;
-	color: white;
+	background-color: rgba(68, 68, 68, 0);
+	border-left: 1px solid var(--primary-lite);
+	border-bottom:1px solid var(--primary-lite);
+	color: var(--primary-col);
 }
 
 .banner{
@@ -785,7 +796,7 @@ border-bottom-color: transparent;
 	margin-top: 10px;
 }
 .explorer-home-page .explorerNav {
-	padding-left: 0px; 
+	padding-left: 0px;
 	padding-right: 0px;
 	margin-top: 0px;
 }
@@ -919,28 +930,28 @@ border-bottom-color: transparent;
 }
 
 .loading-overlay {
-	position: absolute; 
-	z-index: 5; 
-	background-color: rgba(68, 68, 68, 0.29); 
-	width: 100%; 
-	top: 0; 
+	position: absolute;
+	z-index: 5;
+	background-color: rgba(68, 68, 68, 0.29);
+	width: 100%;
+	top: 0;
 	bottom: 0;
 }
 
 .loading-text {
-	font-weight: bold; 
+	font-weight: bold;
 	color: white;
-	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; 
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 	font-size: 23px;
 	position: absolute;
 }
 
 .loader {
   border: 20px solid transparent;
-  position: absolute; 
-  top: 20%; 
-  left: 50%; 
-  margin-left: -100px; 
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  margin-left: -100px;
   margin-top: -45px;
   width: 200px;
   /*height: 120px;*/
@@ -955,7 +966,7 @@ border-bottom-color: transparent;
   overflow: hidden;
   display: inline-block;
   vertical-align: bottom;
-  -webkit-animation: ellipsis steps(4,end) 900ms infinite;      
+  -webkit-animation: ellipsis steps(4,end) 900ms infinite;
   animation: ellipsis steps(4,end) 900ms infinite;
   content: "\2026"; /* ascii code for the ellipsis character */
   width: 0px;
@@ -963,13 +974,13 @@ border-bottom-color: transparent;
 
 @keyframes ellipsis {
   to {
-    width: 1.25em;    
+    width: 1.25em;
   }
 }
 
 @-webkit-keyframes ellipsis {
   to {
-    width: 1.25em;    
+    width: 1.25em;
   }
 }
 
