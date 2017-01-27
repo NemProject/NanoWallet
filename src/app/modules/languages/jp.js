@@ -47,7 +47,7 @@ function JapaneseProvider($translateProvider) {
       GENERAL_BLOCK: "ブロック",
       GENERAL_NO_RESULTS: "なし",
       GENERAL_ACCOUNT: "アカウント",
-      GENERAL_ACCOUNTS: 'Accounts',
+      GENERAL_ACCOUNTS: 'アカウント',
       GENERAL_MULTISIG_ACCOUNT: "マルチシグアカウント",
       GENERAL_AMOUNT: "量",
       GENERAL_MESSAGE: "メッセージ",
@@ -110,13 +110,13 @@ function JapaneseProvider($translateProvider) {
       GENERAL_CONNECTION_ERROR: "エラーが発生しました。ノードが停止しているかオフラインになっています。",
       GENERAL_HISTORY: "履歴",
       GENERAL_REVEAL: "公開",
-      GENERAL_QR: 'QR code',
-      GENERAL_UPDATE:  'Update',
-      GENERAL_UNKNOWN: 'Unknown',
-      GENERAL_IMPORTANCE: 'Importance',
-      GENERAL_TRANSACTIONS: 'Transactions',
-      GENERAL_REGISTER: 'Register',
-      GENERAL_CREATE: 'Create',
+      GENERAL_QR: 'QRコード',
+      GENERAL_UPDATE:  '更新',
+      GENERAL_UNKNOWN: '不明',
+      GENERAL_IMPORTANCE: '重要度',
+      GENERAL_TRANSACTIONS: 'トランザクション',
+      GENERAL_REGISTER: '登録',
+      GENERAL_CREATE: '作成',
 
       // TRANSFER TRANSACTION MODULE
       TRANSFER_TRANSACTION_TITLE: "送受信",
@@ -329,7 +329,7 @@ function JapaneseProvider($translateProvider) {
       // EXPLORER NAMESPACES AND MOSAICS
       EXPLORER_NS_MOS_TITLE: "エクスプローラー - ネームスペースとモザイク",
       EXPLORER_NS_MOS_SELECT_MOS: "モザイクを選択して詳細を表示",
-      EXPLORER_NS_MOS_SEARCH: 'Search namespace',
+      EXPLORER_NS_MOS_SEARCH: 'ネームスペース検索',
 
       // EXPLORER APOSTILLES MODULE
       EXPLORER_APOSTILLES_TITLE: "エクスプローラ - アポスティーユ（公証機能）\n",
@@ -338,7 +338,7 @@ function JapaneseProvider($translateProvider) {
       EXPLORER_APOSTILLES_NO_NTY: "NTYファイルがロードされていません。ここをクリックしてインポートを行って下さい。",
 
       // ACCOUNT EXPLORER
-      ACCOUNTS_EXPLORER_TITLE: 'Explorer - Accounts',
+      ACCOUNTS_EXPLORER_TITLE: 'エクスプローラー　-　アカウント',
 
       // APOSTILLE HISTORY MODULE
       APOSTILLE_HISTORY_TITLE: "アポスティーユの履歴",
@@ -394,18 +394,18 @@ function JapaneseProvider($translateProvider) {
       APOSTILLE_AUDIT_FILES: "監査ファイル",
 
       // APOSTILLE MESSAGE MODULE
-      APOSTILLE_MESSAGE_TITLE: 'Send message to notarization account',
-      APOSTILLE_MESSAGE_NS_BRAND: 'Use my namespace to brand message',
-      APOSTILLE_MESSAGE_ADD_MOSAIC: 'Add mosaic',
-      APOSTILLE_NTY_ACCOUNT: 'Notarization account',
-      APOSTILLE_REQUEST_MESSAGE: 'Request message',
-      APOSTILLE_CREATE_MESSAGE_REQUEST: 'Create a message request',
+      APOSTILLE_MESSAGE_TITLE: '公証アカウントにメッセージ送信',
+      APOSTILLE_MESSAGE_NS_BRAND: 'メッセージを残すためにネームスペースを使う',
+      APOSTILLE_MESSAGE_ADD_MOSAIC: 'モザイク追加',
+      APOSTILLE_NTY_ACCOUNT: 'アカウントを公証',
+      APOSTILLE_REQUEST_MESSAGE: 'メッセージ要求',
+      APOSTILLE_CREATE_MESSAGE_REQUEST: 'メッセージ要求',
 
       // TRANSFER APOSTILLE OWNLERSHIP MODULE
-      APOSTILLE_TRANSFER_TITLE: 'Transfer or Split apostille ownership',
+      APOSTILLE_TRANSFER_TITLE: 'アポスティーユ所有権送信または分割',
 
       // UPADTE APOSTILLE MODULE
-      APOSTILLE_UPDATE_TITLE: 'Update apostille',
+      APOSTILLE_UPDATE_TITLE: 'アポスティーユ更新',
 
       // ERROR ALERTS
       ALERT_MISSING_FORM_DATA: "フォームの必須事項を全て入力してください。",
@@ -453,11 +453,11 @@ function JapaneseProvider($translateProvider) {
       ALERT_INVALID_MOSAIC_NAME: "モザイク名が無効です。",
       ALERT_MOSAIC_DESCRIPTION: "モザイクの概要が無効です。",
       //ALERT_GET_INCOMING_TXES_ERROR: "トランザクションの取り込み中にエラーが起きました。ノードを変更するかネットワーク接続を確認してからもう一度行ってみてください。",
-      ALERT_GET_INCOMING_TXES_ERROR: 'An error occured while trying to fetch incoming transactions, reason: ',
-      ALERT_GET_MOSAICS_DEFINITIONS_ERROR: 'Error at fetching mosaics definitions, reason: ',
-      ALERT_GET_SUB_NS_ERROR: 'Error at fetching mosaics definitions, reason: ',
-      ALERT_GET_MOSAICS_ERROR: 'Error at fetching mosaics, reason: ',
-      ALERT_GET_TRANSACTIONS_ERROR: 'Error at fetching transactions, reason: ',
+      ALERT_GET_INCOMING_TXES_ERROR: 'トランザクション受信中にエラー、理由： ',
+      ALERT_GET_MOSAICS_DEFINITIONS_ERROR: 'モザイク定義取得エラー, 理由： ',
+      ALERT_GET_SUB_NS_ERROR: 'モザイク定義取得エラー, 理由： ',
+      ALERT_GET_MOSAICS_ERROR: 'モザイク定義取得エラー, 理由： ',
+      ALERT_GET_TRANSACTIONS_ERROR: 'トランザクション取得エラー, 理由： ',
 
       // SUCCESS ALERTS
       ALERT_CREATE_WALLET_SUCCESS: "ウォレットが正常に作成され、ロードされました。",
@@ -532,7 +532,7 @@ function JapaneseProvider($translateProvider) {
       FAQ_QUESTION_7: "どうすればこのプロジェクトをサポートできますか？",
       FAQ_ANSWER_7: "Nano ウォレットは Gimre氏 の lightwallet をベースに、Quantum_Mechanics が管理しています。lightwallet ソースはこちら",
       FAQ_ANSWER_7_2: "アポスティーユはJabo38と<a href=\"http://apostille.io\">apostille.io</a>ウェブサイト全体で取り組んでいるサービスです。\n<a href=\"https://forum.nem.io/t/nem-apostille-a-nem-notary-system-community-fund-proposal/2001\" target=\"_blank\">Apostille project</a>.",
-      FAQ_ANSWER_7_3: "If you are willing to help feel free to pick an address below, thanks :)",
+      FAQ_ANSWER_7_3: "もし援助いただけるなら、下のアドレスから選択してください、ありがとう:)",
       FAQ_ANSWER_7_4: "Nano ウォレットプロジェクトファンド",
       FAQ_ANSWER_7_5: "アポスティーユ（公証）ファンド",
 
@@ -555,7 +555,7 @@ function JapaneseProvider($translateProvider) {
       FORM_SIDE_BTN_ALIAS_OF: "エイリアス",
       FORM_MESSAGE_PLACEHOLDER: "メッセージ",
       FORM_MOSAIC_NAME_PLACEHOLDER: "モザイク名",
-      FORM_ADDRESS_ALIAS_PLACEHOLDER: 'Account address or @alias'
+      FORM_ADDRESS_ALIAS_PLACEHOLDER: 'アカウントアドレスまたは@alias'
     });
 
 }
