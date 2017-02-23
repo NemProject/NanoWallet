@@ -45,10 +45,10 @@ function PolishProvider($translateProvider) {
 
         // GENERAL
         GENERAL_BLOCK: 'Blok',
-        GENERAL_BLOCKS: 'Blocks',
+        GENERAL_BLOCKS: 'Bloki',
         GENERAL_NO_RESULTS: 'Nic do pokazania',
         GENERAL_ACCOUNT: 'Konto',
-        GENERAL_ACCOUNTS: 'Accounts',
+        GENERAL_ACCOUNTS: 'Konta',
         GENERAL_MULTISIG_ACCOUNT: 'Konto z multipodpisem',
         GENERAL_AMOUNT: 'Ilość',
         GENERAL_MESSAGE: 'Wiadomość',
@@ -110,21 +110,21 @@ function PolishProvider($translateProvider) {
         GENERAL_CONNECTION_ERROR: 'Wystąpił błąd, nie działa serwer lub jesteś offline',
         GENERAL_HISTORY: 'Historia',
         GENERAL_REVEAL: 'Odsłoń',
-        GENERAL_QR: 'QR code',
-        GENERAL_UPDATE:  'Update',
-        GENERAL_UNKNOWN: 'Unknown',
-        GENERAL_IMPORTANCE: 'Importance',
-        GENERAL_TRANSACTIONS: 'Transactions',
-        GENERAL_REGISTER: 'Register',
-        GENERAL_CREATE: 'Create',
-        GENERAL_RENEW: 'Renew',
+        GENERAL_QR: 'Kod QR',
+        GENERAL_UPDATE:  'Aktualizacja',
+        GENERAL_UNKNOWN: 'Nieznane',
+        GENERAL_IMPORTANCE: 'Ważność',
+        GENERAL_TRANSACTIONS: 'Transakcje',
+        GENERAL_REGISTER: 'Zarejestruj',
+        GENERAL_CREATE: 'Utwórz',
+        GENERAL_RENEW: 'Odnów',
 
         // TRANSFER TRANSACTION MODULE
         TRANSFER_TRANSACTION_TITLE: 'Wyślij / Odbierz',
         TRANSFER_TRANSACTION_NAME: 'Transakcja transferu',
         TRANSFER_TRANSACTION_MULTISIG_NAME: 'Transakcja transferu z multipodpisem',
-        TRANSFER_TRANSACTION_INVOICE: 'Utwórz fakturę',
-        TRANSFER_TRANSACTION_TAB_INVOICE: 'Faktura',
+        TRANSFER_TRANSACTION_INVOICE: 'Utwórz polecenie zapłaty',
+        TRANSFER_TRANSACTION_TAB_INVOICE: 'Polecenie zapłaty',
         TRANSFER_TRANSACTION_MOSAIC_TRANSFER: 'Transfer mozaiki',
         TRANSFER_TRANSACTION_ATTACH_MOSAIC: 'Załącz mozaikę',
         TRANSFER_TRANSACTION_ATTACH: 'Załącz',
@@ -209,7 +209,7 @@ function PolishProvider($translateProvider) {
         MOSAIC_DEFINITION_LEVY_FEE_TYPE_1_NOTE: 'Wybierając stała, otrzymamy stałą opłatę:',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE_2_NOTE: 'Wybierają procentowa, otrzymamy opłatę liniową:',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE_2_NOTE_2: 'Wysyłanie',
-        MOSAIC_DEFINITION_LEVY_FEE_TYPE_2_NOTE_3: 'należny podatek',
+        MOSAIC_DEFINITION_LEVY_FEE_TYPE_2_NOTE_3: 'Należny podatek',
         MOSAIC_DEFINITION_PARENT: 'Główna Namespace',
         MOSAIC_DEFINITION_INFORMATION_1: 'Maksymalna długość nazwy mozaiki wynosi 32 znaki. Dozwolone znaki to:',
         MOSAIC_DEFINITION_INFORMATION_2: 'Pierwszy znak musi być literą z alfabetu.',
@@ -308,7 +308,7 @@ function PolishProvider($translateProvider) {
         PORTAL_MOSAIC_TEXT: 'Mozaiki NEM to aktywa, które posiadają dodatkowe właściwości i funkcje. Aby móc stworzyć mozaikę, konto musi posiadać przynajmniej jedną Główną Namespace.',
         PORTAL_MOSAIC_BTN_1: 'Utwórz mozaikę',
         PORTAL_MOSAIC_BTN_2: 'Edytuj mozaikę',
-        PORTAL_APOSTILLE_TITLE: 'Apostil',
+        PORTAL_APOSTILLE_TITLE: 'Apostille',
         PORTAL_APOSTILLE_TEXT: 'Użyj usługi NEM Apostil, aby stworzyć notaryzacje oparte na blockchainie w celu datowania, śledzenia i  badania autentyczności plików.',
         PORTAL_APOSTILLE_BTN_1: 'Utwórz',
         PORTAL_APOSTILLE_BTN_2: 'Audytuj',
@@ -328,7 +328,7 @@ function PolishProvider($translateProvider) {
         // EXPLORER NAMESPACES AND MOSAICS
         EXPLORER_NS_MOS_TITLE: 'Explorer - Namespaces i Mozaiki',
         EXPLORER_NS_MOS_SELECT_MOS: 'Wybierz mozaikę, aby zobaczyć szczegóły',
-        EXPLORER_NS_MOS_SEARCH: 'Search namespace',
+        EXPLORER_NS_MOS_SEARCH: 'Wyszukaj namespace',
 
         // EXPLORER APOSTILLES MODULE
         EXPLORER_APOSTILLES_TITLE: 'Explorer - Apostile',
@@ -337,7 +337,7 @@ function PolishProvider($translateProvider) {
         EXPLORER_APOSTILLES_NO_NTY: 'Plik nty nie załadowany, proszę tu kliknąć aby go importować.',
 
         // ACCOUNT EXPLORER
-        ACCOUNTS_EXPLORER_TITLE: 'Explorer - Accounts',
+        ACCOUNTS_EXPLORER_TITLE: 'Explorer - Konta',
         
         // APOSTILLE HISTORY MODULE
         APOSTILLE_HISTORY_TITLE: 'Apostille historia',
@@ -351,7 +351,7 @@ function PolishProvider($translateProvider) {
         APOSTILLE_TRANSACTION_NAME: 'Transakcja apostila',
         APOSTILLE_TRANSACTION_MULTISIG_NAME: 'Transakcja apostila z multipodpisem',
         APOSTILLE_KEEP_PRIVATE: 'Prywatne, transferowalne i aktualizowalne',
-        APOSTILLE_USE_DEDICATED: 'Użyj konta dedykowanego ',
+        APOSTILLE_USE_DEDICATED: 'Użyj konta dedykowanego',
         APOSTILLE_FILES_TO_NOTARIZE: 'Pliki do notaryzowania',
         APOSTILLE_REJECTED: 'Odrzucony',
         APOSTILLE_FILE_HASH: 'Hasz pliku',
@@ -393,18 +393,18 @@ function PolishProvider($translateProvider) {
         APOSTILLE_AUDIT_FILES: 'Audytuj pliki',
 
         // APOSTILLE MESSAGE MODULE
-        APOSTILLE_MESSAGE_TITLE: 'Send message to notarization account',
-        APOSTILLE_MESSAGE_NS_BRAND: 'Use my namespace to brand message',
-        APOSTILLE_MESSAGE_ADD_MOSAIC: 'Add mosaic',
-        APOSTILLE_NTY_ACCOUNT: 'Notarization account',
-        APOSTILLE_REQUEST_MESSAGE: 'Request message',
-        APOSTILLE_CREATE_MESSAGE_REQUEST: 'Create a message request',
+        APOSTILLE_MESSAGE_TITLE: 'Wyślij wiadomość do konta notarialnego',
+        APOSTILLE_MESSAGE_NS_BRAND: 'Użyj mojej namespace do oznakowania wiadomości',
+        APOSTILLE_MESSAGE_ADD_MOSAIC: 'Dodaj mozaikę',
+        APOSTILLE_NTY_ACCOUNT: 'Konto notarialne',
+        APOSTILLE_REQUEST_MESSAGE: 'Komunikat żądania',
+        APOSTILLE_CREATE_MESSAGE_REQUEST: 'Utwórz komunikat żądania',
 
         // TRANSFER APOSTILLE OWNLERSHIP MODULE
-        APOSTILLE_TRANSFER_TITLE: 'Transfer or Split apostille ownership',
+        APOSTILLE_TRANSFER_TITLE: 'Transferuj lub Podziel prawo własności apostille',
 
         // UPADTE APOSTILLE MODULE
-        APOSTILLE_UPDATE_TITLE: 'Update apostille',
+        APOSTILLE_UPDATE_TITLE: 'Aktualizuj apostille',
 
         // ERROR ALERTS
         ALERT_MISSING_FORM_DATA: 'Proszę wypełnić formularz !',
@@ -452,11 +452,11 @@ function PolishProvider($translateProvider) {
         ALERT_INVALID_MOSAIC_NAME: 'Nazwa mozaiki jest nieprawidłowa !',
         ALERT_MOSAIC_DESCRIPTION: 'Opis mozaiki jest nieprawidłowy !',
         //ALERT_GET_INCOMING_TXES_ERROR: 'Wystąpił błąd podczas próby pobrania przychodzących transakcji, zmień serwer lub sprawdź połączenie i spróbuj ponownie',
-        ALERT_GET_INCOMING_TXES_ERROR: 'An error occured while trying to fetch incoming transactions, reason: ',
-        ALERT_GET_MOSAICS_DEFINITIONS_ERROR: 'Error at fetching mosaics definitions, reason: ',
-        ALERT_GET_SUB_NS_ERROR: 'Error at fetching mosaics definitions, reason: ',
-        ALERT_GET_MOSAICS_ERROR: 'Error at fetching mosaics, reason: ',
-        ALERT_GET_TRANSACTIONS_ERROR: 'Error at fetching transactions, reason: ',
+        ALERT_GET_INCOMING_TXES_ERROR: 'Wystąpił błąd przy próbie pobrania transakcji przychodzących, powód: ',
+        ALERT_GET_MOSAICS_DEFINITIONS_ERROR: 'Błąd przy pobieraniu definicji mozaik, powód: ',
+        ALERT_GET_SUB_NS_ERROR: 'Błąd przy pobieraniu sub-namespaces, powód: ',
+        ALERT_GET_MOSAICS_ERROR: 'Błąd przy pobieraniu mozaik, powód: ',
+        ALERT_GET_TRANSACTIONS_ERROR: 'Błąd przy pobieraniu transakcji, powód: ',
 
         // SUCCESS ALERTS
         ALERT_CREATE_WALLET_SUCCESS: 'Portfel utworzony i załadowany !',
@@ -555,15 +555,15 @@ function PolishProvider($translateProvider) {
         FORM_SIDE_BTN_ALIAS_OF: 'Alias konta',
         FORM_MESSAGE_PLACEHOLDER: 'Wiadomość',
         FORM_MOSAIC_NAME_PLACEHOLDER: 'Nazwa mozaiki',
-        FORM_ADDRESS_ALIAS_PLACEHOLDER: 'Account address or @alias',
+        FORM_ADDRESS_ALIAS_PLACEHOLDER: 'Adres konta lub @alias',
 
-        RENEW_NS_TITLE: 'Renew namespaces',
-        RENEW_NS_NONE: 'No namespace to renew',
-        RENEW_NS_INFORMATION_1: 'You can renew a namespace starting from one month before it expires.',
-        RENEW_NS_INFORMATION_2: 'If not renewed in time, all sub-namespaces and mosaics created under it will be losts.',
-        RENEW_NS_ALERT_PART_1: '<b>Warning !</b> The namespace:',
-        RENEW_NS_ALERT_PART_2: 'will expire in less than a month ! ',
-        RENEW_NS_ALERT_PART_3: 'Consult the <b>renew page</b> for more information.'
+        RENEW_NS_TITLE: 'Odnów namespaces',
+        RENEW_NS_NONE: 'Brak namespace do odnowienia',
+        RENEW_NS_INFORMATION_1: 'Możesz odnowić namespace na miesiąc przed jej wygaśnięciem.',
+        RENEW_NS_INFORMATION_2: 'Jeśli nie zostanie odnowiona na czas, wszystkie sub-namespaces i mozaiki utworzone pod nią zostaną utracone.',
+        RENEW_NS_ALERT_PART_1: '<b>Ostrzeżenie !</b> Namespace:',
+        RENEW_NS_ALERT_PART_2: 'wygaśnie w czasie krótszym niż 1 mesiąc ! ',
+        RENEW_NS_ALERT_PART_3: 'Odwiedź <b>stronę odnowienia</b> po więcej informacji.'
     });
 
 }
