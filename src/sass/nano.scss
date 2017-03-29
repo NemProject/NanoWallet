@@ -38,7 +38,7 @@ $grayLite: rgba(0 ,0 ,0 ,0.1);
 $gray: rgba(0 ,0 ,0 ,0.3);
 $borderUnderline: 1px solid $blueLite !important;
 $red: #d9534f;
-$redLite: lighten( $red, 2% );
+$redLite: lighten( $red, 6% );
 $green: green;
 $greenLite: lighten( $green, 10% );
 $black: #333;
@@ -56,7 +56,7 @@ $sm: 768px;
     max-width: $pad * 2;
     background: transparent;
     text-align: center;
-    .btn-primary, .btn-danger {
+    .btn-primary {
       width: 100%;
       color: white;
       background: $blue;
@@ -64,6 +64,17 @@ $sm: 768px;
       &:hover, &:active {
         background: $blueLite;
         border: 1px solid $blueLite;
+        color: white;
+      }
+    }
+    .btn-danger {
+      width: 100%;
+      color: white;
+      background: $red;
+      border: 1px solid $red;
+      &:hover, &:active {
+        background: $redLite;
+        border: 1px solid $redLite;
         color: white;
       }
     }

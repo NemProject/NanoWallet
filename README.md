@@ -32,19 +32,25 @@ Before update make sure that you don't have any wallets stored into the NanoWall
 
 <pre>npm install</pre>
 
-3) Build:
+3) Build Nanowallet, files will be found in '/build' folder.
 
 <pre>gulp</pre>
 
 ##### OR #####
 
-4) Run NanoWallet as App (packaged with chromium browser)
+4) Build with browserSync
+
+<pre>gulp build-dev</pre>
+
+##### OR #####
+
+5) Run NanoWallet as App (packaged with chromium browser)
 
 <pre>npm run devApp</pre>
 
 ##### OR #####
 
-5) Build NanoWallet apps, default set to : win64,osx64,linux64
+6) Build NanoWallet apps, built apps will be found in '/dist' folder
 
 <pre>gulp build-app</pre>
 

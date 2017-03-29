@@ -17,7 +17,7 @@ class PortalCtrl {
             this._location.path('/');
             return;
         }
-        
+
     }
 
     /**

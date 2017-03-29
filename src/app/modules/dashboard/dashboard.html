@@ -133,20 +133,21 @@
       </div>
       <!-- UPDATES SECTION -->
       <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-0 col-sm-12 col-sm-offset-0 updates">
-        <div>
+
           <h1>Welcome to the Nano Wallet Beta!</h1>
-          <h5>Please <a href="https://github.com/NemProject/NanoWallet" target="_blank">report issues here</a></h5>
-          <p>
-          The NEM team is not responsible for any loss of funds due to using this app on the mainnet and we suggest primarily testing on the testnet to familiarize yourself with NanoWallet first. Users are responsible for their funds and having their private keys backed up. 
-          <br><br>
-          Do not use the mainnet unless you are confident all your funds are securely backed up. We suggest writing down private keys on paper and storing it in a safe place. Additionally, you can import your accounts into Lightwallet/NCC. 
-          <br><br>
-          Thanks for your participation!
-          </p>
-        </div>
+            <div>
+              <h5>Please <a href="https://github.com/NemProject/NanoWallet" target="_blank">report issues here</a></h5>
+              <p>
+              The NEM team is not responsible for any loss of funds due to using this app on the mainnet and we suggest primarily testing on the testnet to familiarize yourself with NanoWallet first. Users are responsible for their funds and having their private keys backed up.
+              <br><br>
+              Do not use the mainnet unless you are confident all your funds are securely backed up. We suggest writing down private keys on paper and storing it in a safe place. Additionally, you can import your accounts into Lightwallet/NCC.
+              <br><br>
+              Thanks for your participation!
+              </p>
+            </div>
         <!-- MARKET INFO WIDGET -->
         <div class="market-info" ng-show="$ctrl._DataBridge.marketInfo.highestBid && $ctrl._DataBridge.btcPrice.last">
-          <h4> {{ 'DASHBOARD_MARKET_INFO_TITLE' | translate }} <i class="fa fa-refresh" style="cursor:pointer;float:right;" ng-click="$ctrl.refreshMarketInfo();"></i></h4>
+          <h4> {{ 'DASHBOARD_MARKET_INFO_TITLE' | translate }} <i class="fa fa-refresh" ng-click="$ctrl.refreshMarketInfo();"></i></h4>
         <div class="row">
           <div class="col-md-6 col-sm-3 header">
             {{ 'DASHBOARD_MARKET_INFO_CAP' | translate }}:

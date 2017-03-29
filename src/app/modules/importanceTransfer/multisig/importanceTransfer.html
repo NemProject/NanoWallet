@@ -82,7 +82,7 @@
           </div>
           <!-- CHECKBOX TO ALLOW ENTERING OF PUBLIC KEY -->
           <div class="row checkboxes">
-            <div class="col-md-6">
+            <div class="col-md-12">
               <fieldset class="form-group">
                 <input id="box5" type="checkbox" ng-model="$ctrl.customKey" ng-change="$ctrl.updateRemoteAccount()" ng-disabled="!$ctrl.common.password.length">
                 <label for="box5">{{ 'IMPORTANCE_TRANSFER_CUSTOM_KEY' | translate }}</label>
@@ -186,6 +186,7 @@
               </fieldset>
             </div>
 
+            <!-- START/STOP HARVESTING -->
             <div class="panel-heading">
               <h3>{{ 'ACCOUNT_START_STOP_HARVESTING' | translate }}</h3>
             </div>
@@ -197,18 +198,41 @@
             </p>
 
           <div class="form-group" ng-show="$ctrl.formData.multisigAccount.vestedBalance / 1000000 > 10000">
-            <div class="input-group">
-            <input class="form-control" type="text" ng-model="$ctrl.harvestingNode" ng-style="!$ctrl.customHarvestingNode ? {'display': 'none'} : ''" ng-model-options="{ debounce: 500 }" ng-disabled="$ctrl.delegatedData.meta.status === 'UNLOCKED'" ng-change="$ctrl.checkNode();$ctrl.updateDelegatedData();"/>
-            <select class="form-control" ng-model="$ctrl.harvestingNode" ng-options="(node.uri | toHostname) as (node.uri | toHostname) for node in $ctrl.nodes" ng-style="$ctrl.customHarvestingNode ? {'display': 'none'} : $ctrl.showSupernodes ? {'display': 'none'} : ''" ng-disabled="$ctrl.delegatedData.meta.status === 'UNLOCKED'" ng-change="$ctrl.checkNode();$ctrl.updateDelegatedData();"><option value="" disabled selected>{{ 'ACCOUNT_HARVESTING_NODE_SELECT' | translate }}</option></select>
-             <select class="form-control" ng-model="$ctrl.harvestingNode" ng-options="node.ip as node.ip for node in $ctrl.nodes" ng-style="$ctrl.customHarvestingNode ? {'display': 'none'} : !$ctrl.showSupernodes ? {'display': 'none'} : ''" ng-disabled="$ctrl.delegatedData.meta.status === 'UNLOCKED'" ng-change="$ctrl.checkNode();$ctrl.updateDelegatedData();"><option value="" disabled selected>{{ 'ACCOUNT_HARVESTING_NODE_SELECT' | translate }}</option></select>
-              <span class="input-group-btn">
-                <button ng-class="!$ctrl.customHarvestingNode ? 'active' : ''" class="btn btn-primary" type="button" ng-click="$ctrl.customHarvestingNode = false;" title="{{ 'ACCOUNT_NODE_FROM_LIST' | translate}}"><i class="fa fa-cloud"></i></button>
-                <button ng-class="$ctrl.customHarvestingNode ? 'active' : ''" class="btn btn-primary" type="button" ng-click="$ctrl.customHarvestingNode = true;" title="{{'ACCOUNT_CUSTOM_NODE' | translate}}"><i class="fa fa-edit"></i></button>
-                 <button class="btn btn-primary" type="button" ng-show="$ctrl.delegatedData.meta.status === 'LOCKED'" ng-disabled="$ctrl.noFreeSlots || !$ctrl.common.password.length" ng-click="$ctrl.startDelegatedHarvesting()" title="{{'ACCOUNT_HARVESTING_START' | translate}}"><i class="fa fa-play-circle-o"></i></button>
-                  <button class="btn btn-primary" type="button" ng-show="$ctrl.delegatedData.meta.status === 'UNLOCKED'" ng-click="$ctrl.stopDelegatedHarvesting()" title="{{'ACCOUNT_HARVESTING_STOP' | translate}}" ng-disabled="!$ctrl.common.password.length"><i class="fa fa-stop-circle-o"></i></button>
-              </span>
-            </div>
+
+            <!-- SELECT NODE AND START HARVESTING -->
+            <fieldset class="form-group">
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <label>{{ 'HEADER_NODE_SELECT' | translate }}: </label>
+                </span>
+                <span class="input-group-btn harvesting">
+                  <!-- select node from list -->
+                  <button ng-class="!$ctrl.customHarvestingNode ? 'active' : ''" class="btn btn-primary" type="button" ng-click="$ctrl.customHarvestingNode = false;" data-toggle="tooltip" data-placement="top" title="{{ 'ACCOUNT_NODE_FROM_LIST' | translate}}"><i class="fa fa-cloud"></i></button>
+                  <!-- enter a custom node -->
+                  <button ng-class="$ctrl.customHarvestingNode ? 'active' : ''" class="btn btn-primary" type="button" ng-click="$ctrl.customHarvestingNode = true;" data-toggle="tooltip" data-placement="top" title="{{'ACCOUNT_CUSTOM_NODE' | translate}}"><i class="fa fa-edit"></i></button>
+                </span>
+
+                <input class="form-control" type="text" ng-model="$ctrl.harvestingNode" ng-style="!$ctrl.customHarvestingNode ? {'display': 'none'} : ''" ng-model-options="{ debounce: 500 }" ng-disabled="$ctrl.delegatedData.meta.status === 'UNLOCKED'" ng-change="$ctrl.checkNode();$ctrl.updateDelegatedData();"/>
+                <!-- list of nodes-->
+                <select class="form-control" ng-model="$ctrl.harvestingNode" ng-options="(node.uri | toHostname) as (node.uri | toHostname) for node in $ctrl.nodes" ng-style="$ctrl.customHarvestingNode ? {'display': 'none'} : $ctrl.showSupernodes ? {'display': 'none'} : ''" ng-disabled="$ctrl.delegatedData.meta.status === 'UNLOCKED'" ng-change="$ctrl.checkNode();$ctrl.updateDelegatedData();">
+                  <option value="" disabled selected>{{ 'ACCOUNT_HARVESTING_NODE_SELECT' | translate }}</option>
+                </select>
+                <!-- list of nodes-->
+                <select class="form-control" ng-model="$ctrl.harvestingNode" ng-options="node.ip as node.ip for node in $ctrl.nodes" ng-style="$ctrl.customHarvestingNode ? {'display': 'none'} : !$ctrl.showSupernodes ? {'display': 'none'} : ''" ng-disabled="$ctrl.delegatedData.meta.status === 'UNLOCKED'" ng-change="$ctrl.checkNode();$ctrl.updateDelegatedData();">
+                  <option value="" disabled selected>{{ 'ACCOUNT_HARVESTING_NODE_SELECT' | translate }}</option>
+                </select>
+
+                <span class="input-group-btn harvestingStart">
+                  <!-- start harvesting -->
+                  <button class="btn btn-primary" type="button" ng-show="$ctrl.delegatedData.meta.status === 'LOCKED'" ng-disabled="$ctrl.noFreeSlots || !$ctrl.common.password.length" ng-click="$ctrl.startDelegatedHarvesting()" data-toggle="tooltip" title="{{'ACCOUNT_HARVESTING_START' | translate}}"><i class="fa fa-play"></i></button>
+                  <!-- stop harvesting -->
+                  <button class="btn btn-primary" type="button" ng-show="$ctrl.delegatedData.meta.status === 'UNLOCKED'" ng-click="$ctrl.stopDelegatedHarvesting()" data-toggle="tooltip" title="{{'ACCOUNT_HARVESTING_STOP' | translate}}" ng-disabled="!$ctrl.common.password.length"><i class="fa fa-stop"></i></button>
+                </span>
+              </div>
+            </fieldset>
+
           </div>
+
 
           <p class="bg-info text-center" ng-show="$ctrl.noFreeSlots && $ctrl.delegatedData.meta.status === 'LOCKED' && $ctrl.formData.multisigAccount.vestedBalance  / 1000000 > 10000"><i class="fa fa-exclamation-triangle "></i> {{ 'ACCOUNT_HARVESTING_NO_SLOTS' | translate }}</p>
           <p class="bg-info" ng-show="$ctrl.formData.multisigAccount.vestedBalance / 1000000 < 10000"><i class="fa fa-exclamation-triangle "></i> {{ 'ACCOUNT_HARVESTING_BELOW_THRESHOLD' | translate }}</p>

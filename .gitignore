@@ -33,6 +33,7 @@ build/Release
 # App builds
 dist
 cache
+build
 
 # Dependency directories
 node_modules

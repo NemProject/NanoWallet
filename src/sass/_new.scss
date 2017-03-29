@@ -203,6 +203,34 @@ label {
 			border-radius: 0px;
 		}
 	}
+  &.harvesting {
+	max-width: $pad * 4;
+  }
+  &.harvestingStart {
+    max-width: $pad * 2;
+  }
+	&.harvestingStart button:nth-of-type(2){
+		background: $red;
+		border: 1px solid $red;
+		&.active, &:hover, &:active, &:focus, &:visited {
+			border: 1px solid $redLite !important;
+			background-color: $redLite !important;
+			color: $white !important;
+		}
+	}
+  &.harvesting, &.harvestingStart {
+	  .btn-primary {
+  	  background-color: $blue;
+  	  border: 1px solid $blue;
+  	  color: $white;
+	  border-radius: 0px;
+  	  &.active, &:hover, &:active, &:focus, &:visited {
+  		  border: 1px solid $blueLite !important;
+  		background-color: $blueLite !important;
+  		color: $white !important;
+  	  }
+  	}
+  }
   &.short {
     min-width: 130px;
   }
@@ -434,6 +462,7 @@ fieldset .form-control.has-error {
 	color: $white;
 	border: 1px solid $blue;
 	background: $blue;
+	min-width: 120px;
 }
 .tooltip.top .tooltip-arrow {
   border-top-color: $blue;
@@ -741,13 +770,26 @@ footer {
     }
   }
   .updates {
+	h1 {
+	  @media only screen and (max-width : $lg) {
+	    font-size: 20px;
+	  }
+	}
+	h5 {
+	  @media only screen and (max-width : $lg) {
+	    font-size: 13px;
+	  }
+	}
     p {
   	  font-size: 12px;
+	  @media only screen and (max-width : $lg) {
+		font-size: 11px;
+	  }
     }
     a{
-    	color: $blue;
-    	text-decoration: underline;
-    	font-weight: 500;
+      color: $blue;
+      text-decoration: underline;
+      font-weight: 500;
     }
   }
   .arrows {
@@ -1213,29 +1255,44 @@ textarea {
 }
 
 /*** MARKET INFO WIDGET ***/
-.market-info .header{
+.market-info{
+  .header{
 	color: rgba(0, 0, 0, 0.3);
 	font-size: 12px;
 	font-weight: 700;
-}
-.market-info h4 {
-  margin-bottom: $pad;
-}
-.market-info .header span{
+  }
+  h4 {
+    margin-bottom: $pad;
+	@media only screen and (max-width : $lg) {
+	  font-size: 22px;
+	}
+  }
+  .fa-refresh {
+	font-size: 18px;
+	padding-left: $pad;
+	cursor: pointer;
+	@media only screen and (max-width : $lg) {
+	  font-size: 14px;
+	  padding-left: $pad / 2;
+	}
+  }
+   // amount
+  .header span{
 	font-weight: 500;
 	font-size: 20px;
 	color: black;
-  @media only screen and (max-width : $xl) {
-    font-size: 15px;
+    @media only screen and (max-width : $xl) {
+      font-size: 15px;
+    }
+    @media only screen and (max-width : $lg) {
+      font-size: 12px;
+    }
   }
-  @media only screen and (max-width : $lg) {
-    font-size: 12px;
-  }
-}
-.market-info .ticker {
+  .ticker {
 	padding-top: $pad;
-  @media only screen and (max-width : $md) {
-    padding-top: 0px;
+    @media only screen and (max-width : $md) {
+      padding-top: 0px;
+    }
   }
 }
 .marketPercents {
