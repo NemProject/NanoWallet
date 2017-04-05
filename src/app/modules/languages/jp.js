@@ -56,7 +56,7 @@ function JapaneseProvider($translateProvider) {
       DASHBOARD_NOTICE_2: '問題の報告は<a href="https://github.com/NemProject/NanoWallet" target="_blank">こちら</a>へお願いします。',
       DASHBOARD_NOTICE_3: 'NEMチームは、メインネット上でこのアプリケーションを利用することに起因する、資金の消失について責任を負いません。初めにテストネットにてNanoWalletの操作を行い、利用方法を習得する事をお勧めします。利用者は自身の資金を管理し、秘密鍵のバックアップを行う必要があります。',
       DASHBOARD_NOTICE_4: 'すべての資金が安全にバックアップされていると確信しない限り、メインネットを使用しないでください。紙に秘密鍵を書き留めて、安全な場所に保管することをお勧めします。さらに、アカウントをLightwallet / NCCにインポートすることもできます。',
-      DASHBOARD_NOTICE_5: 'Thanks for your participation!',
+      DASHBOARD_NOTICE_5: 'Thanks for your participation!', //すまねぇ、ここどう訳すか迷ってそのままｗｗ
       
       // GENERAL
       GENERAL_BLOCK: "ブロック",
