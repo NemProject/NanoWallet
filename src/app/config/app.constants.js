@@ -31,10 +31,10 @@ const AppConstants = {
     }, {
         name: "Japanese",
         key: "jp"
-    }/*, {
-        name: "Français",
-        key: "fr"
-    }*/],
+    }, {
+        name: "Spanish",
+        key: "es"
+    }]
 
 };
 

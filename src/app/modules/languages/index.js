@@ -19,4 +19,8 @@ app.config(PolishProvider);
 import JapaneseProvider from './jp';
 app.config(JapaneseProvider);
 
+
+import SpanishProvider from './es';
+app.config(SpanishProvider);
+
 export default app;
