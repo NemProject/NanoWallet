@@ -349,7 +349,7 @@ function JapaneseProvider($translateProvider) {
       PORTAL_MULTISIG_TEXT: "NEMのマルチシグは編集可能なオンチェーンのコントラクトであり、連署アカウントを有効にすることで最も強力な資金保護方法にもなり、非中央集権型組織の基盤にもなります。",
       PORTAL_MULTISIG_BTN_1: "アカウントをマルチシグに変更",
       PORTAL_MULTISIG_BTN_2: "既存コントラクトを編集",
-      PORTAL_MULTISIG_BTN_3: 'Sign multisig transactions',
+      PORTAL_MULTISIG_BTN_3: 'マルチシグトランザクションの署名',
       PORTAL_HARVESTING_TITLE: "デリゲートハーベスティング（委任）",
       PORTAL_HARVESTING_TEXT: "デリゲートハーベスティングは、アカウントが起動していない時間でもリモート・ノードを介して「マイニング（ハーベスト）」を可能にする機能です。",
       PORTAL_CHANGELLY_TITLE: "Changelly （XEM等の両替サイト）",
