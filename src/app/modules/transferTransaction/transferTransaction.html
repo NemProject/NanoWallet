@@ -96,7 +96,7 @@
                 <span class="input-group-btn message">
                   <label>{{'FORM_MESSAGE_PLACEHOLDER' | translate}}: </label>
                 </span>
-                <textarea class="form-control" ng-model="$ctrl.formData.message" placeholder="{{'FORM_MESSAGE_PLACEHOLDER' | translate}}" rows="4" ng-change="$ctrl.updateFees();" ng-maxlength="1024" maxlength="1024" ng-class="$ctrl.charsLeft < 0 ? 'has-error' : ''"></textarea>
+                <textarea class="form-control" ng-model="$ctrl.formData.message" placeholder="{{'FORM_MESSAGE_PLACEHOLDER' | translate}}" rows="4" ng-change="$ctrl.updateFees();" ng-maxlength="{{$ctrl.maxChars}}" maxlength="{{$ctrl.maxChars}}" ng-class="$ctrl.charsLeft < 0 ? 'has-error' : ''"></textarea>
               </div>
               <p style="float:right;margin-top:5px;"><b>{{ 'GENERAL_CHARACTERS_LEFT' | translate }}</b>: {{ $ctrl.charsLeft }}</p>
             </fieldset>
