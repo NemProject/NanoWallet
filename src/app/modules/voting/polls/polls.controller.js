@@ -41,6 +41,7 @@ class pollsCtrl {
         this.loadingPoll = false;
         this.loadingResults = false;
         this.loadingVote = false;
+        this.loadingPolls = false;
 
         // Default poll Index
         // testnet is -104 and mainnet is 104
@@ -49,7 +50,7 @@ class pollsCtrl {
             //this.pollIndexAccount = "TAZ73M4C3QDJRC6NFLQP3HAVW4FHYRWJOE7RASVZ";
         }
         else{
-            this.pollIndexAccount = "TAZ73M4C3QDJRC6NFLQP3HAVW4FHYRWJOE7RASVZ";
+            this.pollIndexAccount = "NDIXTBITCK6DHIOWXPAVN5DA3JXZYCD7PLAZC6RN";
         }
         this.pollIndexPrivate = false;
 
@@ -164,7 +165,7 @@ class pollsCtrl {
                     this.voting = false;
                 }).catch((err) => {
                     console.log(err.message);
-                    this._Alert.votingUnexpectedError(err.message);
+                    //this._Alert.votingUnexpectedError(err.message);
                     this.voting = false;
                 }));
             }
@@ -173,6 +174,8 @@ class pollsCtrl {
             this._Alert.votingSuccess();
             this.common.password = '';
             this._scope.$digest();
+        }).catch((err)=>{
+            this.common.password = '';
         });
     }
 
@@ -221,7 +224,7 @@ class pollsCtrl {
         this.showVote = !this.showVote;
     }
 
-    // manages inputted address on the options tab
+    // manages inputted Poll address on the options tab
     pollAddressInput(){
         this.searching = true;
         this.inputAddressValid = true;
@@ -241,6 +244,7 @@ class pollsCtrl {
         });
     }
 
+    // manages inputted Index address on the options tab
     pollIndexInput(){
         this.searching = true;
         this.inputAddressValid = true;
@@ -388,9 +392,9 @@ class pollsCtrl {
     // for setting polls list tabs
     setTab(tab) {
         this.createIndex = false;
+        this.showDetails = false;
         this.tab = tab;
-        if(tab == 4){ //options tab
-
+        if(tab === 4){ //options tab
         }
         else{
             this.updateList();
@@ -492,10 +496,13 @@ class pollsCtrl {
     // gets al the poll headers on the poll index
     getPolls() {
         //get all polls
+        this.loadingPolls = true;
         return this._Voting.getPolls(this.pollIndexAccount).then((data) => {
             this.allPolls = data;
+            this.loadingPolls = false;
             this.setTab(1);
         }).catch((e)=>{
+            this.loadingPolls = false;
             throw e;
         });
         // apply filters

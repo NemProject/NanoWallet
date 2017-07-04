@@ -8,7 +8,6 @@
     </div>
 
     <div id="row1" class="row row1">
-      <!-- Your content here -->
       <div class="col-md-6">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -31,12 +30,16 @@
           <div class="panel-body">
             <br>
             <!-- LIST -->
-            <div class="pre-scrollable" ng-hide="$ctrl.isTabSet(4)">
-              <div ng-repeat="poll in $ctrl.pollsList track by $index">
-                <div class="poll-list-element">
-                  <button ng-click="$ctrl.pollSelect($index)" class="btn btn-default poll-select"><span  ng-class="$ctrl.getClass($index)">{{$ctrl.types[$ctrl.pollsList[$index].type]}}</span> {{$ctrl.pollsList[$index].title}}</button>
+            <div ng-hide="$ctrl.isTabSet(4)">
+              <div class="pre-scrollable">
+                <div ng-repeat="poll in $ctrl.pollsList track by $index">
+                  <div class="poll-list-element">
+                    <button ng-click="$ctrl.pollSelect($index)" class="btn btn-default poll-select"><span  ng-class="$ctrl.getClass($index)">{{$ctrl.types[$ctrl.pollsList[$index].type]}}</span> {{$ctrl.pollsList[$index].title}}</button>
+                  </div>
                 </div>
               </div>
+              <br>
+              <button type="submit" class="btn btn-success pull-xs-left" style="width:10%" ng-click="$ctrl.getPolls();" ng-disabled="$ctrl.loadingPolls"><i ng-class="$ctrl.loadingPolls ? 'fa fa-refresh fa-spin' : 'fa fa-refresh'" aria-hidden="true"></i></button>
             </div>
             <!-- OPTIONS TAB -->
             <div ng-show="$ctrl.isTabSet(4)">
@@ -199,7 +202,7 @@
                     <br>
                     <p class="text-muted small">
                       *Weighted score varies depending on the type of vote:<br>
-                      for simple polls it is the same as the votes<br>
+                      for whitelist polls it is the same as the votes<br>
                       for POI polls it is the sum of importances of the voters<br>
                     </p>
                   </div>
@@ -212,7 +215,7 @@
             </div>
 
           </div>
-          <div class="panel-body" ng-show=$ctrl.createIndex>
+          <div class="panel-body" ng-show="$ctrl.createIndex">
             <h2>Create a poll Index</h2>
             <br>
             <br>

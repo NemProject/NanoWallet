@@ -181,7 +181,7 @@ class NetworkRequests {
     getUnconfirmedTxes(host, address){
         let port = this.getPort();
         let obj = {'params':{'address':address}};
-     return this._$http.get('http://' + host + ':' + port + '/account/unconfirmedTransactions', obj)
+        return this._$http.get('http://' + host + ':' + port + '/account/unconfirmedTransactions', obj)
         .then(
             (res) => {
                 return res.data;
