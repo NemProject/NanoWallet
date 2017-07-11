@@ -338,7 +338,7 @@ function GermanProvider($translateProvider) {
         ACCOUNT_PRIVATE_KEY_NOTE: 'Ihr privater Schlüssel dient als Autorisierung für Ihr Konto. Er sollte an mehreren Stellen aufbewahrt werden: Passwortverschlüsselt in einer Wallet Datei, auf einem Stück Papier niedergeschrieben sowie als QR Code über den <b><u>Wallet QR exportieren</u></b> Button.',
         ACCOUNT_PRIVATE_KEY_SHOW: 'Privaten Schlüssel anzeigen',
         ACCOUNT_EXPORT_MOBILE: 'Wallet auf Handy exportieren',
-        ACCOUNT_INFO_QR_BTN: 'QR mit Konto Informatione',
+        ACCOUNT_INFO_QR_BTN: 'QR mit Konto Informationen',
         ACCOUNT_WALLET_QR_BTN: 'Wallet QR',
         ACCOUNT_WALLET_QR_BTN_2: 'Wallet QR exportieren (Android & iOS)',
         ACCOUNT_BACKUP_WALLET: 'Wallet herunterladen',
