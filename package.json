@@ -36,14 +36,17 @@
     "gulp-sass": "^3.0.0",
     "gulp-util": "^3.0.8",
     "nw": "^0.20.1",
-    "nw-builder": "^3.1.3"
+    "nw-builder": "^3.1.3",
+    "express": "4.14.0",
+    "morgan": "1.7.0"
   },
   "directories": {
     "test": "tests"
   },
   "scripts": {
     "test": "gulp tests browserifyTests",
-    "devApp": "nw build/"
+    "devApp": "nw build/",
+    "build": "node node_modules/gulp/bin/gulp default"
   },
   "repository": {
     "type": "git",

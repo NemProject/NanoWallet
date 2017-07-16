@@ -146,19 +146,19 @@ gulp.task('app', function () {
 gulp.task('default', ['html', 'js', 'sass', 'css', 'images', 'package', 'browserify', 'tests', 'browserifyTests'], function() {
 
   // Uncomment below for dev mode (watch and build as you change the code)
-  browserSync.init(['./build/**/**.**'], {
-    server: "./build",
-    index: "start.html",
-    port: 4000,
-    notify: false,
-    ui: {
-      port: 4001
-    }
-  });
-  gulp.watch("src/index.html", ['html']);
-  gulp.watch("src/sass/**/*.scss", ['sass']);
-  gulp.watch(viewFiles, ['views']);
-  gulp.watch(jsFiles, ['browserify']);
+  // browserSync.init(['./build/**/**.**'], {
+  //  server: "./build",
+  //  index: "start.html",
+  //  port: 4000,
+  //  notify: false,
+  //  ui: {
+  //    port: 4001
+  //  }
+  //});
+  //gulp.watch("src/index.html", ['html']);
+  //gulp.watch("src/sass/**/*.scss", ['sass']);
+  //gulp.watch(viewFiles, ['views']);
+  //gulp.watch(jsFiles, ['browserify']);
 
 });
 
