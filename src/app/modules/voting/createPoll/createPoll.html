@@ -14,25 +14,27 @@
           <div class="panel-heading" style="background-color: rgb(68, 68, 68);border-radius: 0px;">
           </div>
           <div class="panel-body">
-            <!-- TITLE -->
-            <label ng-class="$ctrl.issues.blankTitle ? 'has-error' : ''" >Title</label>
-            <br>
-            <input type="text" class="form-control" placeholder="{{ 'FORM_TITLE_FIELD_PLACEHOLDER' | translate }}" ng-model="$ctrl.formData.title" ng-class="$ctrl.issues.blankTitle ? 'has-error' : ''" ng-change="$ctrl.checkFormData(); $ctrl.updateMessages();"/>
-            <br>
-            <!-- DESCRIPTION -->
-            <label ng-class="($ctrl.issues.descriptionTooLong) ? 'has-error' : ''">Description</label>
-            <br>
-            <textarea class="form-control" placeholder="{{ 'FORM_DESCRIPTION_FIELD_PLACEHOLDER' | translate }}" ng-class="($ctrl.issues.descriptionTooLong) ? 'has-error' : ''" ng-model="$ctrl.description" rows="4" ng-change="$ctrl.checkFormData(); $ctrl.updateMessages();"></textarea>
-            <br>
-            <!-- POLL INDEX -->
-            <label ng-class="$ctrl.issues.invalidIndexAccount ? 'has-error' : ''" >Poll Index Account</label>
-            <p class="text-muted small">The poll account where the poll will be saved. By default a public one is set.</p></p>
-            <input type="text" class="form-control" ng-model="$ctrl.pollIndexAccount" ng-class="$ctrl.issues.invalidIndexAccount ? 'has-error is-empty' : ''" ng-change="$ctrl.checkFormData()"/>
-            <br>
-            <!-- DOE -->
-            <label ng-class="($ctrl.issues.invalidDate || $ctrl.issues.pastDate) ? 'has-error' : ''" >Date of Ending</label>
-            <p class="text-muted small">If you only see a text box input a date in a valid ISO format [yyyy-MM-ddTHH:mm:ss], for example: 2017-12-28T14:57:00</p>
-            <input type="datetime-local" class="form-control" ng-model="$ctrl.doeString" ng-class="($ctrl.issues.invalidDate || $ctrl.issues.pastDate) ? 'has-error' : ''" ng-change="$ctrl.setDoe(); $ctrl.checkFormData(); $ctrl.updateMessages();"/>
+            <form name="dataForm">
+              <!-- TITLE -->
+              <label ng-class="$ctrl.issues.blankTitle ? 'has-error' : ''" >Title</label>
+              <br>
+              <input type="text" class="form-control" placeholder="{{ 'FORM_TITLE_FIELD_PLACEHOLDER' | translate }}" ng-model="$ctrl.formData.title" ng-class="$ctrl.issues.blankTitle ? 'has-error' : ''" ng-change="$ctrl.checkFormData(); $ctrl.updateMessages();"/>
+              <br>
+              <!-- DESCRIPTION -->
+              <label ng-class="($ctrl.issues.descriptionTooLong) ? 'has-error' : ''">Description</label>
+              <br>
+              <textarea class="form-control poll-description-textarea" placeholder="{{ 'FORM_DESCRIPTION_FIELD_PLACEHOLDER' | translate }}" ng-class="($ctrl.issues.descriptionTooLong) ? 'has-error' : ''" ng-model="$ctrl.description" rows="4" ng-change="$ctrl.checkFormData(); $ctrl.updateMessages();"></textarea>
+              <br>
+              <!-- POLL INDEX -->
+              <label ng-class="$ctrl.issues.invalidIndexAccount ? 'has-error' : ''" >Poll Index Account</label>
+              <p class="text-muted small">The poll account where the poll will be saved. By default a public one is set.</p></p>
+              <input type="text" class="form-control" ng-model="$ctrl.pollIndexAccount" ng-class="$ctrl.issues.invalidIndexAccount ? 'has-error is-empty' : ''" ng-change="$ctrl.checkFormData()"/>
+              <br>
+              <!-- DOE -->
+              <label ng-class="($ctrl.issues.invalidDate || $ctrl.issues.pastDate) ? 'has-error' : ''" >Date of Ending</label>
+              <p class="text-muted small">If you only see a text box input a date in a valid ISO format [yyyy-MM-ddTHH:mm], for example: 2017-12-28T14:57</p>
+              <input type="datetime-local" class="form-control" name="doeInput" ng-model="$ctrl.doeString" ng-class="($ctrl.issues.invalidDate || $ctrl.issues.pastDate) ? 'has-error' : ''" ng-change="$ctrl.setDoe(dataForm.doeInput.$viewValue); $ctrl.checkFormData(); $ctrl.updateMessages();"/>
+            </form>
             <br>
             <input id="box1" type="checkbox" ng-model="$ctrl.formData.multiple"><label for="box1">Multiple choice</label>
             <p class="text-muted small">If selected Voters will be able to divide their vote into more than one option.</p>
