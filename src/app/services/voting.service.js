@@ -158,7 +158,7 @@ class Voting {
      *
      * @return {promise} - returns a promise that resolves when the vote has been sent
      */
-    vote(address, common, multisigAccount) {
+    vote(address, common, multisigAccount, message) {
         this._nemUtils.disableSuccessAlerts();
 
         var formData = {};
@@ -171,18 +171,19 @@ class Voting {
         formData.encryptMessage = false;
 
         // Multisig data
+        formData.innerFee = 0;
         if (!multisigAccount) {
-            formData.innerFee = 0;
             formData.isMultisig = false;
             formData.multisigAccount = '';
         } else {
-            formData.innerFee = 0;
+            if(message){
+                formData.message = message;
+            }
             formData.isMultisig = true;
             formData.multisigAccount = multisigAccount;
         }
 
         let now = (new Date()).getTime();
-        //console.log("now", now, helpers.toNEMTimeStamp(now))
 
         // Mosaics data
         formData.mosaics = null;
@@ -197,10 +198,11 @@ class Voting {
                 // If code >= 2, it's an error
                 if (res.data.code >= 2) {
                     this._Alert.transactionError(res.data.message);
+                    throw res.data.message;
                 }
             }
-        }, (err) => {
-            this._Alert.transactionError('Failed ' + err.data.error + " " + err.data.message);
+        }, (e) => {
+            throw e;
         });
     }
 
@@ -577,7 +579,7 @@ class Voting {
             return this.pollDetails(pollAddress);
         }).then((data) => {
             details = data;
-            //console.log("detailsPOI->", details);
+            console.log("details->", details);
             //get all Transactions
             for (var i = 0; i < details.options.addresses.length; i++) {
                 optionTransactions.push(this._nemUtils.getTransactionsWithString(details.options.addresses[i], ""));
@@ -721,7 +723,7 @@ class Voting {
                     "options": []
                 };
                 for (var i = 0; i < details.options.strings.length; i++) {
-                    let percentage = (totalVotes === 0)
+                    let percentage = (totalVotes === 0 || totalImportance === 0)
                         ? (0)
                         : (voteCountsWeighted[i] * 100 / totalImportance);
                     resultsObject.options.push({"text": details.options.strings[i], "votes": voteCounts[i], "weighted": voteCountsWeighted[i], "percentage": percentage});
@@ -775,7 +777,6 @@ class Voting {
             return Math.max.apply(null, data);
         });
     }
-
 }
 
 export default Voting;

@@ -29,7 +29,7 @@ class createPollCtrl {
             //this.pollIndexAccount = "TAZ73M4C3QDJRC6NFLQP3HAVW4FHYRWJOE7RASVZ";
         }
         else{
-            this.pollIndexAccount = "TAKGYHOVDYN7TCZTEB7OIM6DTBOSMP5UPEH4YO6C";
+            this.pollIndexAccount = "NDIXTBITCK6DHIOWXPAVN5DA3JXZYCD7PLAZC6RN";
         }
 
         // names of types
@@ -52,6 +52,7 @@ class createPollCtrl {
         this.hasWhitelist = false;
         this.hasMosaic = false;
         this.doeString = '';
+        this.doeISOString = '';
         this.typeString = this.pollTypes[0];
         this.invalidData = true;
 
@@ -64,6 +65,8 @@ class createPollCtrl {
         this.issues.invalidAddresses = [];
         this.issues.invalidIndexAccount = false;
         this.issues.noPassword = true;
+        this.issues.noOptions = false;
+        this.issues.noWhitelist = false;
 
         this.issues.titleTooLong = false;
         this.issues.descriptionTooLong = false;
@@ -121,8 +124,9 @@ class createPollCtrl {
     }
 
     // Sets the date of ending
-    setDoe() {
+    setDoe(isoString) {
         this.formData.doe = new Date(this.doeString).getTime();
+        this.doeISOString = isoString;
     }
 
     /**
@@ -148,9 +152,10 @@ class createPollCtrl {
             invalid = true;
         } else
             this.issues.blankTitle = false;
-
+        // Regex that validates that the date is valid
+        let ISOMatch = this.doeISOString.match(/^(?:[1-9]\d{3}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1\d|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[1-9]\d(?:0[48]|[2468][048]|[13579][26])|(?:[2468][048]|[13579][26])00)-02-29)T(?:[01]\d|2[0-3]):[0-5]\d$/);
         //Date valid and > now
-        if (isNaN(this.formData.doe)) {
+        if (isNaN(this.formData.doe) || !ISOMatch) {
             this.issues.invalidDate = true;
             invalid = true;
         } else {
@@ -189,6 +194,19 @@ class createPollCtrl {
         } else {
             this.issues.invalidIndexAccount = false;
         }
+
+        if (this.options.length === 0) {
+            this.issues.noOptions = true;
+            invalid = true;
+        } else {
+            this.issues.noOptions = false;
+        }
+        if (this.hasWhitelist && this.whitelist.length === 0) {
+            this.issues.noWhitelist = true;
+            invalid = true;
+        } else {
+            this.issues.noWhitelist = false;
+        }
         this.invalidData = invalid;
     }
 
@@ -222,11 +240,11 @@ class createPollCtrl {
         }
         this.pollMessage = "poll:" + JSON.stringify(header);
 
-        this.issues.titleTooLong = (this.formDataMessage.length > 1024);
-        this.issues.descriptionTooLong = (this.descriptionMessage.length > 1024);
-        this.issues.optionsTooLong = (this.optionsMessage.length > 1024);
-        this.issues.whitelistTooLong = (this.whitelistMessage.length > 1024);
-        this.issues.pollTooLong = (this.pollMessage.length > 1024);
+        this.issues.titleTooLong = (this._nemUtils.getMessageLength(this.formDataMessage) > 1024);
+        this.issues.descriptionTooLong = (this._nemUtils.getMessageLength(this.descriptionMessage) > 1024);
+        this.issues.optionsTooLong = (this._nemUtils.getMessageLength(this.optionsMessage) > 1024);
+        this.issues.whitelistTooLong = (this._nemUtils.getMessageLength(this.whitelistMessage) > 1024);
+        this.issues.pollTooLong = (this._nemUtils.getMessageLength(this.pollMessage) > 1024);
 
         if (this.issues.titleTooLong || this.issues.descriptionTooLong || this.issues.optionsTooLong || this.issues.pollTooLong || (this.issues.whitelistTooLong && this.hasWhitelist))
             this.invalidData = true;

@@ -41,6 +41,7 @@ class pollsCtrl {
         this.loadingPoll = false;
         this.loadingResults = false;
         this.loadingVote = false;
+        this.loadingPolls = false;
 
         // Default poll Index
         // testnet is -104 and mainnet is 104
@@ -49,7 +50,7 @@ class pollsCtrl {
             //this.pollIndexAccount = "TAZ73M4C3QDJRC6NFLQP3HAVW4FHYRWJOE7RASVZ";
         }
         else{
-            this.pollIndexAccount = "TAZ73M4C3QDJRC6NFLQP3HAVW4FHYRWJOE7RASVZ";
+            this.pollIndexAccount = "NDIXTBITCK6DHIOWXPAVN5DA3JXZYCD7PLAZC6RN";
         }
         this.pollIndexPrivate = false;
 
@@ -85,7 +86,7 @@ class pollsCtrl {
         // Issues for not being able to vote
         this.issues = [];
         this.invalidVote = true;
-        this.alreadyVoted = false;
+        this.alreadyVoted = 0;
         this.pollFinished = false;
 
         // To lock our send button if a transaction is not finished processing
@@ -112,6 +113,7 @@ class pollsCtrl {
 
         // for creating indexes
         this.createPrivateIndex = false;
+        this.indexCreationFee = (this._Wallet.network < 0) ? 0.35 : 5;
 
         this.getPolls();
     }
@@ -138,20 +140,26 @@ class pollsCtrl {
         }
         //Get list of addresses from the selected options
         var optionAddresses = [];
+        var optionStrings = [];
         let allAddresses = this.selectedPoll.options.addresses;
+        let allStrings = this.selectedPoll.options.strings;
         if (this.selectedPoll.formData.multiple) {
             optionAddresses = this.selectedOptions.map((i) => {
                 return allAddresses[i];
             });
+            optionStrings = this.selectedOptions.map((i) => {
+                return allStrings[i];
+            });
         } else {
             optionAddresses = [allAddresses[this.selectedOption]];
+            optionStrings = [allStrings[this.selectedOption]];
         }
 
         let votes = [];
         for (var i = 0; i < optionAddresses.length; i++) {
             if (this.multisigVote) {
-                votes.push(this._Voting.vote(optionAddresses[i], this.common, this.multisigAccount).then((data) => {
-                    this.alreadyVoted = true;
+                votes.push(this._Voting.vote(optionAddresses[i], this.common, this.multisigAccount, "vote for poll " + this.currentPollAddress + ' with option "' + optionStrings[i] + '"').then((data) => {
+                    this.alreadyVoted = 1;
                     this.voting = false;
                 }).catch((err) => {
                     console.log(err.message);
@@ -160,11 +168,11 @@ class pollsCtrl {
                 }));
             } else {
                 votes.push(this._Voting.vote(optionAddresses[i], this.common).then((data) => {
-                    this.alreadyVoted = true;
+                    this.alreadyVoted = 1;
                     this.voting = false;
                 }).catch((err) => {
                     console.log(err.message);
-                    this._Alert.votingUnexpectedError(err.message);
+                    //this._Alert.votingUnexpectedError(err.message);
                     this.voting = false;
                 }));
             }
@@ -173,6 +181,8 @@ class pollsCtrl {
             this._Alert.votingSuccess();
             this.common.password = '';
             this._scope.$digest();
+        }).catch((err)=>{
+            this.common.password = '';
         });
     }
 
@@ -221,7 +231,7 @@ class pollsCtrl {
         this.showVote = !this.showVote;
     }
 
-    // manages inputted address on the options tab
+    // manages inputted Poll address on the options tab
     pollAddressInput(){
         this.searching = true;
         this.inputAddressValid = true;
@@ -241,6 +251,7 @@ class pollsCtrl {
         });
     }
 
+    // manages inputted Index address on the options tab
     pollIndexInput(){
         this.searching = true;
         this.inputAddressValid = true;
@@ -367,13 +378,13 @@ class pollsCtrl {
         this.loadingVote = true;
         if (this.multisigVote) {
             return this._Voting.hasVoted(this.multisigAccount.address, this.selectedPoll).then((resp) => {
-                this.alreadyVoted = (resp > 0);
+                this.alreadyVoted = resp;
                 this.loadingVote = false;
                 this._scope.$digest();
             });
         } else {
             return this._Voting.hasVoted(this._Wallet.currentAccount.address, this.selectedPoll).then((resp) => {
-                this.alreadyVoted = (resp > 0);
+                this.alreadyVoted = resp;
                 this.loadingVote = false;
                 this._scope.$digest();
             });
@@ -388,9 +399,9 @@ class pollsCtrl {
     // for setting polls list tabs
     setTab(tab) {
         this.createIndex = false;
+        this.showDetails = false;
         this.tab = tab;
-        if(tab == 4){ //options tab
-
+        if(tab === 4){ //options tab
         }
         else{
             this.updateList();
@@ -492,14 +503,17 @@ class pollsCtrl {
     // gets al the poll headers on the poll index
     getPolls() {
         //get all polls
+        this.loadingPolls = true;
         return this._Voting.getPolls(this.pollIndexAccount).then((data) => {
             this.allPolls = data;
+            this.loadingPolls = false;
             this.setTab(1);
+            // apply filters
+            this.updateList();
         }).catch((e)=>{
+            this.loadingPolls = false;
             throw e;
         });
-        // apply filters
-        this.updateList();
     }
 
 }
