@@ -26,7 +26,9 @@ class NetworkRequests {
      * Get port from network
      */
     getPort() {
-        return this._Wallet.network === Network.data.Mijin.id ? this._AppConstants.defaultMijinPort : this._AppConstants.defaultNisPort;
+        return this._Wallet.network === Network.data.Mijin.id
+            ? this._AppConstants.defaultMijinPort
+            : this._AppConstants.defaultNisPort;
     }
 
     /**
@@ -41,11 +43,9 @@ class NetworkRequests {
         return this._$http({
             url: "http://" + host + ":" + port + "/chain/height",
             method: 'GET'
-        }).then(
-            (res) => {
-                return res.data.height;
-            }
-        );
+        }).then((res) => {
+            return res.data.height;
+        });
     }
 
     /**
@@ -58,13 +58,60 @@ class NetworkRequests {
      */
     getAccountData(host, address) {
         let port = this.getPort();
-        let obj = {'params':{'address':address}};
-        return this._$http.get('http://' + host + ':' + port + '/account/get', obj)
-        .then(
-            (res) => {
-                return res.data;
+        let obj = {
+            'params': {
+                'address': address
             }
-        );
+        };
+        return this._$http.get('http://' + host + ':' + port + '/account/get', obj).then((res) => {
+            return res.data;
+        });
+    }
+
+    /**
+     * Gets the AccountMetaDataPair of an array of accounts.
+     *
+     * @param {string} host - An host ip or domain
+     * @param {array} addresses - An array of account addresses
+     *
+     * @return {object} - An object that contains an array of [AccountMetaDataPair]{@link http://bob.nem.ninja/docs/#accountMetaDataPair} objects
+     */
+    getBatchAccountData(host, addresses) {
+        let port = this.getPort();
+        let obj = {
+            'data':[]
+        };
+        for(var i = 0; i < addresses.length; i++){
+            obj.data.push({'account':addresses[i]});
+        }
+        return this._$http.post('http://' + host + ':' + port + '/account/get/batch', obj).then((res) => {
+            return res.data.data;
+        });
+    }
+
+    /**
+     * Gets the AccountMetaDataPair of an array of accounts from an historical height.
+     *
+     * @param {string} host - An host ip or domain
+     * @param {array} addresses - An array of account addresses
+     * @param {integer} block - The block height
+     *
+     * @return {object} - ACcount information for all the accounts on the given block
+     */
+    getBatchHistoricalAccountData(host, addresses, block) {
+        let port = this.getPort();
+        let obj = {
+            'accounts':[],
+            'startHeight': block,
+            'endHeight': block,
+            'incrementBy': 1
+        };
+        for(var i = 0; i < addresses.length; i++){
+            obj.accounts.push({'account':addresses[i]});
+        }
+        return this._$http.post('http://' + host + ':' + port + '/account/historical/get/batch', obj).then((res) => {
+            return res.data.data;
+        });
     }
 
     /**
@@ -72,25 +119,23 @@ class NetworkRequests {
      *
      * @param {string} host - A host ip or domain
      * @param {string} address - An account address
-     * @param {integer} block - the block number
+     * @param {integer} block - the block height
      *
      * @return {object} - An [AccountMetaDataPair]{@link http://bob.nem.ninja/docs/#accountMetaDataPair} object
      */
     getHistoricalAccountData(host, address, block) {
         let port = this.getPort();
-        let obj = {'params':
-            {
-                'address':address,
+        let obj = {
+            'params': {
+                'address': address,
                 'startHeight': block,
                 'endHeight': block,
                 'increment': 1
-            }};
-        return this._$http.get('http://' + host + ':' + port + '/account/historical/get', obj)
-            .then(
-                (res) => {
-                    return res;
-                }
-            );
+            }
+        };
+        return this._$http.get('http://' + host + ':' + port + '/account/historical/get', obj).then((res) => {
+            return res;
+        });
     }
 
     /**
@@ -103,13 +148,14 @@ class NetworkRequests {
      */
     getAccountDataFromPublicKey(host, pubKey) {
         let port = this.getPort();
-        let obj = {'params':{'publicKey':pubKey}};
-        return this._$http.get('http://' + host + ':' + port + '/account/get/from-public-key', obj)
-        .then(
-            (res) => {
-                return res.data;
+        let obj = {
+            'params': {
+                'publicKey': pubKey
             }
-        );
+        };
+        return this._$http.get('http://' + host + ':' + port + '/account/get/from-public-key', obj).then((res) => {
+            return res.data;
+        });
     }
 
     /**
@@ -120,15 +166,16 @@ class NetworkRequests {
      *
      * @return {array} - An array of [HarvestInfo]{@link http://bob.nem.ninja/docs/#harvestInfo} objects
      */
-    getHarvestedBlocks(host, address){
+    getHarvestedBlocks(host, address) {
         let port = this.getPort();
-        let obj = {'params':{'address':address}};
-     return this._$http.get('http://' + host + ':' + port + '/account/harvests', obj)
-        .then(
-            (res) => {
-                return res.data;
+        let obj = {
+            'params': {
+                'address': address
             }
-        );
+        };
+        return this._$http.get('http://' + host + ':' + port + '/account/harvests', obj).then((res) => {
+            return res.data;
+        });
     }
 
     /**
@@ -141,13 +188,14 @@ class NetworkRequests {
      */
     getNamespacesById(host, id) {
         let port = this.getPort();
-        let obj = {'params':{'namespace':id}};
-        return this._$http.get('http://' + host + ':' + port + '/namespace', obj)
-        .then(
-            (res) => {
-                return res.data;
+        let obj = {
+            'params': {
+                'namespace': id
             }
-        );
+        };
+        return this._$http.get('http://' + host + ':' + port + '/namespace', obj).then((res) => {
+            return res.data;
+        });
     }
 
     /**
@@ -159,18 +207,20 @@ class NetworkRequests {
      *
      * @return {array} - An array of [TransactionMetaDataPair]{@link http://bob.nem.ninja/docs/#transactionMetaDataPair} objects
      */
-    getIncomingTxes(host, address, txHash){
+    getIncomingTxes(host, address, txHash) {
         let port = this.getPort();
-        let obj = {'params':{'address':address, 'hash': txHash}};
-     return this._$http.get('http://' + host + ':' + port + '/account/transfers/incoming', obj)
-        .then(
-            (res) => {
-                return res.data;
+        let obj = {
+            'params': {
+                'address': address,
+                'hash': txHash
             }
-        );
+        };
+        return this._$http.get('http://' + host + ':' + port + '/account/transfers/incoming', obj).then((res) => {
+            return res.data;
+        });
     }
 
-     /**
+    /**
      * Gets the array of transactions for which an account is the sender or receiver and which have not yet been included in a block.
      *
      * @param {string} host - An host ip or domain
@@ -178,15 +228,16 @@ class NetworkRequests {
      *
      * @return {array} - An array of [UnconfirmedTransactionMetaDataPair]{@link http://bob.nem.ninja/docs/#unconfirmedTransactionMetaDataPair} objects
      */
-    getUnconfirmedTxes(host, address){
+    getUnconfirmedTxes(host, address) {
         let port = this.getPort();
-        let obj = {'params':{'address':address}};
-        return this._$http.get('http://' + host + ':' + port + '/account/unconfirmedTransactions', obj)
-        .then(
-            (res) => {
-                return res.data;
+        let obj = {
+            'params': {
+                'address': address
             }
-        );
+        };
+        return this._$http.get('http://' + host + ':' + port + '/account/unconfirmedTransactions', obj).then((res) => {
+            return res.data;
+        });
     }
 
     /**
@@ -200,26 +251,25 @@ class NetworkRequests {
      */
     auditApostille(publicKey, data, signedData) {
 
-            let obj = {
-                'publicKey': publicKey,
-                'data': data,
-                'signedData': signedData
-            };
+        let obj = {
+            'publicKey': publicKey,
+            'data': data,
+            'signedData': signedData
+        };
 
-            let req = {
-             method: 'POST',
-             url: Nodes.apostilleAuditServer,
-             headers: {
-               'Content-Type': 'application/x-www-form-urlencoded;'
-             },
-             params: obj
-            }
-
-            return this._$http(req)
-            .then((res)  => {
-               return res.data;
-            });
+        let req = {
+            method: 'POST',
+            url: Nodes.apostilleAuditServer,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;'
+            },
+            params: obj
         }
+
+        return this._$http(req).then((res) => {
+            return res.data;
+        });
+    }
 
     /**
      * Gets information about the maximum number of allowed harvesters and how many harvesters are already using the node
@@ -230,7 +280,7 @@ class NetworkRequests {
      */
     getUnlockedInfo(host) {
         let port = this.getPort();
-        return this._$http.post('http://'+host+':' + port + '/account/unlocked/info', "").then((res) => {
+        return this._$http.post('http://' + host + ':' + port + '/account/unlocked/info', "").then((res) => {
             return res.data;
         });
     };
@@ -243,15 +293,17 @@ class NetworkRequests {
      *
      * @return - Nothing
      */
-    unlockAccount(host, privateKey){
+    unlockAccount(host, privateKey) {
         let port = this.getPort();
-        let obj = {'value':privateKey};
-        return this._$http.post('http://'+host+':' + port + '/account/unlock', obj).then((res) => {
+        let obj = {
+            'value': privateKey
+        };
+        return this._$http.post('http://' + host + ':' + port + '/account/unlock', obj).then((res) => {
             return res;
         });
     };
 
-     /**
+    /**
      * Locks an account (stops harvesting).
      *
      * @param {string} host - An host ip or domain
@@ -259,10 +311,12 @@ class NetworkRequests {
      *
      * @return - Nothing
      */
-    lockAccount(host, privateKey){
+    lockAccount(host, privateKey) {
         let port = this.getPort();
-        let obj = {'value':privateKey};
-        return this._$http.post('http://'+host+':' + port + '/account/lock', obj).then((res) => {
+        let obj = {
+            'value': privateKey
+        };
+        return this._$http.post('http://' + host + ':' + port + '/account/lock', obj).then((res) => {
             return res;
         });
     };
@@ -272,7 +326,7 @@ class NetworkRequests {
      *
      * @return {array} - An array of SuperNodeData objects
      */
-    getSupernodes(){
+    getSupernodes() {
         return this._$http.get('https://supernodes.nem.io/nodes').then((res) => {
             return res;
         });
@@ -283,7 +337,7 @@ class NetworkRequests {
      *
      * @return {object} - A MarketInfo object
      */
-    getMarketInfo(){
+    getMarketInfo() {
         return this._$http.get('https://poloniex.com/public?command=returnTicker').then((res) => {
             return res.data["BTC_XEM"];
         });
@@ -294,8 +348,12 @@ class NetworkRequests {
      *
      * @return {object} - A MarketInfo object
      */
-    getBtcPrice(){
-        return this._$http.get('https://blockchain.info/ticker', {params: {"cors": true}}).then((res) => {
+    getBtcPrice() {
+        return this._$http.get('https://blockchain.info/ticker', {
+            params: {
+                "cors": true
+            }
+        }).then((res) => {
             return res.data["USD"];
         });
     };
@@ -308,15 +366,16 @@ class NetworkRequests {
      *
      * @return {object} - A [TransactionMetaDataPair]{@link http://bob.nem.ninja/docs/#transactionMetaDataPair} object
      */
-    getTxByHash(host, txHash){
+    getTxByHash(host, txHash) {
         let port = this.getPort();
-        let obj = {'params':{'hash':txHash}};
-     return this._$http.get('http://' + host + ':' + port + '/transaction/get', obj)
-        .then(
-            (res) => {
-                return res.data;
+        let obj = {
+            'params': {
+                'hash': txHash
             }
-        );
+        };
+        return this._$http.get('http://' + host + ':' + port + '/transaction/get', obj).then((res) => {
+            return res.data;
+        });
     }
 
     /**
@@ -328,13 +387,10 @@ class NetworkRequests {
      */
     heartbeat(host) {
         let port = this.getPort();
-        return this._$http.get('http://' + host + ':' + port + '/heartbeat')
-        .then(
-            (res) => {
-                console.log(res)
-                return res.data;
-            }
-        );
+        return this._$http.get('http://' + host + ':' + port + '/heartbeat').then((res) => {
+            console.log(res)
+            return res.data;
+        });
     }
 
     /**
@@ -347,13 +403,14 @@ class NetworkRequests {
      */
     getForwarded(host, account) {
         let port = this.getPort();
-        let obj = {'params':{'address':account}};
-        return this._$http.get('http://' + host + ':' + port + '/account/get/forwarded', obj)
-        .then(
-            (res) => {
-                return res.data;
+        let obj = {
+            'params': {
+                'address': account
             }
-        );
+        };
+        return this._$http.get('http://' + host + ':' + port + '/account/get/forwarded', obj).then((res) => {
+            return res.data;
+        });
     }
 
     /**
@@ -366,12 +423,9 @@ class NetworkRequests {
      */
     announceTransaction(host, obj) {
         let port = this.getPort();
-        return this._$http.post('http://' + host + ':' + port + '/transaction/announce', obj)
-        .then(
-            (res) => {
-                return res;
-            }
-        );
+        return this._$http.post('http://' + host + ':' + port + '/transaction/announce', obj).then((res) => {
+            return res;
+        });
     }
 
     /**
@@ -386,16 +440,9 @@ class NetworkRequests {
      */
     announceTransactionLoop(host, obj, data, k) {
         let port = this.getPort();
-        return this._$http.post('http://' + host + ':' + port + '/transaction/announce', obj)
-        .then(
-            (res) => {
-                return {
-                    'res': res,
-                    'tx': data,
-                    'k': k
-                };
-            }
-        );
+        return this._$http.post('http://' + host + ':' + port + '/transaction/announce', obj).then((res) => {
+            return {'res': res, 'tx': data, 'k': k};
+        });
     }
 
     /**
@@ -406,21 +453,28 @@ class NetworkRequests {
      *
      * @return {object} - An array of [NamespaceMetaDataPair]{@link http://bob.nem.ninja/docs/#namespaceMetaDataPair} objects
      */
-    getNamespaces(host, id){
+    getNamespaces(host, id) {
         let port = this.getPort();
-        let obj1 = {'params':{'pageSize':100}};
-        let obj2 = {'params':{ 'id': id, 'pageSize':100}};
+        let obj1 = {
+            'params': {
+                'pageSize': 100
+            }
+        };
+        let obj2 = {
+            'params': {
+                'id': id,
+                'pageSize': 100
+            }
+        };
         let req;
-        if(id === null) {
+        if (id === null) {
             req = this._$http.get('http://' + host + ':' + port + '/namespace/root/page', obj1)
         } else {
             req = this._$http.get('http://' + host + ':' + port + '/namespace/root/page', obj2)
         }
-        return req.then(
-            (res) => {
-                return res.data;
-            }
-        );
+        return req.then((res) => {
+            return res.data;
+        });
     }
 
     /**
@@ -432,14 +486,17 @@ class NetworkRequests {
      *
      * @return {object} - An array of [NamespaceMetaDataPair]{@link http://bob.nem.ninja/docs/#namespaceMetaDataPair} objects
      */
-    getSubNamespaces(host, address, parent){
+    getSubNamespaces(host, address, parent) {
         let port = this.getPort();
-        let obj = {'params':{ 'address': address, 'parent':parent}};
-        return this._$http.get('http://' + host + ':' + port + '/account/namespace/page', obj).then(
-            (res) => {
-                return res.data;
+        let obj = {
+            'params': {
+                'address': address,
+                'parent': parent
             }
-        );
+        };
+        return this._$http.get('http://' + host + ':' + port + '/account/namespace/page', obj).then((res) => {
+            return res.data;
+        });
     }
 
     /**
@@ -451,14 +508,17 @@ class NetworkRequests {
      *
      * @return {object} - An array of [MosaicDefinition]{@link http://bob.nem.ninja/docs/#mosaicDefinition} objects
      */
-    getMosaics(host, address, parent){
+    getMosaics(host, address, parent) {
         let port = this.getPort();
-        let obj = {'params':{ 'address': address, 'parent':parent}};
-        return this._$http.get('http://' + host + ':' + port + '/account/mosaic/definition/page', obj).then(
-            (res) => {
-                return res.data;
+        let obj = {
+            'params': {
+                'address': address,
+                'parent': parent
             }
-        );
+        };
+        return this._$http.get('http://' + host + ':' + port + '/account/mosaic/definition/page', obj).then((res) => {
+            return res.data;
+        });
     }
 
     /**
@@ -469,14 +529,16 @@ class NetworkRequests {
      *
      * @return {object} - An array of Mosaics owned{@link http://bob.nem.ninja/docs/#retrieving-mosaics-that-an-account-owns} objects
      */
-    getOwnedMosaics(host, address){
+    getOwnedMosaics(host, address) {
         let port = this.getPort();
-        let obj = {'params':{ 'address': address}};
-        return this._$http.get('http://' + host + ':' + port + '/account/mosaic/owned', obj).then(
-            (res) => {
-                return res.data.data;
+        let obj = {
+            'params': {
+                'address': address
             }
-        );
+        };
+        return this._$http.get('http://' + host + ':' + port + '/account/mosaic/owned', obj).then((res) => {
+            return res.data.data;
+        });
     }
 
     /**
@@ -487,14 +549,16 @@ class NetworkRequests {
      *
      * @return {array} - An array of [MosaicDefinition]{@link http://bob.nem.ninja/docs/#mosaicDefinition} objects
      */
-    getMosaicsDefinitions(host, address){
+    getMosaicsDefinitions(host, address) {
         let port = this.getPort();
-        let obj = {'params':{ 'address': address}};
-        return this._$http.get('http://' + host + ':' + port + '/account/mosaic/owned/definition', obj).then(
-            (res) => {
-                return res.data;
+        let obj = {
+            'params': {
+                'address': address
             }
-        );
+        };
+        return this._$http.get('http://' + host + ':' + port + '/account/mosaic/owned/definition', obj).then((res) => {
+            return res.data;
+        });
     }
 
     /**
@@ -506,15 +570,17 @@ class NetworkRequests {
      *
      * @return {array} - An array of [TransactionMetaDataPair]{@link http://bob.nem.ninja/docs/#transactionMetaDataPair} objects
      */
-    getAllTransactions(host, address, txHash){
+    getAllTransactions(host, address, txHash) {
         let port = this.getPort();
-        let obj = {'params':{'address':address, 'hash': txHash}};
-     return this._$http.get('http://' + host + ':' + port + '/account/transfers/all', obj)
-        .then(
-            (res) => {
-                return res.data;
+        let obj = {
+            'params': {
+                'address': address,
+                'hash': txHash
             }
-        );
+        };
+        return this._$http.get('http://' + host + ':' + port + '/account/transfers/all', obj).then((res) => {
+            return res.data;
+        });
     }
 
     /**
@@ -526,15 +592,17 @@ class NetworkRequests {
      *
      * @return {array} - An array of [TransactionMetaDataPair]{@link http://bob.nem.ninja/docs/#transactionMetaDataPair} objects
      */
-    getAllTransactionsFromID(host, address, txID){
+    getAllTransactionsFromID(host, address, txID) {
         let port = this.getPort();
-        let obj = {'params':{'address':address, 'id': txID}};
-        return this._$http.get('http://' + host + ':' + port + '/account/transfers/all', obj)
-        .then(
-            (res) => {
-                return res.data;
+        let obj = {
+            'params': {
+                'address': address,
+                'id': txID
             }
-        );
+        };
+        return this._$http.get('http://' + host + ':' + port + '/account/transfers/all', obj).then((res) => {
+            return res.data;
+        });
     }
 
     /**
@@ -546,12 +614,9 @@ class NetworkRequests {
      */
     getNEMTime(host) {
         let port = this.getPort();
-        return this._$http.get('http://' + host + ':' + port + '/time-sync/network-time')
-        .then(
-            (res) => {
-                return res.data;
-            }
-        );
+        return this._$http.get('http://' + host + ':' + port + '/time-sync/network-time').then((res) => {
+            return res.data;
+        });
     }
 
     /**
@@ -562,14 +627,16 @@ class NetworkRequests {
      *
      * @return {array} - An array of [MosaicDefinition]{@link http://bob.nem.ninja/docs/#mosaicDefinition} objects
      */
-    getOtherMosaic(host, id){
+    getOtherMosaic(host, id) {
         let port = this.getPort();
-        let obj = {'params':{ 'namespace':id}};
-        return this._$http.get('http://' + host + ':' + port + '/namespace/mosaic/definition/page', obj).then(
-            (res) => {
-                return res.data;
+        let obj = {
+            'params': {
+                'namespace': id
             }
-        );
+        };
+        return this._$http.get('http://' + host + ':' + port + '/namespace/mosaic/definition/page', obj).then((res) => {
+            return res.data;
+        });
     }
 
     /**
@@ -581,13 +648,12 @@ class NetworkRequests {
      */
     getNearestNodes(coords) {
         let obj = {
-           "latitude": coords.latitude,
-           "longitude": coords.longitude,
-           "numNodes": 5
+            "latitude": coords.latitude,
+            "longitude": coords.longitude,
+            "numNodes": 5
         }
-        return this._$http.post('http://199.217.113.179:7782/nodes/nearest', obj)
-        .then((res) => {
-                return res.data;
+        return this._$http.post('http://199.217.113.179:7782/nodes/nearest', obj).then((res) => {
+            return res.data;
         });
     }
 
@@ -600,11 +666,12 @@ class NetworkRequests {
      */
     getSupernodesBr(status) {
         let obj = {
-           "status": undefined === status ? 1 : status
+            "status": undefined === status
+                ? 1
+                : status
         }
-        return this._$http.post('http://199.217.113.179:7782/nodes', obj)
-        .then((res) => {
-                return res.data;
+        return this._$http.post('http://199.217.113.179:7782/nodes', obj).then((res) => {
+            return res.data;
         });
     }
 
@@ -616,17 +683,14 @@ class NetworkRequests {
      *
      * @return {object} - A block object
      */
-    getBlockByHeight(host, height){
+    getBlockByHeight(host, height) {
         let obj = {
             'height': height
         };
         let port = this.getPort();
-        return this._$http.post('http://' + host + ':' + port + '/block/at/public', obj)
-        .then(
-            (res) => {
-                return res;
-            }
-        );
+        return this._$http.post('http://' + host + ':' + port + '/block/at/public', obj).then((res) => {
+            return res;
+        });
     }
 
 }

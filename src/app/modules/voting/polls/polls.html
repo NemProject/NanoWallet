@@ -87,7 +87,7 @@
             <i class="fa fa-4x fa-spinner fa-spin"></i>
           </div>
           <!-- Details -->
-          <div class="panel-body" ng-show="$ctrl.showDetails && !$ctrl.loadingPoll && !$ctrl.createIndex">
+          <div class="panel-body" ng-show="$ctrl.showDetails && !$ctrl.loadingPoll && !$ctrl.createIndex && !$ctrl.loadingAddressError">
             <h2>{{$ctrl.selectedPoll.formData.title}} </h2>
             <p>Poll Address: {{$ctrl.currentPollAddress}}</p>
             <p> <span ng-class="$ctrl.getCurrentTypeTagClass()">&nbsp{{$ctrl.getCurrentTypeTag()}}</span><span class="text-muted small"> Date of ending: {{$ctrl.selectedPoll.formData.doe | date:"MM/dd/yyyy 'at' h:mma"}}</span> </p>
@@ -162,6 +162,8 @@
                   <div class="col-md-7" ng-hide="$ctrl.loadingVote">
                     <div ng-hide="$ctrl.alreadyVoted || $ctrl.pollFinished">
                       <button class="btn btn-success pull-xs-left" type="submit" style="width:90%" ng-click="$ctrl.vote()" ng-disabled="$ctrl.voting || $ctrl.invalidVote || $ctrl.alreadyVoted > 0">Vote</button>
+                      <br><br>
+                      <p class="text-muted small">Voting has a fee of {{($ctrl.votingFee | fmtNemValue)[0]}}.{{($ctrl.votingFee | fmtNemValue)[1]}} XEM per option</p>
                     </div>
                     <div ng-show="$ctrl.alreadyVoted === 2">
                       <p class="text-success">You have successfully Voted on this Poll</p>
@@ -197,7 +199,7 @@
                         <div ng-repeat="option in $ctrl.results.options track by $index" style="text-align: left">
                           <b><ins>{{option.text}}</ins></b><br>
                           votes: {{option.votes}}<br>
-                          weighted score*: {{($ctrl.selectedPoll.formData.type === 0) ? (option.weighted.toExponential(4)) : (option.weighted)}}<br>
+                          weighted score*: {{($ctrl.selectedPoll.formData.type === 0) ? ((option.weighted*100).toFixed(5) + '%') : (option.weighted)}}<br>
                           percentage: {{option.percentage.toFixed(2)}}<br>
                         </div>
                       </span>
@@ -206,7 +208,7 @@
                     <p class="text-muted small">
                       *Weighted score varies depending on the type of vote:<br>
                       for whitelist polls it is the same as the votes<br>
-                      for POI polls it is the sum of importances of the voters<br>
+                      for POI polls it is the sum of importances of the voters multiplied by 100<br>
                     </p>
                   </div>
                 </div>
@@ -218,6 +220,7 @@
             </div>
 
           </div>
+          <!-- Poll Index Creation -->
           <div class="panel-body" ng-show="$ctrl.createIndex">
             <h2>Create a poll Index</h2>
             <br>
@@ -237,6 +240,10 @@
             <input class="form-control" type="password" placeholder="{{ 'FORM_PASSWORD_FIELD_PLACEHOLDER' | translate }}" ng-model="$ctrl.common.password" ng-class="!$ctrl.common.password.length ? 'has-error' : ''"/>
             <br>
             <button class="btn btn-success pull-xs-left" style="width:100%" ng-click="$ctrl.createNewIndex()">Create a poll Index</button>
+          </div>
+          <!-- Poll Error -->
+          <div ng-show="$ctrl.loadingAddressError" class="loading-div">
+            <h3>There was an error fetching the poll. The poll does not exist, or was not created properly.</h3>
           </div>
         </div>
       </div>

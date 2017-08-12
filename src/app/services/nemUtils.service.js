@@ -344,18 +344,35 @@ class nemUtils {
                 return data.account.importance;
             }).catch();
         } else {
+            let historicalNode = (this._Wallet.network < 0) ? ('104.128.226.60') : ('88.99.192.82');
+            return this._NetworkRequests.getHistoricalAccountData(historicalNode, address, block).then((data) => {
+                return data.data.data[0].importance;
+            }).catch();
+        }
+    }
 
-            if (this._Wallet.network < 0) {
-                // Node with historical data activated
-                return this._NetworkRequests.getHistoricalAccountData('104.128.226.60', address, block).then((data) => {
-                    return data.data.data[0].importance;
-                }).catch();
-            } else {
-                // Node with historical data activated
-                return this._NetworkRequests.getHistoricalAccountData('hugealice.nem.ninja', address, block).then((data) => {
-                    return data.data.data[0].importance;
-                }).catch();
-            }
+    /**
+     * getImportances(timestamp) returns an array of importances for an array of addresses
+     *
+     * @param {array} addresses - array with the addresses you want the importance for
+     * @param {integer} block - the block in which to request importances. Optional
+     *
+     * @return {promise} - a promise that returns an array with all the importances
+     */
+    getImportances(addresses, block) {
+        if (!block || (block < 0)) {
+            return this._NetworkRequests.getBatchAccountData(helpers.getHostname(this._Wallet.node), addresses).then((data) => {
+                return data.map((account)=>{
+                    return account.account.importance;
+                });
+            }).catch();
+        } else {
+            let historicalNode = (this._Wallet.network < 0) ? ('104.128.226.60') : ('88.99.192.82');
+            return this._NetworkRequests.getBatchHistoricalAccountData(historicalNode, addresses, block).then((data) => {
+                return data.map((account)=>{
+                    return account.data[0].importance;
+                });
+            }).catch();
         }
     }
 

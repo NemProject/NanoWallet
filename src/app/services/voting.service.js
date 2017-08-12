@@ -196,12 +196,13 @@ class Voting {
             // Check status
             if (res.status === 200) {
                 // If code >= 2, it's an error
+                console.log("code", res.data.code);
                 if (res.data.code >= 2) {
                     this._Alert.transactionError(res.data.message);
                     throw res.data.message;
                 }
             }
-        }, (e) => {
+        }).catch((e)=>{
             throw e;
         });
     }
@@ -230,12 +231,22 @@ class Voting {
         var optionsPromise = this._nemUtils.getFirstMessageWithString(pollAddress, "options:", QueryOptions);
 
         return Promise.all([formDataPromise, descriptionPromise, optionsPromise]).then(([formDataResult, descriptionResult, optionsResult]) => {
-            if(formDataResult === ''){
+            if(formDataResult === '' || descriptionResult === '' || optionsResult === ''){
                 throw "Address is not a poll";
             }
             details.formData = (JSON.parse(formDataResult.replace('formData:', '')));
             details.description = (descriptionResult.replace('description:', ''));
             details.options = (JSON.parse(optionsResult.replace('options:', '')));
+
+            const unique = function(list) {
+                return list.sort().filter((item, pos, ary) => {
+                    return !pos || item !== ary[pos - 1];
+                });
+            };
+            if(details.options.addresses.length !== unique(details.options.addresses).length){
+                throw "Poll not well formed";
+            }
+
             if (details.formData.type === 1) {
                 return this._nemUtils.getFirstMessageWithString(pollAddress, "whitelist:", QueryOptions).then((whiteMsg) => {
                     details.whitelist = (JSON.parse(whiteMsg.replace('whitelist:', '')));
@@ -642,7 +653,6 @@ class Voting {
             };
             // merge addresses from all options (they remain sorted)
             var allAddresses = optionAddresses.reduce(merge, []);
-            //console.log("addresses", allAddresses);
             //we don't need to do anything if there are no votes
             if (allAddresses.length === 0) {
                 var resultsObject = {
@@ -654,6 +664,30 @@ class Voting {
                 });
                 return resultsObject;
             }
+            // Invalidate Exchange votes
+            const exchanges = [
+                'NBZMQO7ZPBYNBDUR7F75MAKA2S3DHDCIFG775N3D', //Poloniex
+                'ND2JRPQIWXHKAA26INVGA7SREEUMX5QAI6VU7HNR', //Bittrex
+                'NCP7UH5BT5OHPAWPFFVNR2453BNODJUZJ6777N3N', //HitBTC
+                'NCXDAHKIRVCMS2HEXBHYDSUWXABAYGVNLB3HZFWJ', //HitBTC
+                'NCCFO5QDFV5FS3BTBPEU2QO6UHZD7PHGFNCPISDL', //Bitcoin Indonesia
+                'ND7HQ73YTGNEYJT6PPVOR6GM2RHTVJTNRG2NW5B6', //Btc38
+                'NDKTFWVFDHDUL4L3GXQ32RVOHQ5IJ5DEAYHOJ7YS', //BTER
+                'NC2MYWXT3YOSAIBTWBCW7ZKCE4R4NIKYCF7S76UC', //BTER
+                'NCQJR647FLD7UM6FFVL4Z7DYLWJ3I6OGV5TMALUO', //Changelly
+                'NBLQ6PE7Z5CVANJNXGOR74UQLOJ2YMGJJOZ4YFAQ', //Changelly
+                'NAGJG3QFWYZ37LMI7IQPSGQNYADGSJZGJRD2DIYA', // Zaif
+                'NC3BI3DNMR2PGEOOMP2NKXQGSAKMS7GYRKVA5CSZ', // Coincheck
+            ];
+            optionAddresses = optionAddresses.map((addresses) => {
+                return addresses.filter((address) => {
+                    return (exchanges.indexOf(address) < 0);
+                });
+            });
+            allAddresses = allAddresses.filter((address) => {
+                return (exchanges.indexOf(address) < 0);
+            });
+
             //if not multiple invalidate multiple votes
             let occurences = {};
             if (details.formData.multiple) {
@@ -686,25 +720,21 @@ class Voting {
                 });
             }
             // Only valid votes now on optionAddresses
+            // to only request once for every address even in multiple votes
+            var uniqueAllAddresses = unique(allAddresses);
 
             // GET IMPORTANCES
-
-            var importances = new Array(allAddresses.length);
-            for (var i = 0; i < allAddresses.length; i++) {
-                importances[i] = this._nemUtils.getImportance(allAddresses[i], endBlock);
-            }
-            return Promise.all(importances).then((importances) => {
+            return this._nemUtils.getImportances(uniqueAllAddresses, endBlock).then((importances) => {
                 for(var i = 0; i < importances.length; i++){
-                    importances[i] /= occurences[allAddresses[i]];
+                    importances[i] /= occurences[uniqueAllAddresses[i]];
                 }
-                //console.log("importances", importances);
                 // calculate the sum of all importances
                 var totalImportance = importances.reduce((a, b) => {
                     return a + b;
                 }, 0);
                 var addressImportances = {}; // maps addresses to their importance
                 for (var i = 0; i < allAddresses.length; i++) {
-                    addressImportances[allAddresses[i]] = importances[i];
+                    addressImportances[uniqueAllAddresses[i]] = importances[i];
                 }
                 //count number of votes for each option
                 var voteCounts = optionAddresses.map((addresses) => {

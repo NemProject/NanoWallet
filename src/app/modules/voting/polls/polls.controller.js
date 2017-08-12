@@ -47,12 +47,13 @@ class pollsCtrl {
         // testnet is -104 and mainnet is 104
         if(this._Wallet.network < 0){
             this.pollIndexAccount = "TAVGTNCVGALLUPZC4JTLKR2WX25RQM2QOK5BHBKC";
-            //this.pollIndexAccount = "TAZ73M4C3QDJRC6NFLQP3HAVW4FHYRWJOE7RASVZ";
         }
         else{
             this.pollIndexAccount = "NAZN26HYB7C5HVYVJ4SL3KBTDT773NZBAOMGRFZB";
         }
         this.pollIndexPrivate = false;
+
+        this.votingFee = this._nemUtils.getMessageFee("");
 
         // Common
         this.common = {
@@ -161,19 +162,17 @@ class pollsCtrl {
                 votes.push(this._Voting.vote(optionAddresses[i], this.common, this.multisigAccount, "vote for poll " + this.currentPollAddress + ' with option "' + optionStrings[i] + '"').then((data) => {
                     this.alreadyVoted = 1;
                     this.voting = false;
-                }).catch((err) => {
-                    console.log(err.message);
-                    this._Alert.votingUnexpectedError(err.message);
+                }).catch((e) => {
                     this.voting = false;
+                    throw e;
                 }));
             } else {
                 votes.push(this._Voting.vote(optionAddresses[i], this.common).then((data) => {
                     this.alreadyVoted = 1;
                     this.voting = false;
-                }).catch((err) => {
-                    console.log(err.message);
-                    //this._Alert.votingUnexpectedError(err.message);
+                }).catch((e) => {
                     this.voting = false;
+                    throw e;
                 }));
             }
         }
@@ -181,8 +180,12 @@ class pollsCtrl {
             this._Alert.votingSuccess();
             this.common.password = '';
             this._scope.$digest();
-        }).catch((err)=>{
+        }, (e)=>{
+            this.voting = false;
+            throw e;
+        }).catch((e)=>{
             this.common.password = '';
+            this.voting = false;
         });
     }
 
@@ -241,6 +244,7 @@ class pollsCtrl {
         this.inputAddressValid = this._nemUtils.isValidAddress(this.inputAccount);
         if(!this.inputAddressValid){
             this.inputAddressValid = false;
+            this.searching = false;
             return;
         }
         this.getPoll(this.inputAccount).then(()=>{
@@ -262,6 +266,7 @@ class pollsCtrl {
         this.inputAddressValid = this._nemUtils.isValidAddress(this.inputAccount);
         if(!this.inputAddressValid){
             this.inputAddressValid = false;
+            this.searching = false;
             return;
         }
         this._nemUtils.getFirstMessageWithString(this.inputAccount, 'pollIndex:').then((message)=>{
@@ -366,13 +371,18 @@ class pollsCtrl {
         }).then(()=>{
             this._scope.$digest();
         }).catch((e)=>{
+            this.loadingPoll = false;
             throw e;
         });
     }
 
     // selects a poll by the index on the polls list
     pollSelect(index) {
-        this.getPoll(this.pollsList[index].address);
+        this.getPoll(this.pollsList[index].address).then(()=>{
+            this.loadingAddressError = false;
+        }).catch((e)=>{
+            this.loadingAddressError = true;
+        });
     }
 
     // checks if the currently selected account has voted on the selected poll
@@ -400,6 +410,8 @@ class pollsCtrl {
 
     // for setting polls list tabs
     setTab(tab) {
+        this.inputAddressValid = true;
+        this.loadingAddressError = false;
         this.createIndex = false;
         this.showDetails = false;
         this.tab = tab;
