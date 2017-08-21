@@ -13,6 +13,9 @@ app.config(FrenchProvider);*/
 import ChineseProvider from './cn';
 app.config(ChineseProvider);
 
+import SpanishProvider from './cn';
+app.config(SpanishProvider);
+
 import PolishProvider from './pl';
 app.config(PolishProvider);
 
