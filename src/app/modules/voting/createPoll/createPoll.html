@@ -3,7 +3,7 @@
   <div class="container-fluid" style="padding-left: 20px; padding-right: 20px;">
     <div class="row">
       <div class="col-sm-11">
-        <h2>Create a Poll</h2>
+        <h2>{{ 'POLL_FORM_TITLE' | translate }}</h2>
       </div>
     </div>
 
@@ -16,37 +16,37 @@
           <div class="panel-body">
             <form name="dataForm">
               <!-- TITLE -->
-              <label ng-class="($ctrl.issues.blankTitle || $ctrl.issues.titleTooLong) ? 'has-error' : ''" >Title</label>
+              <label ng-class="($ctrl.issues.blankTitle || $ctrl.issues.titleTooLong) ? 'has-error' : ''" >{{ 'FORM_TITLE_FIELD_TITLE' | translate }}</label>
               <br>
               <input type="text" class="form-control" placeholder="{{ 'FORM_TITLE_FIELD_PLACEHOLDER' | translate }}" ng-model="$ctrl.formData.title" ng-class="($ctrl.issues.blankTitle || $ctrl.issues.titleTooLong) ? 'has-error' : ''" ng-change="$ctrl.checkFormData(); $ctrl.updateMessages();"/>
               <br>
               <!-- DESCRIPTION -->
-              <label ng-class="($ctrl.issues.descriptionTooLong) ? 'has-error' : ''">Description</label>
+              <label ng-class="($ctrl.issues.descriptionTooLong) ? 'has-error' : ''">{{ 'FORM_DESCRIPTION_FIELD_TITLE' | translate }}</label>
               <br>
               <textarea class="form-control poll-description-textarea" placeholder="{{ 'FORM_DESCRIPTION_FIELD_PLACEHOLDER' | translate }}" ng-class="($ctrl.issues.descriptionTooLong) ? 'has-error' : ''" ng-model="$ctrl.description" rows="4" ng-change="$ctrl.checkFormData(); $ctrl.updateMessages();"></textarea>
               <br>
               <!-- POLL INDEX -->
-              <label ng-class="$ctrl.issues.invalidIndexAccount ? 'has-error' : ''" >Poll Index Account</label>
-              <p class="text-muted small">The poll account where the poll will be saved. By default a public one is set.</p>
+              <label ng-class="$ctrl.issues.invalidIndexAccount ? 'has-error' : ''" >{{ 'FORM_INDEX_ACCOUNT_FIELD_TITLE' | translate }}</label>
+              <p class="text-muted small">{{ 'FORM_INDEX_ACCOUNT_FIELD_EXPLAIN' | translate }}</p>
               <input type="text" class="form-control" ng-model="$ctrl.pollIndexAccount" ng-class="$ctrl.issues.invalidIndexAccount ? 'has-error is-empty' : ''" ng-change="$ctrl.checkFormData()"/>
               <br>
               <!-- DOE -->
-              <label ng-class="($ctrl.issues.invalidDate || $ctrl.issues.pastDate) ? 'has-error' : ''" >Date of Ending</label>
-              <p class="text-muted small">If you only see a text box input a date in a valid ISO format [yyyy-MM-ddTHH:mm], for example: 2017-12-28T14:57</p>
+              <label ng-class="($ctrl.issues.invalidDate || $ctrl.issues.pastDate) ? 'has-error' : ''" >{{ 'FORM_DATEOFENDING_FIELD_TITLE' | translate }}</label>
+              <p class="text-muted small">{{ 'FORM_DATEOFENDING_FIELD_EXPLAIN' | translate }}</p>
               <input type="datetime-local" class="form-control" name="doeInput" ng-model="$ctrl.doeString" ng-class="($ctrl.issues.invalidDate || $ctrl.issues.pastDate) ? 'has-error' : ''" ng-change="$ctrl.setDoe(dataForm.doeInput.$viewValue); $ctrl.checkFormData(); $ctrl.updateMessages();"/>
             </form>
             <br>
-            <input id="box1" type="checkbox" ng-model="$ctrl.formData.multiple"><label for="box1">Multiple choice</label>
-            <p class="text-muted small">If selected Voters will be able to divide their vote into more than one option.</p>
+            <input id="box1" type="checkbox" ng-model="$ctrl.formData.multiple"><label for="box1">{{ 'FORM_MULTIPLECHOICE_FIELD_TITLE' | translate }}</label>
+            <p class="text-muted small">{{ 'FORM_MULTIPLECHOICE_FIELD_EXPLAIN' | translate }}</p>
             <br>
             <!-- UPDATABLE -->
             <!--input id="box2" type="checkbox" ng-model="$ctrl.formData.updatable"><label for="box2">Updatable</label>
             <p class="text-muted small">If selected Voters will be able to vote more than once. Only the last vote will be counted.</p>
             <br /-->
             <!-- TYPE -->
-            <label>Type: &nbsp</label><select class="col-sm-4 form-control" ng-model="$ctrl.typeString" ng-options="type for type in $ctrl.pollTypes" ng-change="$ctrl.changeType(); $ctrl.checkFormData(); $ctrl.updateMessages();"></select>
-            <p class="text-muted small">POI: votes will be weighted against the Proof of Importance of the voting account.</p>
-            <p class="text-muted small">White List Poll: Only addresses in the whitelist can vote. All votes count the same.</p>
+            <label>{{ 'FORM_TYPE_FIELD_TITLE' | translate }}: &nbsp</label><select class="col-sm-4 form-control" ng-model="$ctrl.typeString" ng-options="type for type in $ctrl.pollTypes" ng-change="$ctrl.changeType(); $ctrl.checkFormData(); $ctrl.updateMessages();"></select>
+            <p class="text-muted small">{{ 'FORM_TYPE_FIELD_EXPLAIN_POI' | translate }}</p>
+            <p class="text-muted small">{{ 'FORM_TYPE_FIELD_EXPLAIN_WHITELIST' | translate }}</p>
             <!--p class="text-muted small">tokens: Only accounts with a certain token can vote. Vote weight is proportional to the amount of tokens.</p-->
           </div>
         </div>
@@ -58,7 +58,7 @@
           </div>
           <div class="panel-body">
             <!-- OPTIONS -->
-            <label>Options</label>
+            <label>{{ 'FORM_OPTION_FIELD_TITLE' | translate }}</label>
             <br>
             <div ng-repeat="option in $ctrl.options track by $index">
               <input type="text" class="form-control" placeholder="{{ 'FORM_OPTION_FIELD_PLACEHOLDER' | translate }}" ng-model="$ctrl.options[$index]" ng-class="$ctrl.issues.blankOptions[$index] ? 'is-empty' : ''" ng-change="$ctrl.checkFormData(); $ctrl.updateMessages();"/>
@@ -70,8 +70,8 @@
             <br>
             <!-- WHITELIST -->
             <div ng-show="$ctrl.hasWhitelist">
-              <label>Whitelist</label>
-              <p class="text-muted small">Only addresses in the Whitelist will be able to vote.</p>
+              <label>{{ 'FORM_WHITELIST_FIELD_TITLE' | translate }}</label>
+              <p class="text-muted small">{{ 'FORM_WHITELIST_FIELD_EXPLAIN' | translate }}</p>
               <br>
               <div ng-repeat="account in $ctrl.whitelist track by $index">
                 <input type="text" class="form-control" placeholder="{{ 'FORM_WHITELIST_FIELD_PLACEHOLDER' | translate }}" ng-model="$ctrl.whitelist[$index]" ng-class="$ctrl.issues.invalidAddresses[$index] ? 'has-error is-empty' : ''" ng-change="$ctrl.checkFormData(); $ctrl.updateMessages();"/>
@@ -82,8 +82,8 @@
             </div>
             <!-- MOSAIC -->
             <div ng-show="$ctrl.hasMosaic">
-              <label>Mosaic</label>
-              <p class="text-muted small">Only addresses with this Mosaic will be able to vote.</p>
+              <label>{{ 'FORM_MOSAIC_FIELD_TITLE' | translate }}</label>
+              <p class="text-muted small">{{ 'FORM_MOSAIC_FIELD_EXPLAIN' | translate }}</p>
               <select class="col-sm-6 form-control" ng-options="mosaicName for mosaicName in $ctrl.currentAccountMosaicNames" ng-model="$ctrl.formData.mosaic" required="required" id="mosaic"></select><br>
             </div>
             <br>
@@ -94,7 +94,7 @@
             <br>
             <br>
             <!-- BUTTON -->
-            <button class="btn btn-success pull-xs-right" type="submit" style="width:100%" ng-click="$ctrl.create()" ng-disabled="$ctrl.creating || $ctrl.invalidData">Create</button>
+            <button class="btn btn-success pull-xs-right" type="submit" style="width:100%" ng-click="$ctrl.create()" ng-disabled="$ctrl.creating || $ctrl.invalidData">{{ 'BUTTON_LABEL_CREATE' | translate }}</button>
             <br>
             <br>
             <span class="input-group-btn">
@@ -109,21 +109,21 @@
             </div>
             <!-- SPINNER -->
             <div ng-show="$ctrl.creating">
-              Creating...
+              {{ 'SPINNER_MESSAGE' | translate }}
               <i class="fa fa-spinner fa-spin"></i>
             </div>
             <br>
             <div ng-show="$ctrl.issues.titleTooLong">
-              <p class="text-danger">Title too long</p>
+              <p class="text-danger">{{ 'MESSAGE_TITLE_TOO_LONG' | translate }}</p>
             </div>
             <div ng-show="$ctrl.issues.descriptionTooLong">
-              <p class="text-danger">Description too long</p>
+              <p class="text-danger">{{ 'MESSAGE_DESCRIPTION_TOO_LONG' | translate }}</p>
             </div>
             <div ng-show="$ctrl.issues.optionsTooLong">
-              <p class="text-danger">too many options / options too long</p>
+              <p class="text-danger">{{ 'MESSAGE_OPTIONS_TOO_LONG' | translate }}</p>
             </div>
             <div ng-show="$ctrl.issues.pollTooLong">
-              <p class="text-danger">Whitelist too long</p>
+              <p class="text-danger">{{ 'MESSAGE_WHITELIST_TOO_LONG' | translate }}</p>
             </div>
           </div>
         </div>
