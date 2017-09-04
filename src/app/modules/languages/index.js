@@ -25,4 +25,9 @@ app.config(JapaneseProvider);
 import RussianProvider from './ru';
 app.config(RussianProvider);
 
+// comment this while developing to see untranslated strings
+app.config(['$translateProvider', function($translateProvider) {
+    $translateProvider.fallbackLanguage('en');
+}]);
+
 export default app;
