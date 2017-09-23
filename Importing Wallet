@@ -1,0 +1,15 @@
+Trying to import wallet from a USB (coming from Windows) to Macbook Pro.
+Tried to launch file locally, didn't work.
+Error given from console:
+pascalprecht.translate.$translateSanitization: No sanitization strategy has been configured. This can have serious security implications. See http://angular-translate.github.io/docs/#/guide/19_security for details.
+main.js:102027 Loading wallet
+main.js:31081 Error: Malformed UTF-8 data
+    at Error (native)
+    at Object.m.Utf8.stringify (chrome-extension://apgagcmokepionlmmeonmgkemlhdokab/vendors/cryptoJS/core-min.js:10:431)
+    at Object.l.WordArray.f.extend.toString (chrome-extension://apgagcmokepionlmmeonmgkemlhdokab/vendors/cryptoJS/core-min.js:8:130)
+    at LoginCtrl.loadWallet (chrome-extension://apgagcmokepionlmmeonmgkemlhdokab/main.js:113006:49)
+    at fn (eval at <anonymous> (chrome-extension://apgagcmokepionlmmeonmgkemlhdokab/main.js:31916:15), <anonymous>:4:354)
+    at chrome-extension://apgagcmokepionlmmeonmgkemlhdokab/main.js:102018:33
+    at Scope.$eval (chrome-extension://apgagcmokepionlmmeonmgkemlhdokab/main.js:34736:28)
+    at Scope.$apply (chrome-extension://apgagcmokepionlmmeonmgkemlhdokab/main.js:34836:25)
+    at FileReader.<anonymous> (chrome-extension://apgagcmokepionlmmeonmgkemlhdokab/main.js:102017:35)
