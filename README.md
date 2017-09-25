@@ -30,29 +30,25 @@ If the circle next to `Node` is red, click on it and select another node from th
 
 ### Build from source ###
 
-1) Install gulp
-
-<pre>npm install -g gulp-cli</pre>
-
-2) Open a console to the path of the NanoWallet folder and install all the needed dependencies
+1) Open a console to the path of the NanoWallet folder and install all the needed dependencies
 
 <pre>npm install</pre>
 
-3) Build:
+2) Build:
 
-<pre>gulp</pre>
+<pre>npm run build</pre>
 
 ##### OR #####
 
-4) Run NanoWallet as App (packaged with chromium browser)
+3) Run NanoWallet as App (packaged with chromium browser)
 
 <pre>npm run devApp</pre>
 
 ##### OR #####
 
-5) Build NanoWallet apps, default set to : win64,osx64,linux64
+4) Build NanoWallet apps, default set to : win64,osx64,linux64
 
-<pre>gulp build-app</pre>
+<pre>npm run build-app</pre>
 
 ### Known issues ###
 
