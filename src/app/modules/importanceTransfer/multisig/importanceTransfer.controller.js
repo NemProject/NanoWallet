@@ -53,6 +53,15 @@ class MultisigImportanceTransferCtrl {
         // Needed to prevent user to click twice on send when already processing
         this.okPressed = false;
 
+         // Needed to prevent getFreeNode endless loop
+        this.freeNodeLooped = 0;
+
+        //Hostname with free slots
+        this.hostNameFreeSlots;
+
+        //Set to show free host found
+        this.freeHostFound=false;
+
         this.contacts = [];
 
         if(undefined !== this._storage.contacts && undefined !== this._storage.contacts[this._Wallet.currentAccount.address] && this._storage.contacts[this._Wallet.currentAccount.address].length) {
@@ -117,6 +126,57 @@ class MultisigImportanceTransferCtrl {
         }
 
     }
+
+    /**
+     * getFreeNode() gets a node with free slots
+     */
+     getFreeNode(){
+        this.freeHostFound=false;
+        // to prevent endless loop, loops are count 
+        if (this.freeNodeLooped < 200) {
+            this.freeNodeLooped++;
+            //regex expression to get the ip from string
+            var regExpIpCheck = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/;
+            //select a random node from the nodelist provided
+            var randomNode = this.nodes[Math.floor(Math.random()*this.nodes.length)];
+            var hostName;
+
+            //Nodes for test are diferent provided than Mainnet
+            if (this._Wallet.network == Network.data.Mainnet.id) {
+                hostName = randomNode.ip;
+            }
+            else{
+                hostName= randomNode.uri.match(regExpIpCheck);
+            }
+            //set hostNameFreeSlot so you can follow in the app were he is working on
+            this.hostNameFreeSlots = hostName;
+
+            if (regExpIpCheck.test(hostName) || (this._Wallet.network == Network.data.Mainnet.id)) {
+                 this._NetworkRequests.getUnlockedInfo(hostName).then((data,) => {
+                if (data["max-unlocked"] === data["num-unlocked"]) {
+                        this.getFreeNode();
+                    } 
+                    else {
+                        this.freeHostFound=true;
+
+                    }
+                },
+                (err) => {
+                    console.error(err)
+                    this._Alert.unlockedInfoError(err.data.message);
+                });
+             }
+
+             else if (!regExpIpCheck.test(hostName) || (this._Wallet.network == Network.data.Testnet.id)) {
+                this.getFreeNode();
+
+             };
+         }
+         // to prevent endless loop, loops are count
+         else    {
+            this.freeNodeLooped = 0;
+         }
+     }
 
     /**
      * checkNode() Check node slots
