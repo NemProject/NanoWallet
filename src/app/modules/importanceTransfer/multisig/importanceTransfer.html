@@ -224,9 +224,9 @@
           
           <button class="btn btn-success ng-binding" type="button" ng-click="$ctrl.getFreeNode()" ng-show="$ctrl.noFreeSlots && $ctrl.delegatedData.meta.status === 'LOCKED' && $ctrl._DataBridge.accountData.account.vestedBalance / 1000000 > 10000">Get random node with free slots</button>
           <div class="input-group" ng-show="$ctrl._DataBridge.accountData.account.vestedBalance / 1000000 > 10000&& $ctrl.delegatedData.meta.status === 'LOCKED' && $ctrl.noFreeSlots">
-          <input class="form-control" type="text" ng-model="$ctrl.hostNameFreeSlots"/>
+           <input class="form-control" type="text" ng-model="$ctrl.hostNameFreeSlots"/>
           <span class="input-group-btn">
-          <button class="btn btn-primary" type="button" ng-show="$ctrl.freeHostFound" ng-click="$ctrl.harvestingNode = $ctrl.hostNameFreeSlots; $ctrl.checkNode(); $ctrl.updateDelegatedData(); $ctrl.customHarvestingNode = true;"><i>Select</i></button>
+          <button class="btn btn-primary" type="button" ng-show="$ctrl.freeHostFound" ng-click="$ctrl.harvestingNode = $ctrl.hostNameFreeSlots; $ctrl.checkNode(); $ctrl.updateDelegatedData(); $ctrl.customHarvestingNode = true; $ctrl.freeHostFound=false;"><i>Select</i></button>
           </span>
           </div>
         <!--</div>-->

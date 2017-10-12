@@ -181,6 +181,8 @@ class ImportanceTransferCtrl {
          // to prevent endless loop, loops are count
          else    {
             this.freeNodeLooped = 0;
+            this.hostNameFreeSlots = "";
+            this._Alert.endlessLoopProtection();
          }
      }
 

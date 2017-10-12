@@ -130,7 +130,7 @@ class MultisigImportanceTransferCtrl {
     /**
      * getFreeNode() gets a node with free slots
      */
-     getFreeNode(){
+    getFreeNode(){
         this.freeHostFound=false;
         // to prevent endless loop, loops are count 
         if (this.freeNodeLooped < 200) {
@@ -148,7 +148,7 @@ class MultisigImportanceTransferCtrl {
             else{
                 hostName= randomNode.uri.match(regExpIpCheck);
             }
-            //set hostNameFreeSlot so you can follow in the app were he is working on
+            //set hostNameFreeSlot so you can follow in the app on whish node it`s working on
             this.hostNameFreeSlots = hostName;
 
             if (regExpIpCheck.test(hostName) || (this._Wallet.network == Network.data.Mainnet.id)) {
@@ -175,6 +175,8 @@ class MultisigImportanceTransferCtrl {
          // to prevent endless loop, loops are count
          else    {
             this.freeNodeLooped = 0;
+            this.hostNameFreeSlots = "";
+            this._Alert.endlessLoopProtection();
          }
      }
 
