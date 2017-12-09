@@ -172,6 +172,15 @@ export default class Alert {
         });
     }
 
+    endlessLoopProtection(){
+        this._ngToast.create({
+            content: this._$filter('translate')('ALERT_FIND_FREE_SLOT_ERROR'),
+            className: 'danger'
+        });
+    }
+
+    
+
     lockError(message) {
         this._ngToast.create({
             content: this._$filter('translate')('ALERT_LOCK_ERROR') + message,

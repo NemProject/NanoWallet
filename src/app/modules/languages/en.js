@@ -523,6 +523,7 @@ function EnglishProvider($translateProvider) {
         ALERT_COSIG_CANNOT_BE_MULTISIG: 'Selected account to convert is cosignatory of another multisig account. Therefore it cannot be converted',
         ALERT_NO_NS_OWNED: 'Account does not own any namespace, please create one or change account',
         ALERT_UNLOCKED_INFO_ERROR: 'An error occured at fetching unlock info',
+        ALERT_FIND_FREE_SLOT_ERROR: 'Endless loop protectiong reached try again',
         ALERT_LOCK_ERROR: 'Error at locking account, reason: ',
         ALERT_UNLOCK_ERROR: 'Error at unlocking account, reason: ',
         ALERT_SUPERNODES_ERROR: 'Error occured at fetching supernodes data!',
