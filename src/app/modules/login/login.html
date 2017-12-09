@@ -1,53 +1,54 @@
 <div class="login-page">
   <div class="container">
-    <div class="row text-center">
-      <div class="col-md-12">
-        <h1>{{ 'LOGIN_MEMBER_TITLE' | translate }}</h1>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-btn">
-              <label for="namespaceParent" class="control-label">{{ 'LOGIN_SELECT_WALLET_YOURS' | translate }}: </label>
-            </span>
-            <select class="form-control" ng-model="$ctrl.selectedWallet" ng-options="wallet.name group by (wallet.accounts[0].network | toNetworkName) for wallet in $ctrl._storage.wallets">
-              <option value="" disabled selected>{{ 'LOGIN_SELECT_WALLET' | translate }}</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-btn">
-              <label>{{ 'FORM_PASSWORD' | translate }}: </label>
-            </span>
-            <input class="form-control" type="password" ng-model="$ctrl.common.password" placeholder="{{ 'FORM_PASSWORD_FIELD_PLACEHOLDER' | translate }}"/>
-          </div>
+    <form ng-submit="$ctrl.login($ctrl.selectedWallet)">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1>{{ 'LOGIN_MEMBER_TITLE' | translate }}</h1>
         </div>
       </div>
-    </div>
 
-    <div class="row loginButtons">
-      <div class="col-md-3 col-md-offset-3 col-sm-6">
-        <button class="btn btn-lg btn-success btn-block"
-              type="submit" ng-click="$ctrl.login($ctrl.selectedWallet)" ng-disabled="!$ctrl.selectedWallet">
-              {{ 'LOGIN_LOGIN_BUTTON' | translate }}
-        </button>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="form-group">
-          <div type="button" class="fileUpload btn btn-lg btn-block btn-import">
-            <span>{{ 'LOGIN_IMPORT_BUTTON' | translate }}</span>
-            <input type="file" class="upload" multiple='multiple' read-wallet-files="$ctrl.loadWallet($fileContent, $isNCC)" />
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <label for="namespaceParent" class="control-label">{{ 'LOGIN_SELECT_WALLET_YOURS' | translate }}: </label>
+              </span>
+              <select class="form-control" ng-model="$ctrl.selectedWallet" ng-options="wallet.name group by (wallet.accounts[0].network | toNetworkName) for wallet in $ctrl._storage.wallets">
+                <option value="" disabled selected>{{ 'LOGIN_SELECT_WALLET' | translate }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <label>{{ 'FORM_PASSWORD' | translate }}: </label>
+              </span>
+              <input class="form-control" type="password" ng-model="$ctrl.common.password" placeholder="{{ 'FORM_PASSWORD_FIELD_PLACEHOLDER' | translate }}"/>
+            </div>
           </div>
         </div>
       </div>
 
-    </div>
-
+      <div class="row loginButtons">
+        <div class="col-md-3 col-md-offset-3 col-sm-6">
+          <button class="btn btn-lg btn-success btn-block"
+                type="submit" ng-disabled="!$ctrl.selectedWallet">
+                {{ 'LOGIN_LOGIN_BUTTON' | translate }}
+          </button>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="form-group">
+            <div type="button" class="fileUpload btn btn-lg btn-block btn-import">
+              <span>{{ 'LOGIN_IMPORT_BUTTON' | translate }}</span>
+              <input type="file" class="upload" multiple='multiple' read-wallet-files="$ctrl.loadWallet($fileContent, $isNCC)" />
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </form>
   </div>
   <a id="downloadWallet" target="_blank"></a>
 </div>
