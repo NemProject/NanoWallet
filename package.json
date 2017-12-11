@@ -43,6 +43,8 @@
   },
   "scripts": {
     "test": "gulp tests browserifyTests",
+    "build": "gulp",
+    "build-app": "gulp build-app",
     "devApp": "nw build/"
   },
   "repository": {
