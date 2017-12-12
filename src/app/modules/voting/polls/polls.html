@@ -3,7 +3,7 @@
   <div class="container-fluid" style="padding-left: 20px; padding-right: 20px;">
     <div class="row">
       <div class="col-sm-11">
-        <h2>Vote and See Polls</h2>
+        <h2>{{ 'PORTAL_POLLS_TITLE' | translate }}</h2>
       </div>
     </div>
 
@@ -14,16 +14,16 @@
             <!-- TABS -->
             <ul class="nav nav-tabs">
               <li ng-class="{ active: $ctrl.isTabSet(1) }">
-                <a ng-click="$ctrl.setTab(1)">All</a>
+                <a ng-click="$ctrl.setTab(1)">{{ 'PORTAL_POLLS_ALL' | translate }}</a>
               </li>
               <li ng-class="{ active: $ctrl.isTabSet(2) }">
-                <a ng-click="$ctrl.setTab(2)">Ongoing</a>
+                <a ng-click="$ctrl.setTab(2)">{{ 'PORTAL_POLLS_ONGOING' | translate }}</a>
               </li>
               <li ng-class="{ active: $ctrl.isTabSet(3) }">
-                <a ng-click="$ctrl.setTab(3)">Ended</a>
+                <a ng-click="$ctrl.setTab(3)">{{ 'PORTAL_POLLS_ENDED' | translate }}</a>
               </li>
               <li ng-class="{ active: $ctrl.isTabSet (4) }">
-                <a ng-click="$ctrl.setTab(4)">Options</a>
+                <a ng-click="$ctrl.setTab(4)">{{ 'PORTAL_POLLS_OPTIONS' | translate }}</a>
               </li>
             </ul>
           </div>
@@ -45,27 +45,27 @@
             <div ng-show="$ctrl.isTabSet(4)">
               <!-- Index / Poll Address Input -->
               <form>
-                <p>Search for a poll or a poll Index:</p>
+                <p>{{ 'PORTAL_POLLS_SEARCH_POLL_OR_INDEX' | translate }}</p>
                 <input type="text" ng-model="$ctrl.inputAccount" style="width:60%"/>
-                <p class="text-muted small">You can find a specific poll or index by typing the address for the poll account or the poll index account in the bar and clicking on the appropriate search button.</p>
-                <button type="submit" class="btn btn-success pull-xs-left" style="width:30%" ng-click="$ctrl.pollAddressInput();">Find Poll</button>
-                <button type="submit" class="btn btn-success pull-xs-left" style="width:30%" ng-click="$ctrl.pollIndexInput();">Find Index</button>
+                <p class="text-muted small">{{ 'PORTAL_POLLS_SEARCH_POLL_OR_INNDEX_EXPLAIN' | translate }}</p>
+                <button type="submit" class="btn btn-success pull-xs-left" style="width:30%" ng-click="$ctrl.pollAddressInput();">{{ 'PORTAL_POLLS_FIND_POLL' | translate }}</button>
+                <button type="submit" class="btn btn-success pull-xs-left" style="width:30%" ng-click="$ctrl.pollIndexInput();">{{ 'PORTAL_POLLS_FIND_INDEX' | translate }}</button>
                 <div ng-show="$ctrl.searching"><i class="fa fa-spinner fa-spin"></i></div>
-                <div ng-hide="$ctrl.inputAddressValid"><p class="text-danger">Not a valid Address</p></div>
-                <div ng-show="$ctrl.loadingAddressError"><p class="text-danger">There was an error. Make sure the address is correct</p></div>
+                <div ng-hide="$ctrl.inputAddressValid"><p class="text-danger">{{ 'PORTAL_POLLS_NOT_VALID_ADDRESS' | translate }}</p></div>
+                <div ng-show="$ctrl.loadingAddressError"><p class="text-danger">{{ 'PORTAL_POLLS_ADDRESS_ERROR' | translate }}</p></div>
               </form>
               <br>
               <!-- only votable -->
-              <input id="box1" type="checkbox" ng-model="$ctrl.onlyVotable" ng-click="$ctrl.updateList()"><label for="box1">Show only polls you can vote on</label>
+              <input id="box1" type="checkbox" ng-model="$ctrl.onlyVotable" ng-click="$ctrl.updateList()"><label for="box1">{{ 'PORTAL_POLLS_SHOW_ONLY_POLLS_VOTE' | translate }}</label>
               <!-- INDEX CREATION -->
               <br>
               <br>
-              <button class="btn btn-success pull-xs-left" style="width:25%" ng-click="$ctrl.createIndex = true;">Create a poll Index</button>
+              <button class="btn btn-success pull-xs-left" style="width:25%" ng-click="$ctrl.createIndex = true;">{{ 'PORTAL_POLLS_CREATE_POLL_INDEX' | translate }}</button>
               <br>
               <br>
               <!-- Created indexes -->
               <div ng-hide="$ctrl.createdIndexes.length === 0">
-                <label>created Indexes:</label>
+                <label>{{ 'PORTAL_POLLS_CREATED_INDEXES' | translate }}:</label>
                 <div ng-repeat="indexAddress in $ctrl.createdIndexes track by $index">
                   <a ng-click="$ctrl.inputAccount = indexAddress; $ctrl.pollIndexInput()">{{indexAddress}}</a>
                 </div>
@@ -89,19 +89,19 @@
           <!-- Details -->
           <div class="panel-body" ng-show="$ctrl.showDetails && !$ctrl.loadingPoll && !$ctrl.createIndex && !$ctrl.loadingAddressError">
             <h2>{{$ctrl.selectedPoll.formData.title}} </h2>
-            <p>Poll Address: {{$ctrl.currentPollAddress}}</p>
-            <p> <span ng-class="$ctrl.getCurrentTypeTagClass()">&nbsp{{$ctrl.getCurrentTypeTag()}}</span><span class="text-muted small"> Date of ending: {{$ctrl.selectedPoll.formData.doe | date:"MM/dd/yyyy 'at' h:mma"}}</span> </p>
+            <p>{{ 'PORTAL_POLLS_POLL_ADDRESS' | translate }}: {{$ctrl.currentPollAddress}}</p>
+            <p> <span ng-class="$ctrl.getCurrentTypeTagClass()">&nbsp{{$ctrl.getCurrentTypeTag()}}</span><span class="text-muted small"> {{ 'PORTAL_POLLS_DATE_OF_ENDING' | translate }}: {{$ctrl.selectedPoll.formData.doe | date:"MM/dd/yyyy 'at' h:mma"}}</span> </p>
             <br>
             <!-- VOTING TABS -->
             <ul class="nav nav-tabs">
               <li ng-class="{ active: $ctrl.isDetailsTabSet(1) }">
-                <a ng-click="$ctrl.setDetailsTab(1)">Vote</a>
+                <a ng-click="$ctrl.setDetailsTab(1)">{{ 'PORTAL_POLLS_VOTE' | translate }}</a>
               </li>
               <li ng-show="$ctrl.isCosignatory" ng-class="{ active: $ctrl.isDetailsTabSet(2) }">
-                <a ng-click="$ctrl.setDetailsTab(2)">Multisig</a>
+                <a ng-click="$ctrl.setDetailsTab(2)">{{ 'GENERAL_TAB_MULTISIG' | translate }}</a>
               </li>
               <li ng-class="{ active: $ctrl.isDetailsTabSet(3) }">
-                <a ng-click="$ctrl.setDetailsTab(3)">Results</a>
+                <a ng-click="$ctrl.setDetailsTab(3)">{{ 'PORTAL_POLLS_RESULTS' | translate }}</a>
               </li>
             </ul>
             <br>
@@ -116,11 +116,11 @@
             </div>
             <!-- VOTE -->
             <div ng-show="$ctrl.showVote">
-              <h4 class="text-warning" style="color: gray; ">Vote</h4>
+              <h4 class="text-warning" style="color: gray; ">{{ 'PORTAL_POLLS_VOTE' | translate }}</h4>
               <!-- Multiple answer -->
               <div ng-show="$ctrl.selectedPoll.formData.multiple">
                 <p>
-                  This is a multiple answer Poll. You can divide your vote into different options.
+                  {{ 'PORTAL_POLLS_EXPLAIN_MULTI_ANSWER' | translate }}
                 </p>
                 <ul class="list-group">
                   <div ng-repeat="option in $ctrl.selectedPoll.options.strings track by $index">
@@ -163,16 +163,16 @@
                     <div ng-hide="$ctrl.alreadyVoted || $ctrl.pollFinished">
                       <button class="btn btn-success pull-xs-left" type="submit" style="width:90%" ng-click="$ctrl.vote()" ng-disabled="$ctrl.voting || $ctrl.invalidVote || $ctrl.alreadyVoted > 0">Vote</button>
                       <br><br>
-                      <p class="text-muted small">Voting has a fee of {{($ctrl.votingFee | fmtNemValue)[0]}}.{{($ctrl.votingFee | fmtNemValue)[1]}} XEM per option</p>
+                      <p class="text-muted small">{{ 'PORTAL_POLLS_VOTING_HAS_FEE' | translate }} {{($ctrl.votingFee | fmtNemValue)[0]}}.{{($ctrl.votingFee | fmtNemValue)[1]}} {{ 'PORTAL_POLLS_XEM_PER_OPTION' | translate }}</p>
                     </div>
                     <div ng-show="$ctrl.alreadyVoted === 2">
-                      <p class="text-success">You have successfully Voted on this Poll</p>
+                      <p class="text-success">{{ 'PORTAL_POLLS_CREATE_SUCCESS' | translate }}</p>
                     </div>
                     <div ng-show="$ctrl.alreadyVoted === 1">
-                      <p class="text-warning">You have an unconfirmed Vote on this Poll</p>
+                      <p class="text-warning">{{ 'PORTAL_POLLS_UNCONFIRMED_VOTE' | translate }}</p>
                     </div>
                     <div ng-show="$ctrl.pollFinished">
-                      <p class="text-danger">This poll has ended</p>
+                      <p class="text-danger">{{ 'PORTAL_POLLS_POLL_ENDED' | translate }}</p>
                     </div>
                   </div>
                 </div>
@@ -192,23 +192,23 @@
                   </div>
                   <div class="col-md-5">
                     <div ng-hide="$ctrl.pollFinished" class="bg-warning ongoing-warning">
-                      <p> This poll has not finished yet, the results are not definitive. </p>
+                      <p> {{ 'PORTAL_POLLS_POLL_NOT_FINISHED' | translate }} </p>
                     </div>
                     <div class="bg-info">
                       <span>
                         <div ng-repeat="option in $ctrl.results.options track by $index" style="text-align: left">
                           <b><ins>{{option.text}}</ins></b><br>
-                          votes: {{option.votes}}<br>
-                          weighted score*: {{($ctrl.selectedPoll.formData.type === 0) ? ((option.weighted*100).toFixed(5) + '%') : (option.weighted)}}<br>
-                          percentage: {{option.percentage.toFixed(2)}}<br>
+                          {{ 'PORTAL_POLLS_VOTES' | translate }}: {{option.votes}}<br>
+                          {{ 'PORTAL_POLLS_WEIGHTED_SCORE' | translate }}*: {{($ctrl.selectedPoll.formData.type === 0) ? ((option.weighted*100).toFixed(5) + '%') : (option.weighted)}}<br>
+                          {{ 'PORTAL_POLLS_PERCENTAGE' | translate }}: {{option.percentage.toFixed(2)}}<br>
                         </div>
                       </span>
                     </div>
                     <br>
                     <p class="text-muted small">
-                      *Weighted score varies depending on the type of vote:<br>
-                      for whitelist polls it is the same as the votes<br>
-                      for POI polls it is the sum of importances of the voters multiplied by 100<br>
+                      *{{ 'PORTAL_POLLS_WEIGHTED_EXPLAIN1' | translate }}:<br>
+                      {{ 'PORTAL_POLLS_WEIGHTED_EXPLAIN2' | translate }}<br>
+                      {{ 'PORTAL_POLLS_WEIGHTED_EXPLAIN3' | translate }}<br>
                     </p>
                   </div>
                 </div>
@@ -222,28 +222,28 @@
           </div>
           <!-- Poll Index Creation -->
           <div class="panel-body" ng-show="$ctrl.createIndex">
-            <h2>Create a poll Index</h2>
+            <h2>{{ 'PORTAL_POLLS_CREATE_POLL_INDEX' | translate }}</h2>
             <br>
             <br>
             <p>
-              This action will create a new poll Index. When you create a new Poll you can choose the index it is submitted to, and on the voting module you can change the index you view polls from.</p>
-            <p>When you create a new Index a new NEM account is generated, a message will be sent to your address with a message containing the created Index. Write down the address to create and see polls stored on it. Index creation has a fee of {{$ctrl.indexCreationFee}} xem.</p>
+              {{ 'PORTAL_POLLS_CREATE_EXPLAIN1' | translate }}</p>
+            <p>{{ 'PORTAL_POLLS_CREATE_EXPLAIN2' | translate }} {{$ctrl.indexCreationFee}} xem.</p>
             <p>
-              For private Indexes only the creator of the index will be able to send polls. But everybody will be able to see and vote on its polls if they have importance or are on the whitelist for simple polls.
+              {{ 'PORTAL_POLLS_CREATE_EXPLAIN3' | translate }}
             </p>
             <br>
-            <input id="box2" type="checkbox" ng-model="$ctrl.createPrivateIndex"><label for="box2">Create private Index</label>
+            <input id="box2" type="checkbox" ng-model="$ctrl.createPrivateIndex"><label for="box2">{{ 'PORTAL_POLLS_CREATE_PRIVATE_INDEX' | translate }}</label>
             <br>
             <span class="input-group-btn">
               <label ng-class="!$ctrl.common.password.length ? 'has-error' : ''">{{ 'FORM_PASSWORD' | translate }}:</label>
             </span>
             <input class="form-control" type="password" placeholder="{{ 'FORM_PASSWORD_FIELD_PLACEHOLDER' | translate }}" ng-model="$ctrl.common.password" ng-class="!$ctrl.common.password.length ? 'has-error' : ''"/>
             <br>
-            <button class="btn btn-success pull-xs-left" style="width:100%" ng-click="$ctrl.createNewIndex()">Create a poll Index</button>
+            <button class="btn btn-success pull-xs-left" style="width:100%" ng-click="$ctrl.createNewIndex()">{{ 'PORTAL_POLLS_CREATE_POLL_INDEX' | translate }}</button>
           </div>
           <!-- Poll Error -->
           <div ng-show="$ctrl.loadingAddressError" class="loading-div">
-            <h3>There was an error fetching the poll. The poll does not exist, or was not created properly.</h3>
+            <h3>{{ 'PORTAL_POLLS_ERROR_FETCHING_POLL' | translate }}</h3>
           </div>
         </div>
       </div>
