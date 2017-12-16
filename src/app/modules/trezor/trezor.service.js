@@ -114,6 +114,18 @@ class Trezor {
         });
     }
 
+    decryptMessage(account, publicKey, payload) {
+        return new Promise((resolve, reject) => {
+            TrezorConnect.nemDecryptMessage(account.hdKeypath, account.network, publicKey, payload, (result) => {
+                if (result.success) {
+                    resolve(result.payload);
+                } else {
+                    reject(result.error);
+                }
+            });
+        });
+    }
+
     // End methods region //
 
 }
