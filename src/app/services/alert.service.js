@@ -291,9 +291,9 @@ export default class Alert {
         });
     }
 
-    emptyDecodedMessage() {
+    emptyDecodedMessage(err) {
        this._ngToast.create({
-            content: this._$filter('translate')('ALERT_EMPTY_DECODED_MSG'),
+            content: this._$filter('translate')('ALERT_EMPTY_DECODED_MSG') + err,
             className: 'danger'
         });
     }

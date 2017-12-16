@@ -553,7 +553,7 @@ function PolishProvider($translateProvider) {
         ALERT_MULTISIG_CANNOT_BE_COSIG: 'Konto z multipodpisem nie może być sygnatariuszem !',
         ALERT_PURGE_CANCELLED: 'Czyszczenie anulowane !',
         ALERT_MAINNET_DISABLED: 'Mainnet jest niedostępny, proszę wybierz inną sieć !',
-        ALERT_EMPTY_DECODED_MSG: 'Wystąpił błąd, brak odszyfrowanej wiadomości !',
+        ALERT_EMPTY_DECODED_MSG: 'Wystąpił błąd, brak odszyfrowanej wiadomości ! ',
         ALERT_INVALID_NS_NAME: 'Nazwa namespace jest nieprawidłowa !',
         ALERT_INVALID_MOSAIC_NAME: 'Nazwa mozaiki jest nieprawidłowa !',
         ALERT_MOSAIC_DESCRIPTION: 'Opis mozaiki jest nieprawidłowy !',

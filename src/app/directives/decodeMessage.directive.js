@@ -63,7 +63,7 @@ function DecodeMessage(Wallet, Recipient, Alert, $timeout, $filter, $sanitize) {
 
                 // Decode the message
                 let decoded = nem.crypto.helpers.decode(scope.common.privateKey, publicKey, tx.message.payload);
-                if (!decoded) return Alert.emptyDecodedMessage();
+                if (!decoded) return Alert.emptyDecodedMessage("");
                             
                 // Set decrypted message in the right template,
                 // use the tx timeStamp to identify each element in the array of templates generated with 

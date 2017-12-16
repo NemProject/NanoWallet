@@ -550,7 +550,7 @@ function RussianProvider($translateProvider) {
         ALERT_MULTISIG_CANNOT_BE_COSIG: 'Мультиподписной аккаунт нельзя установить как соподписанта!',
         ALERT_PURGE_CANCELLED: 'Очистка отменена!',
         ALERT_MAINNET_DISABLED: 'Сеть мainnet недоступна, пожалуйста, выберите другую сеть!',
-        ALERT_EMPTY_DECODED_MSG: 'Произошла ошибка, сообщение не расшифровано!',
+        ALERT_EMPTY_DECODED_MSG: 'Произошла ошибка, сообщение не расшифровано! ',
         ALERT_INVALID_NS_NAME: 'Недопустимое имя пространства имён!',
         ALERT_INVALID_MOSAIC_NAME: 'Недопустимое имя мозайки!',
         ALERT_MOSAIC_DESCRIPTION: 'Недопустимое описание мозайки!',

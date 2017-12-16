@@ -550,7 +550,7 @@ function JapaneseProvider($translateProvider) {
       ALERT_MULTISIG_CANNOT_BE_COSIG: "このマルチシグアカウントに連署者を設定できません。",
       ALERT_PURGE_CANCELLED: "アカウントデータ消去処理（パージ）はキャンセルされました。",
       ALERT_MAINNET_DISABLED: "Mainnetは無効です。別のネットワークを選択してください。",
-      ALERT_EMPTY_DECODED_MSG: "復号されたメッセージはありません。",
+      ALERT_EMPTY_DECODED_MSG: "復号されたメッセージはありません。 ",
       ALERT_INVALID_NS_NAME: "ネームスペース名が無効です。",
       ALERT_INVALID_MOSAIC_NAME: "モザイク名が無効です。",
       ALERT_MOSAIC_DESCRIPTION: "モザイクの概要が無効です。",

@@ -552,7 +552,7 @@ function ChineseProvider($translateProvider) {
         ALERT_MULTISIG_CANNOT_BE_COSIG: '多重签名账户无法设为共同签署人！',
         ALERT_PURGE_CANCELLED: '清理已取消！',
         ALERT_MAINNET_DISABLED: '当前版本禁止主网络使用',
-        ALERT_EMPTY_DECODED_MSG: '错误，无解密信息！',
+        ALERT_EMPTY_DECODED_MSG: '错误，无解密信息！ ',
         ALERT_INVALID_NS_NAME: '命名空间名不合规！',
         ALERT_INVALID_MOSAIC_NAME: '马赛克名不合规！',
         ALERT_MOSAIC_DESCRIPTION: '马赛克描述不合规！',
