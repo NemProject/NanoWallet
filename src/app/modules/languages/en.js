@@ -547,7 +547,7 @@ function EnglishProvider($translateProvider) {
         ALERT_MULTISIG_CANNOT_BE_COSIG: 'A multisig account cannot be set as cosignatory!',
         ALERT_PURGE_CANCELLED: 'Purge cancelled!',
         ALERT_MAINNET_DISABLED: 'Mainnet is disabled, please select another network!',
-        ALERT_EMPTY_DECODED_MSG: 'An error occured, no decoded message!',
+        ALERT_EMPTY_DECODED_MSG: 'An error occured, no decoded message! ',
         ALERT_INVALID_NS_NAME: 'Name of namespace is invalid!',
         ALERT_INVALID_MOSAIC_NAME: 'Name of mosaic is invalid!',
         ALERT_MOSAIC_DESCRIPTION: 'Description of mosaic is too long!',

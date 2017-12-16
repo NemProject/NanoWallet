@@ -7,7 +7,7 @@
   <div class="input-group">
     <input type="password" class="form-control ng-valid ng-touched ng-dirty ng-valid-parse" ng-model="common.password" id="passwordDecoding" placeholder="{{'FORM_PASSWORD_FIELD_PLACEHOLDER' | translate }}" aria-invalid="false" style="background-color: rgba(15, 122, 225, 0.1) !important;" ng-show="Wallet.algo !== 'trezor'">
     <span class="input-group-btn">
-      <button class="btn btn-success" style="color: white; border-radius: 0px; border-color:#444;" type="button" ng-click="decode(tx)" ng-disabled="Wallet.algo === 'trezor'">{{ 'LINE_TX_DETAILS_DEC_MESS' | translate }}</button>
+      <button class="btn btn-success" style="color: white; border-radius: 0px; border-color:#444;" type="button" ng-disabled="!publicKey" ng-click="decode()">{{ 'LINE_TX_DETAILS_DEC_MESS' | translate }}</button>
     </span>
   </div>
 </div>

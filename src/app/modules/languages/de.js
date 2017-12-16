@@ -550,7 +550,7 @@ function GermanProvider($translateProvider) {
         ALERT_MULTISIG_CANNOT_BE_COSIG: 'Ein Multi-Signatur Konto kann nicht als Mitunterzeichner verwendet werden !',
         ALERT_PURGE_CANCELLED: 'Löschvorgang abgebrochen !',
         ALERT_MAINNET_DISABLED: 'Mainnet ist deaktiviert, bitte ein anderes Netzwerk auswählen !',
-        ALERT_EMPTY_DECODED_MSG: 'Es ist ein unbekannter Fehler aufgetreten, Fehlercode nicht verfügbar !',
+        ALERT_EMPTY_DECODED_MSG: 'Es ist ein unbekannter Fehler aufgetreten, Fehlercode nicht verfügbar ! ',
         ALERT_INVALID_NS_NAME: 'Der Name des Namensraums ist nicht gültig !',
         ALERT_INVALID_MOSAIC_NAME: 'Der Name des Mosaiks ist nicht gültig !',
         ALERT_MOSAIC_DESCRIPTION: 'Die Beschreibung des Mosaiks ist ungültig !',

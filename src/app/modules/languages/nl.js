@@ -539,7 +539,7 @@ function DutchProvider($translateProvider) {
         ALERT_MULTISIG_CANNOT_BE_COSIG: 'Een multi-handtekening account kan niet als mede-ondertekenaar worden ingesteld!',
         ALERT_PURGE_CANCELLED: 'Verwijderen geannuleerd!',
         ALERT_MAINNET_DISABLED: 'Hoofdnetwerk is uitgeschakeld, selecteer een ander netwerk!',
-        ALERT_EMPTY_DECODED_MSG: 'Er is een fout opgetreden, geen gedecodeerd bericht!',
+        ALERT_EMPTY_DECODED_MSG: 'Er is een fout opgetreden, geen gedecodeerd bericht! ',
         ALERT_INVALID_NS_NAME: 'Naam van de namespace is ongeldig!',
         ALERT_INVALID_MOSAIC_NAME: 'Naam van mozaïek is ongeldig!',
         ALERT_MOSAIC_DESCRIPTION: 'Beschrijving van mozaïek is ongeldig!',
