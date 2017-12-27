@@ -41,7 +41,7 @@ const AppConstants = {
         name: "Nederlands",
         key: "nl"
     }, {
-        name: "Croatian",
+        name: "Hrvatski",
         key: "hr"
     }/*, {
         name: "Français",
