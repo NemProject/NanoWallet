@@ -22,6 +22,9 @@ let data =  [{
 }, {
     name: "Nederlands",
     key: "nl"
+}, {
+    name: "Hrvatski",
+    key: "hr"
 }]
 
 module.exports = {

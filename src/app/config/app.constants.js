@@ -16,7 +16,38 @@ const AppConstants = {
     mainnetDisabled: false,
 
     // Activate/Deactivate mijin
-    mijinDisabled: true
+    mijinDisabled: true,
+
+    // Available languages
+    languages: [{
+        name: "English",
+        key: "en"
+    }, {
+        name: "Chinese",
+        key: "cn"
+    }, {
+        name: "Polish",
+        key: "pl"
+    }, {
+        name: "German",
+        key: "de"
+    }, {
+        name: "Japanese",
+        key: "jp"
+    }, {
+        name: "Русский",
+        key: "ru"
+    }, {
+        name: "Nederlands",
+        key: "nl"
+    }, {
+        name: "Croatian",
+        key: "hr"
+    }/*, {
+        name: "Français",
+        key: "fr"
+    }*/],
+
 };
 
 export default AppConstants;
