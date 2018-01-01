@@ -274,7 +274,7 @@ function EnglishProvider($translateProvider) {
         MOSAIC_DEFINITION_INFORMATION_13: 'There are two fee types supported, absolute fee and percentile fee.',
         MOSAIC_DEFINITION_INFORMATION_14: 'The fee is specified as absolute quantity and thus does not depend on the quantity that is transferred.',
         MOSAIC_DEFINITION_INFORMATION_15: 'The fee is specified as multiple of the percentile of the quantity that is transferred. The fee is thus linearly increasing with the transferred mosaic quantity.',
-        MOSAIC_DEFINITION_INFORMATION_16: 'Sending mosaics on the NEM blockchain requires a fee. The exact fee is calculated depending on their total number and how many are being sent during a transaction. <b>Small business mosaics</b> are given a discounted flat rate of 0.05 XEM per mosaic per transfer.  These are mosaics with a quantity of less than 10,000 and a divisibility of 0.',
+        MOSAIC_DEFINITION_INFORMATION_16: 'Sending mosaics on the NEM blockchain requires a fee. The exact fee is calculated depending on their total number and how many are being sent during a transaction. <b>Small business mosaics</b> are given a discounted flat rate of 0.05 XEM per mosaic per transfer. These are mosaics with a quantity of less than 10,000 and a divisibility of 0.',
 
         // EDIT MOSAIC MODULE
         MOSAIC_SUPPLY_CHANGE_TITLE: 'Change mosaic supply',
@@ -468,7 +468,7 @@ function EnglishProvider($translateProvider) {
         // AUDIT APOSTILLE MODULE
         APOSTILLE_AUDIT_TITLE: 'Audit apostilles',
         APOSTILLE_AUDIT_CHOOSE_NODE: 'Choose a node',
-        APOSTILLE_AUDIT_CHOOSE_NODE_NOTE: 'Only a few nodes are able to search into the whole transaction history (option is disabled by default in NIS).', //
+        APOSTILLE_AUDIT_CHOOSE_NODE_NOTE: 'Only a few nodes are able to search into the whole transaction history (option is disabled by default in NIS).',
         APOSTILLE_AUDIT_WRONG_FORMAT: 'This file is not in apostille format!',
         APOSTILLE_AUDIT_FAIL_NO_PUBLIC_KEY: 'Verification failed, owner has no public key!',
         APOSTILLE_AUDIT_SUCCESS: 'File successfully audited!',
@@ -608,7 +608,6 @@ function EnglishProvider($translateProvider) {
         AGGREGATE_MODIFICATION_RELATIVE_CHANGE: 'Change Sigs Needed',
         AGGREGATE_MODIFICATION_RELATIVE_CHANGE_PLACEHOLDER: 'Number of signatures to add (n) or remove (-n) - Automated removals',
         AGGREGATE_SELECTED_ACCOUNT_INFO: 'Selected account information',
-        AGGREGATE_MIN_SIGNATURES: 'Min signatures',
         AGGREGATE_SELECT_WALLET_ACCOUNT: 'Use wallet account',
 
         // SIGN MULTISIGNATURE TRANSACTIONS
@@ -633,7 +632,7 @@ function EnglishProvider($translateProvider) {
         SIGNUP_PRIVATE_KEY_WALLET_BUTTON: 'Create private key wallet',
         SIGNUP_BRAIN_WALLET_BUTTON: 'Create brain wallet',
         SIGNUP_CREATE_WALLET_WARNING: 'Please read about <a href="https://www.w3.org/TR/2014/WD-WebCryptoAPI-20140325/#RandomSource-interface" rel="nofollow" target="_blank"><b>dangers</b></a> that client side generated keys pose; we are not responsible for any loss that could be due to the entropy of key generation. Even if it is unlikely to happen, it is still recommended to use a private key generated from a NEM client (NCC).',
-        SIGNUP_NETWORK_SELECT: 'Select a network', //
+        SIGNUP_NETWORK_SELECT: 'Select a network',
         SIGNUP_BRAIN_WALLET_WARNING: 'Please read about <a href="https://en.bitcoin.it/wiki/Brainwallet" rel="nofollow" target="_blank">dangers</a> that brain wallets pose. Brain wallets use ONLY a passphrase hashed multiple times. Therefore it\'s crucial to select a SAFE passphrase with at least 40 characters. <a href="https://xkcd.com/936/" rel="nofollow" target="_blank">XKCD #936</a>',
         SIGNUP_PRIVATE_KEY_WALLET_WARNING: 'Private key wallets use ONLY a password to encrypt the imported private key. Therefore it\'s crucial to select a SAFE password.',
         SIGNUP_COMMON_WALLET_WARNING_TITLE: 'Account safety warning',
