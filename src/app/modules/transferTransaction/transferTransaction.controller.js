@@ -78,8 +78,10 @@ class TransferTransactionCtrl {
         // Needed to prevent user to click twice on send when already processing
         this.okPressed = false;
 
+        // Max characters
+        this.maxChars = 1024;
         // Character counter
-        this.charsLeft = 1024;
+        this.charsLeft = this.maxChars;
 
         // Object to contain our password & private key data.
         this.common = {
@@ -232,11 +234,18 @@ class TransferTransactionCtrl {
         if (this.formData.isMultisig) {
             this.formData.innerFee = entity.otherTrans.fee;
             // Update characters left
-            this.charsLeft = entity.otherTrans.message.payload.length ? 1024 - (entity.otherTrans.message.payload.length / 2) : 1024;
+            this.charsLeft = entity.otherTrans.message.payload.length ? this.maxChars - (entity.otherTrans.message.payload.length / 2) : this.maxChars;
         } else {
              this.formData.innerFee = 0;
              // Update characters left
-             this.charsLeft = entity.message.payload.length ? 1024 - (entity.message.payload.length / 2) : 1024;
+             if(this.formData.encryptMessage) {
+                this.maxChars = 974;
+                // ToDo: calculate remaining characters when message is encoded with CryptoHelper.encode (for now: minus 50 chars)
+             } else {
+                 this.maxChars = 1024;
+             }
+
+             this.charsLeft = entity.message.payload.length ? this.maxChars - (entity.message.payload.length / 2) : this.maxChars;
         }
         this.formData.fee = entity.fee;
     }
