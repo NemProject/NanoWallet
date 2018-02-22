@@ -31,9 +31,9 @@ function SpanishProvider($translateProvider) {
         HEADER_RELEASE_TX: 'Lanzar una transacción',
 
         // FOOTER COMPONENT
-        FOOTER_POWERED_BY_1: 'Powered by',
+        FOOTER_POWERED_BY_1: 'Creado por',
         FOOTER_POWERED_BY_2: 'NEM technology.',
-        FOOTER_VERSION: 'Version',
+        FOOTER_VERSION: 'Versión',
 
         // DASHBOARD MODULE
         DASHBOARD_TITLE: 'Dashboard',
