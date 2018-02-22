@@ -171,17 +171,17 @@ function SpanishProvider($translateProvider) {
         HOME_FEATURE_1: 'Envía y recibe XEM fácilmente y casi instantaneamente, solo 1 minuto de tiempo por bloque!',
 
         // TRANSFER TRANSACTION MODULE
-        TRANSFER_TRANSACTION_TITLE: 'Send a transaction',
-        TRANSFER_TRANSACTION_NAME: 'Transfer transaction',
-        TRANSFER_TRANSACTION_MULTISIG_NAME: 'Multisignature transfer transaction',
-        TRANSFER_TRANSACTION_INVOICE: 'Create invoice',
-        TRANSFER_TRANSACTION_TAB_INVOICE: 'Receive',
-        TRANSFER_TRANSACTION_MOSAIC_TRANSFER: 'Mosaic transfer',
-        TRANSFER_TRANSACTION_ATTACH_MOSAIC: 'Attach mosaic',
-        TRANSFER_TRANSACTION_ATTACH: 'Attach',
-        TRANSFER_TRANSACTION_MOSAICS_ATTACHED: 'Mosaics attached',
-        TRANSFER_TRANSACTION_ENCRYPT_MESSAGE: 'Encrypt message',
-        TRANSFER_TRANSACTION_MESSAGE_TYPE: 'Message type',
+        TRANSFER_TRANSACTION_TITLE: 'Enviar una transacción',
+        TRANSFER_TRANSACTION_NAME: 'Transferir transacción',
+        TRANSFER_TRANSACTION_MULTISIG_NAME: 'Transferir transacción multifirma',
+        TRANSFER_TRANSACTION_INVOICE: 'Crear factura',
+        TRANSFER_TRANSACTION_TAB_INVOICE: 'Recibir',
+        TRANSFER_TRANSACTION_MOSAIC_TRANSFER: 'Transferir mosaico',
+        TRANSFER_TRANSACTION_ATTACH_MOSAIC: 'Adjuntar mosaico',
+        TRANSFER_TRANSACTION_ATTACH: 'Adjuntar',
+        TRANSFER_TRANSACTION_MOSAICS_ATTACHED: 'Mosaicos adjuntados',
+        TRANSFER_TRANSACTION_ENCRYPT_MESSAGE: 'Mensaje encriptado',
+        TRANSFER_TRANSACTION_MESSAGE_TYPE: 'Tipo de mensaje',
 
         // TRANSACTION LINES
         LINE_TX_DETAILS_FROM: 'From',
