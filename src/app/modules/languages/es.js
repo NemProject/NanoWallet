@@ -165,10 +165,10 @@ function SpanishProvider($translateProvider) {
         GENERAL_INVOICE: 'Factura',
 
         // HOME MODULE
-        HOME_UNSUPPORTED_BROWSER: 'Sorry but you cannot use Nano Wallet safely with this browser...',
-        HOME_RECOMMENDED_BROWSERS: 'Recommended browsers are:',
-        HOME_FEATURE_STAND_BY: 'Place the cursor on a feature to show information.',
-        HOME_FEATURE_1: 'Send and receive XEM easily and almost instantly, only 1 minute block time!',
+        HOME_UNSUPPORTED_BROWSER: 'Disculpa, pero no puedes usar Nano Wallet de manera segura con este navegador...',
+        HOME_RECOMMENDED_BROWSERS: 'Los navegadores recomendados son:',
+        HOME_FEATURE_STAND_BY: 'Sitúa el cursor en una característica para ver información.',
+        HOME_FEATURE_1: 'Envía y recibe XEM fácilmente y casi instantaneamente, solo 1 minuto de tiempo por bloque!',
 
         // TRANSFER TRANSACTION MODULE
         TRANSFER_TRANSACTION_TITLE: 'Send a transaction',
