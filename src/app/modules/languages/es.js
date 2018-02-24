@@ -289,17 +289,17 @@ function SpanishProvider($translateProvider) {
         MOSAIC_DEFINITION_INFORMATION_17: 'Si tu posees el 100% de la emisión, tu puedes sobreescribir todas las propiedades del Mosaico mediante el envío de una transacción de creación de nuevo con el mismo "espaciodenombre:mosaico" nombre.',
 
         // EDIT MOSAIC MODULE
-        MOSAIC_SUPPLY_CHANGE_TITLE: 'Change mosaic supply',
-        MOSAIC_SUPPLY_CHANGE_NAME: 'Mosaic supply change transaction',
-        MOSAIC_SUPPLY_CHANGE_MULTISIG_NAME: 'Multisignature mosaic supply change transaction',
-        MOSAIC_SUPPLY_CHANGE_SELECT: 'Select mosaic',
-        MOSAIC_SUPPLY_CHANGE_TYPE: 'Change type',
-        MOSAIC_SUPPLY_CHANGE_TYPE_1: 'Create',
-        MOSAIC_SUPPLY_CHANGE_TYPE_2: 'Delete',
-        MOSAIC_SUPPLY_CHANGE_SUPPLY: 'Supply',
-        MOSAIC_SUPPLY_CHANGE_CURRENT_SUPPLY: 'Current supply',
-        MOSAIC_SUPPLY_CHANGE_AMOUNT: 'Change amount',
-        MOSAIC_SUPPLY_CHANGE_RES_SUPPLY: 'Resulting supply',
+        MOSAIC_SUPPLY_CHANGE_TITLE: 'Cambiar emisión de Mosaico',
+        MOSAIC_SUPPLY_CHANGE_NAME: 'Transacción de cambio de emmisión de Mosaico',
+        MOSAIC_SUPPLY_CHANGE_MULTISIG_NAME: 'Transacción de cambio de emisión de Mosaico multifirma',
+        MOSAIC_SUPPLY_CHANGE_SELECT: 'Selecionar Mosaico',
+        MOSAIC_SUPPLY_CHANGE_TYPE: 'Cambiar tipo',
+        MOSAIC_SUPPLY_CHANGE_TYPE_1: 'Crear',
+        MOSAIC_SUPPLY_CHANGE_TYPE_2: 'Eliminar',
+        MOSAIC_SUPPLY_CHANGE_SUPPLY: 'Emisión',
+        MOSAIC_SUPPLY_CHANGE_CURRENT_SUPPLY: 'Emisión actual',
+        MOSAIC_SUPPLY_CHANGE_AMOUNT: 'Cambiar cantidad',
+        MOSAIC_SUPPLY_CHANGE_RES_SUPPLY: 'Emisión resultante',
 
         // NAMESPACE MODULE
         NAMESPACE_PROVISION_TITLE: 'Create namespace & sub-namespace',
