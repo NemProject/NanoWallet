@@ -302,17 +302,17 @@ function SpanishProvider($translateProvider) {
         MOSAIC_SUPPLY_CHANGE_RES_SUPPLY: 'Emisión resultante',
 
         // NAMESPACE MODULE
-        NAMESPACE_PROVISION_TITLE: 'Create namespace & sub-namespace',
-        NAMESPACE_PROVISION_NAME: 'Provision namespace transaction',
-        NAMESPACE_PROVISION_MULTISIG_NAME: 'Multisignature provision namespace transaction',
-        NAMESPACE_PROVISION_PARENT: 'Parent Namespace',
-        NAMESPACE_PROVISION_NEW_ROOT: 'New root Namespace',
-        NAMESPACE_PROVISION_NS: 'Namespace',
-        NAMESPACE_PROVISION_NS_NAME: 'Namespace name',
-        NAMESPACE_PROVISION_RESTRICTIONS: 'Namespace Restrictions',
-        NAMESPACE_PROVISION_INFORMATION_1: 'Namespaces have certain restrictions with respect to the characters being allowed in the parts as well as the length of a part. A root namespace may have a length of 16 characters while sub-namespaces may have a length of 64 characters. Valid characters are:',
-        NAMESPACE_PROVISION_INFORMATION_2: 'However a part is only allowed to begin with a letter of the alphabet or a number, thus \'alice\' is an allowed part for a root namespace while \'_alice\' is not. Certain strings are reserved and thus not allowed as namespace parts. Among the disallowed namespace parts are:',
-        NAMESPACE_PROVISION_INFORMATION_3: 'This list is not final and can be extended in the future. Thus \'user.alice\' or \'alice.user\' are not allowed in the NEM namespace system. The namespace may have up to 3 parts, thus \'qm.metals.silver\' is valid while \'qm.metals.silver.coin\' is not.',
+        NAMESPACE_PROVISION_TITLE: 'Crear espacio de nombre y sub-espacio de nombre',
+        NAMESPACE_PROVISION_NAME: 'Transacción de espacio de nombre de provisión',
+        NAMESPACE_PROVISION_MULTISIG_NAME: 'Transacción de espacio de nombre multifirma de aprovisionamiento.',
+        NAMESPACE_PROVISION_PARENT: 'Espacio de nombre padre',
+        NAMESPACE_PROVISION_NEW_ROOT: 'Nuevo espacio de nombre raíz',
+        NAMESPACE_PROVISION_NS: 'Espacio de nombre',
+        NAMESPACE_PROVISION_NS_NAME: 'Nombre del espacio de nombre',
+        NAMESPACE_PROVISION_RESTRICTIONS: 'Restricciones de Espacio de nombre ',
+        NAMESPACE_PROVISION_INFORMATION_1: 'Los espacios de nombre tienen ciertas restricciones con respecto a los caracteres, siendo permitidos en las partes como también en la longitud de una parte. Un espacio de nombre raíz debería tener una largura de 16 caracteres mientras los sub-espacios de nombres deberían tener una distancia de 64 caracteres. Los caracteres válidos son :',
+        NAMESPACE_PROVISION_INFORMATION_2: 'Sin embargo una parte es solo permitida para ser una letra del alfabeto o un número, así pues \'alice\' es una parte permitida para un espacio de nombre raíz, mientras que \'_alice\' no lo es. Ciertas cadenas son reservadas asi que no son permitidas como parte de un espacio de nombre. Entre los espacios de nombres no permitidos están :',
+        NAMESPACE_PROVISION_INFORMATION_3: 'Esta lista no es definitiva y puede ser extendida en el futuro. Así que \'usuario.alice\' o \'alice.usuario\' no están permitidos en el sistema de espacios de nombres de NEM. Los espacios de nombres pueden tener hasta 3 partes, así que \'qm.metals.silver\' es válido mientras que \'qm.metals.silver.coin\' no lo es.',
 
         // RENEW NAMESPACE MODULE
         RENEW_NS_TITLE: 'Renew namespaces',
