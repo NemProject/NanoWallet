@@ -413,31 +413,31 @@ function SpanishProvider($translateProvider) {
         ADDRESS_BOOK_CONFIRM_DELETE: 'Confirmar eliminado de entrada de libreta de direcciones',
 
         // EXPLORER MODULE NAV
-        EXPLORER_NAV_HOME: 'Home',
-        EXPLORER_NAV_NSM: 'Namespaces & Mosaics',
+        EXPLORER_NAV_HOME: 'Inicio',
+        EXPLORER_NAV_NSM: 'Espacios de nombres y Mosaicos',
         EXPLORER_NAV_APOSTILLES: 'Apostilles',
 
         // EXPLORER HOME MODULE
-        EXPLORER_HOME_TITLE: 'Explorer - Home',
-        EXPLORER_HOME_NS: 'Your Namespaces',
-        EXPLORER_HOME_MOSAICS: 'Your Mosaics',
-        EXPLORER_HOME_NS_MULTISIG: 'Multisig Owned Namespaces',
-        EXPLORER_HOME_MOSAICS_LEVY: 'Levy mosaic',
+        EXPLORER_HOME_TITLE: 'Explorador - Inicio',
+        EXPLORER_HOME_NS: 'Tus Espacios de nombres',
+        EXPLORER_HOME_MOSAICS: 'Tus Mosaicos',
+        EXPLORER_HOME_NS_MULTISIG: 'Espacios de nombres propios multifirma',
+        EXPLORER_HOME_MOSAICS_LEVY: 'Impuesto de Mosaico',
 
         // EXPLORER NAMESPACES AND MOSAICS
-        EXPLORER_NS_MOS_TITLE: 'Explorer - Namespaces and Mosaics',
-        EXPLORER_NS_MOS_SELECT_MOS: 'Selected Mosaic Details',
-        EXPLORER_NS_MOS_SEARCH: 'Search namespace',
+        EXPLORER_NS_MOS_TITLE: 'Explorador - Espacios de nombre y Mosaicos',
+        EXPLORER_NS_MOS_SELECT_MOS: 'Detalles de Mosaico seleccionado',
+        EXPLORER_NS_MOS_SEARCH: 'Buscar Espacios de nombre',
 
         // EXPLORER APOSTILLES MODULE
-        EXPLORER_APOSTILLES_TITLE: 'Explorer - Apostilles',
-        EXPLORER_APOSTILLES_YOURS: 'Your apostilles',
-        EXPLORER_APOSTILLES_PUBLIC: 'Public sink',
-        EXPLORER_APOSTILLES_NO_NTY: 'No nty file loaded, please click here to import one.',
+        EXPLORER_APOSTILLES_TITLE: 'Explorador - Apostilles',
+        EXPLORER_APOSTILLES_YOURS: 'Tus apostilles',
+        EXPLORER_APOSTILLES_PUBLIC: 'Sink pública',
+        EXPLORER_APOSTILLES_NO_NTY: 'No hay archivo nty cargado, por favor pincha aquí para importar uno.',
 
         // ACCOUNT EXPLORER
-        ACCOUNTS_EXPLORER_TITLE: 'Explorer - Accounts',
-        ACCOUNTS_EXPLORER_SEARCH: 'Search',
+        ACCOUNTS_EXPLORER_TITLE: 'Explorador - Cuentas',
+        ACCOUNTS_EXPLORER_SEARCH: 'Buscar',
 
         // APOSTILLE HISTORY MODULE
         APOSTILLE_HISTORY_TITLE: 'Apostille history',
