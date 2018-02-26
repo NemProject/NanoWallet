@@ -498,18 +498,18 @@ function SpanishProvider($translateProvider) {
         APOSTILLE_AUDIT_REMOVE_RECORDS: 'Eliminar registros localmente',
 
         // APOSTILLE MESSAGE MODULE
-        APOSTILLE_MESSAGE_TITLE: 'Send message to notarization account',
-        APOSTILLE_MESSAGE_NS_BRAND: 'Use my namespace to brand message',
-        APOSTILLE_MESSAGE_ADD_MOSAIC: 'Add mosaic',
-        APOSTILLE_NTY_ACCOUNT: 'Notarization account',
-        APOSTILLE_REQUEST_MESSAGE: 'Request message',
-        APOSTILLE_CREATE_MESSAGE_REQUEST: 'Create a message request',
+        APOSTILLE_MESSAGE_TITLE: 'Enviar mensaje a cuenta de notarización',
+        APOSTILLE_MESSAGE_NS_BRAND: 'Usar mi Espacio de nombre para marcar mensaje',
+        APOSTILLE_MESSAGE_ADD_MOSAIC: 'Añadir Mosaico',
+        APOSTILLE_NTY_ACCOUNT: 'Cuenta de notarización',
+        APOSTILLE_REQUEST_MESSAGE: 'Mensaje de respuesta',
+        APOSTILLE_CREATE_MESSAGE_REQUEST: 'Crear un mensaje de respuesta',
 
         // TRANSFER APOSTILLE OWNLERSHIP MODULE
-        APOSTILLE_TRANSFER_TITLE: 'Transfer or Split apostille ownership',
+        APOSTILLE_TRANSFER_TITLE: 'Transferir o Dividir propiedad de Apostilla',
 
         // UPADTE APOSTILLE MODULE
-        APOSTILLE_UPDATE_TITLE: 'Update apostille',
+        APOSTILLE_UPDATE_TITLE: 'Actualizar Apostilla',
 
         // ERROR ALERTS
         ALERT_MISSING_FORM_DATA: 'Please complete the form!',
