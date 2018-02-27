@@ -635,15 +635,15 @@ function SpanishProvider($translateProvider) {
         SIGN_MULTISIG_TRANSACTIONS_TITLE: 'Firmar transacciones multifirmas',
 
         // LOGIN MODULE
-        LOGIN_MEMBER_TITLE: 'Already a NEMber?',
-        LOGIN_UPGRADE_TITLE: 'Wallet needs an upgrade',
-        LOGIN_UPGRADE_MESSAGE: 'Selected wallet needs an upgrade. This action will generate a child public key and add it into your primary account.',
-        LOGIN_UPGRADE_BUTTON: 'Upgrade wallet',
-        LOGIN_IMPORT_BUTTON: 'Import Wallet',
-        LOGIN_SELECT_WALLET_YOURS: 'Select wallet',
-        LOGIN_SELECT_WALLET: 'Select a wallet in local storage',
-        LOGIN_LOGIN_BUTTON: 'Sign In',
-        LOGIN_NOTE: 'No wallet? Import one or <a href="#!/signup">signup</a>.',
+        LOGIN_MEMBER_TITLE: 'Eres un NEMber?',
+        LOGIN_UPGRADE_TITLE: 'La cartera necesitan una actualización',
+        LOGIN_UPGRADE_MESSAGE: 'La cartera seleccionada necesitan una actualización. Esta acción generará una clave pública y la añadirá en tu cuenta primaria.',
+        LOGIN_UPGRADE_BUTTON: 'Actualizar cartera',
+        LOGIN_IMPORT_BUTTON: 'Importar cartera',
+        LOGIN_SELECT_WALLET_YOURS: 'Seleccionar cartera',
+        LOGIN_SELECT_WALLET: 'Seleccionar una cartera en almacenamiento local',
+        LOGIN_LOGIN_BUTTON: 'Ingresar',
+        LOGIN_NOTE: 'No hay cartera? Importa una o <a href="#!/signup">registrate</a>.',
 
         // SIGNUP MODULE
         SIGNUP_TITLE: 'Nuevo en NEM?',
