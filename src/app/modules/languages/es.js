@@ -772,8 +772,8 @@ function SpanishProvider($translateProvider) {
 
         // TREZOR RELATED
         TREZOR_TITLE: 'TREZOR',
-        TREZOR_TEXT: 'The TREZOR hardware wallet allows you to secure your XEM, mosaics and multisig accounts',
-        TREZOR_BUTTON: 'Login with TREZOR',
+        TREZOR_TEXT: 'La cartera de hardware TREZOR te permite asegurar tus XEM, Mosaicos y cuentas multifirma.',
+        TREZOR_BUTTON: 'Ingresar con TREZOR',
 
         // CREATE OFFLINE TRANSACTION MODULE
         OFFLINE_TX_TITLE: 'Prepare an offline transaction',
@@ -794,7 +794,7 @@ function SpanishProvider($translateProvider) {
         RELEASE_OFFLINE_TX_INFO_4: 'You can release a signed transaction from any computer safely.',
 
         // INVOICE MODULE
-        CREATE_INVOICE_TITLE: 'Create an invoice'
+        CREATE_INVOICE_TITLE: 'Crear una factura'
     });
 
 }
