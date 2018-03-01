@@ -776,22 +776,22 @@ function SpanishProvider($translateProvider) {
         TREZOR_BUTTON: 'Ingresar con TREZOR',
 
         // CREATE OFFLINE TRANSACTION MODULE
-        OFFLINE_TX_TITLE: 'Prepare an offline transaction',
-        OFFLINE_TX_NO_WALLET: 'Please import a wallet from login module to see the form.',
-        OFFLINE_TX_INFO_1: 'Make sure to be disconnected of internet when importing your wallet and creating the transaction!',
-        OFFLINE_TX_INFO_2: 'Only simple transactions can be created because a connection is needed to fetch mosaics and multisig information from NEM nodes.',
-        OFFLINE_TX_INFO_3: 'After clicking the "create" button in the left panel, you will find the signed transaction below.',
-        OFFLINE_TX_INFO_4: 'A signed transaction is immutable and will be effective only if released to the network before the default deadline of 24 hours.',
-        OFFLINE_TX_SIGNED: 'Signed transaction',
-        OFFLINE_TX_RELEASE: 'Open in release module',
+        OFFLINE_TX_TITLE: 'Preparar una transacción offline',
+        OFFLINE_TX_NO_WALLET: 'Por favor, importa una cartera desde el módulo de ingresar para ver el formulario.',
+        OFFLINE_TX_INFO_1: 'Asegurate estar desconectado de internet cuando importas tu cartera y creas la transacción!',
+        OFFLINE_TX_INFO_2: 'Solo las transacciones simples pueden ser creadas por que una conexión es necesitada para extraer Mosaicos e información multifirma de los nodos NEM.',
+        OFFLINE_TX_INFO_3: 'Después de pinchar en el botón "crear" en el panel izquierdo, encontrarás la transacción firmada debajo.',
+        OFFLINE_TX_INFO_4: 'Una transacción firmada es inmutable y será efectiva solo si es liberada a la red antes de la linea temporal por defecto de 24 horas.',
+        OFFLINE_TX_SIGNED: 'Transacción firmada',
+        OFFLINE_TX_RELEASE: 'Abrir en modulo del liberación',
 
         // RELEASE OFFLINE TRANSACTION MODULE
-        RELEASE_OFFLINE_TX_TITLE: 'Release a transaction to the network',
-        RELEASE_OFFLINE_TX_PARAMETERS: 'Transaction parameters',
-        RELEASE_OFFLINE_TX_INFO_1: 'To release a transaction you must be connected to internet.',
-        RELEASE_OFFLINE_TX_INFO_2: 'Make sure that you have selected the right network and a working node or it will be rejected.',
-        RELEASE_OFFLINE_TX_INFO_3: 'It is not possible to send a signed transaction twice. One signed transaction will always generate the same hash and two transactions cannot have the same hash.',
-        RELEASE_OFFLINE_TX_INFO_4: 'You can release a signed transaction from any computer safely.',
+        RELEASE_OFFLINE_TX_TITLE: 'Liberar una transacción a la red',
+        RELEASE_OFFLINE_TX_PARAMETERS: 'Parámetros de transacción',
+        RELEASE_OFFLINE_TX_INFO_1: 'Para liberar una transacción debes de estar conectado a internet.',
+        RELEASE_OFFLINE_TX_INFO_2: 'Asegurate que tienes seleccionado la red correcta y un nodo en servicio o será rechazada.',
+        RELEASE_OFFLINE_TX_INFO_3: 'No es posible enviar una transacción firmada dos veces. Una transacción firmada siempre se generará el mismo hash y dos transacciones no pueden tener el mismo hash.',
+        RELEASE_OFFLINE_TX_INFO_4: 'Puedes liberar una trasnacción firmada desde alguna computadora segura.',
 
         // INVOICE MODULE
         CREATE_INVOICE_TITLE: 'Crear una factura'
