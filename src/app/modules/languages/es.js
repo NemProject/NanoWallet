@@ -759,16 +759,16 @@ function SpanishProvider($translateProvider) {
         FORM_SELECT_NAMESPACE: 'Seleccionar un Espacio de nombre',
 
         // VOTING MODULE
-        PORTAL_VOTING_TITLE: 'Voting',
-        PORTAL_VOTING_TEXT: 'Create and vote on polls',
-        PORTAL_VOTING_BTN1: 'See Polls',
-        PORTAL_VOTING_BTN2: 'Create Poll',
-        FORM_TITLE_FIELD_PLACEHOLDER: 'Title',
-        FORM_DESCRIPTION_FIELD_PLACEHOLDER: 'Write your description here',
-        FORM_OPTION_FIELD_PLACEHOLDER: 'write option',
-        FORM_WHITELIST_FIELD_PLACEHOLDER: 'account address',
-        FORM_SELECT_MULTISIG: 'Select a multisignature account',
-        FORM_SELECT_CONTACT: 'Select a contact',
+        PORTAL_VOTING_TITLE: 'Votaciones',
+        PORTAL_VOTING_TEXT: 'Crear y votar en votaciones',
+        PORTAL_VOTING_BTN1: 'Ver Votaciones',
+        PORTAL_VOTING_BTN2: 'Crear Votación',
+        FORM_TITLE_FIELD_PLACEHOLDER: 'Título',
+        FORM_DESCRIPTION_FIELD_PLACEHOLDER: 'Escribe la descripción aquí',
+        FORM_OPTION_FIELD_PLACEHOLDER: 'escribir opción',
+        FORM_WHITELIST_FIELD_PLACEHOLDER: 'dirección de cuenta',
+        FORM_SELECT_MULTISIG: 'Seleccionar una cuenta multifirma',
+        FORM_SELECT_CONTACT: 'Selecciona un contacto',
 
         // TREZOR RELATED
         TREZOR_TITLE: 'TREZOR',
