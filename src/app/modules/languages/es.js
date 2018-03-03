@@ -5,8 +5,8 @@ function SpanishProvider($translateProvider) {
 
         // HEADER COMPONENT
         WALLET_NAME_1: 'nano',
-        WALLET_NAME_2: 'Cartera',
-        APP_NAME_SUB: 'La interface segura contectandose a la plataforma NEM',
+        WALLET_NAME_2: 'Wallet',
+        APP_NAME_SUB: 'La interface segura conectándose a la plataforma NEM',
         HEADER_LOGIN_BUTTON: 'Ingresar',
         HEADER_SIGNUP_BUTTON: 'Registrarse',
         HEADER_DASHBOARD: 'Escritorio',
@@ -58,7 +58,7 @@ function SpanishProvider($translateProvider) {
         DASHBOARD_NOTICE_2: 'Por favor <a href="https://github.com/NemProject/NanoWallet" target="_blank">reporta incidencias aquí</a>.',
         DASHBOARD_NOTICE_3: 'El equipo de NEM sugiere testear primero en la testnet antes de usar la mainnet para familiarizarte con NanoWallet. Una guía simple puede ser encontrada <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank">aquí</a>. Los usuarios son responsables de sus fondos y tienen que respaldar sus claves privadas. El equipo de NEM no es responsable de cualquier pérdida de fondos debido al uso de esta APP en la mainnet.',
         DASHBOARD_NOTICE_4: 'Sugerimos escribir las claves privadas en un papel y almacenarlas en un lugar seguro. Adicionalmente, tu puedes importar el respaldo de tus cuentas en las APPs de Android e iOS.',
-        DASHBOARD_NOTICE_5: 'Gracias por tu participación!',
+        DASHBOARD_NOTICE_5: '¡Gracias por tu participación!',
 
         // GENERAL
         GENERAL_BLOCK: 'Bloque',
@@ -117,7 +117,7 @@ function SpanishProvider($translateProvider) {
         GENERAL_ADDED: 'Añadido',
         GENERAL_REMOVED: 'Eliminado',
         GENERAL_COSIGNATORY: 'Cofirmante',
-        GENERAL_COSIGNATORIES: 'Cosignatories',
+        GENERAL_COSIGNATORIES: 'Cofirmantes',
         GENERAL_PROCESSING: 'Procesando',
         GENERAL_ACCOUNT_LABEL: 'Etiqueta de cuenta',
         GENERAL_OPTIONAL: '(opcional)',
@@ -206,7 +206,7 @@ function SpanishProvider($translateProvider) {
         LINE_TX_DETAILS_MOS_EDIT: 'Editar mosaico',
         LINE_TX_DETAILS_NS_CREATE: 'Crear "espacio de nombre"',
         LINE_TX_DETAILS_NS_NEW_SUB: 'Nuevo "sub-espacio de nombre"',
-        LINE_TX_DETAILS_NS_ROOT: '"Espacio de nombre" raiz',
+        LINE_TX_DETAILS_NS_ROOT: '"Espacio de nombre" raíz',
         LINE_TX_DETAILS_RECIPIENT: 'Recipiente',
         LINE_TX_DETAILS_MULTISIG_CREATE: 'Crear cuenta multifirma',
         LINE_TX_DETAILS_MULTISIG_EDIT: 'Editar cuenta multifirma',
@@ -227,7 +227,7 @@ function SpanishProvider($translateProvider) {
         IMPORTANCE_TRANSFER_REMOTE_ACCOUNT: 'Cuenta remota',
         IMPORTANCE_TRANSFER_REMOTE_PUBLIC: 'Clave pública remota',
         IMPORTANCE_TRANSFER_INFO_PART_1: 'Una vez que se ha incluido una transacción de importancia en un bloque necesita 6 horas para activarse. Después de eso, tendrás acceso a la selección de nodos y a comandos de Iniciar / Parar.',
-        IMPORTANCE_TRANSFER_INFO_PART_2: 'Asegurate de que ya no tienes una cuenta delegada activada (si es una cuenta importada). De ser así, puedes usar la antigua clave pública delegada para desactivar (si es necesario).',
+        IMPORTANCE_TRANSFER_INFO_PART_2: 'Asegúrate de que ya no tienes una cuenta delegada activada (si es una cuenta importada). De ser así, puedes usar la antigua clave pública delegada para desactivar (si es necesario).',
         IMPORTANCE_TRANSFER_INFO_PART_MULTISIG: 'Para cuentas de firma múltiple, solo el propietario que inició la transacción de transferencia de importancia puede iniciar y detener el cosechamiento. Si cualquier otro cofirmante desea recuperar poder de cosechamiento, solo necesita desactivar y reactivar el estado remoto.',
         IMPORTANCE_TRANSFER_NO_BLOCKS_HARVESTED: 'No hay bloques cosechados',
         IMPORTANCE_TRANSFER_HARVESTING_PANEL: 'Panel de cosechamiento',
@@ -319,7 +319,7 @@ function SpanishProvider($translateProvider) {
         RENEW_NS_NONE: 'Ningún "espacio de nombre" por renovar',
         RENEW_NS_INFORMATION_TITLE: 'Renovando "espacios de nombres"',
         RENEW_NS_INFORMATION_TITLE_1: 'Comisiones',
-        RENEW_NS_INFORMATION_TITLE_2: '"Espacios de nombres" ráiz',
+        RENEW_NS_INFORMATION_TITLE_2: '"Espacios de nombres" raíz',
         RENEW_NS_INFORMATION_TITLE_3: 'Renovar periodo',
         RENEW_NS_INFORMATION_1: 'Renovando un "espacio de nombre" cuesta la misma cantidad que registrando uno nuevo, 100 XEM.',
         RENEW_NS_INFORMATION_2: 'Solo los "espacios de nombres" raíz necesitan ser renovados. Todos los "Sub-espacios de nombres" serán renovados automáticamente sobre la renovación del "espacio de nombre" raíz.',
@@ -357,7 +357,7 @@ function SpanishProvider($translateProvider) {
         ACCOUNT_WALLET_QR_BTN: 'QR de cartera',
         ACCOUNT_WALLET_QR_BTN_2: 'Exportar QR de cartera (Android e IOS)',
         ACCOUNT_BACKUP_WALLET: 'Respaldar cartera',
-        ACCOUNT_BACKUP_WALLET_NOTE: 'Es <b><u>muy importante</u></b> que tengas respaldos de tus cateras con las que iniciar sesión o tus XEM podrán perderse.',
+        ACCOUNT_BACKUP_WALLET_NOTE: 'Es <b><u>muy importante</u></b> que tengas respaldos de tus carteras con las que iniciar sesión o tus XEM podrán perderse.',
         ACCOUNT_BACKUP_WALLET_DOWNLOAD: 'Descargar cartera',
         ACCOUNT_INFO_QR_TITLE: 'QR de información de cuenta',
         ACCOUNT_WALLET_QR_NOTE: 'Este QR está trabajando solo en la nueva APP móvil NEMpay',
@@ -377,7 +377,7 @@ function SpanishProvider($translateProvider) {
         PORTAL_MULTISIG_BTN_2: 'Editar un contacto existente',
         PORTAL_MULTISIG_BTN_3: 'Firmar transacciones multifirma',
         PORTAL_HARVESTING_TITLE: 'Cosechado delegado',
-        PORTAL_HARVESTING_TEXT: 'El cosechado delegado es la caracteristica que permite "minar" incluso mientras tu cuenta está cerrada.',
+        PORTAL_HARVESTING_TEXT: 'El cosechado delegado es la característica que permite "minar" incluso mientras tu cuenta está cerrada.',
         PORTAL_EXCHANGE_TITLE: 'Casas de intercambio instantáneas',
         PORTAL_EXCHANGE_TEXT: 'Usa los widgets de Changelly y ShapeShift para combrar XEM y ten los mejores ratios!',
         PORTAL_EXCHANGE_BTN: 'Comprar XEM',
@@ -385,7 +385,7 @@ function SpanishProvider($translateProvider) {
         PORTAL_NS_TEXT: 'Los "espacios de nombres" son nombres de dominio. Cada "espacio de nombre" es único y autentica los Mosaicos (activos) emitidos en su o sus "subdominios".',
         PORTAL_NS_BTN: 'Crear un "espacio de nombre"',
         PORTAL_MOSAIC_TITLE: 'Mosaicos',
-        PORTAL_MOSAIC_TEXT: 'Los Mosaicos de NEM son activos que exponen propiedades adicionales y otras caracteristicas. Para tener la capacidad de crear un Mosaico, una cuenta debe alquilar al menos un "espacio de nombre" raíz.',
+        PORTAL_MOSAIC_TEXT: 'Los Mosaicos de NEM son activos que exponen propiedades adicionales y otras características. Para tener la capacidad de crear un Mosaico, una cuenta debe alquilar al menos un "espacio de nombre" raíz.',
         PORTAL_MOSAIC_BTN_1: 'Crear Mosaico',
         PORTAL_MOSAIC_BTN_2: 'Editar Mosaico',
         PORTAL_APOSTILLE_TITLE: 'Apostilla',
@@ -643,7 +643,7 @@ function SpanishProvider($translateProvider) {
         LOGIN_SELECT_WALLET_YOURS: 'Seleccionar cartera',
         LOGIN_SELECT_WALLET: 'Seleccionar una cartera en almacenamiento local',
         LOGIN_LOGIN_BUTTON: 'Ingresar',
-        LOGIN_NOTE: 'No hay cartera? Importa una o <a href="#!/signup">registrate</a>.',
+        LOGIN_NOTE: '¿No hay cartera? Importa una o <a href="#!/signup">regístrate</a>.',
 
         // SIGNUP MODULE
         SIGNUP_TITLE: 'Nuevo en NEM?',
@@ -791,7 +791,7 @@ function SpanishProvider($translateProvider) {
         RELEASE_OFFLINE_TX_INFO_1: 'Para liberar una transacción debes de estar conectado a internet.',
         RELEASE_OFFLINE_TX_INFO_2: 'Asegurate que tienes seleccionado la red correcta y un nodo en servicio o será rechazada.',
         RELEASE_OFFLINE_TX_INFO_3: 'No es posible enviar una transacción firmada dos veces. Una transacción firmada siempre se generará el mismo hash y dos transacciones no pueden tener el mismo hash.',
-        RELEASE_OFFLINE_TX_INFO_4: 'Puedes liberar una trasnacción firmada desde alguna computadora segura.',
+        RELEASE_OFFLINE_TX_INFO_4: 'Puedes liberar una transacción firmada desde alguna computadora segura.',
 
         // INVOICE MODULE
         CREATE_INVOICE_TITLE: 'Crear una factura'
