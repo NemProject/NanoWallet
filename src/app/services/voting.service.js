@@ -1,4 +1,5 @@
-import nem from 'nem-sdk';
+const nem = require('nem-library');
+const voting = require('nem-voting');
 
 class Voting {
     constructor($filter, $timeout, Alert, Wallet, VotingUtils) {
@@ -12,6 +13,12 @@ class Voting {
         this._Alert = Alert;
         this._Wallet = Wallet;
         this._VotingUtils = VotingUtils;
+        if(this._Wallet.network < 0){
+            nem.NEMLibrary.bootstrap(nem.NetworkTypes.TEST_NET);
+        }
+        else{
+            nem.NEMLibrary.bootstrap(nem.NetworkTypes.MAIN_NET);
+        }
     }
 
     // Voting Functions
@@ -24,32 +31,20 @@ class Voting {
      * @return {promise} - a list of all the poll header objects on the index account
      */
     getPolls(pollIndexAddress) {
-        //get all polls in poll index account (messages that start with poll:)
-        return this._VotingUtils.getFirstMessageWithString(pollIndexAddress, 'pollIndex:').then((message)=>{
-            let indexInfo = JSON.parse(message.replace('pollIndex:', ''));
-            let isPrivate = indexInfo.private;
-            let creator = indexInfo.creator;
-            var allPolls = [];
-            return this._VotingUtils.getTransactionsWithString(pollIndexAddress, "poll:").then((transactions) => {
-                for (var i = 0; i < transactions.length; i++) {
-                    let transaction = transactions[i];
-                    if(isPrivate){
-                        let address = nem.model.address.toAddress(transaction.transaction.signer, this._Wallet.network);
-                        if(address === creator){
-                            allPolls.push(JSON.parse(transaction.transaction.message.replace('poll:', '')));
-                        }
+        const obs = voting.PollIndex.fromAddress(new nem.Address(pollIndexAddress))
+            .map((index) => {
+                console.log(index);
+                return index.headers.map((header) => {
+                    return {
+                        title: header.title,
+                        type: header.type,
+                        doe: header.doe,
+                        address: header.address.plain(),
+                        whitelist: header.whitelist,
                     }
-                    else{
-                        allPolls.push(JSON.parse(transaction.transaction.message.replace('poll:', '')));
-                    }
-                }
-                return allPolls;
-            }).catch((e)=>{
-                throw e;
+                });
             });
-        }).catch((e)=>{
-            throw e;
-        });
+        return obs.first().toPromise();
     }
 
     /**
@@ -62,144 +57,46 @@ class Voting {
      * @return {promise} - the generated poll Address
      */
     createPoll(details, pollIndex, common) {
-        if (!details.whitelist)
-            details.whitelist = [];
+        const formData = {
+            title: details.formData.title,
+            doe: details.formData.doe,
+            type: details.formData.type,
+            multiple: details.formData.multiple,
+        };
+        const description = details.description;
+        const options = details.options;
+        const whitelist = details.whitelist;
 
-        var currentAddress = this._Wallet.currentAccount.address;
-        var message = "";
-        var IndexAccount = pollIndex;
+        const poll = new voting.UnbroadcastedPoll(formData, description, options, whitelist);
+        const account = nem.Account.createWithPrivateKey(common.privateKey);
 
-        this._VotingUtils.disableSuccessAlerts();
-
-        var PollAccount;
-        var OptionAccounts = [];
-
-        console.log("// 0.create poll account (PA)");
-        return this._VotingUtils.createNewAccount().then((data) => {
-            console.log("//1.generate 1 account per option (OA)");
-            PollAccount = data;
-
-            var addresses = [];
-            for (var i = 0; i < details.options.length; i++) {
-                addresses.push(this._VotingUtils.createNewAccount());
-            }
-
-            return Promise.all(addresses);
-        }).then((data) => {
-            OptionAccounts = data;
-            var OptionAddresses = OptionAccounts.map((acc) => {
-                return acc.address
-            });
-            //console.log("addresses", OptionAccounts);
-            //GENERATE ALL THE MESSAGES
-            var formDataMessage = "formData:" + JSON.stringify(details.formData);
-            var descriptionMessage = "description:" + details.description;
-            let linkObj = {};
-            for(var i = 0; i < details.options.length; i++){
-                linkObj[details.options[i]] = OptionAddresses[i];
-            }
-            let optionsObj = {
-                strings: details.options,
-                link: linkObj
-            };
-            var optionsMessage = "options:" + JSON.stringify(optionsObj);
-            details.whitelist = details.whitelist.map((address) => {
-                return address.toUpperCase().replace(/-/g, '');
-            });
-            var whitelistMessage = "whitelist:" + JSON.stringify(details.whitelist);
-            console.log("//2.send data to PA");
-            console.log("//2.1.send formData");
-            return this._VotingUtils.sendMessage(PollAccount.address, formDataMessage, common).then(() => {
-                console.log("//2.2.send description");
-                return this._VotingUtils.sendMessage(PollAccount.address, descriptionMessage, common);
-            }).then(() => {
-                console.log("//2.3.send options");
-                return this._VotingUtils.sendMessage(PollAccount.address, optionsMessage, common);
-            }).then(() => {
-                if (details.formData.type === 1) {
-                    console.log("//2.4.send whitelist");
-                    return this._VotingUtils.sendMessage(PollAccount.address, whitelistMessage, common);
-                } else {
-                    return;
-                }
-            });
-        }).then((data) => {
-            //Create poll message
-            let header = {
-                title: details.formData.title,
-                type: details.formData.type,
-                doe: details.formData.doe,
-                address: PollAccount.address
-            };
-            if (details.formData.type === 1) {
-                header.whitelist = details.whitelist;
-            } else if (details.formData.type === 2) {
-                header.mosaic = details.formData.mosaic;
-            }
-            var pollMessage = "poll:" + JSON.stringify(header);
-            console.log("//3.send poll header to IA");
-            return this._VotingUtils.sendMessage(IndexAccount, pollMessage, common);
-        }).then(() => {
-            // Return the poll address
-            return PollAccount.address;
-        });
+        return poll.broadcast(account)
+            .map((broadcastedPoll) => {
+                return broadcastedPoll.address.plain();
+            }).first().toPromise();
     }
 
     /**
      * vote(address, common, multisigAccount) sends a vote to the given address. Can vote as multisig
      *
-     * @param {string} address - option address on which to vote
+     * @param {object} poll - poll address
+     * @param {string} option - option string on which to vote
      * @param {object} common - common object
-     * @param {string} multisigAccount - NEM address of the multisig account we want to send the vote for
+     * @param {string} multisigAccount - NEM address of the multisig account we want to send the vote for (optional)
      *
      * @return {promise} - returns a promise that resolves when the vote has been sent
      */
-    vote(address, common, multisigAccount, message) {
-        this._VotingUtils.disableSuccessAlerts();
-
-        var formData = {};
-        formData.rawRecipient = '';
-        formData.recipient = address;
-        formData.recipientPubKey = '';
-        formData.message = '';
-        formData.amount = 0;
-        formData.fee = 0;
-        formData.encryptMessage = false;
-
-        // Multisig data
-        formData.innerFee = 0;
-        if (!multisigAccount) {
-            formData.isMultisig = false;
-            formData.multisigAccount = '';
-        } else {
-            if(message){
-                formData.message = message;
-            }
-            formData.isMultisig = true;
-            formData.multisigAccount = multisigAccount;
-        }
-
-        let now = (new Date()).getTime();
-
-        // Mosaics data
-        formData.mosaics = null;
-        formData.isMosaicTransfer = false;
-
-        // Build the entity to serialize
-        let entity = nem.model.transactions.prepare("transferTransaction")(common, formData, this._Wallet.network);
-        return nem.model.transactions.send(common, entity, this._Wallet.node).then((res) => {
-            // Check status
-            if (res.status === 200) {
-                // If code >= 2, it's an error
-                console.log("code", res.data.code);
-                if (res.data.code >= 2) {
-                    this._Alert.transactionError(res.data.message);
-                    throw res.data.message;
+    vote(poll, option, common, multisigAccount) {
+        return voting.BroadcastedPoll.fromAddress(new nem.Address(poll))
+            .switchMap((poll) => {
+                const account = nem.Account.createWithPrivateKey(common.privateKey);
+                if (multisigAccount) {
+                    const multisigAcc = nem.PublicAccount.createWithPublicKey(multisigAccount.publicKey);
+                    return poll.voteMultisig(account, multisigAcc, option);
+                } else {
+                    return poll.vote(account, option);
                 }
-            }
-        }).catch((e)=>{
-            throw e;
-        });
+            }).first().toPromise();
     }
 
     /**
@@ -210,458 +107,40 @@ class Voting {
      * @return {promise} - a promise that returns the details object of the poll
      */
     pollDetails(pollAddress) {
-        var details = {
-            formData: {},
-            description: '',
-            options: {},
-            whitelist: null
-        };
-        //get all the data from the Poll address
-        let QueryOptions = {
-            start: 0
-        };
-
-        var formDataPromise = this._VotingUtils.getFirstMessageWithString(pollAddress, "formData:", QueryOptions);
-        var descriptionPromise = this._VotingUtils.getFirstMessageWithString(pollAddress, "description:", QueryOptions);
-        var optionsPromise = this._VotingUtils.getFirstMessageWithString(pollAddress, "options:", QueryOptions);
-
-        return Promise.all([formDataPromise, descriptionPromise, optionsPromise]).then(([formDataResult, descriptionResult, optionsResult]) => {
-            if(formDataResult === '' || descriptionResult === '' || optionsResult === ''){
-                throw "Address is not a poll";
-            }
-            details.formData = (JSON.parse(formDataResult.replace('formData:', '')));
-            details.description = (descriptionResult.replace('description:', ''));
-            details.options = (JSON.parse(optionsResult.replace('options:', '')));
-
-            const unique = function(list) {
-                return list.sort().filter((item, pos, ary) => {
-                    return !pos || item !== ary[pos - 1];
-                });
-            };
-            var orderedAddresses = [];
-            if(details.options.link){
-                orderedAddresses = details.options.strings.map((option)=>{
-                    return details.options.link[option];
-                });
-            }
-            else{
-                orderedAddresses = details.options.addresses;
-            }
-            if(orderedAddresses.length !== unique(orderedAddresses).length){
-                throw "Poll not well formed";
-            }
-
-            if (details.formData.type === 1) {
-                return this._VotingUtils.getFirstMessageWithString(pollAddress, "whitelist:", QueryOptions).then((whiteMsg) => {
-                    details.whitelist = (JSON.parse(whiteMsg.replace('whitelist:', '')));
-                    return details;
-                }).catch((e)=>{
-                    throw e;
-                });
-            } else {
-                return details;
-            }
-        }).catch((e)=>{
-            throw e;
-        });
-    }
-
-    /**
-     * get1a1vResults(pollAddress, end) returns the result object for the poll
-     *
-     * @param {string} pollAddress - NEM address of the poll
-     * @param {integer} end - a timestamp for the end of the counting. All votes after this will be ignored
-     *
-     * @return {promise} - A promise that returns the result object of the poll
-     */
-    get1a1vResults(pollAddress, end) {
-        var details;
-        var endBlock;
-        var optionTransactions = [];
-
-        // get the end block
-        let blockPromise;
-        if (end) {
-            blockPromise = this._VotingUtils.getHeightByTimestamp(end);
-        } else {
-            blockPromise = this._VotingUtils.getCurrentHeight();
-        }
-        return blockPromise.then((block) => {
-            endBlock = block;
-            // get poll details
-            return this.pollDetails(pollAddress);
-        }).then((data) => {
-            details = data;
-            //get all Transactions
-            var orderedAddresses = [];
-            if(details.options.link){
-                orderedAddresses = details.options.strings.map((option)=>{
-                    return details.options.link[option];
-                });
-            }
-            else{
-                orderedAddresses = details.options.addresses;
-            }
-            for (var i = 0; i < orderedAddresses.length; i++) {
-                optionTransactions.push(this._VotingUtils.getTransactionsWithString(orderedAddresses[i], ""));
-            }
-            return Promise.all(optionTransactions)
-        }).then((data) => {
-            optionTransactions = data;
-            //console.log("optionTransactions", optionTransactions);
-            if (end) {
-                optionTransactions = optionTransactions.map((transactions) => {
-                    return transactions.filter((transaction) => {
-                        return transaction.meta.height <= endBlock;
-                    });
-                })
-            } else {
-                end = new Date().getTime();
-            }
-            var optionAddresses = [];
-            //convert public keys to addresses and filter by WhiteList
-            for (var i = 0; i < optionTransactions.length; i++) {
-                optionAddresses.push(optionTransactions[i].map((transaction) => {
-                    return nem.model.address.toAddress(transaction.transaction.signer, this._Wallet.network);
-                }).filter((address) => {
-                    return (details.whitelist.indexOf(address) > -1);
-                }));
-            }
-            //eliminate repetitions in array
-            const unique = function(list) {
-                return list.sort().filter((item, pos, ary) => {
-                    return !pos || item !== ary[pos - 1];
-                });
-            };
-            optionAddresses = optionAddresses.map(unique); // the lists are now sorted
-
-            // merge for two sorted arrays
-            const merge = function(a, b) {
-                var answer = new Array(a.length + b.length),
-                    i = 0,
-                    j = 0,
-                    k = 0;
-                while (i < a.length && j < b.length) {
-                    if (a[i] < b[j]) {
-                        answer[k] = a[i];
-                        i++;
-                    } else {
-                        answer[k] = b[j];
-                        j++;
-                    }
-                    k++;
-                }
-                while (i < a.length) {
-                    answer[k] = a[i];
-                    i++;
-                    k++;
-                }
-                while (j < b.length) {
-                    answer[k] = b[j];
-                    j++;
-                    k++;
-                }
-                return answer;
-            };
-            // merge addresses from all options (they remain sorted)
-            var allAddresses = optionAddresses.reduce(merge, []);
-            //console.log("addresses", allAddresses);
-            //we don't need to do anything if there are no votes
-            if (allAddresses.length === 0) {
-                var resultsObject = {
-                    "totalVotes": 0,
-                    "options": []
-                }
-                details.options.strings.map((option) => {
-                    resultsObject.options.push({"text": option, "votes": 0, "weighted": 0, "percentage": 0});
-                });
-                return resultsObject;
-            }
-            //if not multiple invalidate multiple votes
-            let occurences = {};
-            if (details.formData.multiple) {
-                allAddresses.map((address)=>{
-                    if(!occurences[address]){
-                        occurences[address] = 1;
-                    }
-                    else{
-                        occurences[address]++;
-                    }
-                });
-            }
-            else {
-                var nullified = [];
-                // Since we deleted repeated votes in the same option, we can know all repetitions now mean they voted in more than one option
-                nullified = allAddresses.filter((item, pos, ary) => {
-                    return pos && item === ary[pos - 1];
-                });
-                //remove null votes
-                optionAddresses = optionAddresses.map((addresses) => {
-                    return addresses.filter((address) => {
-                        return (nullified.indexOf(address) < 0);
-                    });
-                });
-                allAddresses = allAddresses.filter((address) => {
-                    return (nullified.indexOf(address) < 0);
-                });
-                allAddresses.map((address)=>{
-                    occurences[address] = 1;
-                });
-            }
-            // Only valid votes now on optionAddresses
-
-            // calculate weights
-            var weights = [];
-            for(var i = 0; i < allAddresses.length; i++){
-                weights[i] = 1/occurences[allAddresses[i]];
-            }
-            var addressWeights = {}; // maps addresses to their importance
-            for (var i = 0; i < allAddresses.length; i++) {
-                addressWeights[allAddresses[i]] = weights[i];
-            }
-            //count number of votes for each option
-            var voteCounts = optionAddresses.map((addresses) => {
-                return addresses.length;
-            });
-            //count votes weighted
-            var voteCountsWeighted = optionAddresses.map((addresses) => {
-                return addresses.reduce((accumulated, v) => {
-                    return accumulated + addressWeights[v];
-                }, 0);
-            });
-
-            var totalVotes = allAddresses.length;
-            var resultsObject = {
-                "totalVotes": totalVotes,
-                "options": []
-            };
-            for (var i = 0; i < details.options.strings.length; i++) {
-                let percentage = (totalVotes === 0)
-                    ? (0)
-                    : (voteCountsWeighted[i] * 100 / totalVotes);
-                resultsObject.options.push({"text": details.options.strings[i], "votes": voteCounts[i], "weighted": voteCountsWeighted[i], "percentage": percentage});
-            }
-            return resultsObject;
-        }).catch();
-    }
-
-    /**
-     * getPOIResults(pollAddress, end) returns the result object for the poll
-     *
-     * @param {string} pollAddress - NEM address of the poll
-     * @param {integer} end - a timestamp for the end of the counting. All votes after this will be ignored,
-     * and the importance score of the voters will be determined from historical data
-     *
-     * @return {promise} - A promise that returns the result object of the poll
-     */
-    getPOIResults(pollAddress, end) {
-        // get poll details2
-        var details;
-        var endBlock;
-        var optionTransactions = [];
-
-        let blockPromise;
-        if (end) {
-            blockPromise = this._VotingUtils.getHeightByTimestamp(end);
-        } else {
-            blockPromise = Promise.resolve(-1);
-        }
-        return blockPromise.then((block) => {
-            endBlock = block;
-            return this.pollDetails(pollAddress);
-        }).then((data) => {
-            details = data;
-            console.log("details->", details);
-            //get all Transactions
-            var orderedAddresses = [];
-            if(details.options.link){
-                orderedAddresses = details.options.strings.map((option)=>{
-                    return details.options.link[option];
-                });
-            }
-            else{
-                orderedAddresses = details.options.addresses;
-            }
-            for (var i = 0; i < orderedAddresses.length; i++) {
-                optionTransactions.push(this._VotingUtils.getTransactionsWithString(orderedAddresses[i], ""));
-            }
-            return Promise.all(optionTransactions)
-        }).then((data) => {
-            optionTransactions = data;
-            //console.log("optionTransactions", optionTransactions);
-            // Filter only the ones that voted before ending
-            if (end) {
-                optionTransactions = optionTransactions.map((transactions) => {
-                    return transactions.filter((transaction) => {
-                        return transaction.meta.height <= endBlock;
-                    });
-                })
-            } else {
-                end = -1;
-            }
-            // Only ransactions with 0 xem and 0 mosaics (Invalidates votes from exchanges and other cheating attempts)
-            optionTransactions = optionTransactions.map((transactions) => {
-                return transactions.filter((transaction) => {
-                    return (transaction.transaction.amount === 0) && (!transaction.transaction.mosaics);
-                });
-            })
-            var optionAddresses = [];
-            for (var i = 0; i < optionTransactions.length; i++) {
-                //convert public keys to addresses
-                optionAddresses.push(optionTransactions[i].map((transaction) => {
-                    return nem.model.address.toAddress(transaction.transaction.signer, this._Wallet.network);
-                }));
-            }
-            //eliminate repetitions in array
-            const unique = function(list) {
-                return list.sort().filter((item, pos, ary) => {
-                    return !pos || item !== ary[pos - 1];
-                });
-            };
-            optionAddresses = optionAddresses.map(unique); // the lists are now sorted
-
-            // merge for two sorted arrays
-            const merge = function(a, b) {
-                var answer = new Array(a.length + b.length),
-                    i = 0,
-                    j = 0,
-                    k = 0;
-                while (i < a.length && j < b.length) {
-                    if (a[i] < b[j]) {
-                        answer[k] = a[i];
-                        i++;
-                    } else {
-                        answer[k] = b[j];
-                        j++;
-                    }
-                    k++;
-                }
-                while (i < a.length) {
-                    answer[k] = a[i];
-                    i++;
-                    k++;
-                }
-                while (j < b.length) {
-                    answer[k] = b[j];
-                    j++;
-                    k++;
-                }
-                return answer;
-            };
-            // merge addresses from all options (they remain sorted)
-            var allAddresses = optionAddresses.reduce(merge, []);
-            //we don't need to do anything if there are no votes
-            if (allAddresses.length === 0) {
-                var resultsObject = {
-                    "totalVotes": 0,
-                    "options": []
-                }
-                details.options.strings.map((option) => {
-                    resultsObject.options.push({"text": option, "votes": 0, "weighted": 0, "percentage": 0});
-                });
-                return resultsObject;
-            }
-
-            //if not multiple invalidate multiple votes
-            let occurences = {};
-            if (details.formData.multiple) {
-                allAddresses.map((address)=>{
-                    if(!occurences[address]){
-                        occurences[address] = 1;
-                    }
-                    else{
-                        occurences[address]++;
-                    }
-                });
-            }
-            else {
-                var nullified = [];
-                // Since we deleted repeated votes in the same option, we can know all repetitions now mean they voted in more than one option
-                nullified = allAddresses.filter((item, pos, ary) => {
-                    return pos && item === ary[pos - 1];
-                });
-                //remove null votes
-                optionAddresses = optionAddresses.map((addresses) => {
-                    return addresses.filter((address) => {
-                        return (nullified.indexOf(address) < 0);
-                    });
-                });
-                allAddresses = allAddresses.filter((address) => {
-                    return (nullified.indexOf(address) < 0);
-                });
-                allAddresses.map((address)=>{
-                    occurences[address] = 1;
-                });
-            }
-            // Only valid votes now on optionAddresses
-            // to only request once for every address even in multiple votes
-            var uniqueAllAddresses = unique(allAddresses);
-
-            // GET IMPORTANCES
-            return this._VotingUtils.getImportances(uniqueAllAddresses, endBlock).then((importances) => {
-                for(var i = 0; i < importances.length; i++){
-                    importances[i] /= occurences[uniqueAllAddresses[i]];
-                }
-                // calculate the sum of all importances
-                var totalImportance = importances.reduce((a, b) => {
-                    return a + b;
-                }, 0);
-                var addressImportances = {}; // maps addresses to their importance
-                for (var i = 0; i < allAddresses.length; i++) {
-                    addressImportances[uniqueAllAddresses[i]] = importances[i];
-                }
-                //count number of votes for each option
-                var voteCounts = optionAddresses.map((addresses) => {
-                    return addresses.length;
-                });
-                //count votes weighted by importance
-                var voteCountsWeighted = optionAddresses.map((addresses) => {
-                    return addresses.reduce((accumulated, v) => {
-                        return accumulated + addressImportances[v];
-                    }, 0);
-                });
-
-                var totalVotes = allAddresses.length;
-                var resultsObject = {
-                    "totalVotes": totalVotes,
-                    "options": []
+        return voting.BroadcastedPoll.fromAddress(new nem.Address(pollAddress))
+            .map((poll) => {
+                const data = {
+                    formData: poll.data.formData,
+                    description: poll.data.description,
+                    options: {
+                        strings: poll.data.options,
+                        link: {},
+                    },
+                    whitelist: poll.data.whitelist,
                 };
-                for (var i = 0; i < details.options.strings.length; i++) {
-                    let percentage = (totalVotes === 0 || totalImportance === 0)
-                        ? (0)
-                        : (voteCountsWeighted[i] * 100 / totalImportance);
-                    resultsObject.options.push({"text": details.options.strings[i], "votes": voteCounts[i], "weighted": voteCountsWeighted[i], "percentage": percentage});
-                }
-                return resultsObject;
-            }).catch();
-        }).catch();
+                poll.data.options.forEach((option) => {
+                    data.options.link[option] = poll.getOptionAddress(option).plain();
+                });
+                return data;
+            }).first().toPromise();
     }
 
     /**
      * getResults(pollAddress, type, end) returns the result object for the poll depending of the type of the counting
      *
      * @param {string} pollAddress - NEM address of the poll
-     * @param {number} type - the type of the poll
-     *                          0 for POI
-     *                          1 for 1 account 1 vote
-     *                          2 for mosaic
-     * @param {integer} end - a timestamp for the end of the counting. All votes after this will be ignored,
-     * and the weighted score of the voters will be determined from historical data
      *
      * @return {promise} - A promise that returns the result object of the poll
      */
-    getResults(pollAddress, type, end) {        
-        if (type === 0) {
-            return this.getPOIResults(pollAddress, end);
-        } else if (type === 1) {
-            return this.get1a1vResults(pollAddress, end);
-        }/* else if (type === 2) {
-            return this.getTokenResults(pollAddress, end);
-        }*/
+    getResults(pollAddress) {
+        return voting.BroadcastedPoll.fromAddress(new nem.Address(pollAddress))
+            .switchMap((poll) => {
+                return poll.getResults();
+            }).first().toPromise();
     }
 
     /**
-     * getPOIResults(address, pollDetails) checks if the current account has any votes sent to any option of the poll
+     * hasVoted(addrses, pollDetails)
      *
      * @param {string} address - NEM address of the poll
      * @param {object} pollDetails - poll details object of the poll. The details can be obtained from the address,

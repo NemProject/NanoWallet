@@ -160,7 +160,7 @@ class pollsCtrl {
         let votes = [];
         for (var i = 0; i < optionAddresses.length; i++) {
             if (this.multisigVote) {
-                votes.push(this._Voting.vote(optionAddresses[i], this.common, this.multisigAccount, "vote for poll " + this.currentPollAddress + ' with option "' + optionStrings[i] + '"').then((data) => {
+                votes.push(this._Voting.vote(this.currentPollAddress, optionStrings[i], this.common, this.multisigAccount).then((data) => {
                     this._$timeout(() => {
                         this.alreadyVoted = 1;
                         this.voting = false;
@@ -172,7 +172,7 @@ class pollsCtrl {
                     });
                 }));
             } else {
-                votes.push(this._Voting.vote(optionAddresses[i], this.common).then((data) => {
+                votes.push(this._Voting.vote(this.currentPollAddress, optionStrings[i], this.common).then((data) => {
                     this._$timeout(() => {
                         this.alreadyVoted = 1;
                         this.voting = false;
@@ -402,7 +402,6 @@ class pollsCtrl {
             });
         }).catch((e)=>{
             this._$timeout(() => {
-                console.log("pollselect");
                 this.loadingAddressError = true;
             });
         });
