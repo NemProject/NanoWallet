@@ -1,0 +1,76 @@
+<div class="transferTransaction-page">
+  <div class="container-fluid main">
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>{{ 'VERIFY_SIGNED_MSG_TITLE' | translate }}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="panel-heading">
+          <span><br></span>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn message">
+                <label>{{'CREATE_SIGNED_MSG_NAME' | translate}}: </label>
+              </span>
+              <textarea class="form-control" rows="5" cols="25" ng-model="$ctrl.signedMessage" style="white-space: normal;"></textarea>
+            </div>
+          </fieldset>
+          <button class="btn btn-success" type="submit" ng-disabled="$ctrl.okPressed || !$ctrl.signedMessage" ng-click="$ctrl.verify()">
+            <i class="fa fa-angle-double-right"></i> {{ 'GENERAL_VERIFY' | translate }}
+          </button>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-12">
+        <div class="panel-heading">
+            <h3>{{ 'GENERAL_RESULT' | translate }}</h3>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                  <label>{{ 'GENERAL_ACCOUNT' | translate }}: </label>
+              </span>
+              <input class="form-control" type="text" value="{{ $ctrl.result.signer | fmtPubToAddress:$ctrl._Wallet.network}}" readOnly/>
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                  <label>{{ 'GENERAL_PUBLIC_KEY' | translate }}: </label>
+              </span>
+              <input class="form-control" type="text" ng-model="$ctrl.result.signer" readOnly/>
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                  <label>{{ 'GENERAL_MESSAGE' | translate }}: </label>
+              </span>
+              <input class="form-control" type="text" ng-model="$ctrl.result.message" readOnly/>
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                  <label>{{ 'GENERAL_SIGNATURE' | translate }}: </label>
+              </span>
+              <input class="form-control" type="text" ng-model="$ctrl.result.signature" readOnly/>
+            </div>
+          </fieldset>
+          <fieldset class="form-group" ng-show="!$ctrl.invalidObject">
+              <p class="bg-success" style="padding: 10px;text-align: center;" ng-show="$ctrl.result && $ctrl.result.isValid"><i class="fa fa-check"></i> {{ 'VERIFY_SIGNED_MSG_SIG_VALID' | translate }}</p>
+              <p class="bg-danger" style="padding: 10px;text-align: center;" ng-show="$ctrl.result && !$ctrl.result.isValid"><i class="fa fa-times"></i> <span ng-bind-html="'VERIFY_SIGNED_MSG_SIG_NOT_VALID' | translate"></span></p>
+          </fieldset>
+          <fieldset class="form-group" ng-show="$ctrl.invalidObject">
+              <p class="bg-danger" style="padding: 10px;text-align: center;"><i class="fa fa-times"></i> {{ 'VERIFY_SIGNED_MSG_NOT_VALID' | translate }}</p>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

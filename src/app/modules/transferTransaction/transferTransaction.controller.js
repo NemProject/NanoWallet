@@ -196,6 +196,9 @@ class TransferTransactionCtrl {
                 return;
             });
         });
+        /*$('#confirmation').modal({
+            show: 'true'
+        });*/ 
     }
 
     //// End methods region ////

@@ -37,13 +37,21 @@
           <password-input common="$ctrl.common"></password-input>
           <!-- Multisig select -->
           <multisig-select ng-show="$ctrl.formData.isMultisig" multisig-account="$ctrl.formData.multisigAccount"></multisig-select>
+          <fieldset class="form-group" ng-show="$ctrl.isUpdate">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <label>{{'APOSTILLE_NTY_ACCOUNT' | translate}}: </label>
+              </span>
+              <input class="form-control" type="text" ng-model="$ctrl._$state.params.address" readOnly/>
+            </div>
+          </fieldset>
           <!-- TAGS SECTION -->
           <fieldset class="form-group">
             <div class="input-group">
               <span class="input-group-btn">
                 <label ng-class="$ctrl.common.password.length && !$ctrl.formData.tags.length ? 'has-error' : ''">{{ 'GENERAL_TAGS' | translate }}: </label>
               </span>
-              <input class="form-control" type="text" placeholder="{{ 'GENERAL_TAGS' | translate }}" ng-model="$ctrl.formData.tags" ng-disabled="!$ctrl.common.password" ng-class="$ctrl.common.password.length && !$ctrl.formData.tags.length ? 'has-error' : ''"/>
+              <input class="form-control" type="text" placeholder="{{ 'GENERAL_TAGS' | translate }}" ng-model="$ctrl.formData.tags" ng-disabled="!$ctrl.common.password" ng-class="$ctrl.common.password.length && !$ctrl.formData.tags.length ? 'has-error' : ''" ng-readonly="$ctrl.isUpdate"/>
             </div>
           </fieldset>
           <!-- HASH FUNCTION -->
@@ -62,7 +70,7 @@
               <span class="input-group-btn">
                 <label>{{ 'GENERAL_STORAGE' | translate }}:</label>
               </span>
-              <select class="form-control" ng-options="type.value as type.name for type in $ctrl.types" ng-model="$ctrl.formData.isPrivate">
+              <select class="form-control" ng-options="type.value as type.name for type in $ctrl.types" ng-model="$ctrl.formData.isPrivate" ng-disabled="$ctrl.isUpdate">
               </select>
             </div>
           </fieldset>

@@ -7,7 +7,7 @@ class CreateMultisigCtrl {
      *
      * @params {services} - Angular services to inject
      */
-    constructor(Wallet, Alert, Recipient, $timeout) {
+    constructor(Wallet, Alert, Recipient, $timeout, $state) {
         'ngInject';
 
         //// Module dependencies region ////
@@ -16,6 +16,7 @@ class CreateMultisigCtrl {
         this._Alert = Alert;
         this._Recipient = Recipient;
         this._$timeout = $timeout;
+        this._$state = $state;
 
         //// End dependencies region ////
 
@@ -66,6 +67,12 @@ class CreateMultisigCtrl {
         } else {
             this.haveMoreThanOneAccount = false;
             this.useCustomAccount = true;
+        }
+        // Set account if any passed in parameters
+        if (this._$state.params.privateKey.length) {
+            this.common.privateKey = this._$state.params.privateKey;
+            this.useCustomAccount = true;
+            this.generateAccountToConvert();
         }
     }
 

@@ -43,4 +43,12 @@ servicesModule.service('DataStore', DataStoreService);
 import LoginService from './login.service';
 servicesModule.service('Login', LoginService);
 
+// Set VotingUtils service
+import VotingUtilsService from './votingUtils.service';
+servicesModule.service('VotingUtils', VotingUtilsService);
+
+// Set Voting service
+import VotingService from './voting.service';
+servicesModule.service('Voting', VotingService);
+
 export default servicesModule;

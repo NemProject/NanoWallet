@@ -27,6 +27,8 @@ function RussianProvider($translateProvider) {
         HEADER_NODE_CUSTOM_TOOLTIP: 'Введите здесь собственный IP-адрес узла NIS',
         HEADER_PURGE: 'Очистка',
         HEADER_PURGE_MESSAGE: 'Пожалуйста, подтвердите очистку локального хранилища. Нажав на кнопку "OK" все сведения о Ваших кошельках в локальном хранилище текущего браузера будут удалены. Пожалуйста, убедитесь в том, что Вы сделали резервную копию всех кошельков для гарантии безопасности Ваших средств.',
+        HEADER_OFFLINE_TX: 'Prepare an offline transaction',
+        HEADER_RELEASE_TX: 'Release a transaction',
 
         // FOOTER COMPONENT
         FOOTER_POWERED_BY_1: 'При поддержке',
@@ -159,6 +161,8 @@ function RussianProvider($translateProvider) {
         GENERAL_ENCRYPTED: 'Encrypted',
         GENERAL_UNENCRYPTED: 'Unencrypted',
         GENERAL_HEXADECIMAL: 'Hexadecimal',
+        GENERAL_SELECT_ACCOUNT: 'Select account',
+        GENERAL_INVOICE: 'Invoice',
 
         // HOME MODULE
         HOME_UNSUPPORTED_BROWSER: 'Простите, но Вы не можете безопасно использовать NanoWallet в этом браузере...',
@@ -392,6 +396,7 @@ function RussianProvider($translateProvider) {
         PORTAL_APOSTILLE_BTN_2: 'Проверить',
         PORTAL_ADDRESS_BOOK_TEXT: 'Назначьте метки адресам, чтобы легко отслеживать контакты.',
         PORTAL_ADDRESS_BOOK_BTN: 'Управление адресной книгой',
+        PORTAL_INVOICE_TEXT: 'Create an invoice to share via QR code',
 
         // ADDRESS BOOK MODULE
         ADDRESS_BOOK_TITLE: 'Адресная книга',
@@ -582,6 +587,7 @@ function RussianProvider($translateProvider) {
         ALERT_ACCOUNT_ALREADY_IN_ADDRESS_BOOK: 'Contact already present in address book!',
         ALERT_MAX_MOSAIC_SUPPLY: 'Maximum mosaic supply is 9\'000\'000\'000',
         ALERT_GET_MOSAIC_SUPPLY_ERROR: 'Error at fetching mosaic supply, reason: ',
+        ALERT_ENCRYPTED_MSG_OFFLINE: 'Encrypted messaging is not enabled in offline transactions',
 
         // SUCCESS ALERTS
         ALERT_CREATE_WALLET_SUCCESS: 'Кошелёк успешно создан и загружен!',
@@ -597,6 +603,7 @@ function RussianProvider($translateProvider) {
         ALERT_ADDRESS_BOOK_FILE_SUCCESS: 'Адресная книга успешно импортирована!',
         ALERT_VOTING_SUCCESS: 'Vote Sent Successfully',
         ALERT_POLL_CREATION_SUCCESS: 'Poll Created Successfully',
+        ALERT_COPY_SIGNED_TX_SUCCESS: 'Signed transaction copied!',
 
         // CONVERT ACCOUNT TO MULTISIG
         AGGREGATE_MODIFICATION_TITLE: 'Конвертировать аккаунт в мультиподписной',
@@ -662,6 +669,7 @@ function RussianProvider($translateProvider) {
         SIGNUP_BRAIN_WALLET_WARNING: 'Пожалуйста, ознакомьтесь с <a href="https://en.bitcoin.it/wiki/Brainwallet" rel="nofollow" target="_blank">опасностями</a> генерирования умных кошельков. Умный кошелёк использует ТОЛЬКО пароль, хэшированный несколько раз, поэтому крайне важно выбрать БЕЗОПАСНЫЙ пароль. <a href="https://xkcd.com/936/" rel="nofollow" target="_blank">XKCD #936</a>',
         SIGNUP_PRIVATE_KEY_WALLET_WARNING: 'Закрытый ключ кошелька использует только пароль, хэшированный несколько раз, поэтому крайне важно выбрать БЕЗОПАСНЫЙ пароль.',
         SIGNUP_CREATE_START_WARNING: 'Please, follow each step carefully!',
+        SIGNUP_CREATE_START_CONNECTION_WARNING: 'It is recommended to disconnect from internet while creating your wallet and backing up your data.',
         SIGNUP_CREATE_READY_BTN: 'Ready',
         SIGNUP_CREATE_ENTER_NAME: 'Enter a wallet name',
         SIGNUP_CREATE_ENTER_PASSWORD: 'Enter a password',
@@ -715,6 +723,18 @@ function RussianProvider($translateProvider) {
         FAQ_ANSWER_8: 'In this case go to "Services", look for "Multisignature and Multi-User Accounts" and click on "Sign multisig transactions".',
         FAQ_QUESTION_9: 'What are the best security practices ?',
         FAQ_ANSWER_9: 'It is hightly recommended to always store private keys on paper.<br> You can print them and archive them somewhere safe. <br><br> Regarding wallet files you should always keep multiple copies on different cold locations, like usb sticks. <br> Passwords must always be unique and complex, for this reason, always write it down first. <br><br> When you want to check your wallet or realise operations:<br> - Plug the usb stick <br> - Import the wallet in Nano<br> - Unplug the usb stick.<br><br> A copy of your wallet is stored in the browser local storage for all the time you need.<br> Once you are done, logout and purge the wallets in local storage using the purge button on the right side of the footer.',
+        FAQ_QUESTION_10: 'Where to find information about my account (address, etc) ?',
+        FAQ_ANSWER_10: 'If you look at the top navigation bar, you will see an <b><i>"Account"</b></i> button between <b><i>"Node"</b></i> and <b><i>"Language"</b></i>. There you can find your address, public key, vested balance and other important data.',
+        FAQ_QUESTION_11: 'I have deposited XEM to an exchange but nothing has been credited ?',
+        FAQ_ANSWER_11_1: 'First you must check that the hash of your transaction is pointing to an existing transaction on the <a target="_blank" href="http://chain.nem.ninja">explorer</a> (please, note that the explorer is a few blocks behind).',
+        FAQ_ANSWER_11_2: 'Most exchanges are asking for an identification message to credit your deposit. Make sure that you have followed carefully the exchange instructions and added a message that is NOT encrypted. ',
+        FAQ_ANSWER_11_3: 'Even if you have added a message, it can happen that exchanges may not process your deposit, because of issues on their side.',
+        FAQ_ANSWER_11_4: 'You must contact the exchange support, explain the situation and provide them the hash of the transaction.',
+        FAQ_QUESTION_12: 'How to check if I am on a fork ?',
+        FAQ_ANSWER_12_1: 'Click on <b><i>"Node"</b></i>, in the top navigation bar, to open the node panel.',
+        FAQ_ANSWER_12_2: 'Look at the chain height and compare it to the height shown <a target="_blank" href="http://bigalice3.nem.ninja:7890/chain/height">here</a>.',
+        FAQ_ANSWER_12_3: 'If different of more than 5 blocks then you are probably on a fork.',
+        FAQ_ANSWER_12_4: 'To fix, just choose another node from the dropdown in the node panel, it will restore your account at it\'s latest state on the real network.',
 
         // FORM RELATED
         FORM_PASSWORD_FIELD_PLACEHOLDER: 'Введите пароль или кодовую фразу от кошелька',
@@ -753,7 +773,28 @@ function RussianProvider($translateProvider) {
         FORM_OPTION_FIELD_PLACEHOLDER: 'write option',
         FORM_WHITELIST_FIELD_PLACEHOLDER: 'account address',
         FORM_SELECT_MULTISIG: 'Select a multisignature account',
-        FORM_SELECT_CONTACT: 'Select a contact'
+        FORM_SELECT_CONTACT: 'Select a contact',
+
+        // CREATE OFFLINE TRANSACTION MODULE
+        OFFLINE_TX_TITLE: 'Prepare an offline transaction',
+        OFFLINE_TX_NO_WALLET: 'Please import a wallet from login module to see the form.',
+        OFFLINE_TX_INFO_1: 'Make sure to be disconnected of internet when importing your wallet and creating the transaction!',
+        OFFLINE_TX_INFO_2: 'Only simple transactions can be created because a connection is needed to fetch mosaics and multisig information from NEM nodes.',
+        OFFLINE_TX_INFO_3: 'After clicking the "create" button in the left panel, you will find the signed transaction below.',
+        OFFLINE_TX_INFO_4: 'A signed transaction is immutable and will be effective only if released to the network before the default deadline of 24 hours.',
+        OFFLINE_TX_SIGNED: 'Signed transaction',
+        OFFLINE_TX_RELEASE: 'Open in release module',
+
+        // RELEASE OFFLINE TRANSACTION MODULE
+        RELEASE_OFFLINE_TX_TITLE: 'Release a transaction to the network',
+        RELEASE_OFFLINE_TX_PARAMETERS: 'Transaction parameters',
+        RELEASE_OFFLINE_TX_INFO_1: 'To release a transaction you must be connected to internet.',
+        RELEASE_OFFLINE_TX_INFO_2: 'Make sure that you have selected the right network and a working node or it will be rejected.',
+        RELEASE_OFFLINE_TX_INFO_3: 'It is not possible to send a signed transaction twice. One signed transaction will always generate the same hash and two transactions cannot have the same hash.',
+        RELEASE_OFFLINE_TX_INFO_4: 'You can release a signed transaction from any computer safely.',
+
+        // INVOICE MODULE
+        CREATE_INVOICE_TITLE: 'Create an invoice'
     });
 
 }

@@ -1,6 +1,7 @@
 /** @module utils/helpers */
 
 import nem from 'nem-sdk';
+import Exchanges from './exchanges';
 
 /**
  * Check if wallet already present in an array
@@ -139,12 +140,14 @@ let isTextAmountValid = nem.utils.helpers.isTextAmountValid;
  * @return {boolean} - True if valid, false otherwise
  */
 let isValidForExchanges = function(entity) {
-    const exchanges = ["ND2JRPQIWXHKAA26INVGA7SREEUMX5QAI6VU7HNR", "NBZMQO7ZPBYNBDUR7F75MAKA2S3DHDCIFG775N3D"];
+    const exchanges = Exchanges.data;
     let tx = entity.type === nem.model.transactionTypes.multisigTransaction ? entity.otherTrans : entity;
     for (let i = 0; i < exchanges.length; i++) {
-        if (exchanges[i] === tx.recipient && !tx.message.payload.length) {
-            return false;
-        }
+        let isExchange = exchanges[i].address === tx.recipient;
+        let hasMessage = tx.message.payload.length > 0;
+        let isPlain = tx.message.type === 1;
+        // Deposits to exchanges must have a plain message
+        if ((isExchange && !hasMessage) || (isExchange && hasMessage && !isPlain)) return false;
     }
     return true;
 }
@@ -181,6 +184,85 @@ let toShortDate = function(date) {
     return yyyy + '-' + mm + '-' + dd;
 };
 
+/**
+ * Compares two software version numbers (e.g. "1.7.1" or "1.2b").
+ *
+ * From http://stackoverflow.com/a/6832721.
+ *
+ * @param {string} v1 The first version to be compared.
+ * @param {string} v2 The second version to be compared.
+ * @param {object} [options] Optional flags that affect comparison behavior:
+ */
+let versionCompare = function(v1, v2, options) {
+    var lexicographical = options && options.lexicographical,
+        zeroExtend = options && options.zeroExtend,
+        v1parts = v1.split('.'),
+        v2parts = v2.split('.');
+
+    function isValidPart(x) {
+        return (lexicographical ? /^\d+[A-Za-z]*$/ : /^\d+$/).test(x);
+    }
+
+    if (!v1parts.every(isValidPart) || !v2parts.every(isValidPart)) {
+        return NaN;
+    }
+
+    if (zeroExtend) {
+        while (v1parts.length < v2parts.length) v1parts.push("0");
+        while (v2parts.length < v1parts.length) v2parts.push("0");
+    }
+
+    if (!lexicographical) {
+        v1parts = v1parts.map(Number);
+        v2parts = v2parts.map(Number);
+    }
+
+    for (var i = 0; i < v1parts.length; ++i) {
+        if (v2parts.length == i) {
+            return 1;
+        }
+
+        if (v1parts[i] == v2parts[i]) {
+            continue;
+        }
+        else if (v1parts[i] > v2parts[i]) {
+            return 1;
+        }
+        else {
+            return -1;
+        }
+    }
+
+    if (v1parts.length != v2parts.length) {
+        return -1;
+    }
+
+    return 0;
+}
+
+
+/**
+ * Fix "FAILURE_TIMESTAMP_TOO_FAR_IN_FUTURE"
+ *
+ * @param {object} transaction - A prepared transaction to fix
+ * @param {number} chainTime - Time returned by the NIS node
+ * @param {number} network - A network
+ */
+let fixTimestamp = function(transaction, chainTime, network) {
+    let d = new Date();
+    let timeStamp = Math.floor(chainTime) + Math.floor(d.getSeconds() / 10);
+    let due = network === nem.model.network.data.testnet.id ? 60 : 24 * 60;
+    let deadline = timeStamp + due * 60
+    if (transaction.type === nem.model.transactionTypes.multisigTransaction) {
+        transaction.otherTrans.timeStamp = timeStamp;
+        transaction.otherTrans.deadline = deadline;
+    } else {
+        transaction.timeStamp = timeStamp;
+        transaction.deadline = deadline;
+    }
+    return transaction;
+}
+
 module.exports = {
     haveWallet,
     getFileName,
@@ -193,5 +275,7 @@ module.exports = {
     isTextAmountValid,
     isValidForExchanges,
     objectSize,
-    toShortDate
+    toShortDate,
+    versionCompare,
+    fixTimestamp
 }

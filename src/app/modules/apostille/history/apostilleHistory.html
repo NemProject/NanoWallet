@@ -60,13 +60,13 @@
               <td>{{ap.timeStamp}}</td>
               <td class="row buttans">
                 <div class="col-md-6">
-                  <button class="btn btn-success" type="button" ui-sref="app.updateApostille({address: ap.dedicatedAccount, privateKey: ap.dedicatedPrivateKey, tags: ap.tags})" ng-show="ap.dedicatedAccount !== $ctrl.sink" disabled>{{ 'GENERAL_UPDATE' | translate }}</button>
+                  <button class="btn btn-success" type="button" ui-sref="app.createApostille({address: ap.dedicatedAccount, privateKey: ap.dedicatedPrivateKey, tags: ap.tags, isUpdate: true})" ng-show="ap.dedicatedAccount !== $ctrl.sink" ng-disabled="$ctrl._Wallet.algo === 'trezor'">{{ 'GENERAL_UPDATE' | translate }}</button>
                 </div>
                 <div class="col-md-6">
-                  <button class="btn btn-success" type="button" ui-sref="app.apostilleMessage({address: ap.dedicatedAccount})" ng-show="ap.dedicatedAccount !== $ctrl.sink" disabled>{{ 'GENERAL_MESSAGE' | translate }}</button>
+                  <button class="btn btn-success" type="button" ui-sref="app.apostilleMessage({address: ap.dedicatedAccount, privateKey: ap.dedicatedPrivateKey})" ng-show="ap.dedicatedAccount !== $ctrl.sink">{{ 'GENERAL_MESSAGE' | translate }}</button>
                 </div>
                 <div class="col-md-12">
-                  <button class="btn btn-success" type="button" ng-show="ap.dedicatedAccount !== $ctrl.sink" ui-sref="app.transferApostille({address: ap.dedicatedAccount, privateKey: ap.dedicatedPrivateKey})" disabled>{{ 'APOSTILLE_HISTORY_BTN_TRANSFER' | translate }}</button>
+                  <button class="btn btn-success" type="button" ng-show="ap.dedicatedAccount !== $ctrl.sink" ui-sref="app.createMultisig({address: ap.dedicatedAccount, privateKey: ap.dedicatedPrivateKey})">{{ 'APOSTILLE_HISTORY_BTN_TRANSFER' | translate }}</button>
                 </div>
                 <p class="col-md-12" ng-show="ap.dedicatedAccount === $ctrl.sink">{{ 'GENERAL_NONE' | translate }}</p>
               </td>

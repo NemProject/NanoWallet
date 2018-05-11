@@ -347,8 +347,8 @@ class SignupCtrl {
         this._Alert.createWalletSuccess();
         // Reset form data
         this.formData = {};
-        //
-        this._$state.go("app.login");
+        this.step8 = false;
+        this.step9 = true;
     }
 
     /**

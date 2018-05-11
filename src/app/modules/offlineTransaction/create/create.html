@@ -1,0 +1,141 @@
+<div class="transferTransaction-page">
+  <div class="container-fluid main">
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>{{ 'OFFLINE_TX_TITLE' | translate }}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="panel-heading">
+          <div class="tabDescription">
+            <!-- Title of panel -->
+            <span ng-show="!$ctrl.formData.isMultisig">{{ 'TRANSFER_TRANSACTION_NAME' | translate }}</span>
+            <span ng-show="$ctrl.formData.isMultisig ">{{ 'TRANSFER_TRANSACTION_MULTISIG_NAME' | translate }}</span>
+          </div>
+          <!-- Tabbed modes -->
+          <ul class="nav nav-tabs"></ul>
+        </div>
+        <!-- Transaction form -->
+        <div class="panel-body" ng-if="$ctrl.selectedWallet">
+          <!-- Wallet select -->
+          <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <label>{{ 'LOGIN_SELECT_WALLET_YOURS' | translate }}:</label>
+              </span>
+              <select class="form-control" ng-model="$ctrl.selectedWallet" ng-options="wallet.name group by (wallet.accounts[0].network | toNetworkName) for wallet in $ctrl._storage.wallets" ng-change="$ctrl.setAccount();$ctrl.setContacts();">
+                <option value="" disabled selected>{{ 'LOGIN_SELECT_WALLET' | translate }}</option>
+              </select>
+            </div>
+          </fieldset>
+           <!--Account select -->
+            <fieldset class="form-group" ng-show="$ctrl.selectedWallet">
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <label>{{ 'GENERAL_SELECT_ACCOUNT' | translate }}: </label>
+                </span>
+                <select class="form-control" ng-options="account as (account.label || account.address) for (index, account) in $ctrl.selectedWallet.accounts" ng-model="$ctrl.selectedAccount" ng-change="$ctrl.prepareTransaction();">
+                  <option value="" disabled selected>{{ 'GENERAL_SELECT_ACCOUNT' | translate }}</option>
+                </select>
+              </div>
+            </fieldset>
+          <!-- Multisig select -->
+          <multisig-select ng-show="$ctrl.formData.isMultisig" multisig-account="$ctrl.formData.multisigAccount"></multisig-select>
+          <!-- Recipient address -->
+          <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <label>{{'GENERAL_TO' | translate}}:</label>
+              </span>
+              <input ng-show="!$ctrl.showContacts" class="form-control" type="text" ng-model="$ctrl.formData.recipient"/>
+              <select ng-show="$ctrl.showContacts" class="form-control form-control-lg" ng-model="$ctrl.formData.recipient" ng-options="contact.address as contact.label for contact in $ctrl.contacts" ng-change="$ctrl.showContacts = false;">
+                <option value="" disabled selected>{{ 'FORM_SELECT_CONTACT' | translate }}</option>
+              </select>
+              <span class="input-group-btn" style="min-width: 0;">
+                <button type="button" class="btn btn-warning" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="{{ 'FORM_BTN_OPEN_ADB' | translate }}" ng-click="$ctrl.showHideAddressBook();">
+                  <i class="fa">&#xf2b9;</i>
+                </button>
+              </span>
+            </div>
+          </fieldset>
+          <!-- Amount of XEM to send -->
+          <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                  <label>{{'GENERAL_AMOUNT' | translate}}: </label>
+                </span>
+              <div class="form-control formFloat">
+                <input type="text" ng-model="$ctrl.formData.amount" maxlength="17" ng-change="$ctrl.prepareTransaction();" />
+                <label class="floatRight"><small>XEM</small></label>
+              </div>
+            </div>
+          </fieldset>
+          <!-- Message Field -->
+          <message-area message="$ctrl.formData.message" message-type="$ctrl.formData.messageType" characters-left="$ctrl.charactersLeft" update-ctrl="$ctrl.prepareTransaction();"></message-area>
+          <!-- Transaction fee -->
+          <fee-input tx="$ctrl.preparedTransaction" is-multisig="$ctrl.formData.isMultisig"></fee-input>
+          <!-- Password Field -->
+          <password-input common="$ctrl.common"></password-input>
+          <!-- Send button is disabled if already pressed or no password or no clean recipient address or message is supposed to be encrypted but no recipient public key or if amount is invalid or if characters left are negative or if hex message is not hex only -->
+          <button class="btn btn-success" type="submit" ng-disabled="$ctrl.okPressed || !$ctrl.common.password.length || $ctrl.formData.recipient.length !== 40 && $ctrl.formData.recipient.length !== 46 || $ctrl.formData.messageType === 2 && $ctrl.formData.recipientPublicKey.length !== 64 || !$ctrl._Helpers.isTextAmountValid($ctrl.formData.amount) || $ctrl.charactersLeft < 0 || $ctrl.formData.messageType === 0 && $ctrl.formData.message.length && !$ctrl._Helpers.isHexadecimal($ctrl.formData.message)" ng-click="$ctrl.create()">
+            <i class="fa fa-plus"></i> {{ 'GENERAL_CREATE' | translate }}
+          </button>
+          </fieldset>
+        </div>
+        <div class="panel-body" ng-if="!$ctrl.selectedWallet">
+          <p><i class="fa fa-exclamation-triangle" ></i> {{ 'OFFLINE_TX_NO_WALLET' | translate }}</p>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-12">
+        <div class="panel-heading">
+            <h3>{{ 'GENERAL_INFORMATION' |  translate }}</h3>
+        </div>
+        <div class="panel-body">
+          <p ng-bind-html=" 'OFFLINE_TX_INFO_1' | translate"></p>
+          <p>{{ 'OFFLINE_TX_INFO_2' | translate }}</p>
+          <p>{{ 'OFFLINE_TX_INFO_3' | translate }}</p>
+          <p>{{ 'OFFLINE_TX_INFO_4' | translate }}</p>
+        </div>
+
+        <div class="panel-heading">
+            <h3>{{ 'OFFLINE_TX_SIGNED' | translate }}</h3>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <div class="input-group">
+              <textarea class="form-control" rows="5" cols="25" ng-model="$ctrl.resultSafeTransaction" style="white-space: normal;" ng-show="!$ctrl.showQr" readOnly></textarea>
+              <div class="text-center" id="signedTransactionQR" ng-show="$ctrl.showQr"></div>
+              <span class="input-group-addon btn" ng-click="$ctrl.copyTransaction();" style="background-color:#444;color:#fff;cursor:pointer;border-left:1px solid #ccc;"><i class="fa fa-clipboard" ></i></span>
+              <span class="input-group-addon btn" ng-click="$ctrl.showQr === true ? $ctrl.showQr = false : $ctrl.showQr = true;" style="background-color:#444;color:#fff;cursor:pointer;border-left:1px solid #ccc;"><i class="fa fa-qrcode" ></i></span>
+            </div>
+          </fieldset>
+          <button class="btn btn-success" ui-sref="app.offlineTransactionSend({signedTransaction: $ctrl.resultSafeTransaction})" ng-show="!$ctrl.showQr"><i class="fa fa-angle-double-right"></i> {{ 'OFFLINE_TX_RELEASE' | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="connectionWarning" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body text-center" style="color:#444">
+        <img src="images/logomark.png" style="width: 125px;" />
+        <hr>
+        <p class="bg-danger"><i class="fa fa-exclamation-triangle"></i> <span ng-bind-html="'OFFLINE_TX_MODAL_ALERT' | translate"></span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'GENERAL_CLOSE' | translate }}</button>
+      </div>
+    </div>
+
+  </div>
+</div>

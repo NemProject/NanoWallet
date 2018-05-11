@@ -1,0 +1,46 @@
+<div class="explorer-transactions">
+  <div class="container-fluid main">
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>{{ 'EXPLORER_TRANSACTIONS_TITLE' | translate }}</h2>
+      </div>
+    </div>
+
+  	<explorer-nav></explorer-nav>
+
+    <div class="row">
+      <div class="col-md-12">
+          <div class="panel-body">
+            <div style="margin-top: 20px;">
+              <paginate ng-show="$ctrl.transactions.length > 10" data="$ctrl.transactions" current-page="$ctrl.currentPage" page-size="$ctrl.pageSize"></paginate>
+            </div>
+            <table class="table table-condensed top">
+              <thead>
+                <tr>
+                  <th>{{ 'GENERAL_ACCOUNT' | translate }}</th>
+                  <th>{{ 'GENERAL_AMOUNT' | translate }}</th>
+                  <th>{{ 'GENERAL_MESSAGE' | translate }}</th>
+                  <th>{{ 'GENERAL_DATE' | translate }}</th>
+                </tr>
+              </thead>
+            </table>
+
+            <table class="table table-condensed">
+              <tbody>
+                <div>
+                  <div ng-repeat="tx in $ctrl.transactions | orderBy:'-transaction.timeStamp' | startFrom:$ctrl.currentPage*$ctrl.pageSize | limitTo:$ctrl.pageSize">
+                    <tag-transaction d="tx" tooltip-position="'left'"></tag-transaction>
+                  </div>
+                </div>
+              </tbody>
+            </table>
+          </div>
+          <div class="bg-info" style="cursor:pointer" ng-show="$ctrl.transactions.length && $ctrl.currentPage+1 >= $ctrl._Helpers.calcNumberOfPages($ctrl.transactions, $ctrl.pageSize)" ng-click="$ctrl.getTransactions(true, $ctrl.transactions[$ctrl.transactions.length-1].meta.hash.data)"><p>{{ 'EXPLORER_TRANSACTIONS_LOAD_MORE' | translate }}</p></div>
+          <div class="panel-body nothing" ng-show="!$ctrl.transactions.length">
+            <p>{{ 'GENERAL_NO_RESULTS' | translate }}</p>
+          </div>
+        </div>
+    </div>
+
+  </div>
+</div>

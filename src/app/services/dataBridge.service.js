@@ -32,13 +32,6 @@ class DataBridge {
         this.connector = undefined;
 
         /**
-         * The network time
-         *
-         * @type {number}
-         */
-        this.networkTime = undefined;
-
-        /**
          * Store the time sync interval function
          *
          * @type {setInterval}
@@ -86,7 +79,7 @@ class DataBridge {
             // Gets network time
             nem.com.requests.chain.time(this._Wallet.node).then((res) => {
                 this._$timeout(() => {
-                    this.networkTime = res.receiveTimeStamp / 1000;
+                    this._DataStore.chain.time = res.receiveTimeStamp / 1000;
                 });
             },(err) => {
                 this._$timeout(() => {
@@ -346,7 +339,7 @@ class DataBridge {
      * Reset DataBridge service properties
      */
     reset() {
-        this.networkTime = undefined;
+        this._DataStore.chain.time = undefined;
         clearInterval(this.timeSyncInterval)
     }
 
@@ -357,7 +350,7 @@ class DataBridge {
         this.timeSyncInterval = setInterval(() => { 
             nem.com.requests.chain.time(this._Wallet.node).then((res) => {
                 this._$timeout(() => {
-                    this.networkTime = res.receiveTimeStamp / 1000;
+                    this._DataStore.chain.time = res.receiveTimeStamp / 1000;
                 });
             },(err) => {
                 this._$timeout(() => {

@@ -10,7 +10,7 @@ class Wallet {
      *
      * @params {services} - Angular services to inject
      */
-    constructor(AppConstants, $localStorage, Alert, $timeout, AddressBook, Trezor) {
+    constructor(AppConstants, $localStorage, Alert, $timeout, AddressBook, Trezor, DataStore) {
         'ngInject';
 
         //// Service dependencies region ////
@@ -21,6 +21,7 @@ class Wallet {
         this._$timeout = $timeout;
         this._AddressBook = AddressBook;
         this._Trezor = Trezor;
+        this._DataStore = DataStore;
 
         //// End dependencies region ////
 
@@ -281,6 +282,9 @@ class Wallet {
      * @return {boolean} - True if success, false otherwise
      */
     transact(common, transaction, account) {
+        // Fix timeStamp
+        transaction = Helpers.fixTimestamp(transaction, this._DataStore.chain.time, this.network);
+        //
         return this._transact(common, transaction, account || this.currentAccount).then((res) => {
             // If res code >= 2, it's an error
             if (res.code >= 2) {

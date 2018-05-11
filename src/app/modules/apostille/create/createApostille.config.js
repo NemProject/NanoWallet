@@ -7,7 +7,13 @@ function CreateApostilleConfig($stateProvider) {
             controller: 'CreateApostilleCtrl',
             controllerAs: '$ctrl',
             templateUrl: 'modules/apostille/create/createApostille.html',
-            title: 'Create apostille'
+            title: 'Create apostille',
+            params: {
+                address: "",
+                privateKey: "",
+                tags: "",
+                isUpdate: false
+            }
         });
 
 };

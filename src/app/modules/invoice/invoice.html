@@ -1,0 +1,56 @@
+<div class="transferTransaction-page">
+  <div class="container-fluid main">
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>{{ 'CREATE_INVOICE_TITLE' | translate }}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="panel-heading">
+          <div class="tabDescription">
+            <span>{{ 'TRANSFER_TRANSACTION_NAME' | translate }}</span>
+          </div>
+          <!-- Tabbed modes -->
+          <ul class="nav nav-tabs"></ul>
+        </div>
+        <!-- Transaction form -->
+        <div class="panel-body">
+          <!-- Invoice recipient -->
+          <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <label>{{ 'GENERAL_TO' | translate }}: </label>
+              </span>
+              <input class="form-control form-control-lg" type="text" ng-model="$ctrl.formData.recipient" readOnly/>
+            </div>
+          </fieldset>
+          <!-- Amount of XEM to send -->
+          <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                  <label>{{'GENERAL_AMOUNT' | translate}}: </label>
+                </span>
+              <div class="form-control formFloat">
+                <input type="text" ng-model="$ctrl.formData.amount" maxlength="17" ng-change="$ctrl.prepareTransaction();" />
+                <label class="floatRight"><small>XEM</small></label>
+              </div>
+            </div>
+          </fieldset>
+          <!-- Message Field -->
+          <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn message">
+                <label>{{'FORM_MESSAGE_PLACEHOLDER' | translate}}: </label>
+              </span>
+              <textarea class="form-control" ng-model="$ctrl.formData.message" placeholder="{{'FORM_MESSAGE_PLACEHOLDER' | translate}}" rows="4" ng-change="$ctrl.prepareTransaction();" ng-class="$ctrl.charactersLeft < 0 ? 'has-error' : ''"></textarea>
+              <p style="text-align:right;border-bottom:1px solid rgba(15, 122, 225, 0.6);background-color: #eee;"><span style="margin-right: 5px;"><b>{{ 'GENERAL_CHARACTERS_LEFT' | translate }}</b>: {{ $ctrl.charactersLeft }}</span></p>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <!-- Invoice -->
+      <invoice form-data="$ctrl.preparedTransaction"></invoice>
+    </div>
+  </div>
+</div>

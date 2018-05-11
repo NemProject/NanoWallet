@@ -7,7 +7,11 @@ function CreateMultisigConfig($stateProvider) {
             controller: 'CreateMultisigCtrl',
             controllerAs: '$ctrl',
             templateUrl: 'modules/multisignature/create/createMultisig.html',
-            title: 'Create a multisignature contract'
+            title: 'Create a multisignature contract',
+            params: {
+                address: "",
+                privateKey: ""
+            }
         });
 
 };

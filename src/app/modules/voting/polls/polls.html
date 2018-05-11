@@ -1,0 +1,288 @@
+<div class="voting-page">
+
+  <div class="container-fluid" style="padding-left: 20px; padding-right: 20px;">
+    <div class="row" ng-hide="$ctrl.loadingPoll || $ctrl.showDetails">
+      <div class="col-sm-11">
+        <h2>Vote and See Polls</h2>
+      </div>
+    </div>
+
+    <div class="">
+      <p class="bg-info" style="text-align:left;"><i class="fa fa-question-circle"></i> Voting system requires a lot of requests to the chain, therefore it can trigger the node spam protection. If loading time takes more than 1 minute, leave the module, change node and come back.</p>
+    </div>
+
+    <div class="row" ng-show="$ctrl.showDetails && !$ctrl.loadingPoll && !$ctrl.createIndex && !$ctrl.loadingAddressError">
+      <div class="col-sm-12">
+        <button class="btn btn-dark" ng-click="$ctrl.showDetails = false;"><i class="fa fa-chevron-left"></i> Back to list</button>
+        <hr>
+        <h2 style="font-size: 30px;"> {{$ctrl.selectedPoll.formData.title}} </h2>
+        <p>Poll Address: {{$ctrl.currentPollAddress}}</p>
+        <p> <span ng-class="$ctrl.getCurrentTypeTagClass()">&nbsp{{$ctrl.getCurrentTypeTag()}}</span><span class="text-muted small"> Date of ending: {{$ctrl.selectedPoll.formData.doe | date:"MM/dd/yyyy 'at' h:mma"}}</span> </p>
+        <p class="bg-info" style="text-align:left;">{{$ctrl.selectedPoll.description}}</p>
+        <hr>
+      </div>
+    </div>
+
+    <div id="row1" class="row row1">
+      <div class="col-md-12" ng-hide="$ctrl.loadingPoll || $ctrl.showDetails">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <!-- TABS -->
+            <ul class="nav nav-tabs">
+              <li ng-class="{ active: $ctrl.isTabSet(1) }">
+                <a ng-click="$ctrl.setTab(1)">All</a>
+              </li>
+              <li ng-class="{ active: $ctrl.isTabSet(2) }">
+                <a ng-click="$ctrl.setTab(2)">Ongoing</a>
+              </li>
+              <li ng-class="{ active: $ctrl.isTabSet(3) }">
+                <a ng-click="$ctrl.setTab(3)">Ended</a>
+              </li>
+              <li ng-class="{ active: $ctrl.isTabSet (4) }">
+                <a ng-click="$ctrl.setTab(4)">Options</a>
+              </li>
+            </ul>
+          </div>
+          <div class="panel-body">
+            <br>
+            <!-- LIST -->
+            <div ng-hide="$ctrl.isTabSet(4)">
+              <div class="pre-scrollable">
+                <div ng-repeat="poll in $ctrl.pollsList track by $index">
+                  <div class="poll-list-element">
+                    <button ng-click="$ctrl.pollSelect($index)" class="btn btn-default poll-select"><span  ng-class="$ctrl.getClass($index)">{{$ctrl.types[$ctrl.pollsList[$index].type]}}</span> {{$ctrl.pollsList[$index].title}}</button>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-success pull-xs-left" ng-click="$ctrl.getPolls();" ng-disabled="$ctrl.loadingPolls"><i ng-class="$ctrl.loadingPolls ? 'fa fa-refresh fa-spin' : 'fa fa-refresh'" aria-hidden="true"></i> <span ng-show="$ctrl.loadingPolls">Loading</span> <span ng-show="!$ctrl.loadingPolls">Refresh</span></button>
+            </div>
+            <!-- OPTIONS TAB -->
+            <div ng-show="$ctrl.isTabSet(4)">
+              <!-- only votable -->
+              <input id="box1" type="checkbox" ng-model="$ctrl.onlyVotable" ng-click="$ctrl.updateList()"><label for="box1">Show only polls you can vote on</label>
+              <!-- Index / Poll Address Input -->
+              <!--<form>
+                <p>Search for a poll or a poll Index:</p>
+                <input type="text" ng-model="$ctrl.inputAccount" style="width:60%"/>
+                <p class="text-muted small">You can find a specific poll or index by typing the address for the poll account or the poll index account in the bar and clicking on the appropriate search button.</p>
+                <button type="submit" class="btn btn-success pull-xs-left" style="width:30%" ng-click="$ctrl.pollAddressInput();">Find Poll</button>
+                <button type="submit" class="btn btn-success pull-xs-left" style="width:30%" ng-click="$ctrl.pollIndexInput();">Find Index</button>
+                <div ng-show="$ctrl.searching"><i class="fa fa-spinner fa-spin"></i></div>
+                <div ng-hide="$ctrl.inputAddressValid"><p class="text-danger">Not a valid Address</p></div>
+                <div ng-show="$ctrl.loadingAddressError"><p class="text-danger">There was an error. Make sure the address is correct</p></div>
+              </form>
+              <br>-->
+              <!-- INDEX CREATION -->
+              <!--<br>
+              <br>
+              <button class="btn btn-success pull-xs-left" style="width:25%" ng-click="$ctrl.createIndex = true;">Create a poll Index</button>
+              <br>
+              <br>-->
+              <!-- Created indexes -->
+              <!--<div>
+                <label>Default index:</label>
+                <a ng-click="$ctrl.inputAccount = $ctrl.defaultIndexAccount; $ctrl.pollIndexInput()">{{$ctrl.defaultIndexAccount}}</a>
+              </div>-->
+              <!-- Created indexes -->
+              <!--<div ng-hide="$ctrl.createdIndexes.length === 0">
+                <label>Created Indexes:</label>
+                <div ng-repeat="indexAddress in $ctrl.createdIndexes track by $index">
+                  <a ng-click="$ctrl.inputAccount = indexAddress; $ctrl.pollIndexInput()">{{indexAddress}}</a>
+                </div>
+              </div>-->
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="panel panel-default">
+         <!-- <div class="panel-heading" style="background-color: rgb(68, 68, 68); color: white;border-radius: 0px;">
+            <i class="fa fa-chevron-right"></i>
+          </div>-->
+          <div class="panel-heading" ng-show="$ctrl.showDetails && !$ctrl.loadingPoll && !$ctrl.createIndex && !$ctrl.loadingAddressError">
+            <ul class="nav nav-tabs">
+              <li ng-class="{ active: $ctrl.isDetailsTabSet(1) }">
+                <a ng-click="$ctrl.setDetailsTab(1)">Vote</a>
+              </li>
+              <li ng-show="$ctrl.isCosignatory" ng-class="{ active: $ctrl.isDetailsTabSet(2) }">
+                <a ng-click="$ctrl.setDetailsTab(2)">Multisig</a>
+              </li>
+              <li ng-class="{ active: $ctrl.isDetailsTabSet(3) }">
+                <a ng-click="$ctrl.setDetailsTab(3)">Results</a>
+              </li>
+            </ul>
+          </div>
+          <!-- SPINNER -->
+          <div ng-show="$ctrl.loadingPoll" class="loading-div">
+            <i class="fa fa-4x fa-spinner fa-spin"></i>
+          </div>
+          <!-- Details -->
+          <div class="panel-body" ng-show="$ctrl.showDetails && !$ctrl.loadingPoll && !$ctrl.createIndex && !$ctrl.loadingAddressError">
+            <!-- MULTISIG SELECT -->
+            <fieldset class="form-group">
+              <div class="input-group" ng-show="$ctrl.multisigVote">
+                <span class="input-group-btn">
+                  <label for="namespaceParent" class="control-label">{{ 'GENERAL_ACCOUNT' | translate }}:</label>
+                </span>
+                <select class="form-control" ng-options="acc.address for acc in $ctrl._DataStore.account.metaData.meta.cosignatoryOf track by acc.address" ng-model="$ctrl.multisigAccount" ng-change="$ctrl.checkHasVoted()"></select>
+              </div>
+            </fieldset>
+            <!-- VOTE -->
+            <div ng-show="$ctrl.showVote">
+              <!--<h4 class="text-warning" style="color: gray; ">Vote</h4>-->
+              <!-- Multiple answer -->
+              <div ng-show="$ctrl.selectedPoll.formData.multiple">
+                <p>
+                  This is a multiple answer Poll. You can divide your vote into different options.
+                </p>
+                <ul class="list-group">
+                  <div ng-repeat="option in $ctrl.selectedPoll.options.strings track by $index">
+                    <li class="list-group-item">
+                      <input id="{{option}}" type="checkbox" ng-click="$ctrl.toggleSelection($index); $ctrl.checkValidVote()"><label for="{{option}}" ng-disabled="$ctrl.voting || $ctrl.alreadyVoted > 0">{{option}}</label>
+                    </li>
+                  </div>
+                  <br>
+                </ul>
+              </div>
+              <!-- Single answer -->
+              <div ng-hide="$ctrl.selectedPoll.formData.multiple">
+                <ul class="list-group">
+                  <div ng-repeat="option in $ctrl.selectedPoll.options.strings track by $index">
+                    <label class="form-check-label">
+                      <li class="list-group-item">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="optionsRadios" ng-model="$ctrl.selectedOption" ng-value="$index" ng-click="$ctrl.checkValidVote()" ng-disabled="$ctrl.voting || $ctrl.alreadyVoted > 0">
+                              {{option}}
+                          </label>
+                        </div>
+                      </li>
+                    </label>
+                  </div>
+                  <br>
+                </ul>
+              </div>
+              <!-- Password and buttons -->
+              <div class="col-md-6" ng-hide="$ctrl.alreadyVoted > 0 || $ctrl.loadingVote || $ctrl.pollFinished">
+                <fieldset class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <label ng-class="!$ctrl.common.password.length ? 'has-error' : ''">{{ 'FORM_PASSWORD' | translate }}:</label>
+                    </span>
+                    <input class="form-control password" type="password" placeholder="{{ 'FORM_PASSWORD_FIELD_PLACEHOLDER' | translate }}" ng-model="$ctrl.common.password" ng-class="!$ctrl.common.password.length ? 'has-error' : ''" ng-change="$ctrl.checkValidVote()"/>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-7" ng-hide="$ctrl.loadingVote">
+                    <div ng-hide="$ctrl.alreadyVoted || $ctrl.pollFinished">
+                      <p><b><i class="fa fa-exclamation-triangle"></i> Voting has a fee of {{($ctrl.votingFee | fmtNemValue)[0]}}.{{($ctrl.votingFee | fmtNemValue)[1]}} XEM per option</b></p>
+                      <button class="btn btn-success pull-xs-left" type="submit" style="width:90%" ng-click="$ctrl.vote()" ng-disabled="$ctrl.voting || $ctrl.invalidVote || $ctrl.alreadyVoted > 0">Vote</button>
+                    </div>
+                    <div ng-show="$ctrl.alreadyVoted === 2">
+                      <p class="text-success">You have successfully Voted on this Poll</p>
+                    </div>
+                    <div ng-show="$ctrl.alreadyVoted === 1">
+                      <p class="text-warning">You have an unconfirmed Vote on this Poll</p>
+                    </div>
+                    <div ng-show="$ctrl.pollFinished">
+                      <p class="text-danger">This poll has ended</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- SEE RESULTS -->
+            <div ng-hide="$ctrl.showVote || $ctrl.loadingResults">
+              <br>
+              <!--h4 class="text-warning" style="color: gray; ">Results</h4-->
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-7">
+                    <div style="width:80%;margin:auto;">
+                      <canvas id="doughnut" chart-options="$ctrl.chart.options" class="chart chart-doughnut" chart-data="$ctrl.chart.values" chart-labels="$ctrl.chart.labels">
+                    </canvas>
+                    </div>
+                    <br>
+                    <br>
+                  </div>
+                  <div class="col-md-5">
+                    <div ng-hide="$ctrl.pollFinished" class="bg-warning ongoing-warning">
+                      <p> This poll has not finished yet, the results are not definitive. </p>
+                    </div>
+                    <div class="bg-info">
+                      <span>
+                        <div ng-repeat="option in $ctrl.results.options track by $index" style="text-align: left">
+                          <b><ins>{{option.text}}</ins></b><br>
+                          votes: {{option.votes}}<br>
+                          weighted score*: {{($ctrl.selectedPoll.formData.type === 0) ? ((option.weighted*100).toFixed(5) + '%') : (option.weighted)}}<br>
+                          percentage: {{option.percentage.toFixed(2)}}<br>
+                        </div>
+                      </span>
+                    </div>
+                    <br>
+                    <p class="text-muted small">
+                      * Weighted score varies depending on the type of vote:<br>
+                      - For whitelist polls it is the same as the votes<br>
+                      - For POI polls it is the sum of importances of the voters multiplied by 100<br>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <br><br>
+            </div>
+            <div ng-show="!$ctrl.showVote && $ctrl.loadingResults" class="loading-div">
+              <i class="fa fa-4x fa-spinner fa-spin"></i>
+            </div>
+
+          </div>
+
+          <!-- Poll Index Creation -->
+          <div class="col-md-6">
+            <div class="panel-body" ng-show="$ctrl.createIndex">
+              <h2>Create a poll Index</h2>
+              <br>
+              <br>
+              <p>
+                This action will create a new poll Index. When you create a new Poll you can choose the index it is submitted to, and on the voting module you can change the index you view polls from.</p>
+              <p>When you create a new Index a new NEM account is generated and a message containing the created Index will be sent to your address. Write down the address to create and see polls stored on it.</p>
+              <p>
+                For private Indexes only the creator of the index will be able to send polls. But everybody will be able to see and vote on its polls if they have importance or are on the whitelist for simple polls.
+              </p>
+              <br>
+              <input id="box2" type="checkbox" ng-model="$ctrl.createPrivateIndex"><label for="box2">Create private Index</label>
+              <br><br>
+              <fieldset class="form-group">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <label>{{'GENERAL_FEE' | translate}} </label>
+                  </span>
+                  <div class="form-control formFloat" readOnly>
+                    <span class="feeAmount">
+                      <span>{{$ctrl.indexCreationFee}}</span>
+                    </span>
+                    <label class="floatRight"><small>XEM</small></label>
+                  </div>
+                </div>
+              </fieldset>
+              <span class="input-group-btn">
+                <label ng-class="!$ctrl.common.password.length ? 'has-error' : ''">{{ 'FORM_PASSWORD' | translate }}:</label>
+              </span>
+              <input class="form-control" type="password" placeholder="{{ 'FORM_PASSWORD_FIELD_PLACEHOLDER' | translate }}" ng-model="$ctrl.common.password" ng-class="!$ctrl.common.password.length ? 'has-error' : ''"/>
+              <br>
+              <button class="btn btn-success pull-xs-left" style="width:100%" ng-click="$ctrl.createNewIndex()">Create a poll Index</button>
+            </div>
+          </div>
+          <!-- Poll Error -->
+          <div ng-show="$ctrl.loadingAddressError" class="loading-div">
+            <h3>There was an error fetching the poll. The poll does not exist, or was not created properly.</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

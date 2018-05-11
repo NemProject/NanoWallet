@@ -10,7 +10,10 @@ let data =  [{
 }, {
     name: "Polish",
     key: "pl"
-},{
+}, {
+    name: "Português (Brasil)",
+    key: "ptbr"
+}, {
     name: "German",
     key: "de"
 }, {
@@ -25,6 +28,9 @@ let data =  [{
 }, {
     name: "Hrvatski",
     key: "hr"
+}, {
+    name: "Spanish",
+    key: "es"
 }]
 
 module.exports = {

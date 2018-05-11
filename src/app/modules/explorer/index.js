@@ -44,6 +44,17 @@ accountsExplorerModule.config(AccountsExplorerConfig);
 import AccountsExplorerCtrl from './accounts/accountsExplorer.controller';
 accountsExplorerModule.controller('AccountsExplorerCtrl', AccountsExplorerCtrl);
 
+// Create the module where our functionality can attach to
+let transactionsExplorerModule = angular.module('app.explorerTransactions', []);
+
+// Include our UI-Router config settings
+import ExplorerTransactionsConfig from './transactions/explorerTransactions.config';
+transactionsExplorerModule.config(ExplorerTransactionsConfig);
+
+// Controllers
+import ExplorerTransactionsCtrl from './transactions/explorerTransactions.controller';
+transactionsExplorerModule.controller('ExplorerTransactionsCtrl', ExplorerTransactionsCtrl);
+
 // Components
 import ExplorerNav from './layout/nav.component';
 explorerHomeModule.component('explorerNav', ExplorerNav);

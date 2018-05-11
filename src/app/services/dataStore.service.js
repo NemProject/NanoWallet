@@ -8,14 +8,12 @@ class DataStore {
      *
      * @params {services} - Angular services to inject
      */
-    constructor($localStorage, Wallet, Alert, $filter, $timeout) {
+    constructor($localStorage, $filter, $timeout) {
         'ngInject';
 
         //// Service dependencies region ////
 
         this._storage = $localStorage;
-        this._Wallet = Wallet;
-        this._Alert = Alert;
         this._$filter = $filter;
         this._$timeout = $timeout;
 

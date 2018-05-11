@@ -27,6 +27,8 @@ function JapaneseProvider($translateProvider) {
       HEADER_NODE_CUSTOM_TOOLTIP: 'あなた自身のNISノードを入力',
       HEADER_PURGE: "アカウントデータの削除(パージ)",
       HEADER_PURGE_MESSAGE: "必ずバックアップを行った上で実行して下さい。OK をクリックすると、ローカルストレージに登録されているすべてのウォレットが削除(パージ)されます。すべてのウォレットをバックアップしていた場合、残高は安全です（回復にはバックアップファイルの再読み込みが必要です）。",
+      HEADER_OFFLINE_TX: 'オフライントランザクションの準備',
+      HEADER_RELEASE_TX: 'トランザクションのリリース',
 
       // FOOTER COMPONENT
       FOOTER_POWERED_BY_1: 'Powered by',
@@ -159,6 +161,8 @@ function JapaneseProvider($translateProvider) {
       GENERAL_ENCRYPTED: '暗号化',
       GENERAL_UNENCRYPTED: '平文',
       GENERAL_HEXADECIMAL: '16進数',
+      GENERAL_SELECT_ACCOUNT: 'アカウントの選択',
+      GENERAL_INVOICE: '請求書',
 
       // HOME MODULE
       HOME_UNSUPPORTED_BROWSER: '申し訳ありません。このブラウザでは安全に NanoWallet を使用する事ができません。',
@@ -167,7 +171,7 @@ function JapaneseProvider($translateProvider) {
       HOME_FEATURE_1: 'XEMの送受信は早くて簡単、ブロックタイムは1分です！',
 
       // TRANSFER TRANSACTION MODULE
-      TRANSFER_TRANSACTION_TITLE: "送金と請求",
+      TRANSFER_TRANSACTION_TITLE: "送信",
       TRANSFER_TRANSACTION_NAME: "トランスファートランザクション", //画面崩れ防止の為短く変更："トランスファートランザクション（通常トランザクション）"
       TRANSFER_TRANSACTION_MULTISIG_NAME: "マルチシグトランスファートランザクション", //画面崩れ防止の為短く変更："マルチシグトランスファートランザクション（通常トランザクション）"
       TRANSFER_TRANSACTION_INVOICE: "請求書を作成",
@@ -392,6 +396,7 @@ function JapaneseProvider($translateProvider) {
       PORTAL_APOSTILLE_BTN_2: "監査（公証の確認）",
       PORTAL_ADDRESS_BOOK_TEXT: 'アドレスにラベルを付けることによって、 連絡先を簡単に管理する事ができます。',
       PORTAL_ADDRESS_BOOK_BTN: 'アドレス帳の管理',
+      PORTAL_INVOICE_TEXT: 'Create an invoice to share via QR code',
 
       // ADDRESS BOOK MODULE
       ADDRESS_BOOK_TITLE: 'アドレス帳',
@@ -582,6 +587,7 @@ function JapaneseProvider($translateProvider) {
       ALERT_ACCOUNT_ALREADY_IN_ADDRESS_BOOK: 'コンタクトは既にアドレスブックに登録されています！',
       ALERT_MAX_MOSAIC_SUPPLY: 'モザイク最大供給量は 9\'000\'000\'000 です。',
       ALERT_GET_MOSAIC_SUPPLY_ERROR: 'モザイクの供給量取得エラーです。理由: ',
+      ALERT_ENCRYPTED_MSG_OFFLINE: 'Encrypted messaging is not enabled in offline transactions',
 
       // SUCCESS ALERTS
       ALERT_CREATE_WALLET_SUCCESS: "ウォレットが正常に作成され、ロードされました。",
@@ -597,6 +603,7 @@ function JapaneseProvider($translateProvider) {
       ALERT_ADDRESS_BOOK_FILE_SUCCESS: 'アドレス帳のインポートに成功しました!',
       ALERT_VOTING_SUCCESS: '投票の送信に成功しました。',
       ALERT_POLL_CREATION_SUCCESS: '投票の作成に成功しました。',
+      ALERT_COPY_SIGNED_TX_SUCCESS: '署名済みトランザクションをコピーしました！',
 
       // CONVERT ACCOUNT TO MULTISIG
       AGGREGATE_MODIFICATION_TITLE: "マルチシグアカウントへ変換",
@@ -663,6 +670,7 @@ function JapaneseProvider($translateProvider) {
       SIGNUP_BRAIN_WALLET_WARNING: "ブレインウォレットの<a href=\"https://en.bitcoin.it/wiki/Brainwallet\" rel=\"nofollow\" target=\"_blank\">危険性</a>について留意してください。ブレインウォレットはハッシュ化されたパスフレーズのみを利用し何度も使用されます。したがって、少なくとも40文字以上の「安全な」パスフレーズを選んでください。<a href=\"https://xkcd.com/936/\" rel=\"nofollow\" target=\"_blank\">XKCD #936</a>",
       SIGNUP_PRIVATE_KEY_WALLET_WARNING: "プライベートキーウォレットは、インポートされた秘密鍵を暗号化するためにパスワードのみを使用します。したがって、「安全な」パスワードを利用する事が重要です。 ",
       SIGNUP_CREATE_START_WARNING: '各ステップは慎重に行ってください！',
+      SIGNUP_CREATE_START_CONNECTION_WARNING: 'ウォレットの作成とデータのバックアップ中にはインターネットから切断することを推奨します。',
       SIGNUP_CREATE_READY_BTN: '準備できました',
       SIGNUP_CREATE_ENTER_NAME: 'ウォレット名を入力してください',
       SIGNUP_CREATE_ENTER_PASSWORD: 'パスワードを入力してください',
@@ -687,7 +695,7 @@ function JapaneseProvider($translateProvider) {
       SIGNUP_COMMON_WALLET_WARNING_BTN_2_INFO: '秘密鍵をバックアップするには、テキストファイルに保存して印刷するか、安全な場所に書き込んでください。 秘密鍵はオフラインで保存することをお勧めします。',
       SIGNUP_COMMON_WALLET_WARNING_FOOTER: '以下をクリックすると、上記全ての警告を読み理解し同意したことになります。',
       SIGNUP_COMMON_WALLET_WARNING_CONFIRM_1: 'ウォレットファイルをバックアップしました',
-      SIGNUP_COMMON_WALLET_WARNING_CONFIRM_2: '秘密鍵とパスワードバックアップしました',
+      SIGNUP_COMMON_WALLET_WARNING_CONFIRM_2: '秘密鍵とパスワードをバックアップしました',
       SIGNUP_COMMON_WALLET_WARNING_CONFIRM_3: '私は全ての内容を理解し同意しました',  //このあたりは、英文より厳しく書いてます。
       SIGNUP_COMMON_WALLET_WARNING_UNDERSTOOD: '理解し同意しました',
       SIGNUP_COMMON_WALLET_WARNING_DOWNLOAD: 'ウォレットをダウンロードする',
@@ -716,6 +724,18 @@ function JapaneseProvider($translateProvider) {
       FAQ_ANSWER_8: 'この場合、"サービス"へ移動し、"マルチシグおよびマルチユーザーアカウント"の項目から"マルチシグトランザクションの署名"を選択してください。',
       FAQ_QUESTION_9: '最適なセキュリティは？',
       FAQ_ANSWER_9: '特に推奨するのは秘密鍵を紙に保存することです。<br>プリントアウトしてどこか安全な所で保管してください。<br><br>ウォレットファイルについても同様に、複数のコピーをUSBメモリなどのオフラインな場所に保存してください。<br>パスワードは一意で複雑にしてください。そのため、まずは書き留めておいてください。<br><br>ウォレットを確認する、もしくは操作をしたいときは:<br> - USBメモリを指します<br> - NanoWalletにインポートします<br> - USBメモリを抜きます<br><br> ウォレットのコピーは必要な時にブラウザのローカルストレージに保存されます。<br>作業が終わったら、ログアウトし、フッターの右端にある削除ボタンでローカルストレージ内のウォレットを削除してください。',
+      FAQ_QUESTION_10: 'どこに自分のアカウントの情報(アドレスなど)がありますか？',
+      FAQ_ANSWER_10: '上部のナビゲーションバーにある<b><i>"ノード"</b></i>と<b><i>"言語"</b></i>の間に<b><i>"アカウント"</b></i>ボタンがあります。ここでアドレスや公開鍵、既得バランスなどの重要な情報を得られます。',
+      FAQ_QUESTION_11: '交換所にXEMを入金しましたが、残高に反映されません。',
+      FAQ_ANSWER_11_1: '最初にあなたのトランザクションを<a target="_blank" href="http://chain.nem.ninja">エクスプローラー</a>上に表示されるか確認してください。(エクスプローラーには数ブロック程度の遅延があります)',
+      FAQ_ANSWER_11_2: 'ほとんどの交換所はあなたの入金を識別するためにメッセージを要求します。各交換所においての手順をよく理解し、暗号化していないメッセージを添付してください。',
+      FAQ_ANSWER_11_3: '交換所の問題によって、メッセージを添付しているにも関わらずあなたの入金が処理されない場合もあります。',
+      FAQ_ANSWER_11_4: '交換所のサポートへトランザクションのハッシュを提供して状態を説明してください。',
+      FAQ_QUESTION_12: 'フォーク上にいるかを確認するためには？',
+      FAQ_ANSWER_12_1: '上部のナビゲーションバーから<b><i>"ノード"</b></i>をクリックし、ノードパネルを開きます。',
+      FAQ_ANSWER_12_2: 'ブロック高について<a target="_blank" href="http://bigalice3.nem.ninja:7890/chain/height">ここ</a>で表示できる高さと比較してみてください。',
+      FAQ_ANSWER_12_3: 'もし5ブロック以上差がある場合はフォークしているかもしれません。',
+      FAQ_ANSWER_12_4: '補正するためにはノードパネルのドロップダウンリストから他のノードを選択してください。ネットワーク上の最新の情報でアカウントが再読込されます。',
 
       // FORM RELATED
       FORM_PASSWORD_FIELD_PLACEHOLDER: "ウォレットのパスワード、もしくはパスフレーズを入力してください。",
@@ -754,7 +774,33 @@ function JapaneseProvider($translateProvider) {
       FORM_OPTION_FIELD_PLACEHOLDER: 'write option',
       FORM_WHITELIST_FIELD_PLACEHOLDER: 'account address',
       FORM_SELECT_MULTISIG: 'Select a multisignature account',
-      FORM_SELECT_CONTACT: 'Select a contact'
+      FORM_SELECT_CONTACT: 'Select a contact',
+
+      // TREZOR RELATED
+      TREZOR_TITLE: 'TREZOR',
+      TREZOR_TEXT: 'ハードウェアウォレットのTREZORはXEM、モザイク、マルチシグアカウントを保護できます。',
+      TREZOR_BUTTON: 'TREZORでログイン',
+
+      // CREATE OFFLINE TRANSACTION MODULE
+      OFFLINE_TX_TITLE: 'オフライントランザクションの準備',
+      OFFLINE_TX_NO_WALLET: 'フォームを表示するためにログイン画面からウォレットをインポートしてください。',
+      OFFLINE_TX_INFO_1: 'ウォレットのインポートとトランザクションを作成するときは、インターネットから切断していることを確認してください！',
+      OFFLINE_TX_INFO_2: 'NEMノードからモザイクやマルチシグ情報を取得するにインターネット接続が必要なので、単純なトランザクションだけ作成できます。',
+      OFFLINE_TX_INFO_3: '左側のパネルの"作成"ボタンをクリックすると、下部に署名済みトランザクションが表示されます。',
+      OFFLINE_TX_INFO_4: '署名済みトランザクションは変更不可であり、デフォルト期限の24時間以内にリリースされた場合にだけ有効になります。',
+      OFFLINE_TX_SIGNED: '署名済みトランザクション',
+      OFFLINE_TX_RELEASE: 'リリースモジュールで開く',
+
+      // RELEASE OFFLINE TRANSACTION MODULE
+      RELEASE_OFFLINE_TX_TITLE: 'トランザクションをネットワークにリリース',
+      RELEASE_OFFLINE_TX_PARAMETERS: 'トランザクションのパラメータ',
+      RELEASE_OFFLINE_TX_INFO_1: 'トランザクションをリリースするにはインターネットへの接続が必要です。',
+      RELEASE_OFFLINE_TX_INFO_2: '対応するネットワークの稼働中ノードを選択していることを確認してください。間違っている場合は拒否されます。',
+      RELEASE_OFFLINE_TX_INFO_3: '署名済みトランザクションを2度送信することはできません。トランザクションは常に同じハッシュを生成し、2つのトランザクションは同じハッシュを持つことができません。',
+      RELEASE_OFFLINE_TX_INFO_4: '署名済みトランザクションはいかなるコンピュータからでも安全にリリースできます。',
+
+      // INVOICE MODULE
+      CREATE_INVOICE_TITLE: '請求書を作成'
     });
 
 }

@@ -27,6 +27,8 @@ function EnglishProvider($translateProvider) {
         HEADER_NODE_CUSTOM_TOOLTIP: 'Enter your own NIS node here',
         HEADER_PURGE: 'Purge',
         HEADER_PURGE_MESSAGE: 'Please confirm the purge of local storage. By clicking "Purge" all wallets in your browser local storage will be deleted and will not be recoverable. You agree that all wallets have been backed up and funds are secured.',
+        HEADER_OFFLINE_TX: 'Prepare an offline transaction',
+        HEADER_RELEASE_TX: 'Release a transaction',
 
         // FOOTER COMPONENT
         FOOTER_POWERED_BY_1: 'Powered by',
@@ -57,6 +59,7 @@ function EnglishProvider($translateProvider) {
         DASHBOARD_NOTICE_3: 'The NEM Team suggests primarily testing on the testnet to familiarize yourself with NanoWallet first before using the mainnet. A simple guide can be found <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank">here</a>. Users are responsible for their funds and having their private keys backed up. The NEM team is not responsible for any loss of funds due to using this app on the mainnet.',
         DASHBOARD_NOTICE_4: 'We suggest writing down private keys on paper and storing it in a safe place. Additionally, you can import your accounts into the Android and iOS apps as a backup.',
         DASHBOARD_NOTICE_5: 'Thanks for your participation!',
+        DASHBOARD_MORE_TXES: 'See more transactions',
 
         // GENERAL
         GENERAL_BLOCK: 'Block',
@@ -159,6 +162,10 @@ function EnglishProvider($translateProvider) {
         GENERAL_ENCRYPTED: 'Encrypted',
         GENERAL_UNENCRYPTED: 'Unencrypted',
         GENERAL_HEXADECIMAL: 'Hexadecimal',
+        GENERAL_SELECT_ACCOUNT: 'Select account',
+        GENERAL_INVOICE: 'Invoice',
+        GENERAL_SIGNATURE: 'Signature',
+        GENERAL_VERIFY: 'Verify',
 
         // HOME MODULE
         HOME_UNSUPPORTED_BROWSER: 'Sorry but you cannot use Nano Wallet safely with this browser...',
@@ -167,7 +174,7 @@ function EnglishProvider($translateProvider) {
         HOME_FEATURE_1: 'Send and receive XEM easily and almost instantly, only 1 minute block time!',
 
         // TRANSFER TRANSACTION MODULE
-        TRANSFER_TRANSACTION_TITLE: 'Send & Receive',
+        TRANSFER_TRANSACTION_TITLE: 'Send a transaction',
         TRANSFER_TRANSACTION_NAME: 'Transfer transaction',
         TRANSFER_TRANSACTION_MULTISIG_NAME: 'Multisignature transfer transaction',
         TRANSFER_TRANSACTION_INVOICE: 'Create invoice',
@@ -281,7 +288,7 @@ function EnglishProvider($translateProvider) {
         MOSAIC_DEFINITION_INFORMATION_13: 'There are two fee types supported, absolute fee and percentile fee.',
         MOSAIC_DEFINITION_INFORMATION_14: 'The fee is specified as absolute quantity and thus does not depend on the quantity that is transferred.',
         MOSAIC_DEFINITION_INFORMATION_15: 'The fee is specified as multiple of the percentile of the quantity that is transferred. The fee is thus linearly increasing with the transferred mosaic quantity.',
-        MOSAIC_DEFINITION_INFORMATION_16: 'Sending mosaics on the NEM blockchain requires a fee. The exact fee is calculated depending on their total number and how many are being sent during a transaction. <b>Small business mosaics</b> are given a discounted flat rate of 0.05 XEM per mosaic per transfer.  These are mosaics with a quantity of less than 10,000 and a divisibility of 0.',
+        MOSAIC_DEFINITION_INFORMATION_16: 'Sending mosaics on the NEM blockchain requires a fee. The exact fee is calculated depending on their total number and how many are being sent during a transaction. <b>Small business mosaics</b> are given a discounted flat rate of 0.05 XEM per mosaic per transfer. These are mosaics with a quantity of less than 10,000 and a divisibility of 0.',
         MOSAIC_DEFINITION_INFORMATION_17: 'If you own 100% of the supply, you can overwrite all the mosaic properties by sending a creation transaction again with the same "namespace:mosaic" name.',
 
         // EDIT MOSAIC MODULE
@@ -390,6 +397,8 @@ function EnglishProvider($translateProvider) {
         PORTAL_APOSTILLE_BTN_2: 'Audit',
         PORTAL_ADDRESS_BOOK_TEXT: 'Assign labels to addresses to easily keep track of your contacts.',
         PORTAL_ADDRESS_BOOK_BTN: 'Manage address book',
+        PORTAL_INVOICE_TEXT: 'Create an invoice to share via QR code',
+        PORTAL_SIGNED_MSG_TEXT: 'Create and verify signed messages to authenticate account ownership without transacting.',
 
         // ADDRESS BOOK MODULE
         ADDRESS_BOOK_TITLE: 'Address book',
@@ -434,6 +443,11 @@ function EnglishProvider($translateProvider) {
         ACCOUNTS_EXPLORER_TITLE: 'Explorer - Accounts',
         ACCOUNTS_EXPLORER_SEARCH: 'Search',
 
+        // TRANSACTIONS EXPLORER
+        EXPLORER_TRANSACTIONS_TITLE: 'Your transactions history',
+        EXPLORER_TRANSACTIONS_LOAD_MORE: 'Load more',
+
+
         // APOSTILLE HISTORY MODULE
         APOSTILLE_HISTORY_TITLE: 'Apostille history',
         APOSTILLE_HISTORY_BTN_TRANSFER: 'Transfer / Split ownership',
@@ -474,7 +488,7 @@ function EnglishProvider($translateProvider) {
         // AUDIT APOSTILLE MODULE
         APOSTILLE_AUDIT_TITLE: 'Audit apostilles',
         APOSTILLE_AUDIT_CHOOSE_NODE: 'Choose a node',
-        APOSTILLE_AUDIT_CHOOSE_NODE_NOTE: 'Only a few nodes are able to search into the whole transaction history (option is disabled by default in NIS).', //
+        APOSTILLE_AUDIT_CHOOSE_NODE_NOTE: 'Only a few nodes are able to search into the whole transaction history (option is disabled by default in NIS).',
         APOSTILLE_AUDIT_WRONG_FORMAT: 'This file is not in apostille format!',
         APOSTILLE_AUDIT_FAIL_NO_PUBLIC_KEY: 'Verification failed, owner has no public key!',
         APOSTILLE_AUDIT_SUCCESS: 'File successfully audited!',
@@ -579,6 +593,7 @@ function EnglishProvider($translateProvider) {
         ALERT_ACCOUNT_ALREADY_IN_ADDRESS_BOOK: 'Contact already present in address book!',
         ALERT_MAX_MOSAIC_SUPPLY: 'Maximum mosaic supply is 9\'000\'000\'000',
         ALERT_GET_MOSAIC_SUPPLY_ERROR: 'Error at fetching mosaic supply, reason: ',
+        ALERT_ENCRYPTED_MSG_OFFLINE: 'Encrypted messaging is not enabled in offline transactions',
 
         // SUCCESS ALERTS
         ALERT_CREATE_WALLET_SUCCESS: 'Wallet successfully created and loaded!',
@@ -594,6 +609,8 @@ function EnglishProvider($translateProvider) {
         ALERT_ADDRESS_BOOK_FILE_SUCCESS: 'Address book successfully imported!',
         ALERT_VOTING_SUCCESS: 'Vote Sent Successfully',
         ALERT_POLL_CREATION_SUCCESS: 'Poll Created Successfully',
+        ALERT_COPY_SIGNED_TX_SUCCESS: 'Signed transaction copied!',
+        ALERT_COPY_SIGNED_MSG_SUCCESS: 'Signed message copied!',
 
         // CONVERT ACCOUNT TO MULTISIG
         AGGREGATE_MODIFICATION_TITLE: 'Convert an account to multisig',
@@ -633,7 +650,7 @@ function EnglishProvider($translateProvider) {
         LOGIN_UPGRADE_MESSAGE: 'Selected wallet needs an upgrade. This action will generate a child public key and add it into your primary account.',
         LOGIN_UPGRADE_BUTTON: 'Upgrade wallet',
         LOGIN_IMPORT_BUTTON: 'Import Wallet',
-        LOGIN_SELECT_WALLET_YOURS: 'Select Wallet',
+        LOGIN_SELECT_WALLET_YOURS: 'Select wallet',
         LOGIN_SELECT_WALLET: 'Select a wallet in local storage',
         LOGIN_LOGIN_BUTTON: 'Sign In',
         LOGIN_NOTE: 'No wallet? Import one or <a href="#!/signup">signup</a>.',
@@ -652,13 +669,14 @@ function EnglishProvider($translateProvider) {
         SIGNUP_PRIVATE_KEY_WALLET_BUTTON: 'Create private key wallet',
         SIGNUP_BRAIN_WALLET_BUTTON: 'Create brain wallet',
         SIGNUP_CREATE_WALLET_WARNING: 'Please read about <a href="https://www.w3.org/TR/2014/WD-WebCryptoAPI-20140325/#RandomSource-interface" rel="nofollow" target="_blank"><b>dangers</b></a> that client side generated keys pose; we are not responsible for any loss that could be due to the entropy of key generation. Even if it is unlikely to happen, it is recommended to use a private key generated from a strong source of entropy.',
-        SIGNUP_NETWORK_SELECT: 'Select a network', //
+        SIGNUP_NETWORK_SELECT: 'Select a network',
         SIGNUP_NETWORK_MAINNET: 'Mainnet is the <b><u>real</u></b> NEM network. Addresses start with \'N\'.',
         SIGNUP_NETWORK_TESTNET: 'Testnet is the <b><u>test</u></b> network. Addresses start with \'T\'.',
         SIGNUP_NETWORK_MIJIN: 'Mijin is the private version of NEM. Addresses start with \'M\'.',
         SIGNUP_BRAIN_WALLET_WARNING: 'Please read about <a href="https://en.bitcoin.it/wiki/Brainwallet" rel="nofollow" target="_blank"><b>dangers</b></a> that brain wallets pose. Brain wallets use ONLY a passphrase hashed multiple times. Therefore it\'s crucial to select a SAFE passphrase with at least 40 characters. <a href="https://xkcd.com/936/" rel="nofollow" target="_blank"><b>XKCD #936</b></a>',
         SIGNUP_PRIVATE_KEY_WALLET_WARNING: 'Private key wallets use ONLY a password to encrypt the imported private key. Therefore it\'s crucial to select a SAFE password.',
         SIGNUP_CREATE_START_WARNING: 'Please, follow each step carefully!',
+        SIGNUP_CREATE_START_CONNECTION_WARNING: 'It is recommended to disconnect from internet while creating your wallet and backing up your data.',
         SIGNUP_CREATE_READY_BTN: 'Ready',
         SIGNUP_CREATE_ENTER_NAME: 'Enter a wallet name',
         SIGNUP_CREATE_ENTER_PASSWORD: 'Enter a password',
@@ -687,6 +705,7 @@ function EnglishProvider($translateProvider) {
         SIGNUP_COMMON_WALLET_WARNING_DOWNLOAD: 'Download wallet',
         SIGNUP_ESTIMATED_PASSPHRASE_STRENGTH: 'Estimated passphrase strength',
         SIGNUP_ESTIMATED_GUESS_TIMES: 'Estimated guess times',
+        SIGNUP_CONGRATS_MSG: '<b>Congratulations!</b> Your NEM address is',
 
         // FAQ MODULE
         FAQ_TITLE: 'Frequently Asked Questions',
@@ -710,6 +729,18 @@ function EnglishProvider($translateProvider) {
         FAQ_ANSWER_8: 'In this case go to "Services", look for "Multisignature and Multi-User Accounts" and click on "Sign multisig transactions".',
         FAQ_QUESTION_9: 'What are the best security practices ?',
         FAQ_ANSWER_9: 'It is hightly recommended to always store private keys on paper.<br> You can print them and archive them somewhere safe. <br><br> Regarding wallet files you should always keep multiple copies on different cold locations, like usb sticks. <br> Passwords must always be unique and complex, for this reason, always write it down first. <br><br> When you want to check your wallet or realise operations:<br> - Plug the usb stick <br> - Import the wallet in Nano<br> - Unplug the usb stick.<br><br> A copy of your wallet is stored in the browser local storage for all the time you need.<br> Once you are done, logout and purge the wallets in local storage using the purge button on the right side of the footer.',
+        FAQ_QUESTION_10: 'Where to find information about my account (address, etc) ?',
+        FAQ_ANSWER_10: 'If you look at the top navigation bar, you will see an <b><i>"Account"</b></i> button between <b><i>"Node"</b></i> and <b><i>"Language"</b></i>. There you can find your address, public key, vested balance and other important data.',
+        FAQ_QUESTION_11: 'I have deposited XEM to an exchange but nothing has been credited ?',
+        FAQ_ANSWER_11_1: 'First you must check that the hash of your transaction is pointing to an existing transaction on the <a target="_blank" href="http://chain.nem.ninja">explorer</a> (please, note that the explorer is a few blocks behind).',
+        FAQ_ANSWER_11_2: 'Most exchanges are asking for an identification message to credit your deposit. Make sure that you have followed carefully the exchange instructions and added a message that is NOT encrypted. ',
+        FAQ_ANSWER_11_3: 'Even if you have added a message, it can happen that exchanges may not process your deposit, because of issues on their side.',
+        FAQ_ANSWER_11_4: 'You must contact the exchange support, explain the situation and provide them the hash of the transaction.',
+        FAQ_QUESTION_12: 'How to check if I am on a fork ?',
+        FAQ_ANSWER_12_1: 'Click on <b><i>"Node"</b></i>, in the top navigation bar, to open the node panel.',
+        FAQ_ANSWER_12_2: 'Look at the chain height and compare it to the height shown <a target="_blank" href="http://bigalice3.nem.ninja:7890/chain/height">here</a>.',
+        FAQ_ANSWER_12_3: 'If different of more than 5 blocks then you are probably on a fork.',
+        FAQ_ANSWER_12_4: 'To fix, just choose another node from the dropdown in the node panel, it will restore your account at it\'s latest state on the real network.',
 
         // FORM RELATED
         FORM_PASSWORD_FIELD_PLACEHOLDER: 'Enter your wallet password or passphrase',
@@ -753,7 +784,41 @@ function EnglishProvider($translateProvider) {
         // TREZOR RELATED
         TREZOR_TITLE: 'TREZOR',
         TREZOR_TEXT: 'The TREZOR hardware wallet allows you to secure your XEM, mosaics and multisig accounts',
-        TREZOR_BUTTON: 'Login with TREZOR'
+        TREZOR_BUTTON: 'Login with TREZOR',
+
+        // CREATE OFFLINE TRANSACTION MODULE
+        OFFLINE_TX_TITLE: 'Prepare an offline transaction',
+        OFFLINE_TX_NO_WALLET: 'Please import a wallet from login module to see the form.',
+        OFFLINE_TX_INFO_1: 'To be completely safe, make sure to use a computer that is <b>NEVER</b> connected to internet.',
+        OFFLINE_TX_INFO_2: 'Only simple transactions can be created because a connection is needed to fetch mosaics and multisig information from NEM nodes.',
+        OFFLINE_TX_INFO_3: 'After clicking the "create" button in the left panel, you will find the signed transaction below.',
+        OFFLINE_TX_INFO_4: 'A signed transaction is immutable and will be effective only if released to the network before the default deadline of 24 hours.',
+        OFFLINE_TX_SIGNED: 'Signed transaction',
+        OFFLINE_TX_RELEASE: 'Open in release module',
+        OFFLINE_TX_MODAL_ALERT: 'This computer seems connected to internet, please note that creating offline transactions is safe <b>ONLY</b> on a computer that is <b>NEVER</b> connected to internet.',
+
+        // RELEASE OFFLINE TRANSACTION MODULE
+        RELEASE_OFFLINE_TX_TITLE: 'Release a transaction to the network',
+        RELEASE_OFFLINE_TX_PARAMETERS: 'Transaction parameters',
+        RELEASE_OFFLINE_TX_INFO_1: 'To release a transaction you must be connected to internet.',
+        RELEASE_OFFLINE_TX_INFO_2: 'Make sure that you have selected the right network and a working node or it will be rejected.',
+        RELEASE_OFFLINE_TX_INFO_3: 'It is not possible to send a signed transaction twice. One signed transaction will always generate the same hash and two transactions cannot have the same hash.',
+        RELEASE_OFFLINE_TX_INFO_4: 'You can release a signed transaction from any computer safely.',
+
+        // INVOICE MODULE
+        CREATE_INVOICE_TITLE: 'Create an invoice',
+
+        // CREATE SIGNED MESSAGE MODULE
+        CREATE_SIGNED_MSG_TITLE: "Create a signed message",
+        CREATE_SIGNED_MSG_NAME: 'Signed message',
+        CREATE_SIGNED_MSG_SIGN: 'Sign message',
+
+        // VERIFY SIGNED MESSAGE MODULE
+        VERIFY_SIGNED_MSG_TITLE: "Verify a signed message",
+        VERIFY_SIGNED_MSG_SIG_VALID: 'Signature is valid',
+        VERIFY_SIGNED_MSG_SIG_NOT_VALID: 'Signature is <b>NOT</b> valid',
+        VERIFY_SIGNED_MSG_NOT_VALID: 'Signed message is not valid!'
+
     });
 
 }

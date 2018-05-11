@@ -31,4 +31,16 @@ componentsModule.component('attachMosaic', AttachMosaic);
 import MultisigSelect from './multisigSelect.component';
 componentsModule.component('multisigSelect', MultisigSelect);
 
+// Set news component
+import News from './news.component';
+componentsModule.component('news', News);
+
+// Set invoice component
+import Invoice from './invoice.component';
+componentsModule.component('invoice', Invoice);
+
+// Set tx-confirmation component
+import TxConfirmation from './txConfirmation.component';
+componentsModule.component('txConfirmation', TxConfirmation);
+
 export default componentsModule;

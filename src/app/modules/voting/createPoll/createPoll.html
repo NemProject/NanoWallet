@@ -1,0 +1,143 @@
+<div class="voting-page">
+
+  <div class="container-fluid" style="padding-left: 20px; padding-right: 20px;">
+    <div class="row">
+      <div class="col-sm-11">
+        <h2>Create a Poll</h2>
+      </div>
+    </div>
+
+    <div class="row row1">
+      <!-- Your content here -->
+      <div class="col-md-6" style="margin-top:10px">
+        <div class="panel panel-default">
+          <div class="panel-heading" style="background-color: rgb(68, 68, 68);border-radius: 0px;">
+          </div>
+          <div class="panel-body">
+            <form name="dataForm">
+              <!-- TITLE -->
+              <label ng-class="($ctrl.issues.blankTitle || $ctrl.issues.titleTooLong) ? 'has-error' : ''" >Title</label>
+              <br>
+              <input type="text" class="form-control" placeholder="{{ 'FORM_TITLE_FIELD_PLACEHOLDER' | translate }}" ng-model="$ctrl.formData.title" ng-class="($ctrl.issues.blankTitle || $ctrl.issues.titleTooLong) ? 'has-error' : ''" ng-change="$ctrl.checkFormData(); $ctrl.updateMessages();"/>
+              <br>
+              <!-- DESCRIPTION -->
+              <label ng-class="($ctrl.issues.descriptionTooLong) ? 'has-error' : ''">Description</label>
+              <br>
+              <textarea class="form-control poll-description-textarea" placeholder="{{ 'FORM_DESCRIPTION_FIELD_PLACEHOLDER' | translate }}" ng-class="($ctrl.issues.descriptionTooLong) ? 'has-error' : ''" ng-model="$ctrl.description" rows="4" ng-change="$ctrl.checkFormData(); $ctrl.updateMessages();"></textarea>
+              <br>
+              <!-- POLL INDEX -->
+              <label ng-class="$ctrl.issues.invalidIndexAccount ? 'has-error' : ''" >Poll Index Account</label>
+              <p class="bg-info">The poll account where the poll will be saved. By default a public one is set.</p>
+              <input type="text" class="form-control" ng-model="$ctrl.pollIndexAccount" ng-class="$ctrl.issues.invalidIndexAccount ? 'has-error is-empty' : ''" ng-change="$ctrl.checkFormData()" readOnly/>
+              <br>
+              <!-- DOE -->
+              <label ng-class="($ctrl.issues.invalidDate || $ctrl.issues.pastDate) ? 'has-error' : ''" >Date of Ending</label>
+              <p class="bg-info">If you only see a text box input a date in a valid ISO format [yyyy-MM-ddTHH:mm], for example: 2017-12-28T14:57</p>
+              <input type="datetime-local" class="form-control" name="doeInput" ng-model="$ctrl.doeString" ng-class="($ctrl.issues.invalidDate || $ctrl.issues.pastDate) ? 'has-error' : ''" ng-change="$ctrl.setDoe(dataForm.doeInput.$viewValue); $ctrl.checkFormData(); $ctrl.updateMessages();"/>
+            </form>
+            <br>
+            <input id="box1" type="checkbox" ng-model="$ctrl.formData.multiple"><label for="box1">Multiple choice</label>
+            <p class="bg-info">If selected, voters will be able to divide their vote into more than one option.</p>
+            <br>
+            <!-- UPDATABLE -->
+            <!--input id="box2" type="checkbox" ng-model="$ctrl.formData.updatable"><label for="box2">Updatable</label>
+            <p class="text-muted small">If selected Voters will be able to vote more than once. Only the last vote will be counted.</p>
+            <br /-->
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6" style="margin-top:10px">
+        <div class="panel panel-default">
+          <div class="panel-heading" style="background-color: rgb(68, 68, 68); color: white;border-radius: 0px;">
+          </div>
+          <div class="panel-body">
+            <!-- TYPE -->
+            <fieldset class="form-group">
+              <label>Type</label>
+              <br>
+              <select class="form-control" ng-model="$ctrl.typeString" ng-options="type for type in $ctrl.pollTypes" ng-change="$ctrl.changeType(); $ctrl.checkFormData(); $ctrl.updateMessages();"></select>
+              <br>
+              <div class="bg-info">
+                <p>POI: Votes will be weighted against the Proof of Importance of the voting account.</p>
+                <p>White List Poll: Only addresses in the whitelist can vote. All votes count the same.</p>
+                <!--p class="text-muted small">tokens: Only accounts with a certain token can vote. Vote weight is proportional to the amount of tokens.</p-->
+              </div>
+            </fieldset>
+            <!-- WHITELIST -->
+            <fieldset class="form-group" ng-show="$ctrl.hasWhitelist">
+              <label>Whitelist</label>
+              <p class="bg-info">Only addresses in the Whitelist will be able to vote.</p>
+              <br>
+              <div ng-repeat="account in $ctrl.whitelist track by $index">
+                <input type="text" class="form-control" placeholder="{{ 'FORM_WHITELIST_FIELD_PLACEHOLDER' | translate }}" ng-model="$ctrl.whitelist[$index]" ng-class="$ctrl.issues.invalidAddresses[$index] ? 'has-error is-empty' : ''" ng-change="$ctrl.checkFormData(); $ctrl.updateMessages();"/>
+                <br>
+              </div>
+              <button class="btn btn-success pull-xs-left" style="width:7%" ng-click="$ctrl.addWhitelistedUser(); $ctrl.checkFormData(); $ctrl.updateMessages();"><i class="fa fa-plus"></i></button>
+              <button class="btn btn-danger pull-xs-left" style="width:7%;border-radius:0;" ng-click="$ctrl.rmWhitelistedUser(); $ctrl.checkFormData(); $ctrl.updateMessages();"><i class="fa fa-minus"></i></button>
+            </fieldset>
+            <!-- OPTIONS -->
+            <fieldset class="form-group">
+              <label>Options</label>
+              <br>
+              <div class="form-group" ng-repeat="option in $ctrl.options track by $index">
+                <input type="text" class="form-control" placeholder="{{ 'FORM_OPTION_FIELD_PLACEHOLDER' | translate }}" ng-model="$ctrl.options[$index]" ng-class="$ctrl.issues.blankOptions[$index] ? 'is-empty' : ''" ng-change="$ctrl.checkFormData(); $ctrl.updateMessages();"/>
+              </div>
+                <button class="btn btn-success pull-xs-left" style="width:7%" ng-click="$ctrl.addOption(); $ctrl.checkFormData(); $ctrl.updateMessages();"><i class="fa fa-plus"></i></button>
+                <button class="btn btn-danger pull-xs-left" style="width:7%;border-radius:0;" ng-click="$ctrl.rmOption(); $ctrl.checkFormData(); $ctrl.updateMessages();"><i class="fa fa-minus"></i></button>
+            </fieldset>
+            <!-- MOSAIC -->
+            <!--<fieldset class="form-group" ng-show="$ctrl.hasMosaic">
+              <div class="input-group">
+                <label>Mosaic</label>
+                <p class="text-muted small">Only addresses with this Mosaic will be able to vote.</p>
+                <select class="col-sm-6 form-control" ng-options="mosaicName for mosaicName in $ctrl.currentAccountMosaicNames" ng-model="$ctrl.formData.mosaic" required="required" id="mosaic"></select>
+              </div>
+            </fieldset>-->
+            <fieldset class="form-group">
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <label>{{'GENERAL_FEE' | translate}} </label>
+                </span>
+                <div class="form-control formFloat" readOnly>
+                  <span class="feeAmount">
+                    <span>{{($ctrl.fee | fmtNemValue)[0]}}.{{($ctrl.fee | fmtNemValue)[1]}}</span>
+                  </span>
+                  <label class="floatRight"><small>XEM</small></label>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset class="form-group">
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <label ng-class="$ctrl.issues.noPassword ? 'has-error' : ''">{{ 'FORM_PASSWORD' | translate }}:</label>
+                </span>
+                <input class="form-control" type="password" placeholder="{{ 'FORM_PASSWORD_FIELD_PLACEHOLDER' | translate }}" ng-model="$ctrl.common.password" ng-class="$ctrl.issues.noPassword ? 'has-error' : ''" ng-change="$ctrl.checkFormData(); $ctrl.updateMessages();"/>
+              </div>
+            </fieldset>
+            <!-- BUTTON -->
+            <button class="btn btn-success pull-xs-right" type="submit" style="width:100%" ng-click="$ctrl.create()" ng-disabled="$ctrl.creating || $ctrl.invalidData">Create</button>
+            <!-- SPINNER -->
+            <div ng-show="$ctrl.creating">
+              Creating...
+              <i class="fa fa-spinner fa-spin"></i>
+            </div>
+            <br>
+            <div ng-show="$ctrl.issues.titleTooLong">
+              <p class="text-danger">Title too long</p>
+            </div>
+            <div ng-show="$ctrl.issues.descriptionTooLong">
+              <p class="text-danger">Description too long</p>
+            </div>
+            <div ng-show="$ctrl.issues.optionsTooLong">
+              <p class="text-danger">Too many options / Options too long</p>
+            </div>
+            <div ng-show="$ctrl.issues.pollTooLong">
+              <p class="text-danger">Whitelist too long</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

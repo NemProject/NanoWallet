@@ -1,0 +1,93 @@
+<div class="transferTransaction-page">
+  <div class="container-fluid main">
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>{{ 'APOSTILLE_MESSAGE_TITLE' | translate }}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="panel-heading">
+          <div class="tabDescription">
+            <!-- Title of panel -->
+            <span ng-show="!$ctrl.formData.isMultisig">{{ 'TRANSFER_TRANSACTION_NAME' | translate }}</span>
+            <span ng-show="$ctrl.formData.isMultisig ">{{ 'TRANSFER_TRANSACTION_MULTISIG_NAME' | translate }}</span>
+          </div>
+          <!-- Tabbed modes -->
+          <ul class="nav nav-tabs">
+            <!-- Normal mode -->
+            <!-- On click it set multisig to false, update mosaics data of account and reset mosaics array -->
+            <li ng-class="$ctrl.formData.isMultisig ? '' : 'active'"><a ng-click="$ctrl.formData.isMultisig = false;$ctrl.updateCurrentAccountNS();$ctrl.updateCurrentAccountMosaics();$ctrl.setMosaicTransfer();">{{ 'GENERAL_TAB_SEND' | translate }}</a></li>
+            <!-- Multisig mode -->
+            <!-- On click it set multisig to true, update mosaics data of account and reset mosaics array -->
+            <li ng-show="$ctrl._DataStore.account.metaData.meta.cosignatoryOf.length" ng-class="$ctrl.formData.isMultisig ? 'active' : ''"><a ng-click="$ctrl.formData.isMultisig = true;$ctrl.formData.messageType = 1;$ctrl.updateCurrentAccountNS();$ctrl.updateCurrentAccountMosaics();$ctrl.setMosaicTransfer();">{{ 'GENERAL_TAB_MULTISIG' | translate }}</a></li>
+          </ul>
+        </div>
+        <!-- Transaction form -->
+        <div class="panel-body">
+          <!-- Multisig select -->
+          <multisig-select ng-show="$ctrl.formData.isMultisig" multisig-account="$ctrl.formData.multisigAccount" update-ctrl="$ctrl.updateCurrentAccountNS();$ctrl.updateCurrentAccountMosaics();"></multisig-select>
+          <!-- NOTARIZATION ACCOUNT -->
+          <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <label>{{'APOSTILLE_NTY_ACCOUNT' | translate}}</label>
+              </span>
+              <input class="form-control" type="text" ng-model="$ctrl.formData.recipient" readOnly/>
+            </div>
+          </fieldset>
+          <!-- CHECKBOX FIELDS -->
+          <div class="row checkboxes">
+            <div class="col-sm-6">
+              <!-- Enable / Disable mosaic transfer -->
+              <fieldset class="form-group">
+                <input id="box10" type="checkbox" ng-model="$ctrl.isMosaicTransfer" ng-change="$ctrl.setMosaicTransfer();">
+                <label for="box10">{{'APOSTILLE_MESSAGE_ADD_MOSAIC' | translate}}</label>
+              </fieldset>
+            </div>
+            <div class="col-sm-6">
+              <fieldset class="form-group">
+                <input id="box11" type="checkbox" ng-model="$ctrl.addNamespace" ng-change="$ctrl.setMessage();">
+                <label for="box11">{{'APOSTILLE_MESSAGE_NS_BRAND' | translate}}</label>
+              </fieldset>
+            </div>
+          </div>
+          <!-- NAMESPACE TO USE AS BRAND -->
+          <fieldset class="form-group" ng-show="$ctrl.addNamespace">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <label>{{'GENERAL_NAMESPACE' | translate}}</label>
+              </span>
+              <select class="form-control" ng-options="namespace.fqn for namespace in $ctrl.namespaceOwned | objValues" ng-model="$ctrl.namespaceParent" ng-change="$ctrl.setMessage();"></select>
+            </div>
+          </fieldset>
+          <!-- Amount of XEM to send -->
+          <fieldset class="form-group" ng-show="!$ctrl.isMosaicTransfer">
+            <div class="input-group">
+              <span class="input-group-btn">
+                  <label>{{'GENERAL_AMOUNT' | translate}}: </label>
+                </span>
+              <div class="form-control formFloat" ng-disabled="$ctrl.isMosaicTransfer">
+                <input type="text" ng-disabled="$ctrl.isMosaicTransfer" ng-model="$ctrl.formData.amount" maxlength="17" ng-change="$ctrl.prepareTransaction();" />
+                <label class="floatRight"><small>XEM</small></label>
+              </div>
+            </div>
+          </fieldset>
+          <!-- Message Field -->
+          <message-area message="$ctrl.formData.message" message-type="$ctrl.formData.messageType" characters-left="$ctrl.charactersLeft" update-ctrl="$ctrl.prepareTransaction();"></message-area>
+          <!-- Transaction fee -->
+          <fee-input tx="$ctrl.preparedTransaction" is-multisig="$ctrl.formData.isMultisig"></fee-input>
+          <!-- Password Field -->
+          <password-input common="$ctrl.common"></password-input>
+          <!-- Send button is disabled if already pressed or no password or no clean recipient address or message is supposed to be encrypted but no recipient public key or is a mosaic transfer and no mosaics in array or if amount is invalid or if characters left are negative or if hex message is not hex only -->
+          <button class="btn btn-success" type="submit" ng-disabled="$ctrl.okPressed || $ctrl._Wallet.algo !== 'trezor' && !$ctrl.common.password.length || $ctrl.formData.recipient.length !== 40 || $ctrl.formData.messageType === 2 && $ctrl.formData.recipientPublicKey.length !== 64 || $ctrl.isMosaicTransfer && $ctrl.formData.isMultisig && !$ctrl.preparedTransaction.otherTrans.mosaics.length || $ctrl.isMosaicTransfer && !$ctrl.formData.isMultisig && !$ctrl.preparedTransaction.mosaics.length || !$ctrl._Helpers.isTextAmountValid($ctrl.formData.amount) || $ctrl.charactersLeft < 0 || $ctrl.formData.messageType === 0 && $ctrl.formData.message.length && !$ctrl._Helpers.isHexadecimal($ctrl.formData.message)" ng-click="$ctrl.send()">
+            <i class="fa fa-send"></i> {{ 'GENERAL_SEND' | translate }}
+          </button>
+          </fieldset>
+        </div>
+      </div>
+      <!-- Attach mosaic component -->
+      <attach-mosaic ng-show="$ctrl.isMosaicTransfer" form-data="$ctrl.formData" selected-mosaic="$ctrl.selectedMosaic" account-mosaics="$ctrl.currentAccountMosaicData" update-ctrl="$ctrl.prepareTransaction();"></attach-mosaic>
+    </div>
+  </div>
+</div>

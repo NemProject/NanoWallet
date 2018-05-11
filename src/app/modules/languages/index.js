@@ -16,6 +16,9 @@ app.config(ChineseProvider);
 import PolishProvider from './pl';
 app.config(PolishProvider);
 
+import PortugueseBRProvider from './ptbr';
+app.config(PortugueseBRProvider);
+
 import GermanProvider from './de';
 app.config(GermanProvider);
 
@@ -30,6 +33,9 @@ app.config(DutchProvider);
 
 import CroatianProvider from './hr';
 app.config(CroatianProvider);
+
+import SpanishProvider from './es';
+app.config(SpanishProvider);
 
 // Comment this while developing to see untranslated strings
 app.config(['$translateProvider', function($translateProvider) {

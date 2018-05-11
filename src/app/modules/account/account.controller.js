@@ -178,7 +178,7 @@ class AccountCtrl {
         var dummy = document.createElement("input");
         document.body.appendChild(dummy);
         dummy.setAttribute("id", "dummy_id");
-        dummy.setAttribute('value', nem.utils.format.address(this._Wallet.currentAccount.address));
+        dummy.setAttribute('value', this._Wallet.currentAccount.address);
         dummy.select();
         document.execCommand("copy");
         document.body.removeChild(dummy);

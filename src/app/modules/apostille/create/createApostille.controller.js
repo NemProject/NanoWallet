@@ -8,7 +8,7 @@ class CreateApostilleCtrl {
      *
      * @params {services} - Angular services to inject
      */
-    constructor(Nty, DataStore, $filter, Alert, Wallet, $timeout) {
+    constructor(Nty, DataStore, $filter, Alert, Wallet, $timeout, $state) {
         'ngInject';
 
         //// Module dependencies region ////
@@ -19,6 +19,7 @@ class CreateApostilleCtrl {
         this._Alert = Alert;
         this._Wallet = Wallet;
         this._$timeout = $timeout;
+        this._$state = $state;
 
         //// End dependencies region ////
 
@@ -32,12 +33,13 @@ class CreateApostilleCtrl {
      * Initialize module properties
      */
     init() {
+        this.isUpdate = this._$state.params.isUpdate;
         // Object to contain our password & private key data
         this.common = nem.model.objects.get("common");
         // Form is based on a transfer transaction object
         this.formData =  nem.model.objects.get("transferTransaction");
         this.formData.messageType = 0;
-        this.formData.tags = "";
+        this.formData.tags = this._$state.params.tags;
         this.formData.isText = false;
         this.formData.selectedHashing = nem.model.apostille.hashing["SHA256"];
         this.formData.isPrivate = true;
@@ -94,6 +96,20 @@ class CreateApostilleCtrl {
         let rawFileContent = nem.crypto.js.enc.Base64.parse($fileContent.split(/,(.+)?/)[1]);
         // Create the apostille
         let apostille = nem.model.apostille.create(this.common, $fileData.name, rawFileContent, this.formData.tags, this.formData.selectedHashing, this.formData.isMultisig, this.formData.multisigAccount, this.formData.isPrivate, this._Wallet.network);
+        
+        // Arrange apostille for update
+        if(this.isUpdate) {
+            // Set original dedicated account into apostille
+            apostille.data.dedicatedAccount.address = this._$state.params.address;
+            apostille.data.dedicatedAccount.privateKey = this._$state.params.privateKey;
+            // Set original dedicated account as recipient
+            if (apostille.transaction.type === nem.model.transactionTypes.multisigTransaction) {
+                apostille.transaction.otherTrans.recipient = this._$state.params.address;
+            } else {
+                apostille.transaction.recipient = this._$state.params.address;
+            }
+        }
+
         this.apostilles.push(apostille);
     }
 

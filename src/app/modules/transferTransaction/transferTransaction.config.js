@@ -7,7 +7,7 @@ function TransferTransactionConfig($stateProvider) {
             controller: 'TransferTransactionCtrl',
             controllerAs: '$ctrl',
             templateUrl: 'modules/transferTransaction/transferTransaction.html',
-            title: 'Send & Receive',
+            title: 'Send a transaction',
             params: {
             	address: ''
             }

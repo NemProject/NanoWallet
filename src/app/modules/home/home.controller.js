@@ -1,4 +1,5 @@
 import nem from 'nem-sdk';
+import Helpers from '../../utils/helpers';
 
 class HomeCtrl {
 
@@ -90,10 +91,10 @@ class HomeCtrl {
      */
     checkLatestVersion() {
         this._$http.get("https://api.github.com/repos/NemProject/NanoWallet/releases/latest").then((res) => {
-            let currentVersion = (this._AppConstants.version).split(".");
-            let version = (res.data.name).split(".");
-            let isVersion2 = parseInt(version[0]) > 1;
-            if (isVersion2 && (parseInt(version[0]) > parseInt(currentVersion[0]) || parseInt(version[1]) > parseInt(currentVersion[1]) || parseInt(version[2]) > parseInt(currentVersion[2]))) {
+            let currentVersion = this._AppConstants.version;
+            let version = res.data.name;
+            let isVersion2 = parseInt(version.split(".")[0]) > 1;
+            if (isVersion2 && Helpers.versionCompare(currentVersion, version) < 0) {
                 this.newUpdate = true;
                 this.updateInfo = res.data;
             }

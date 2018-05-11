@@ -1,0 +1,26 @@
+<div class="modal fade" id="confirmation" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="gridSystemModalLabel">Confirmation</h3>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <pre>{{$ctrl.tx}}</pre>
+            <!-- Transaction line -->
+            <table class="table table-condensed">
+              <tbody>
+                <tag-transaction d="$ctrl.tx" tooltip-position="'left'"></tag-transaction>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success" data-dismiss="modal">{{ 'GENERAL_CLOSE' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

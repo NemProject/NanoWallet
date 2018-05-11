@@ -3,22 +3,22 @@
   <h4> {{ 'DASHBOARD_MARKET_INFO_TITLE' | translate }} <i class="fa fa-refresh" style="cursor:pointer;float:right;" ng-click="$ctrl.refreshMarketInfo();"></i></h4>
   <div class="row">
     <div class="col-md-6 col-sm-3 header">
-      {{ 'DASHBOARD_MARKET_INFO_CAP' | translate }} in {{ $ctrl.selectedMarket }}:
+      {{ 'DASHBOARD_MARKET_INFO_CAP' | translate }} ({{ $ctrl.selectedMarket }}):
       <br>
       <span> {{($ctrl._DataStore.market.xem.highestBid * 8999999999) * $ctrl._DataStore.market.btc[$ctrl.selectedMarket].last | currencyFormat}}</span>
     </div>
     <div class="col-md-6 col-sm-3 header">
-      {{ 'DASHBOARD_MARKET_INFO_VOLUME' | translate }} in {{ $ctrl.selectedMarket }}:
+      {{ 'DASHBOARD_MARKET_INFO_VOLUME' | translate }} ({{ $ctrl.selectedMarket }}):
       <br>
       <span> {{$ctrl._DataStore.market.xem.baseVolume * $ctrl._DataStore.market.btc[$ctrl.selectedMarket].last | currencyFormat}}</span>
     </div>
     <div class="col-md-6 col-sm-3 header ticker">
-      {{ 'DASHBOARD_MARKET_INFO_PRICE' | translate }} in {{ $ctrl.selectedMarket }}:
+      {{ 'DASHBOARD_MARKET_INFO_PRICE' | translate }} ({{ $ctrl.selectedMarket }}):
       <br>
       <span>{{$ctrl._Helpers.toFixed4($ctrl._DataStore.market.xem.highestBid * $ctrl._DataStore.market.btc[$ctrl.selectedMarket].last)}}</span>
     </div>
     <div class="col-md-6 col-sm-3 ticker header">
-      {{ 'DASHBOARD_MARKET_INFO_PRICE' | translate }} in Bitcoin:
+      {{ 'DASHBOARD_MARKET_INFO_PRICE' | translate }} (Bitcoin):
       <br>
       <span><i class="fa fa-bitcoin"></i> {{$ctrl._DataStore.market.xem.highestBid}}</span>
     </div>

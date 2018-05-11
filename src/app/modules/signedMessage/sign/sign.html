@@ -1,0 +1,56 @@
+<div class="transferTransaction-page">
+  <div class="container-fluid main">
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>{{'CREATE_SIGNED_MSG_TITLE' | translate}}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="panel-heading">
+          <div class="tabDescription">
+            <!-- Title of panel -->
+            <span><br></span>
+          </div>
+          <!-- Tabbed modes -->
+          <ul class="nav nav-tabs"></ul>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn message">
+                  <label>{{'GENERAL_MESSAGE' | translate}}: </label>
+              </span>
+              <input class="form-control" type="text" ng-model="$ctrl.message" placeholder="{{'FORM_MESSAGE_PLACEHOLDER' | translate}}"/>
+              <!--<textarea class="form-control" ng-model="$ctrl.message" placeholder="{{'FORM_MESSAGE_PLACEHOLDER' | translate}}" rows="4"></textarea>-->
+            </div>
+          </fieldset>
+          <!-- Password Field -->
+          <password-input common="$ctrl.common"></password-input>
+          <button class="btn btn-success" ng-click="$ctrl.sign()" ng-disabled="!$ctrl.common.password || !$ctrl.message" ><i class="fa fa-angle-double-right"></i> {{'CREATE_SIGNED_MSG_SIGN' | translate}}</button>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-12">
+        <!--<div class="panel-heading">
+            <h3>{{ 'GENERAL_INFORMATION' |  translate }}</h3>
+        </div>
+        <div class="panel-body">
+          <p></p>
+        </div>-->
+
+        <div class="panel-heading">
+            <h3>{{'CREATE_SIGNED_MSG_NAME' | translate}}</h3>
+        </div>
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <div class="input-group">
+              <textarea class="form-control" rows="5" cols="25" ng-model="$ctrl.signedMessage" style="white-space: normal;overflow: auto;" readOnly></textarea>
+              <span class="input-group-addon btn" ng-click="$ctrl.copyMessage();" style="background-color:#444;color:#fff;cursor:pointer;border-left:1px solid #ccc;"><i class="fa fa-clipboard" ></i></span>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

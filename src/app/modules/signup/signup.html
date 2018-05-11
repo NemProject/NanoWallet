@@ -68,6 +68,7 @@
     <div class="col-md-offset-3 col-md-6" ng-show="$ctrl.start">
       <div class="form-group">
         <p class="text-center"><span class="fa fa-exclamation-triangle" aria-hidden="true"></span> {{ 'SIGNUP_CREATE_START_WARNING' | translate }}</p>
+        <p class="text-center">{{ 'SIGNUP_CREATE_START_CONNECTION_WARNING' | translate }}</p>
       </div>
       <div class="form-group">
         <hr style="border-color:#444;">
@@ -298,6 +299,19 @@
           <div class="col-md-10 col-sm-6">
             <button class="btn btn-primary" style="width:100%;" ng-click="$ctrl.endSignup();">{{ 'SIGNUP_COMMON_WALLET_WARNING_CONFIRM_3' | translate }}</button>
           </div>
+        </div>
+      </div>
+    </div>
+    <!-- Account resumed -->
+    <div class="col-md-offset-3 col-md-6" ng-show="$ctrl.step9">
+      <div class="form-group">
+        <p class="text-center" ng-bind-html="'SIGNUP_CONGRATS_MSG' | translate"></p>
+        <pre class="text-center" style="color: white;background-color: #444;font-weight: bold;"><code>{{ $ctrl.tempWallet.accounts[0].address }}</code></pre>
+      </div>
+      <div class="form-group">
+        <hr style="border-color:#444;">
+        <div class="row">
+          <button class="btn btn-primary" style="width:100%;" ui-sref="app.login">{{ 'HEADER_LOGIN_BUTTON' | translate }}</button>
         </div>
       </div>
     </div>

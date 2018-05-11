@@ -1,0 +1,62 @@
+<div class="transferTransaction-page">
+  <div class="container-fluid main">
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>{{'RELEASE_OFFLINE_TX_TITLE' | translate}}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="panel-heading">
+          <h3>{{'RELEASE_OFFLINE_TX_PARAMETERS' | translate}}</h3>
+        </div>
+        <!-- Transaction form -->
+        <div class="panel-body">
+          <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <label>{{'SIGNUP_NETWORK_SELECT' | translate}}: </label>
+              </span>
+              <select class="form-control" ng-model="$ctrl.network" ng-change="$ctrl.changeNodes()" ng-options="network.id as (network.id | toNetworkName) for network in $ctrl.networks">
+                <option value="" disabled selected>{{'SIGNUP_NETWORK_SELECT' | translate}}</option>
+              </select>
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <label>{{ 'HEADER_NODE_SELECT' | translate }}: </label>
+              </span>
+              <select class="form-control" ng-model="$ctrl.selectedNode" ng-options="node.uri as (node.uri | toHostname) for node in $ctrl.nodes"><option value="" disabled selected>{{ 'HEADER_NODE_SELECT' | translate }}</option></select>
+            </div>
+          </fieldset>
+          <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <label>{{ 'OFFLINE_TX_SIGNED' | translate }}: </label>
+              </span>
+              <textarea class="form-control" rows="8" cols="25" ng-model="$ctrl.transaction" style="white-space: normal;" ng-show="!$ctrl.showReader"></textarea>
+              <!--<video id="preview" width="100%" height="250" ng-show="$ctrl.showReader"></video>
+              <span class="input-group-addon btn" ng-click="$ctrl.showHideReader();" style="background-color:#444;color:#fff;cursor:pointer;border-left:1px solid #ccc;" ng-show="!$ctrl.hideScan"><i class="fa fa-qrcode" ></i></span>-->
+            </div>
+          </fieldset>
+          <button class="btn btn-success" type="submit" ng-disabled="$ctrl.okPressed || !$ctrl.transaction" ng-click="$ctrl.send()">
+            <i class="fa fa-send"></i> {{ 'GENERAL_SEND' | translate }}
+          </button>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-12">
+        <div class="panel-heading">
+            <h3>{{ 'GENERAL_INFORMATION' |  translate }}</h3>
+        </div>
+        <div class="panel-body">
+          <p>{{ 'RELEASE_OFFLINE_TX_INFO_1' |  translate }}</p>
+          <p>{{ 'RELEASE_OFFLINE_TX_INFO_2' |  translate }}</p>
+          <p>{{ 'RELEASE_OFFLINE_TX_INFO_3' |  translate }}</p>
+          <p>{{ 'RELEASE_OFFLINE_TX_INFO_4' |  translate }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

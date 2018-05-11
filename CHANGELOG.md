@@ -1,5 +1,15 @@
 # Changelog
 
+## Version 2.1.2
+    
+    - Voting modules
+    - Offline transaction modules
+    - Advanced Apostille
+    - BIP32 refactor
+    - News and transaction confirmation components (WIP)
+    - Invoice module and component
+    - Minor fixes and improvements
+
 ## Version 2.0.14
     
     - Fix brain wallet login

@@ -1,6 +1,17 @@
 function AppRun(AppConstants, $rootScope, $timeout, Wallet, Alert, $transitions) {
     'ngInject';
 
+    const publicStates = [
+        "app.home",
+        "app.login",
+        "app.signup",
+        "app.faq",
+        "app.trezor",
+        "app.offlineTransactionHome",
+        "app.offlineTransactionCreate",
+        "app.offlineTransactionSend"
+    ];
+
      // Change page title based on state
     $transitions.onSuccess({ to: true }, (transition) => {
         $rootScope.setPageTitle(transition.router.globals.current.title);
@@ -13,7 +24,10 @@ function AppRun(AppConstants, $rootScope, $timeout, Wallet, Alert, $transitions)
     // Check if a wallet is loaded before accessing private states
     $transitions.onStart({ 
         to: (state) => { 
-            return (state.name !== 'app.home') && (state.name !== 'app.login') && (state.name !== 'app.signup') && (state.name !== 'app.faq') && (state.name !== 'app.trezor');
+            for (let i = 0; i < publicStates.length; i++) {
+                if (publicStates[i] === state.name) return false;
+            }
+            return true;
         }
     }, (transition) => {
         if (!Wallet.current) {

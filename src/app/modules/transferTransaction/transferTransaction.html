@@ -2,7 +2,7 @@
   <div class="container-fluid main">
     <div class="row">
       <div class="col-sm-8">
-        <h2>{{ 'GENERAL_SEND' | translate }}</h2>
+        <h2>{{ 'TRANSFER_TRANSACTION_TITLE' | translate }}</h2>
       </div>
     </div>
     <div class="row">
@@ -61,6 +61,8 @@
       </div>
       <!-- Attach mosaic component -->
       <attach-mosaic ng-show="$ctrl.isMosaicTransfer" form-data="$ctrl.formData" selected-mosaic="$ctrl.selectedMosaic" account-mosaics="$ctrl.currentAccountMosaicData" update-ctrl="$ctrl.prepareTransaction();"></attach-mosaic>
+      <!-- Transaction confirmation component -->
+      <!--<tx-confirmation tx="{meta: {}, transaction: $ctrl.preparedTransaction}"></tx-confirmation>-->
     </div>
   </div>
 </div>

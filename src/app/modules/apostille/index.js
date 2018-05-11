@@ -33,4 +33,15 @@ apostilleHistoryModule.config(ApostilleHistoryConfig);
 import ApostilleHistoryCtrl from './history/apostilleHistory.controller';
 apostilleHistoryModule.controller('ApostilleHistoryCtrl', ApostilleHistoryCtrl);
 
+// Create the module where our functionality can attach to
+let apostilleMessageModule = angular.module('app.apostilleMessage', []);
+
+// Include our UI-Router config settings
+import ApostilleMessageConfig from './message/apostilleMessage.config';
+apostilleMessageModule.config(ApostilleMessageConfig);
+
+// Controllers
+import ApostilleMessageCtrl from './message/apostilleMessage.controller';
+apostilleMessageModule.controller('ApostilleMessageCtrl', ApostilleMessageCtrl);
+
 export default createApostilleModule;

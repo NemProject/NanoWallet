@@ -518,6 +518,34 @@ export default class Alert {
         });
     }
 
+    getMosaicSupplyError(message) {
+        this._ngToast.create({
+            content: this._$filter('translate')('ALERT_GET_MOSAIC_SUPPLY_ERROR') + message,
+            className: 'danger'
+        });
+    }
+
+    votingUnexpectedError(err) {
+        this._ngToast.create({
+            content: err,
+            className: 'danger'
+        });
+    }
+
+    votingError() {
+        this._ngToast.create({
+            content: this._$filter("translate")("ALERT_VOTING_ERROR"),
+            className: 'danger'
+        });
+    }
+
+    noEncryptedMessageOffline() {
+        this._ngToast.create({
+            content: this._$filter("translate")("ALERT_ENCRYPTED_MSG_OFFLINE"),
+            className: 'danger'
+        });
+    }
+
     /***
      * Success alerts
      */
@@ -591,10 +619,30 @@ export default class Alert {
         });
     }
 
-    getMosaicSupplyError(message) {
+    pollCreationSuccess() {
         this._ngToast.create({
-            content: this._$filter('translate')('ALERT_GET_MOSAIC_SUPPLY_ERROR') + message,
-            className: 'danger'
+            content: this._$filter('translate')('ALERT_POLL_CREATION_SUCCESS'),
+            className: 'success'
+        });
+    }
+
+    votingSuccess() {
+        this._ngToast.create({
+            content: this._$filter('translate')('ALERT_VOTING_SUCCESS'),
+            className: 'success'
+        });
+    }
+
+    signedTxCopySuccess() {
+        this._ngToast.create({
+            content: this._$filter('translate')('ALERT_COPY_SIGNED_TX_SUCCESS'),
+            className: 'success'
+        });
+    }
+    signedMsgCopySuccess() {
+        this._ngToast.create({
+            content: this._$filter('translate')('ALERT_COPY_SIGNED_MSG_SUCCESS'),
+            className: 'success'
         });
     }
 

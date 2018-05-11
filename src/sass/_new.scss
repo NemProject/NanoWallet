@@ -955,7 +955,7 @@ textarea {
 
 /*** SERVICES/PORTAL PAGE ***/
 .portalWrap{
-  .row1, .row2, .row3 {
+  .row1, .row2, .row3, .row4 {
     padding-bottom: $pad * 2;
   }
   .panel-heading {
@@ -1198,7 +1198,7 @@ textarea {
   #changwidget {
     margin-top: $pad * 3;
   }
-.explorer-home-page, .explorer-apostilles, .explorer-namespaces-mosaics-page, .explorer-accounts {
+.explorer-home-page, .explorer-apostilles, .explorer-namespaces-mosaics-page, .explorer-accounts, explorer-transactions {
   overflow: hidden;
   li {
     white-space: nowrap;

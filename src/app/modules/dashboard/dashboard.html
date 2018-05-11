@@ -52,6 +52,7 @@
                 </div>
               </tbody>
             </table>
+            <span class="col-lg-12" style="text-align: right;margin-top: 5px;" ng-show="$ctrl.tabConfirmed && $ctrl._DataStore.account.transactions.confirmed.length > 24"><a ui-sref="app.explorerTransactions">{{ 'DASHBOARD_MORE_TXES' | translate }}</a></span>
             <div class="panel-body nothing" ng-show="($ctrl._DataStore.account.transactions.confirmed.length == 0 && $ctrl.tabConfirmed) || ($ctrl._DataStore.account.transactions.unconfirmed.length == 0 && !$ctrl.tabConfirmed)">
               <p>{{ 'GENERAL_NO_RESULTS' | translate }}</p>
             </div>
