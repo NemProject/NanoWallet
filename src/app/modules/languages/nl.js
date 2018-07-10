@@ -59,7 +59,7 @@ function DutchProvider($translateProvider) {
         DASHBOARD_NOTICE_3: 'Het NEM-team adviseert je om eerst op het Testnet vertrouwd te raken met NanoWallet voordat je het Mainnet gaat gebruiken. Een eenvoudige gids vindt je <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank"> hier</a>. Gebruikers zijn zelf verantwoordelijk voor hun geld en moeten zelf van de persoonlijke sleutels een back-up maken. Het NEM-team is niet verantwoordelijk voor het verlies van geld door deze applicatie op het Mainnet te gebruiken.',
         DASHBOARD_NOTICE_4: 'Wij raden je aan om persoonlijke sleutels op papier te zetten en op een veilige plaats op te slaan. Daarnaast kun je je accounts importeren in de Android- en iOS-apps als back-up.',
         DASHBOARD_NOTICE_5: 'Bedankt voor het gebruik!',
-		DASHBOARD_MORE_TXES: 'Bekijk meer transacties',
+        DASHBOARD_MORE_TXES: 'Bekijk meer transacties',
 
         // GENERAL
         GENERAL_BLOCK: 'Blok',
@@ -384,7 +384,7 @@ function DutchProvider($translateProvider) {
         PORTAL_CHANGELLY_TITLE: 'Changelly Instant Exchange',
         PORTAL_CHANGELLY_TEXT: 'Gebruik de Changelly widget om XEM te kopen tegen de beste tarieven!',
         PORTAL_CHANGELLY_BTN: 'Koop XEM',
-        PORTAL_NS_TITLE: 'Namespaces & Subdomains',
+        PORTAL_NS_TITLE: 'Namespaces & Subdomeinen',
         PORTAL_NS_TEXT: 'Namespaces zijn domeinnamen. Elke domeinnaam is uniek en verifieert mozaïeken (bezittingen) die erop zijn uitgegeven of op de subdomeinen ervan.',
         PORTAL_NS_BTN: 'Creëer namespace',
         PORTAL_MOSAIC_TITLE: 'Mozaïeken',
@@ -816,8 +816,45 @@ function DutchProvider($translateProvider) {
         VERIFY_SIGNED_MSG_TITLE: 'Verifieer een ondertekend bericht',
         VERIFY_SIGNED_MSG_SIG_VALID: 'Handtekening is geldig',
         VERIFY_SIGNED_MSG_SIG_NOT_VALID: 'Handtekening is <b>NIET</b> geldig',
-        VERIFY_SIGNED_MSG_NOT_VALID: 'Ondertekend bericht is niet geldig!'
+        VERIFY_SIGNED_MSG_NOT_VALID: 'Ondertekend bericht is niet geldig!',
 
+        // DNS MODULE
+        DNS_SHORT_DESC: "Gedecentraliseerd Domain Name System (DNS) service voor namespace.nem domeinen",
+        DNS_CONFIGURE: "Configureer DNS",
+        DNS_SEARCH_DNS: "Zoek DNS",
+        DNS_GO_SEARCH: "START!",
+        DNS_GET_INFO: "Informatie ophalen",
+        DNS_SEARCH_HEADLINE: "Zoek DNS",
+        DNS_SEARCH_HELP: "DNS help",
+        DNS_SEARCH: "Zoek",
+        DNS_SEARCH_HELP_INFO: "Type een namespace.nem om de DNS informatie op te halen of direct naar de website te gaan.",
+        //DNS CONFIGURE
+        DNS_SELECT_NAMESPACE:"selecteer namespace",
+        DNS_POINTER_ADDRESS:"'Pointer'-adres",
+        DNS_IP_ADDRESS:"IP adres",
+        DNS_ORGA:"Organisatie",
+        DNS_COUNTRY:"Land",
+        DNS_ADDRESS:"Adres",
+        DNS_PHONE:"Telefoon",
+        DNS_EMAIL:"E-mail",
+        DNS_OTHERINFO:"Overige info",
+        DNS_JSONMSG:"Json bericht",
+        DNS_CHAR_LEFT:"Tekens over",
+        DNS_HELP1:"De eigenaar van een NEM namespace kan de NEM DNS in enkele eenvoudige stappen gebruiken. De DNS is gebouwd rond het namespace-platform in het NEM-ecosysteem en een bijbehorend 'pointer'-adres (PA). De eigenaar van de namespace moet een transactie naar het namespace 'pointer'-adres verzenden, inclusief een ongecodeerd bericht in json-formaat met informatie over de namespace. Het bericht kan relevante informatie bevatten, zoals IP-adres, eigendomsinformatie, fysiek adres, contactgegevens en nog veel meer.",
+        DNS_HELP2:"Zo kun je het doen:",
+        DNS_HELP3:"1. selecteer namespace",
+        DNS_HELP4:"2. schrijf relevante of update DNS informatie",
+        DNS_HELP5:"3. verzend transactie naar 'pointer'-adres",
+        //DNS ALERTS
+        ALERT_DNS_SUCCESS: "Informatie gevonden",
+        ALERT_DNS_NO_INFO_FOUND: "Geen DNS informatie gevonden",
+
+        // IMPORT BANKUP QRCODE
+        IMPORT_BANKUP_QRCODE_TITLE: 'Importeer Wallet Bankup Qrcode',
+        IMPORT_BANKUP_QRCODE_INFORMATION: 'Ondersteuning voor Bankup Wallet Qrcode: NEM WeChat Wallet, iOS, Android.',
+        IMPORT_BANKUP_QRCODE_LOAD: 'Laadt Wallet Bankup Qrcode',
+        IMPORT_BANKUP_QRCODE_SCAN: 'Scan',
+        IMPORT_BANKUP_QRCODE_STOP_SCAN: 'Stop scannen'
     });
 
 }
