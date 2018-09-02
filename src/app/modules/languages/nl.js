@@ -784,6 +784,7 @@ function DutchProvider($translateProvider) {
         TREZOR_TITLE: 'TREZOR',
         TREZOR_TEXT: 'De TREZOR hardware portemonnee maakt veilig werken met XEM, Mozaïeken en Multi-handtekening accounts mogelijk',
         TREZOR_BUTTON: 'Aanmelden met TREZOR',
+	TREZOR_SELECT_ACCOUNT: 'Selecteer een account',
 
         // CREATE OFFLINE TRANSACTION MODULE
         OFFLINE_TX_TITLE: 'Bereid een offline transactie voor',

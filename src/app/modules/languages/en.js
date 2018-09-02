@@ -785,6 +785,7 @@ function EnglishProvider($translateProvider) {
         TREZOR_TITLE: 'TREZOR',
         TREZOR_TEXT: 'The TREZOR hardware wallet allows you to secure your XEM, mosaics and multisig accounts',
         TREZOR_BUTTON: 'Login with TREZOR',
+		TREZOR_SELECT_ACCOUNT: 'Select an account',
 
         // CREATE OFFLINE TRANSACTION MODULE
         OFFLINE_TX_TITLE: 'Prepare an offline transaction',
