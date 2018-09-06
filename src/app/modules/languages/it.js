@@ -379,7 +379,7 @@ function ItalianProvider($translateProvider) {
         PORTAL_HARVESTING_TITLE: 'Delegato alla vendemmia',
         PORTAL_HARVESTING_TEXT: 'Delegate Harvesting è la funzione che consente di "estrarre" anche quando il tuo account non è aperto nel tuo browser.',
         PORTAL_EXCHANGE_TITLE: 'Intermediazione istantanea',
-        PORTAL_EXCHANGE_TEXT: 'Usa i widget di Changelly o ShapeShift per acquistare XEM ai migliori prezzi!',
+        PORTAL_EXCHANGE_TEXT: 'Usa i widget di Changelly ShapeShift o CoinSwitch per acquistare XEM ai migliori prezzi!',
         PORTAL_EXCHANGE_BTN: 'Acquista ora XEM',
         PORTAL_NS_TITLE: 'Nome Registrazione e sottodomini',
         PORTAL_NS_TEXT: 'I record di nomi sono nomi di dominio. Ogni record di nome è unico e autentica i mosaici (attivi) emessi in essi o nei relativi sottodomini.',

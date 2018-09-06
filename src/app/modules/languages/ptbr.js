@@ -379,7 +379,7 @@ function PortugueseBRProvider($translateProvider) {
         PORTAL_HARVESTING_TITLE: 'Colheita Delegada',
         PORTAL_HARVESTING_TEXT: 'Colheita Delegada é a funcionalidade que permite "minerar" mesmo quando a sua conta não estiver aberta no seu navegador.',
         PORTAL_EXCHANGE_TITLE: 'Corretoras Instantâneas',
-        PORTAL_EXCHANGE_TEXT: 'Use os widgets da Changelly ou ShapeShift para comprar XEM nos melhores preços!',
+        PORTAL_EXCHANGE_TEXT: 'Use os widgets da Changelly ShapeShift ou CoinSwitch para comprar XEM nos melhores preços!',
         PORTAL_EXCHANGE_BTN: 'Comprar XEM',
         PORTAL_NS_TITLE: 'Registro de nomes & Subdomínios',
         PORTAL_NS_TEXT: 'Registros de nomes são nomes de domínios. Cada registro de nome é único e autentica mosaicos (ativos) emitidos neles ou em seus subdomínios.',

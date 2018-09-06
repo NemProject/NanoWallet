@@ -382,7 +382,7 @@ function UkrainianProvider($translateProvider) {
         PORTAL_HARVESTING_TITLE: 'Делегований збір блоків',
         PORTAL_HARVESTING_TEXT: 'Делегований збір блоків є ознакою, що дозволяє "майнінг" навіть коли Ваш обліковий запис зачинено.',
         PORTAL_EXCHANGE_TITLE: 'Миттєвий обмін',
-        PORTAL_EXCHANGE_TEXT: 'Використовуйте віджети Changelly та ShapeShift для купівлі XEM за найкращим курсом!',
+        PORTAL_EXCHANGE_TEXT: 'Використовуйте віджети Changelly ShapeShift та CoinSwitch для купівлі XEM за найкращим курсом!',
         PORTAL_EXCHANGE_BTN: 'Купити XEM',
         PORTAL_NS_TITLE: 'Простори імен та Піддомени',
         PORTAL_NS_TEXT: 'Простори імен - це імена доменів. Кожен простір імен унікальний та є аутентифікатором мозаїк (активів), які випущені на ньому чи його піддоменах.',
