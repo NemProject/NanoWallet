@@ -546,6 +546,21 @@ export default class Alert {
         });
     }
 
+    insufficientBalance() {
+        this._ngToast.create({
+            content: this._$filter("translate")("ALERT_INSUFFICIENT_BALANCE"),
+            className: 'danger'
+        });
+    }
+
+    dnsNoInfoFound(message) {
+        this._ngToast.create({
+            content: this._$filter('translate')('ALERT_DNS_NO_INFO_FOUND') + message,
+            className: 'danger'
+        });
+    }
+
+
     /***
      * Success alerts
      */
@@ -642,6 +657,12 @@ export default class Alert {
     signedMsgCopySuccess() {
         this._ngToast.create({
             content: this._$filter('translate')('ALERT_COPY_SIGNED_MSG_SUCCESS'),
+            className: 'success'
+        });
+    }
+    dnsMsgSuccess(message) {
+        this._ngToast.create({
+            content: this._$filter('translate')('ALERT_DNS_SUCCESS')+message,
             className: 'success'
         });
     }

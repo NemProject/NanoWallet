@@ -35,7 +35,7 @@
               </tbody>
             </table>
           </div>
-          <div class="bg-info" style="cursor:pointer" ng-show="$ctrl.transactions.length && $ctrl.currentPage+1 >= $ctrl._Helpers.calcNumberOfPages($ctrl.transactions, $ctrl.pageSize)" ng-click="$ctrl.getTransactions(true, $ctrl.transactions[$ctrl.transactions.length-1].meta.hash.data)"><p>{{ 'EXPLORER_TRANSACTIONS_LOAD_MORE' | translate }}</p></div>
+          <div class="bg-info" style="cursor:pointer" ng-show="!$ctrl.noMoreTxes && $ctrl.transactions.length && $ctrl.currentPage+1 >= $ctrl._Helpers.calcNumberOfPages($ctrl.transactions, $ctrl.pageSize)" ng-click="$ctrl.getTransactions(true, $ctrl.transactions[$ctrl.transactions.length-1].meta.hash.data)"><p>{{ 'EXPLORER_TRANSACTIONS_LOAD_MORE' | translate }}</p></div>
           <div class="panel-body nothing" ng-show="!$ctrl.transactions.length">
             <p>{{ 'GENERAL_NO_RESULTS' | translate }}</p>
           </div>

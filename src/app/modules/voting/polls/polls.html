@@ -166,7 +166,7 @@
                 </ul>
               </div>
               <!-- Password and buttons -->
-              <div class="col-md-6" ng-hide="$ctrl.alreadyVoted > 0 || $ctrl.loadingVote || $ctrl.pollFinished">
+              <div class="col-md-6" ng-hide="$ctrl.alreadyVoted > 0 || $ctrl.loadingVote || $ctrl.pollFinished || $ctrl._Wallet.algo === 'trezor'">
                 <fieldset class="form-group">
                   <div class="input-group">
                     <span class="input-group-btn">

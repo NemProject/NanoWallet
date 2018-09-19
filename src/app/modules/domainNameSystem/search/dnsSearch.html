@@ -1,0 +1,77 @@
+<div class="dnsSearch-page">
+  <div class="container-fluid main">
+
+    <div class="row">
+      <div class="col-sm-10">
+        <h2>{{'DNS_SEARCH_HEADLINE' | translate}}</h2>
+      </div>
+    </div>
+
+    <div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
+      <div class="col-md-9 col-lg-7">
+
+        <!-- Search-->
+        <fieldset class="form-group">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <label>{{'DNS_SEARCH' | translate}}</label>
+              </span>
+              <input autofocus="autofocus" type="text" class="form-control"  ng-model="$ctrl.searchString" placeholder="namespace.nem" >
+            </div>
+        </fieldset>
+        <!-- end -->
+        
+
+
+
+        <!-- 2 row box -->
+        <!-- 2 row box -->
+        <div class="row" class="dualFees">
+            <div class="col-sm-6">
+              <!-- Send button -->
+              <button class="btn btn-success" type="submit" ng-disabled="$ctrl.okPressed || ($ctrl.searchString.length < 1)" ng-click="$ctrl.startSearch(1)">
+                <i class="fa fa-external-link"></i> {{'DNS_GO_SEARCH' | translate}}
+              </button>
+              <!-- end-->
+            </div>
+    
+            <div class="col-sm-6">
+              <!-- Send button -->
+              <button class="btn btn-success" type="submit" ng-disabled="$ctrl.okPressed || ($ctrl.searchString.length < 1)" ng-click="$ctrl.startSearch(2)">
+                  <i class="fa fa-search"></i> {{'DNS_GET_INFO' | translate}}
+                </button>
+                <!-- end-->  
+            </div>
+        </div>
+        <!-- end 2 row box-->
+
+
+
+
+      </div>
+
+
+
+      <!-- Information panel -->
+      <div class="col-md-3 col-lg-5">
+        <div class="panel-heading">
+          <h3>{{'DNS_SEARCH_HELP' | translate}}</h3>
+        </div>
+        <div class="panel-body row">
+          <div class="col-md-12 col-lg-12">
+
+            <p>{{'DNS_SEARCH_HELP_INFO' | translate}} </p>
+
+            <pre ng-repeat="(key, value) in $ctrl.objDnsResults"> {{ key }} : {{ value }} </pre>
+
+
+            
+
+
+          </div>
+        </div>
+      </div><!-- end -->
+
+    </div>
+  </div>
+</div>

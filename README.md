@@ -6,7 +6,7 @@ After downloading the latest version here https://forum.nem.io/t/nano-wallet-bet
 
 ### How to import NCC wallet ? ###
 
-Open NCC and your wallet, clicking on user icon should reveal a drop-down menu with "Export to ligthwallet".
+Open NCC and your wallet, clicking on user icon should reveal a drop-down menu with "Export for Lightwallet".
 Once your have your wallet (.json format), open Nano and import it from the login page. It'll ask for an upgrade and trigger the download of your updated wallet.
 Do not delete your old NCC wallet and keep it safe somewhere.
 

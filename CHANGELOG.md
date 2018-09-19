@@ -1,5 +1,26 @@
 # Changelog
 
+## Version 2.3.2
+
+    - Fix DNS search
+    - Update languages
+    - Minor improvements
+
+## Version 2.3.0
+
+    - Domain Name System module
+    - Import Wallet QR code module
+    - Support voting with Trezor
+    - Minor fixes and improvements
+
+## Version 2.2.0
+
+    - Create and verify signed messages modules
+    - Account transactions explorer
+    - Fix timestamp too far in the future
+    - Updated voting backend
+    - Minor fixes and improvements
+
 ## Version 2.1.2
     
     - Voting modules

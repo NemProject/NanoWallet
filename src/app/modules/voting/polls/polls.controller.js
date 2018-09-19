@@ -165,22 +165,12 @@ class pollsCtrl {
                         this.alreadyVoted = 1;
                         this.voting = false;
                     });
-                }).catch((e) => {
-                    this._$timeout(() => {
-                        this.voting = false;
-                        throw e;
-                    });
                 }));
             } else {
                 votes.push(this._Voting.vote(this.currentPollAddress, optionStrings[i], this.common).then((data) => {
                     this._$timeout(() => {
                         this.alreadyVoted = 1;
                         this.voting = false;
-                    });
-                }).catch((e) => {
-                    this._$timeout(() => {
-                        this.voting = false;
-                        throw e;
                     });
                 }));
             }
@@ -193,7 +183,12 @@ class pollsCtrl {
         }, (e)=>{
             this._$timeout(() => {
                 this.voting = false;
-                throw e;
+                this.common.password = '';
+                if (e.data) {
+                    this._Alert.votingUnexpectedError(e.data.message);
+                } else {
+                    this._Alert.votingError();
+                }
             });
         }).catch((e)=>{
             this._$timeout(() => {
@@ -311,11 +306,11 @@ class pollsCtrl {
             }
         }
         //no option selected
-        if ((this.selectedOption === "" && this.selectedOptions === [])) {
+        if ((this.selectedOption === "" && this.selectedOptions.length === 0)) {
             issueList.push("No option selected");
         }
         //no passwd
-        if (this.common.password === "") {
+        if (this.common.password === "" && this._Wallet.algo !== 'trezor') {
             issueList.push("No password");
         }
         this.invalidVote = (issueList.length > 0);
@@ -366,7 +361,7 @@ class pollsCtrl {
                 }
                 resultsPromise.then((data) => {
                     this._$timeout(() => {
-                        console.log("results->", data);
+                        // console.log("results->", data);
                         this.results = data;
                         this.chart.values = data.options.map((option) => {
                             return option.weighted;

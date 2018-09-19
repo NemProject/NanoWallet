@@ -1,0 +1,235 @@
+<div class="domainNameSystem-page">
+  <div class="container-fluid main">
+
+    <div class="row">
+      <div class="col-sm-10">
+        <h2>{{'DNS_CONFIGURE' | translate}}</h2>
+      </div>
+    </div>
+
+    <div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
+      <div class="col-md-9 col-lg-7">
+
+        <!-- Multisig -->
+        <div class="panel-heading">
+              <div class="tabDescription">
+                <span ng-show="!$ctrl.formData.isMultisig">{{ 'NAMESPACE_PROVISION_NAME' | translate }}</span>
+                <span ng-show="$ctrl.formData.isMultisig">{{ 'NAMESPACE_PROVISION_MULTISIG_NAME' | translate }}</span>
+              </div>
+              <ul class="nav nav-tabs">
+                <li ng-class="$ctrl.formData.isMultisig ? '' : 'active'"><a ng-click="$ctrl.formData.isMultisig = false;$ctrl.updateCurrentAccountNS();">{{ 'GENERAL_TAB_NORMAL' | translate }}</a></li>
+                <li ng-show="$ctrl._DataStore.account.metaData.meta.cosignatoryOf.length" ng-class="$ctrl.formData.isMultisig ? 'active' : ''"><a ng-click="$ctrl.formData.isMultisig = true;$ctrl.updateCurrentAccountNS();">{{ 'GENERAL_TAB_MULTISIG' | translate }}</a></li>
+              </ul>
+        </div> <!-- end -->
+        <br><br>
+
+         <!-- Multisig select -->
+         <multisig-select ng-show="$ctrl.formData.isMultisig" multisig-account="$ctrl.formData.multisigAccount" update-ctrl="$ctrl.updateCurrentAccountNS();"></multisig-select>
+         <!-- end -->
+
+
+        <!-- Parent namespace -->
+        <fieldset class="form-group">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <label for="namespaceParent">{{ 'NAMESPACE_PROVISION_PARENT' | translate }}: </label>
+            </span>
+            <select class="form-control" ng-options="namespace.fqn for namespace in $ctrl.namespaceOwned | objValues | filter:$ctrl.isNotLevel3 "
+              ng-model="$ctrl.formData.namespaceParent" ng-change="$ctrl.selectNamespace()">
+              <option value=""> {{'DNS_SELECT_NAMESPACE' | translate}}</option>
+            </select>
+          </div>
+        </fieldset>
+        <!-- end -->
+
+        <!-- Namespace pointer address -->
+        <fieldset class="form-group">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <label>{{'DNS_POINTER_ADDRESS' | translate}}</label>
+            </span>
+            <input type="text" class="form-control" ng-model="$ctrl.formData.pointerAdd" readOnly>
+          </div>
+        </fieldset>
+        <!-- end -->
+
+        <!-- 2 row box -->
+        <!-- 2 row box -->
+        <div class="row" class="dualFees">
+          <div class="col-sm-6">
+            <!-- IP add -->
+            <fieldset class="form-group">
+              <div class="input-group">
+                <span class="input-group-btn">
+                      <label>{{'DNS_IP_ADDRESS' | translate}}</label>
+                    </span>
+                <input autofocus="autofocus" type="text" class="form-control" ng-disabled="$ctrl.nameSpaceSelected" ng-model="$ctrl.ip1"
+                  placeholder="eg. 172.16.254.1"  ng-change="$ctrl.processTransMessage()">
+              </div>
+            </fieldset>
+            <!-- end -->
+
+          </div>
+
+          <div class="col-sm-6">
+            <!-- Organization-->
+            <fieldset class="form-group">
+              <div class="input-group">
+                <span class="input-group-btn">
+                      <label>{{'DNS_ORGA' | translate}}</label>
+                    </span>
+                <input autofocus="autofocus" type="text" class="form-control" ng-disabled="$ctrl.nameSpaceSelected" ng-model="$ctrl.organization"
+                  placeholder="company inc."  ng-change="$ctrl.processTransMessage()">
+              </div>
+            </fieldset>
+            <!-- end -->
+
+          </div>
+        </div>
+        <!-- end 2 row box-->
+
+        <!-- 2 row box -->
+        <!-- 2 row box -->
+        <div class="row" class="dualFees">
+          <div class="col-sm-6">
+            <!-- Country-->
+            <fieldset class="form-group">
+              <div class="input-group">
+                <span class="input-group-btn">
+                      <label>{{'DNS_COUNTRY' | translate}}</label>
+                    </span>
+                <input autofocus="autofocus" type="text" class="form-control" ng-disabled="$ctrl.nameSpaceSelected" ng-model="$ctrl.country"
+                  placeholder="US"  ng-change="$ctrl.processTransMessage()">
+              </div>
+            </fieldset>
+            <!-- end -->
+          </div>
+
+          <div class="col-sm-6">
+            <!-- address-->
+            <fieldset class="form-group">
+              <div class="input-group">
+                <span class="input-group-btn">
+                      <label>{{'DNS_ADDRESS' | translate}}</label>
+                    </span>
+                <input autofocus="autofocus" type="text" class="form-control" ng-disabled="$ctrl.nameSpaceSelected" ng-model="$ctrl.address"
+                  placeholder="eg. street, city"  ng-change="$ctrl.processTransMessage()">
+              </div>
+            </fieldset>
+            <!-- end -->
+          </div>
+        </div>
+        <!-- end 2 row box-->
+
+        <!-- 2 row box -->
+        <!-- 2 row box -->
+        <div class="row" class="dualFees">
+          <div class="col-sm-6">
+            <!-- phone-->
+            <fieldset class="form-group">
+              <div class="input-group">
+                <span class="input-group-btn">
+                    <label>{{'DNS_PHONE' | translate}}</label>
+                  </span>
+                <input autofocus="autofocus" type="text" class="form-control" ng-disabled="$ctrl.nameSpaceSelected" ng-model="$ctrl.phone"
+                  placeholder="eg. +1.6502000000" maxlength="64" ng-change="$ctrl.processTransMessage()">
+              </div>
+            </fieldset>
+            <!-- end -->
+
+          </div>
+
+          <div class="col-sm-6">
+            <!-- email-->
+            <fieldset class="form-group">
+              <div class="input-group">
+                <span class="input-group-btn">
+                    <label>{{'DNS_EMAIL' | translate}}</label>
+                  </span>
+                <input autofocus="autofocus" type="text" class="form-control" ng-disabled="$ctrl.nameSpaceSelected" ng-model="$ctrl.email"
+                  placeholder="eg. mail@org.com"  ng-change="$ctrl.processTransMessage()">
+              </div>
+            </fieldset>
+            <!-- end -->
+          </div>
+        </div>
+        <!-- end 2 row box-->
+
+        <!-- other-->
+        <fieldset class="form-group">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <label>{{'DNS_OTHERINFO' | translate}}</label>
+            </span>
+            <input autofocus="autofocus" type="text" class="form-control" ng-disabled="$ctrl.nameSpaceSelected" ng-model="$ctrl.other"
+              placeholder="..."  ng-change="$ctrl.processTransMessage()">
+          </div>
+        </fieldset>
+        <!-- end -->
+
+        <!-- json message-->
+        <fieldset class="form-group">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <label>{{'DNS_JSONMSG' | translate}}</label>
+            </span>
+            <input autofocus="autofocus" type="text" class="form-control"  ng-model="$ctrl.transMessage" placeholder="" readOnly>
+          </div>
+        </fieldset>
+        <!-- end -->
+
+        <!-- 2 row box -->
+        <!-- 2 row box -->
+        <div class="row" class="dualFees">
+            <div class="col-sm-6">
+              <!-- char left-->
+              <fieldset class="form-group">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <label>{{'DNS_CHAR_LEFT' | translate}}</label>
+                  </span>
+                  <input autofocus="autofocus" type="text" class="form-control" ng-disabled="true" ng-model="$ctrl.charactersLeft" placeholder="">
+                </div>
+              </fieldset>
+              <!-- end -->
+            </div>
+    
+            <div class="col-sm-6">
+              <!-- Transaction fee -->
+              <fee-input tx="$ctrl.preparedTransaction" is-multisig="$ctrl.formData.isMultisig"></fee-input><!-- end -->
+            </div>
+        </div>
+         <!-- end 2 row box-->
+
+        <!-- Password Field -->
+        <password-input common="$ctrl.common"></password-input>
+        <!-- Send button is disabled if already pressed or no password or no clean recipient address or message is supposed to be encrypted but no recipient public key or is a mosaic transfer and no mosaics in array or if amount is invalid or if characters left are negative or if hex message is not hex only -->
+        <button class="btn btn-success" type="submit" ng-disabled="$ctrl.transMessage =='' || $ctrl.okPressed || $ctrl._Wallet.algo !== 'trezor' && !$ctrl.common.password.length || $ctrl.formData.recipient.length !== 40 || $ctrl.formData.messageType === 2 && $ctrl.formData.recipientPublicKey.length !== 64 || $ctrl.isMosaicTransfer && $ctrl.formData.isMultisig && !$ctrl.preparedTransaction.otherTrans.mosaics.length || $ctrl.isMosaicTransfer && !$ctrl.formData.isMultisig && !$ctrl.preparedTransaction.mosaics.length || $ctrl.charactersLeft < 0 || $ctrl.formData.messageType === 0 && $ctrl.formData.message.length && !$ctrl._Helpers.isHexadecimal($ctrl.formData.message) " ng-click="$ctrl.send()">
+          <i class="fa fa-send"></i> {{ 'GENERAL_SEND' | translate }}
+        </button>
+
+      </div>
+
+      <!-- Information panel -->
+      <div class="col-md-3 col-lg-5">
+        <div class="panel-heading">
+          <h3>{{'DNS_SEARCH_HELP' | translate}}</h3>
+        </div>
+        <div class="panel-body row">
+          <div class="col-md-12 col-lg-12">
+            <p>{{'DNS_HELP1' | translate}} </p>
+            <p>{{'DNS_HELP2' | translate}}</p>
+            <pre>
+              
+                {{'DNS_HELP3' | translate}}
+                {{'DNS_HELP4' | translate}}
+                {{'DNS_HELP5' | translate}}
+            </pre>
+
+          </div>
+        </div>
+      </div><!-- end -->
+
+    </div>
+  </div>
+</div>

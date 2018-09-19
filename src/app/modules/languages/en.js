@@ -581,7 +581,7 @@ function EnglishProvider($translateProvider) {
         ALERT_BTC_MARKET_ERROR: 'Error while trying to fetch Bitcoin price',
         ALERT_COSIG_REMOVAL_LIMIT: 'Only one cosignatory at a time can be removed',
         ALERT_MULTISIG_MIN_SIGNATURE_INVALID: 'Invalid number of minimum signatures',
-        ALERT_INSUFFICIENT_BALANCE: 'Insufficient Balance for performing the operation',
+        ALERT_INSUFFICIENT_BALANCE: 'Insufficient balance for performing the operation',
         ALERT_VOTING_ERROR: 'Invalid Vote',
         ALERT_BRAIN_PASSWORD_TOO_SHORT: 'Brain wallet passphrase must be at least 40 characters!',
         ALERT_NODE_SEEMS_OFFLINE: 'Node seems offline, please select another one',
@@ -653,7 +653,7 @@ function EnglishProvider($translateProvider) {
         LOGIN_SELECT_WALLET_YOURS: 'Select wallet',
         LOGIN_SELECT_WALLET: 'Select a wallet in local storage',
         LOGIN_LOGIN_BUTTON: 'Sign In',
-        LOGIN_NOTE: 'No wallet? Import one or <a href="#!/signup">signup</a>.',
+        LOGIN_NOTE: 'No wallet? <a href="#!/import-wallet-qr-code">Import one</a> or <a href="#!/signup">sign up</a>.',
 
         // SIGNUP MODULE
         SIGNUP_TITLE: 'New to NEM?',
@@ -696,7 +696,7 @@ function EnglishProvider($translateProvider) {
         SIGNUP_COMMON_WALLET_WARNING_BTN_1: 'Show raw wallet file',
         SIGNUP_COMMON_WALLET_WARNING_BTN_1_INFO: 'To make a wallet file, create an empty text file and put the above base 64 key into it. Save the file as <b><i>yourWalletName.wlt</i></b>.',
         SIGNUP_COMMON_WALLET_WARNING_BTN_2: 'Show private key',
-        SIGNUP_COMMON_WALLET_WARNING_BTN_2_INFO: 'To backup a private key, print it or save it in a text file. It is highly recommend to store the private key in a safe and offline location.',
+        SIGNUP_COMMON_WALLET_WARNING_BTN_2_INFO: 'Your private key holds all the power of your account and therefore it must be kept secret. <b>Never share it with anyone</b>. It is <b>highly recommend</b> to store the private key in a safe and offline location.',
         SIGNUP_COMMON_WALLET_WARNING_FOOTER: 'By clicking below, you agree that you have your private key, password and wallet file backed up.',
         SIGNUP_COMMON_WALLET_WARNING_CONFIRM_1: 'I have my wallet file',
         SIGNUP_COMMON_WALLET_WARNING_CONFIRM_2: 'I have my private key and password',
@@ -817,7 +817,45 @@ function EnglishProvider($translateProvider) {
         VERIFY_SIGNED_MSG_TITLE: "Verify a signed message",
         VERIFY_SIGNED_MSG_SIG_VALID: 'Signature is valid',
         VERIFY_SIGNED_MSG_SIG_NOT_VALID: 'Signature is <b>NOT</b> valid',
-        VERIFY_SIGNED_MSG_NOT_VALID: 'Signed message is not valid!'
+        VERIFY_SIGNED_MSG_NOT_VALID: 'Signed message is not valid!',
+
+        // DNS MODULE
+        DNS_SHORT_DESC: "Decentralized Domain Name System (DNS) service for namespace.nem domains",
+        DNS_CONFIGURE: "Configure DNS",
+        DNS_SEARCH_DNS: "Search DNS",
+        DNS_GO_SEARCH: "GO!",
+        DNS_GET_INFO: "Get info",
+        DNS_SEARCH_HEADLINE: "Search DNS",
+        DNS_SEARCH_HELP: "DNS help",
+        DNS_SEARCH: "Search",
+        DNS_SEARCH_HELP_INFO: "Type a namespace.nem to lookup associated DNS information or go directly to website. ",
+        //DNS CONFIGURE
+        DNS_SELECT_NAMESPACE:"select namespace",
+        DNS_POINTER_ADDRESS:"Pointer address",
+        DNS_IP_ADDRESS:"ip address",
+        DNS_ORGA:"Organization",
+        DNS_COUNTRY:"Country",
+        DNS_ADDRESS:"Address",
+        DNS_PHONE:"Phone",
+        DNS_EMAIL:"Email",
+        DNS_OTHERINFO:"Other info",
+        DNS_JSONMSG:"Json message",
+        DNS_CHAR_LEFT:"Characters Left",
+        DNS_HELP1:"The owner of a NEM namespace can use the NEM DNS in a few easy steps. The DNS is built around the namespace platform in the NEM ecosystem and an associated pointer address (PA). The namespace owner needs to send a transaction to the namespace pointer address including a non-encrypted message in json format with information related to the namespace. The message can include relevant information such as IP address, ownership info, physical address, contact info and much more.",
+        DNS_HELP2:"This is how you do it:",
+        DNS_HELP3:"1. select namespace",
+        DNS_HELP4:"2. write relevant or update DNS information",
+        DNS_HELP5:"3. send transaction to pointer address",
+        //DNS ALERTS
+        ALERT_DNS_SUCCESS: "Information found",
+        ALERT_DNS_NO_INFO_FOUND: "No DNS info found",
+
+        // IMPORT WALLET QRCODE
+        IMPORT_WALLET_QRCODE_TITLE: 'Import wallet QR code',
+        IMPORT_WALLET_QRCODE_INFORMATION: 'Support wallet QR code: NEM wechat wallet, ios, android.',
+        IMPORT_WALLET_QRCODE_LOAD: 'Load wallet QR code',
+        IMPORT_WALLET_QRCODE_SCAN: 'Scan',
+        IMPORT_WALLET_QRCODE_STOP_SCAN: 'Stop scan'
 
     });
 

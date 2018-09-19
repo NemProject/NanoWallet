@@ -1,0 +1,82 @@
+<div class="importQrcode-page">
+  <div class="container-fluid main">
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>{{ 'IMPORT_WALLET_QRCODE_TITLE' |  translate }}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="panel-heading">
+            <h3>{{ 'IMPORT_WALLET_QRCODE_LOAD' |  translate }}</h3>
+        </div>
+        <div class="panel-body">
+          <div id="importWallet">
+                <div id="scanQrcode"></div>
+                <div id="uploadQrcode">
+                  <canvas id="uploadQrcodeCvs" hidden></canvas>
+                </div>
+              </div>
+          <div class="input-group">
+            <div class="">
+              <div class="col-md-6 col-sm-6">
+                <button class="btn btn-success" type="submit" ng-click="$ctrl.scan()" ng-show="!$ctrl.scanStarted">
+                    {{ 'IMPORT_WALLET_QRCODE_SCAN' | translate }}
+                </button>
+                <button class="btn btn-success" type="submit" ng-click="$ctrl.stopScan()" ng-show="$ctrl.scanStarted">
+                    {{ 'IMPORT_WALLET_QRCODE_STOP_SCAN' | translate }}
+                </button>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                  <input class="btn btn-success" style="font-size: unset;width: auto;" type="file" id="uploadQrcodeInput" accept="image/*"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="panel-heading">
+            <h3>{{ 'GENERAL_INFORMATION' |  translate }}</h3>
+        </div>
+        <div class="panel-body">
+          <p>{{ 'IMPORT_WALLET_QRCODE_INFORMATION' |  translate }}</p>
+        </div>      
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Import Wallet Qrcode modal -->
+<div id="importQrcodeModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm" role="document">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title">{{ 'IMPORT_WALLET_QRCODE_TITLE' |  translate }}</h3>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <fieldset class="form-group">
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <label>{{ 'FORM_WALLET_NAME_FIELD_PLACEHOLDER' | translate }}: </label>
+                </span>
+                <div class="form-control formFloat">
+                  <span id="importWalletName"></span>
+                </div>
+              </div>
+            </fieldset>
+            <password-input common="$ctrl.common"></password-input>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" type="submit" ng-click="$ctrl.importQrcodeWallet()">
+            <i class="fa fa-plus"></i> {{ 'LOGIN_IMPORT_BUTTON' | translate }}
+          </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -73,12 +73,12 @@
           </div>
         </div>
       </div>
-
+       
       <!-- SECOND ROW STARTS -->
       <div class="row row2">
         <div class="col-sm-4">
           <div class="panel-heading row">
-            <div class="col-sm-3">
+            <div class="col-sm-3"> 
               <img src="images/apostille.png"/>
             </div>
             <div class="col-sm-9">
@@ -164,9 +164,9 @@
             <p>{{ 'PORTAL_VOTING_TEXT' | translate }}</p>
           </div>
           <div class="panelFooter">
-            <button class="btn" ui-sref="app.votingPolls" ng-disabled="$ctrl._Wallet.algo === 'trezor'">{{ 'PORTAL_VOTING_BTN1' | translate }}</button>
+            <button class="btn" ui-sref="app.votingPolls">{{ 'PORTAL_VOTING_BTN1' | translate }}</button>
             <br>
-            <button class="btn" ui-sref="app.votingCreatePoll"  ng-disabled="$ctrl._Wallet.algo === 'trezor'">{{ 'PORTAL_VOTING_BTN2' | translate }}</button>
+            <button class="btn" ui-sref="app.votingCreatePoll">{{ 'PORTAL_VOTING_BTN2' | translate }}</button>
           </div>
         </div>
         <div class="col-sm-4">
@@ -206,7 +206,29 @@
             <button class="btn" ui-sref="app.signedMessageVerification">{{ 'VERIFY_SIGNED_MSG_TITLE' | translate }}</button>
           </div>
         </div>
+
+        <div class="col-sm-4">
+            <div class="panel-heading row">
+              <div class="col-sm-3">
+                  <img src="images\DNSlogo.png" />
+                
+              </div>
+              <div class="col-sm-9">
+                <h5>DNS</h5>
+              </div>
+            </div>
+            <div class="panel-body">
+              <p>{{'DNS_SHORT_DESC' | translate}}</p>
+            </div>
+            <div class="panelFooter">
+                <button class="btn" ui-sref="app.dnsSearch">{{'DNS_SEARCH_DNS' | translate}}</button>
+                <br>
+                <button class="btn" ui-sref="app.domainNameSystem">{{'DNS_CONFIGURE' | translate}}</button>
+                
+            </div>
+          </div>
       </div>
+
 
     </div>
 

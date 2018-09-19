@@ -107,7 +107,7 @@
                 </div>
               </div>
             </fieldset>
-            <fieldset class="form-group">
+            <fieldset class="form-group" ng-hide="$ctrl._Wallet.algo === 'trezor'">
               <div class="input-group">
                 <span class="input-group-btn">
                   <label ng-class="$ctrl.issues.noPassword ? 'has-error' : ''">{{ 'FORM_PASSWORD' | translate }}:</label>

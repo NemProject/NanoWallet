@@ -2,18 +2,16 @@ import nem from 'nem-sdk';
 
 class createPollCtrl {
     // Set services as constructor parameter
-    constructor(Alert, Voting, Wallet, VotingUtils, DataStore) {
+    constructor($timeout, Alert, Voting, Wallet, VotingUtils, DataStore) {
         'ngInject';
 
         // Declaring services
+        this._$timeout = $timeout;
         this._Alert = Alert;
         this._Voting = Voting;
         this._VotingUtils = VotingUtils;
         this._Wallet = Wallet;
         this._DataStore = DataStore;
-
-        // Scroll to top of the page
-        window.scrollTo(0, 0);
 
         // Constants
         this.MOCK_ADDRESS = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
@@ -174,7 +172,7 @@ class createPollCtrl {
         if (this.issues.invalidAddresses.some(a => a) || this.issues.blankOptions.some(a => a)){
             invalid = true;
         }
-        if (this.common.password === "") {
+        if (this.common.password === "" && this._Wallet.algo !== 'trezor') {
             this.issues.noPassword = true;
             invalid = true;
         } else {
@@ -322,7 +320,7 @@ class createPollCtrl {
         // Initial checks that may forbid the operation move forward
         if (this._DataStore.account.metaData.account.balance < this.fee) {
             // This account has insufficient funds to perform the operation
-            this._Alert.errorInsuficientBalance();
+            this._Alert.insufficientBalance();
             this.creating = false;
             return;
         }
@@ -343,10 +341,15 @@ class createPollCtrl {
             this._Alert.pollCreationSuccess();
             this.clearForm();
         }).catch(err => {
-            console.log(err.message);
-            this._Alert.votingUnexpectedError(err.message);
-            this.creating = false;
-            this.clearForm();
+            this._$timeout(() => {
+                this.creating = false;
+                if (err.message) {
+                    this._Alert.votingUnexpectedError(err.message);
+                } else {
+                    this._Alert.votingUnexpectedError(err.data.message);
+                }
+                this.clearForm();
+            });
         });
     }
 

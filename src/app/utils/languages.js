@@ -2,23 +2,29 @@
  * Available languages
  */
 let data =  [{
+    name: "Chinese",
+    key: "cn"
+}, {
     name: "English",
     key: "en"
 }, {
-    name: "Chinese",
-    key: "cn"
+    name: "German",
+    key: "de"
+}, {
+    name: "Italian",
+    key: "it"
+}, {
+    name: "Japanese",
+    key: "jp"
+}, {
+    name: "Nederlands",
+    key: "nl"
 }, {
     name: "Polish",
     key: "pl"
 }, {
     name: "Português (Brasil)",
     key: "ptbr"
-}, {
-    name: "German",
-    key: "de"
-}, {
-    name: "Japanese",
-    key: "jp"
 }, {
     name: "Русский",
     key: "ru"
@@ -31,6 +37,9 @@ let data =  [{
 }, {
     name: "Spanish",
     key: "es"
+}, {
+    name: "Ukrainian",
+    key: "uk"
 }]
 
 module.exports = {

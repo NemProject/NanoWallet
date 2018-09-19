@@ -22,6 +22,12 @@ function Paginate() {
             scope.decrement = function() {
                 scope.currentPage = scope.currentPage-1;
             }
+            scope.goStart = function() {
+                scope.currentPage = 0;
+            }
+            scope.goEnd = function() {
+                scope.currentPage = Helpers.calcNumberOfPages(scope.data, scope.pageSize)-1;
+            }
         }
 
     };
