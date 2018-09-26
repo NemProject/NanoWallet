@@ -110,7 +110,8 @@ const requires = [
     'app.signedMessageVerification',
     'app.domainNameSystem',
     'app.dnsSearch',
-    'app.importWalletQrCode'
+    'app.importWalletQrCode',
+    'app.coinswitch'
 ];
 
 window.$ = window.jQuery = $;

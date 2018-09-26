@@ -379,7 +379,7 @@ function SpanishProvider($translateProvider) {
         PORTAL_HARVESTING_TITLE: 'Cosecha delegada',
         PORTAL_HARVESTING_TEXT: 'La cosecha delegada es la característica que permite "minar" incluso cuando tu cuenta está cerrada.',
         PORTAL_EXCHANGE_TITLE: 'Casas de intercambios instantáneas',
-        PORTAL_EXCHANGE_TEXT: '¡Utiliza los widgets Changelly y ShapeShift para comprar XEM a los mejores precios!',
+        PORTAL_EXCHANGE_TEXT: '¡Utiliza los widgets Changelly ShapeShift y CoinSwitch para comprar XEM a los mejores precios!',
         PORTAL_EXCHANGE_BTN: 'Comprar XEM',
         PORTAL_NS_TITLE: 'Namespaces y subnamespaces',
         PORTAL_NS_TEXT: 'Los namespaces son nombres de dominio. Cada namespace es único y autentica los mosaicos (activos) emitidos en él o en sus subnamespaces.',

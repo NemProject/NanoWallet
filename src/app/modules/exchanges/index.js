@@ -22,4 +22,15 @@ ShapeshiftModule.config(ShapeshiftConfig);
 import ShapeshiftCtrl from './shapeshift/shapeshift.controller';
 ShapeshiftModule.controller('ShapeshiftCtrl', ShapeshiftCtrl);
 
+// Create the module where our functionality can attach to
+let CoinSwitchModule = angular.module('app.coinswitch', []);
+
+// Include our UI-Router config settings
+import CoinSwitchConfig from './coinswitch/coinswitch.config';
+CoinSwitchModule.config(CoinSwitchConfig);
+
+// Controllers
+import CoinSwitchCtrl from './coinswitch/coinswitch.controller';
+CoinSwitchModule.controller('CoinSwitchCtrl', CoinSwitchCtrl);
+
 export default ChangellyModule;
