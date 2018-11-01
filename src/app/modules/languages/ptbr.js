@@ -259,6 +259,7 @@ function PortugueseBRProvider($translateProvider) {
         MOSAIC_DEFINITION_REQUIRES_LEVY: 'Requer imposto',
         MOSAIC_DEFINITION_LEVY_LIMITATION: 'Limitação da interface: por enquanto, apenas mosaicos já criados podem ser usados como imposto.',
         MOSAIC_DEFINITION_LEVY_SELECT_MOSAIC: 'Selecione um mosaico para imposto',
+        MOSAIC_DEFINITION_LEVY_IS_NEW_MOSAIC: 'Use the new mosaic for levy',
         MOSAIC_DEFINITION_LEVY_ADDRESS: 'Endereço da conta destino de impostos',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE: 'Tipo de taxa',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE_1: 'Absoluta',

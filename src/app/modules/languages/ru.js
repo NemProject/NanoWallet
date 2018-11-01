@@ -263,6 +263,7 @@ function RussianProvider($translateProvider) {
         MOSAIC_DEFINITION_REQUIRES_LEVY: 'Требовать налог',
         MOSAIC_DEFINITION_LEVY_LIMITATION: 'UI-ограничение: в настоящее время в качестве налога допускается только мозайка.',
         MOSAIC_DEFINITION_LEVY_SELECT_MOSAIC: 'Выберите облагаемую налогом мозайку',
+        MOSAIC_DEFINITION_LEVY_IS_NEW_MOSAIC: 'Use the new mosaic for levy',
         MOSAIC_DEFINITION_LEVY_ADDRESS: 'Номер счёта налоговой',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE: 'Тип сбора',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE_1: 'Фиксированный',

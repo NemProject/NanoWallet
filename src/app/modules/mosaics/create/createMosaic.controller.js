@@ -40,6 +40,8 @@ class createMosaicCtrl {
         this.formData.multisigAccount = this._DataStore.account.metaData.meta.cosignatoryOf.length == 0 ? '' : this._DataStore.account.metaData.meta.cosignatoryOf[0];
         // Has no levy by default
         this.hasLevy = false;
+        // Levy will be in the newly created mosaic
+        this.levyInNewlyCreatedMosaic = false;
         // Mosaics owned names for current account
         this.currentAccountMosaicNames = '';
         // Selected mosaic from view
@@ -65,7 +67,7 @@ class createMosaicCtrl {
     /**
      * Set name to lowercase and check it
      */
-    processMosaicName(){
+    processMosaicName() {
         // Lowercase mosaic name
         this.formData.mosaicName = this._$filter('lowercase')(this.formData.mosaicName);
         // Check mosaic name validity
@@ -73,6 +75,7 @@ class createMosaicCtrl {
             this._Alert.invalidMosaicName();
             return;
         }
+        this.updateLevyMosaic(this.hasLevy, this.levyInNewlyCreatedMosaic);
         this.prepareTransaction();
     }
 
@@ -99,16 +102,41 @@ class createMosaicCtrl {
     /**
      * Update levy mosaic data
      *
-     * @note: Used in view (ng-update) on hasLevy and selectedMosaic changes
+     * @note: Used in view (ng-update) on hasLevy, selectedMosaic and levyInNewlyCreatedMosaic changes
      *
-     * @param {boolean} val - true or false
+     * @param {boolean} _hasLevy - true or false
+     * @param {boolean} _levyInNewlyCreatedMosaic - true or false
      */
-    updateLevyMosaic(val) {
-        if (val) {
-            this.formData.levy.mosaic = this.mosaicOwned[this.selectedMosaic].mosaicId;
+    updateLevyMosaic(_hasLevy, _levyInNewlyCreatedMosaic) {
+        if (_hasLevy) {
+            if (_levyInNewlyCreatedMosaic) {
+                this.formData.levy.mosaic = {
+                    // create mosaicId structure by hand
+                    "namespaceId": this.formData.namespaceParent.fqn,
+                    "name": this.formData.mosaicName
+                };
+            } else {
+                this.formData.levy.mosaic = this.mosaicOwned[this.selectedMosaic].mosaicId;
+            }
         } else {
             this.formData.levy.mosaic = null;
         }
+    }
+
+    /**
+     * Gets divisibility of selectedMosaic
+     *
+     * @note: used in view in output formatting and calculations for levy examples
+     */
+    selectedMosaicDivisibility() {
+        var props = this._DataStore.mosaic.metaData[this.selectedMosaic].mosaicDefinition.properties;
+        var proplen = props.length;
+        for(var i=0;i<proplen;i++) {
+            if (props[i].name === 'divisibility') {
+                return props[i].value;
+            }
+        }
+        return 0;
     }
 
     /**

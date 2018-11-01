@@ -260,6 +260,7 @@ function ChineseProvider($translateProvider) {
         MOSAIC_DEFINITION_REQUIRES_LEVY: '需要征费',
         MOSAIC_DEFINITION_LEVY_LIMITATION: 'UI限制： 当前仅允许已拥有的马赛克作为征费。',
         MOSAIC_DEFINITION_LEVY_SELECT_MOSAIC: '选择征费马赛克',
+        MOSAIC_DEFINITION_LEVY_IS_NEW_MOSAIC: 'Use the new mosaic for levy',
         MOSAIC_DEFINITION_LEVY_ADDRESS: '征费地址',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE: '征费类型',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE_1: '绝对值',
