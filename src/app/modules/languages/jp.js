@@ -266,7 +266,6 @@ function JapaneseProvider($translateProvider) {
       MOSAIC_DEFINITION_REQUIRES_LEVY: "徴収を要求",
       MOSAIC_DEFINITION_LEVY_LIMITATION: "UI制限：現在はモザイク作成者のみ徴収設定が可能です。",
       MOSAIC_DEFINITION_LEVY_SELECT_MOSAIC: "徴収するモザイクを選択",
-      MOSAIC_DEFINITION_LEVY_IS_NEW_MOSAIC: 'Use the new mosaic for levy',
       MOSAIC_DEFINITION_LEVY_ADDRESS: "徴収モザイク送信先アドレス",
       MOSAIC_DEFINITION_LEVY_FEE_TYPE: "手数料タイプ",
       MOSAIC_DEFINITION_LEVY_FEE_TYPE_1: "固定徴収方式",

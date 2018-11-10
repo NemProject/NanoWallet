@@ -262,7 +262,6 @@ function DutchProvider($translateProvider) {
         MOSAIC_DEFINITION_REQUIRES_LEVY: 'Vereist heffing',
         MOSAIC_DEFINITION_LEVY_LIMITATION: 'UI-beperking: voor nu, alleen eigen mozaïeks kunnen als heffing worden gebruikt.',
         MOSAIC_DEFINITION_LEVY_SELECT_MOSAIC: 'Selecteer een heffingsmozaïek',
-        MOSAIC_DEFINITION_LEVY_IS_NEW_MOSAIC: 'Use the new mosaic for levy',
         MOSAIC_DEFINITION_LEVY_ADDRESS: 'Heffingsadres',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE: 'Heffingstype',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE_1: 'Constant',

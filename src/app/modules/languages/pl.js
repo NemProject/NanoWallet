@@ -263,7 +263,7 @@ function PolishProvider($translateProvider) {
         MOSAIC_DEFINITION_REQUIRES_LEVY: 'Wymaga specjalnej opłaty',
         MOSAIC_DEFINITION_LEVY_LIMITATION: 'Ogranieczenie UI: obecnie tylko posiadane mozaiki mogą zostać użyte do specjalnej opłaty.',
         MOSAIC_DEFINITION_LEVY_SELECT_MOSAIC: 'Wybierz mozaikę do specjalnej opłaty',
-        MOSAIC_DEFINITION_LEVY_IS_NEW_MOSAIC: 'Use the new mosaic for levy',
+        MOSAIC_DEFINITION_LEVY_IS_NEW_MOSAIC: 'Użyj nowej mozaiki do opłaty specjalnej',
         MOSAIC_DEFINITION_LEVY_ADDRESS: 'Adres specjalej opłaty',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE: 'Typ opłaty',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE_1: 'Stała',

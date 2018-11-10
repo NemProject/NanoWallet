@@ -262,7 +262,6 @@ function UkrainianProvider($translateProvider) {
         MOSAIC_DEFINITION_REQUIRES_LEVY: 'Потребує оподаткування',
         MOSAIC_DEFINITION_LEVY_LIMITATION: 'Обмеження інтерфейсу користувача: на даний час у якості податку дозволяється використовувати тільки власні мозаїки',
         MOSAIC_DEFINITION_LEVY_SELECT_MOSAIC: 'Вибрати мозаїку для оподаткування',
-        MOSAIC_DEFINITION_LEVY_IS_NEW_MOSAIC: 'Use the new mosaic for levy',
         MOSAIC_DEFINITION_LEVY_ADDRESS: 'Рахунок для податку',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE: 'Тип комісії',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE_1: 'Абсолютна',

@@ -259,7 +259,6 @@ function ItalianProvider($translateProvider) {
         MOSAIC_DEFINITION_REQUIRES_LEVY: 'Richiede tasse',
         MOSAIC_DEFINITION_LEVY_LIMITATION: 'Limitazione dell"interfaccia: per ora, solo i mosaici già creati possono essere utilizzati come tasse.',
         MOSAIC_DEFINITION_LEVY_SELECT_MOSAIC: 'Seleziona una tessera per le tasse',
-        MOSAIC_DEFINITION_LEVY_IS_NEW_MOSAIC: 'Use the new mosaic for levy',
         MOSAIC_DEFINITION_LEVY_ADDRESS: 'Indirizzo account di destinazione fiscale',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE: 'Tipo di tariffa',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE_1: 'Assoluto',

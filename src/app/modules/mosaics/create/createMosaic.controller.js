@@ -20,6 +20,9 @@ class createMosaicCtrl {
 
         //// End dependencies region ////
 
+        // Export Math into template
+        this.Math = Math;
+
         // Initialization
         this.init();
     }
