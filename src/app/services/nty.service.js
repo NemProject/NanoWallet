@@ -125,19 +125,71 @@ class Nty {
             let canvas = document.createElement('canvas');
             let context = canvas.getContext('2d');
 
+            const multilineMode = {
+                MATCH: 0,
+                SPLIT: 1
+            }
+
+            const fillTextMultiline = (text, x, y, mode, re, lineHeight, maxX = undefined) => {
+                let posY = y;
+                let maxWidth = (maxX===undefined ? -1 : maxX-x);
+                let tokens = (mode===multilineMode.MATCH ? text.match(re) : text.split(re));
+                let line = "";
+                tokens.forEach(token => {
+                    if (maxWidth > 0) {
+                        if (mode===multilineMode.MATCH) {//one token per line
+                            if (context.measureText(token).width <= maxWidth) {//token fits in the line
+                                context.fillText(token, x, posY);
+                                posY += lineHeight;
+                            } else {//token doesn't fit in the line - split it further - fallback to char-by-char, recurse
+                                posY = fillTextMultiline(token, x, posY, multilineMode.SPLIT, new RegExp(''), lineHeight, maxX);
+                            }
+                        } else {//mode===multilineMode.SPLIT; possibly more tokens per line
+                            if (context.measureText(line+token).width <= maxWidth) {//next token fits in the line
+                                line+=token;
+                            } else {//next token doesn't fit onto the line; output line and try it again
+                                if (line.length > 0) {
+                                    context.fillText(line, x, posY);
+                                    posY += lineHeight;
+                                    line = "";
+                                }
+                                if (context.measureText(token).width <= maxWidth || token.length <= 1) {//it fits now
+                                    line = token;
+                                } else {//it still doesn't fit, need to break it further - fallback to char-by-char; recurse
+                                    posY = fillTextMultiline(token, x, posY, multilineMode.SPLIT, new RegExp(''), lineHeight, maxX);
+                                }
+                            }
+                        }
+                    } else {//one token per line
+                        context.fillText(token, x, posY);
+                        posY += lineHeight;
+                    }
+                });
+                if (line.length > 0) {
+                    context.fillText(line, x, posY);
+                }
+                return posY;
+            }
+
             let imageObj = new Image();
             imageObj.onload = () => {
                 context.canvas.width = imageObj.width;
                 context.canvas.height = imageObj.height;
                 context.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height);
                 context.font = "38px Roboto Arial sans-serif";
+
+                let qrX = 1687;
+                let qrY = 688;
+
                 // Top part
-                context.fillText(filename, 541, 756);
+                // Wrap filename - do not conflict with generated QR
+                fillTextMultiline(filename, 541, 756, multilineMode.SPLIT, new RegExp(''), 38+5, qrX-5);
                 context.fillText(dateCreated, 607, 873);
                 context.fillText(owner, 458, 989);
-                context.fillText(tags, 426, 1105);
+                // Wrap tags - do not conflict with generated QR
+                fillTextMultiline(tags, 426, 1105, multilineMode.SPLIT, new RegExp('([ ])'), 38+5, qrX-5);
 
-                // bottom part
+                // Bottom part
                 context.font = "30px Roboto Arial sans-serif";
                 context.fillText(from, 345, 1550);
                 context.fillText(to, 345, 1690);
@@ -145,18 +197,7 @@ class Nty {
                 context.fillText(txHash, 345, 1994);
 
                 // Wrap file hash if too long
-                if (txHex.length > 70) {
-                    let x = 345;
-                    let y = 2137;
-                    let lineHeight = 35;
-                    let lines = txHex.match(/.{1,70}/g)
-                    for (var i = 0; i < lines.length; ++i) {
-                        context.fillText(lines[i], x, y);
-                        y += lineHeight;
-                    }
-                } else {
-                    context.fillText(txHex, 345, 2137);
-                }
+                fillTextMultiline(txHex, 345, 2137, multilineMode.MATCH, new RegExp('.{1,70}', 'g'), 30+5);
                 let qr = qrcode(10, 'H');
                 qr.addData(url);
                 qr.make();
@@ -167,7 +208,7 @@ class Nty {
                         context.fillStyle = qr.isDark(row, col) ? "#000000" : "#ffffff";
                         let w = (Math.ceil((col+1)*tileW) - Math.floor(col*tileW));
                         let h = (Math.ceil((row+1)*tileW) - Math.floor(row*tileW));
-                        context.fillRect(Math.round(col*tileW)+1687,Math.round(row*tileH)+688, w, h);  
+                        context.fillRect(Math.round(col*tileW)+qrX,Math.round(row*tileH)+qrY, w, h);  
                     }
                 }
                 return resolve(canvas.toDataURL());
