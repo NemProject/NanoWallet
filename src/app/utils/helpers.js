@@ -185,58 +185,56 @@ let toShortDate = function(date) {
 };
 
 /**
- * Compares two software version numbers (e.g. "1.7.1" or "1.2b").
+ * index 1 - ([0-9]+\.[0-9]+\.[0-9]+) - mandatory - 3 numbers separated by dots - major.minor.patch
+ * index 3 - (-([a-zA-Z0-9\.]+))? - optional - minus and alphanumeric prerelease info separated by dots
+ * index 5 - (\+([a-zA-Z0-9]+))? - optional - plus and alphanumeric metadata
+ * index 7 - (\s+(.*))? - optional - space and any text
+ * 
+ * metadata and text do not influence precedence
+ */
+const VERSION_PATTERN = /([0-9]+\.[0-9]+\.[0-9]+)(-([a-zA-Z0-9\.]+))?(\+([a-zA-Z0-9]+))?(\s+(.*))?/;
+/**
+ * Compares two software version numbers (e.g. "1.7.1" or "1.2.3-alpha.3+meta comment").
  *
- * From http://stackoverflow.com/a/6832721.
+ * From http://stackoverflow.com/a/6832721 but heavily adjusted to support semver2
  *
  * @param {string} v1 The first version to be compared.
  * @param {string} v2 The second version to be compared.
- * @param {object} [options] Optional flags that affect comparison behavior:
  */
-let versionCompare = function(v1, v2, options) {
-    var lexicographical = options && options.lexicographical,
-        zeroExtend = options && options.zeroExtend,
-        v1parts = v1.split('.'),
-        v2parts = v2.split('.');
+let versionCompare = function(v1, v2) {
+    var v1match = VERSION_PATTERN.exec(v1);
+    var v2match = VERSION_PATTERN.exec(v2);
 
-    function isValidPart(x) {
-        return (lexicographical ? /^\d+[A-Za-z]*$/ : /^\d+$/).test(x);
+    /** return an array with version */
+    function getVersion(v) {
+        return v.split('.').map(Number);
     }
 
-    if (!v1parts.every(isValidPart) || !v2parts.every(isValidPart)) {
-        return NaN;
-    }
-
-    if (zeroExtend) {
-        while (v1parts.length < v2parts.length) v1parts.push("0");
-        while (v2parts.length < v1parts.length) v2parts.push("0");
-    }
-
-    if (!lexicographical) {
-        v1parts = v1parts.map(Number);
-        v2parts = v2parts.map(Number);
-    }
-
-    for (var i = 0; i < v1parts.length; ++i) {
-        if (v2parts.length == i) {
+    // compare the version information
+    var v1version = getVersion(v1match[1]);
+    var v2version = getVersion(v2match[1]);
+    // iterate over major, minor and patch
+    for (var i = 0; i < 3; ++i) {
+        if (v1version[i] > v2version[i]) {
             return 1;
-        }
-
-        if (v1parts[i] == v2parts[i]) {
-            continue;
-        }
-        else if (v1parts[i] > v2parts[i]) {
-            return 1;
-        }
-        else {
+        } else if (v1version[i] < v2version[i]){
             return -1;
         }
     }
-
-    if (v1parts.length != v2parts.length) {
+    // version was the same so let's see the pre-release info
+    var v1isPrerelease = typeof v1match[2] !== 'undefined';
+    var v2isPrerelease = typeof v2match[2] !== 'undefined';
+    if (v1isPrerelease > v2isPrerelease) {
         return -1;
+    } else if (v1isPrerelease < v2isPrerelease) {
+        return 1;
     }
-
+    // try comparing prerelease info if applicable
+    if (v1isPrerelease && v2isPrerelease) {
+        // TODO iterate over the prerelease info and decide
+        return NaN;
+    }
+    // still not decided so that means equal
     return 0;
 }
 
