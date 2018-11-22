@@ -1,6 +1,6 @@
 {
   "name": "nem_wallet",
-  "version": "2.3.3",
+  "version": "2.3.4-alpha",
   "description": "Cross-platform lite wallet for NEM",
   "author": "https://github.com/bad-weather-corp",
   "license": "MIT",

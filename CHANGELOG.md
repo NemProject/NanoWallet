@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 2.3.4
+
+
 ## Version 2.3.3
 
     - Rebranding to NEM Wallet
