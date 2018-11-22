@@ -51,7 +51,7 @@ describe('Importance transfer module tests', function() {
         expect(ctrl.isCustomNode).toBe(false);
         expect(ctrl.customHarvestingNode).toEqual("");
         expect(ctrl.harvestingNode).toEqual(Wallet.node);
-        expect(ctrl.noFreeSlots).toBe(true);
+        expect(ctrl.hasFreeSlots).toBe(false);
         expect(ctrl.nodes[0]).toEqual(nem.model.objects.create("endpoint")("http://104.128.226.60", 7890));
         expect(ctrl.showSupernodes).toBe(false);
     });
