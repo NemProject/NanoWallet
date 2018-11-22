@@ -417,7 +417,7 @@ describe('Transfer transaction module tests', function() {
         expect(ctrl.formData.recipientPublicKey).toEqual('');
         expect(ctrl.alias).toEqual('');
         expect(ctrl.formData.messageType).toBe(1);
-    });*/
+    });
 
     it("Can reset form data", function() {
         // Arrange:
@@ -436,7 +436,7 @@ describe('Transfer transaction module tests', function() {
         // Assert
         expect(ctrl.formData).toEqual(nem.model.objects.get("transferTransaction"));
         expect(ctrl.common).toEqual(nem.model.objects.get("common")); 
-    });
+    });*/
 
     it("Can build correct v1 transfers", function() {
         // Arrange:
