@@ -55,7 +55,7 @@ function DutchProvider($translateProvider) {
         DASHBOARD_MARKET_INFO_CHANGES_7D: '7d',
         DASHBOARD_MARKET_INFO_NOTE: '<a href="http://coinmarketcap.com/" target="_blank">CoinMarketCap</a> data wordt elke 5 minuten bijgewerkt',
         DASHBOARD_NOTICE_1: 'Welkom bij NEM Wallet!',
-        DASHBOARD_NOTICE_2: '<a href="https://github.com/NemProject/NanoWallet" target="_blank">Meldt hier problemen</a>.',
+        DASHBOARD_NOTICE_2: '<a href="https://github.com/bad-weather-corp/NEMWallet" target="_blank">Meldt hier problemen</a>.',
         DASHBOARD_NOTICE_3: 'Het NEM-team adviseert je om eerst op het Testnet vertrouwd te raken met NEM Wallet voordat je het Mainnet gaat gebruiken. Een eenvoudige gids vindt je <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank"> hier</a>. Gebruikers zijn zelf verantwoordelijk voor hun geld en moeten zelf van de persoonlijke sleutels een back-up maken. Het NEM-team is niet verantwoordelijk voor het verlies van geld door deze applicatie op het Mainnet te gebruiken.',
         DASHBOARD_NOTICE_4: 'Wij raden je aan om persoonlijke sleutels op papier te zetten en op een veilige plaats op te slaan. Daarnaast kun je je accounts importeren in de Android- en iOS-apps als back-up.',
         DASHBOARD_NOTICE_5: 'Bedankt voor het gebruik!',

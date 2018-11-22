@@ -176,7 +176,7 @@ class Nty {
             let isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
             let isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
             imageObj.crossOrigin = "Anonymous";
-            imageObj.src = (isChrome || isSafari) ? "https://raw.githubusercontent.com/NemProject/NanoWallet/master/src/images/certificate.png" : "./images/certificate.png";
+            imageObj.src = (isChrome || isSafari) ? "https://raw.githubusercontent.com/bad-weather-corp/NEMWallet/master/src/images/certificate.png" : "./images/certificate.png";
         });
     }
 

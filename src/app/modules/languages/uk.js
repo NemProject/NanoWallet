@@ -55,7 +55,7 @@ function UkrainianProvider($translateProvider) {
         DASHBOARD_MARKET_INFO_CHANGES_7D: '7 діб',
         DASHBOARD_MARKET_INFO_NOTE: '<a href="http://coinmarketcap.com/" target="_blank">CoinMarketCap</a> інформація оновлюється кожні 5 хвилин',
         DASHBOARD_NOTICE_1: 'Вітаємо у NEM Wallet Beta!',
-        DASHBOARD_NOTICE_2: 'Будь-ласка, <a href="https://github.com/NemProject/NanoWallet" target="_blank">повідомте про помилку тут</a>.',
+        DASHBOARD_NOTICE_2: 'Будь-ласка, <a href="https://github.com/bad-weather-corp/NEMWallet" target="_blank">повідомте про помилку тут</a>.',
         DASHBOARD_NOTICE_3: 'Команда NEM радить, перед тим, як користуватись основною мережею (mainnet), ознайомитись з усіма функціями NEM Wallet у тестовій мережі (testnet). Простий довідник можна знайти <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank"> тут </a>. Користувачі самі несуть відповідальність за збереження своїх коштів та створення резервних копій приватних ключів. Команда NEM не несе відповідальності за будь-яку втрату коштів через використання цього додатку в головній мережі (mainnet).',
         DASHBOARD_NOTICE_4: 'Ми рекомендуємо записати приватні ключі на папері та зберігати у безпечному місці. Додатково, для створення резервної копії, Ви можете здійснити імпорт своїх рахунків до додатку на Android чи iOS.',
         DASHBOARD_NOTICE_5: 'Дякуємо за Вашу участь!',

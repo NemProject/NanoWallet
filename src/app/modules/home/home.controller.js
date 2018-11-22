@@ -90,7 +90,7 @@ class HomeCtrl {
      * Check if a new version is available on Github
      */
     checkLatestVersion() {
-        this._$http.get("https://api.github.com/repos/NemProject/NanoWallet/releases/latest").then((res) => {
+        this._$http.get("https://api.github.com/repos/bad-weather-corp/NEMWallet/releases/latest").then((res) => {
             let currentVersion = this._AppConstants.version;
             let version = res.data.name;
             let isVersion2 = parseInt(version.split(".")[0]) > 1;

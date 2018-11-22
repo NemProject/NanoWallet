@@ -55,7 +55,7 @@ function PolishProvider($translateProvider) {
         DASHBOARD_MARKET_INFO_CHANGES_7D: '7d',
         DASHBOARD_MARKET_INFO_NOTE: '<a href="http://coinmarketcap.com/" target="_blank">CoinMarketCap</a> dane aktulizowane co 5 minut',
         DASHBOARD_NOTICE_1: 'Witamy w NEM Wallet Beta!',
-        DASHBOARD_NOTICE_2: 'Proszę <a href="https://github.com/NemProject/NanoWallet" target="_blank">wypełnić raport o błędzie.</a>',
+        DASHBOARD_NOTICE_2: 'Proszę <a href="https://github.com/bad-weather-corp/NEMWallet" target="_blank">wypełnić raport o błędzie.</a>',
         DASHBOARD_NOTICE_3: 'Zespół NEM nie ponosi odpowiedzialności za straty związane z używaniem tej aplikacji w sieci głównej NEM (mainnet). Sugerowane jest zapoznanie się z aplikacją używając sieci testowej NEM (testnet). Użytkownicy ponoszą odpowiedzialność za swoje środki i zabezpieczenie swoich kluczy prywatnych.',
         DASHBOARD_NOTICE_4: 'Proszę nie używać sieci głównej jeśli nie ma się pewności, że środki są zabezpieczone na kopii zapasowej. Sugerowane jest zapisanie klucza prywatnego w formie papierowej i przechowywanie w bezpiecznym miejscu. Dodatkowo istnieje możliwość importu kont do programu Lightwallet/NCC.',
         DASHBOARD_NOTICE_5: 'Dziękujemy za współpracę!',
