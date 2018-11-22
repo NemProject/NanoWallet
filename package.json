@@ -1,8 +1,8 @@
 {
-  "name": "NanoWallet",
-  "version": "2.3.2",
+  "name": "nem_wallet",
+  "version": "2.3.3",
   "description": "Cross-platform lite wallet for NEM",
-  "author": "https://github.com/QuantumMechanics",
+  "author": "https://github.com/bad-weather-corp",
   "license": "MIT",
   "dependencies": {
     "@uirouter/angularjs": "1.0.6",
@@ -55,13 +55,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NemProject/NanoWallet.git"
+    "url": "https://github.com/bad-weather-corp/NEMWallet.git"
   },
   "keywords": [
     "nem"
   ],
   "bugs": {
-    "url": "https://github.com/NemProject/NanoWallet/issues"
+    "url": "https://github.com/bad-weather-corp/NEMWallet/issues"
   },
-  "homepage": "https://github.com/NemProject/NanoWallet#readme"
+  "homepage": "https://github.com/bad-weather-corp/NEMWallet#readme"
 }

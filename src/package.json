@@ -1,8 +1,8 @@
 {
-  "name": "NEMWallet",
-  "version": "2.3.2",
+  "name": "nem_wallet",
+  "version": "2.3.3",
   "description": "Cross-platform lite wallet for NEM",
-  "author": "https://github.com/QuantumMechanics",
+  "author": "https://github.com/bad-weather-corp",
   "license": "MIT",
   "main":"start.html",
   "window":{
