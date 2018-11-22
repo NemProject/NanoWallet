@@ -4,7 +4,7 @@ function ChineseProvider($translateProvider) {
     $translateProvider.translations('cn', {
 
         // HEADER COMPONENT
-        WALLET_NAME_1: 'Nano',
+        WALLET_NAME_1: 'NEM',
         WALLET_NAME_2: 'Wallet',
         APP_NAME_SUB: '安全界面正在连接NEM平台',
         HEADER_LOGIN_BUTTON: '登录',
@@ -54,9 +54,9 @@ function ChineseProvider($translateProvider) {
         DASHBOARD_MARKET_INFO_CHANGES_24H: '24小时',
         DASHBOARD_MARKET_INFO_CHANGES_7D: '7天',
         DASHBOARD_MARKET_INFO_NOTE: '<a href="http://coinmarketcap.com/" target="_blank">CoinMarketCap</a> 数据每5分钟更新一次',
-        DASHBOARD_NOTICE_1:  '欢迎来到 Nano Wallet Beta!',
+        DASHBOARD_NOTICE_1:  '欢迎来到 NEM Wallet Beta!',
         DASHBOARD_NOTICE_2: '请 <a href="https://github.com/NemProject/NanoWallet" target="_blank">在这里报告问题</a>',
-        DASHBOARD_NOTICE_3: 'NEM team 不对由于在主网上使用此应用程序而导致的任何资金损失负责，以及我们建议您首先在测试网上进行测试，以便先熟悉NanoWallet. 用户自己负责其资金并具有其私钥。.',
+        DASHBOARD_NOTICE_3: 'NEM team 不对由于在主网上使用此应用程序而导致的任何资金损失负责，以及我们建议您首先在测试网上进行测试，以便先熟悉NEM Wallet. 用户自己负责其资金并具有其私钥。.',
         DASHBOARD_NOTICE_4: '如果您不确定您的所有资金是否安全，请勿使用该网络。我们建议在纸上写下私钥并将其存放在安全的地方。 此外，您可以将您的账户导入Lightwallet/NCC.',
         DASHBOARD_NOTICE_5: '感谢您的参与!',
 
@@ -165,7 +165,7 @@ function ChineseProvider($translateProvider) {
         GENERAL_INVOICE: '账单',
 
         // HOME MODULE
-        HOME_UNSUPPORTED_BROWSER: '对不起，但你不能在这里安全地使用NanoWallet...',
+        HOME_UNSUPPORTED_BROWSER: '对不起，但你不能在这里安全地使用NEM Wallet...',
         HOME_RECOMMENDED_BROWSERS: '推荐的浏览器:',
         HOME_FEATURE_STAND_BY: '将光标置于特征上以显示信息.',
         HOME_FEATURE_1: '只需1分钟的时间，几乎立即发送和接收XEM !',

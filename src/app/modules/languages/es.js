@@ -4,7 +4,7 @@ function SpanishProvider($translateProvider) {
     $translateProvider.translations('es', {
 
         // HEADER COMPONENT
-        WALLET_NAME_1: 'nano',
+        WALLET_NAME_1: 'NEM',
         WALLET_NAME_2: 'Wallet',
         APP_NAME_SUB: 'La aplicación segura que se conecta a la plataforma NEM',
         HEADER_LOGIN_BUTTON: 'Ingresar',
@@ -54,9 +54,9 @@ function SpanishProvider($translateProvider) {
         DASHBOARD_MARKET_INFO_CHANGES_24H: '24h',
         DASHBOARD_MARKET_INFO_CHANGES_7D: '7d',
         DASHBOARD_MARKET_INFO_NOTE: '<a href="http://coinmarketcap.com/" target="_blank">CoinMarketCap</a> datos actualizados cada 5 minutos',
-        DASHBOARD_NOTICE_1: 'Bienvenido(a) a la NanoWallet Beta!',
+        DASHBOARD_NOTICE_1: 'Bienvenido(a) a la NEM Wallet Beta!',
         DASHBOARD_NOTICE_2: 'Por favor <a href="https://github.com/NemProject/NanoWallet" target="_blank">reportar incidencias aquí</a>.',
-        DASHBOARD_NOTICE_3: 'El equipo de NEM sugiere hacer pruebas en el testnet para familiarizarse primero con NanoWallet antes de usar el mainnet. Se puede encontrar una guía simple <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank"> aquí </a>. Los usuarios son responsables de sus fondos y de realizar una copia de seguridad de sus claves privadas. El equipo de NEM no es responsable de ninguna pérdida de fondos debido al uso de esta aplicación en la red mainnet.',
+        DASHBOARD_NOTICE_3: 'El equipo de NEM sugiere hacer pruebas en el testnet para familiarizarse primero con NEM Wallet antes de usar el mainnet. Se puede encontrar una guía simple <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank"> aquí </a>. Los usuarios son responsables de sus fondos y de realizar una copia de seguridad de sus claves privadas. El equipo de NEM no es responsable de ninguna pérdida de fondos debido al uso de esta aplicación en la red mainnet.',
         DASHBOARD_NOTICE_4: 'Sugerimos escribir las claves privadas en papel y almacenarlas en un lugar seguro. Además, puedes importar tus cuentas en las aplicaciones oficiales para Android e iOS.',
         DASHBOARD_NOTICE_5: '!Gracias por tu participación!',
 
@@ -165,7 +165,7 @@ function SpanishProvider($translateProvider) {
         GENERAL_INVOICE: 'Factura',
 
         // HOME MODULE
-        HOME_UNSUPPORTED_BROWSER: 'Disculpa, pero no puedes usar Nano Wallet de forma segura con este explorador...',
+        HOME_UNSUPPORTED_BROWSER: 'Disculpa, pero no puedes usar NEM Wallet de forma segura con este explorador...',
         HOME_RECOMMENDED_BROWSERS: 'Los navegadores recomendados son:',
         HOME_FEATURE_STAND_BY: 'Sitúa el cursor en una imagen para mostrar información',
         HOME_FEATURE_1: 'Envía y recibe XEM de manera sencilla y casi instantanea, solo un 1 minuto de confirmación!',
@@ -698,14 +698,14 @@ function SpanishProvider($translateProvider) {
 
         // FAQ MODULE
         FAQ_TITLE: 'Preguntas Frecuentes',
-        FAQ_QUESTION_1: '¿Cómo funciona la Nano Wallet?',
-        FAQ_ANSWER_1: 'Nano Wallet está construida con AngularJS and ES6. Es una aplicación completa del lado del cliente que nunca envía ningún dato sensible de forma insegura a través de la red; Todo sucede en tu navegador, desde la creación de claves privadas hasta la firma de transacciones.',
+        FAQ_QUESTION_1: '¿Cómo funciona la NEM Wallet?',
+        FAQ_ANSWER_1: 'NEM Wallet está construida con AngularJS and ES6. Es una aplicación completa del lado del cliente que nunca envía ningún dato sensible de forma insegura a través de la red; Todo sucede en tu navegador, desde la creación de claves privadas hasta la firma de transacciones.',
         FAQ_QUESTION_2: '¿Es de uso libre/gratuito? ',
         FAQ_ANSWER_2: 'Absolutamente todas las operaciones son del lado del cliente, solo tu tienes control sobre tus monedas, sin terceros, y sin tarifas adicionales.',
         FAQ_QUESTION_3: '¿Por qué ya tengo un mosaico?',
         FAQ_ANSWER_3: 'Porque XEM es la moneda por defecto del blockchain NEM, cada usuario ya lo tiene registrado en su cartera, incluso si tu saldo es 0. Tu namespace es NEM y el nombre del mosaico es XEM',
         FAQ_QUESTION_4: '¿Hoja de ruta?',
-        FAQ_ANSWER_4: 'La hoja de ruta actual incluye integración de todas las características de Nano Wallet v1.x.x y la finalización de proyectos financiados por la comunidad para trabajar a través de esta cartera.',
+        FAQ_ANSWER_4: 'La hoja de ruta actual incluye integración de todas las características de NEM Wallet v1.x.x y la finalización de proyectos financiados por la comunidad para trabajar a través de esta cartera.',
         FAQ_QUESTION_5: '¿Puedo obtener XEM gratis?',
         FAQ_ANSWER_5: 'El NEM faucet está actualmente fuera de servicio, pero puedes consultar el foro NEM para conocer las recompensas disponibles.',
         FAQ_QUESTION_6: '¿Dónde encontrar más información de NEM?',
@@ -717,7 +717,7 @@ function SpanishProvider($translateProvider) {
         FAQ_QUESTION_8: 'Los cofirmantes no pueden ver la transacción para firmar',
         FAQ_ANSWER_8: 'En este caso ve a "Servicios", busca "Cuentas multifirma y multiusuario " y haz clic en "Firmar transacciones multifirma ".',
         FAQ_QUESTION_9: '¿Cuáles son las mejores prácticas de seguridad?',
-        FAQ_ANSWER_9: 'Se recomienda encarecidamente almacenar siempre las claves privadas en papel.<br> Puedes imprimirlas y archivarlas en un lugar seguro. <br><br> Con respecto a los archivos de cartera debes siempre mantener múltiples copias en diferentes lugares, como memorias usb. <br> Las contraseñas siempre deben ser únicas y complejas, por esta razón, siempre escríbalas primero en papel. <br><br> Cuando desees consultar tu cartera o realizar operaciones:<br> - Conecta la memoria usb <br> - Importa la cartera en Nano<br> - Desconecta la memoria usb.<br><br> Una copia de tu cartera se guarda en el almacenamiento local del navegador durante todo el tiempo que necesites.<br> Una vez que hayas terminado, cierra la sesión y limpia las carteras en el almacenamiento local usando el botón de limpieza en el lado derecho del pie de página.',
+        FAQ_ANSWER_9: 'Se recomienda encarecidamente almacenar siempre las claves privadas en papel.<br> Puedes imprimirlas y archivarlas en un lugar seguro. <br><br> Con respecto a los archivos de cartera debes siempre mantener múltiples copias en diferentes lugares, como memorias usb. <br> Las contraseñas siempre deben ser únicas y complejas, por esta razón, siempre escríbalas primero en papel. <br><br> Cuando desees consultar tu cartera o realizar operaciones:<br> - Conecta la memoria usb <br> - Importa la cartera en NEM Wallet<br> - Desconecta la memoria usb.<br><br> Una copia de tu cartera se guarda en el almacenamiento local del navegador durante todo el tiempo que necesites.<br> Una vez que hayas terminado, cierra la sesión y limpia las carteras en el almacenamiento local usando el botón de limpieza en el lado derecho del pie de página.',
         FAQ_QUESTION_10: '¿Dónde puedo encontrar información sobre mi cuenta (dirección, etc.)?',
         FAQ_ANSWER_10: 'Si observas la barra de navegación superior, verás un botón <b><i>"Cuenta"</b></i> entre <b><i>"Nodo"</b></i> e <b><i>"Idioma"</b></i>. Allí puedes encontrar tu dirección, clave pública, saldo y otros datos importantes.',
         FAQ_QUESTION_11: 'He depositado XEM en una casa de intercambio pero no ha sido acreditado',
