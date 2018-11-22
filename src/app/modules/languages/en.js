@@ -4,7 +4,7 @@ function EnglishProvider($translateProvider) {
     $translateProvider.translations('en', {
 
         // HEADER COMPONENT
-        WALLET_NAME_1: 'nano',
+        WALLET_NAME_1: 'NEM',
         WALLET_NAME_2: 'Wallet',
         APP_NAME_SUB: 'The secure interface connecting to the NEM platform',
         HEADER_LOGIN_BUTTON: 'Login',
@@ -54,9 +54,9 @@ function EnglishProvider($translateProvider) {
         DASHBOARD_MARKET_INFO_CHANGES_24H: '24h',
         DASHBOARD_MARKET_INFO_CHANGES_7D: '7d',
         DASHBOARD_MARKET_INFO_NOTE: '<a href="http://coinmarketcap.com/" target="_blank">CoinMarketCap</a> data updated every 5 minutes',
-        DASHBOARD_NOTICE_1: 'Welcome to the NanoWallet Beta!',
+        DASHBOARD_NOTICE_1: 'Welcome to the NEM Wallet Beta!',
         DASHBOARD_NOTICE_2: 'Please <a href="https://github.com/NemProject/NanoWallet" target="_blank">report issues here</a>.',
-        DASHBOARD_NOTICE_3: 'The NEM Team suggests primarily testing on the testnet to familiarize yourself with NanoWallet first before using the mainnet. A simple guide can be found <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank">here</a>. Users are responsible for their funds and having their private keys backed up. The NEM team is not responsible for any loss of funds due to using this app on the mainnet.',
+        DASHBOARD_NOTICE_3: 'The NEM Team suggests primarily testing on the testnet to familiarize yourself with NEM Wallet first before using the mainnet. A simple guide can be found <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank">here</a>. Users are responsible for their funds and having their private keys backed up. The NEM team is not responsible for any loss of funds due to using this app on the mainnet.',
         DASHBOARD_NOTICE_4: 'We suggest writing down private keys on paper and storing it in a safe place. Additionally, you can import your accounts into the Android and iOS apps as a backup.',
         DASHBOARD_NOTICE_5: 'Thanks for your participation!',
         DASHBOARD_MORE_TXES: 'See more transactions',
@@ -168,7 +168,7 @@ function EnglishProvider($translateProvider) {
         GENERAL_VERIFY: 'Verify',
 
         // HOME MODULE
-        HOME_UNSUPPORTED_BROWSER: 'Sorry but you cannot use Nano Wallet safely with this browser...',
+        HOME_UNSUPPORTED_BROWSER: 'Sorry but you cannot use NEM Wallet safely with this browser...',
         HOME_RECOMMENDED_BROWSERS: 'Recommended browsers are:',
         HOME_FEATURE_STAND_BY: 'Place the cursor on a feature to show information.',
         HOME_FEATURE_1: 'Send and receive XEM easily and almost instantly, only 1 minute block time!',
@@ -709,14 +709,14 @@ function EnglishProvider($translateProvider) {
 
         // FAQ MODULE
         FAQ_TITLE: 'Frequently Asked Questions',
-        FAQ_QUESTION_1: 'How Nano Wallet works?',
-        FAQ_ANSWER_1: 'Nano Wallet is built with AngularJS and ES6. It is a full client-side application that never sends any sensitive data through the wire; everything happens in your browser from creating private keys to the signing of transactions.',
+        FAQ_QUESTION_1: 'How NEM Wallet works?',
+        FAQ_ANSWER_1: 'NEM Wallet is built with AngularJS and ES6. It is a full client-side application that never sends any sensitive data through the wire; everything happens in your browser from creating private keys to the signing of transactions.',
         FAQ_QUESTION_2: 'Is it free to use?',
         FAQ_ANSWER_2: 'Absolutely all operations are client-side, only you have control of your coins, no third parties, and no extra fees.',
         FAQ_QUESTION_3: 'Why do I already have one mosaic?',
         FAQ_ANSWER_3: 'Because XEM is the default currency of the NEM blockchain, every user already has it registered to their wallet, even if their balance is 0. Its namespace is NEM and the mosaic name is XEM',
         FAQ_QUESTION_4: 'Roadmap?',
-        FAQ_ANSWER_4: 'The current roadmap includes integration of all features from NanoWallet v1.x.x and completion of community funded projects to work across this wallet.',
+        FAQ_ANSWER_4: 'The current roadmap includes integration of all features from NEM Wallet v1.x.x and completion of community funded projects to work across this wallet.',
         FAQ_QUESTION_5: 'Can I get free XEM?',
         FAQ_ANSWER_5: 'The NEM faucet is currently down, but you can consult the NEM forum to know about the available bounties.',
         FAQ_QUESTION_6: 'Where to find more information about NEM?',
@@ -728,7 +728,7 @@ function EnglishProvider($translateProvider) {
         FAQ_QUESTION_8: 'Cosignatories cannot see the transaction to sign',
         FAQ_ANSWER_8: 'In this case go to "Services", look for "Multisignature and Multi-User Accounts" and click on "Sign multisig transactions".',
         FAQ_QUESTION_9: 'What are the best security practices ?',
-        FAQ_ANSWER_9: 'It is hightly recommended to always store private keys on paper.<br> You can print them and archive them somewhere safe. <br><br> Regarding wallet files you should always keep multiple copies on different cold locations, like usb sticks. <br> Passwords must always be unique and complex, for this reason, always write it down first. <br><br> When you want to check your wallet or realise operations:<br> - Plug the usb stick <br> - Import the wallet in Nano<br> - Unplug the usb stick.<br><br> A copy of your wallet is stored in the browser local storage for all the time you need.<br> Once you are done, logout and purge the wallets in local storage using the purge button on the right side of the footer.',
+        FAQ_ANSWER_9: 'It is hightly recommended to always store private keys on paper.<br> You can print them and archive them somewhere safe. <br><br> Regarding wallet files you should always keep multiple copies on different cold locations, like usb sticks. <br> Passwords must always be unique and complex, for this reason, always write it down first. <br><br> When you want to check your wallet or realise operations:<br> - Plug the usb stick <br> - Import the wallet in NEM Wallet<br> - Unplug the usb stick.<br><br> A copy of your wallet is stored in the browser local storage for all the time you need.<br> Once you are done, logout and purge the wallets in local storage using the purge button on the right side of the footer.',
         FAQ_QUESTION_10: 'Where to find information about my account (address, etc) ?',
         FAQ_ANSWER_10: 'If you look at the top navigation bar, you will see an <b><i>"Account"</b></i> button between <b><i>"Node"</b></i> and <b><i>"Language"</b></i>. There you can find your address, public key, vested balance and other important data.',
         FAQ_QUESTION_11: 'I have deposited XEM to an exchange but nothing has been credited ?',

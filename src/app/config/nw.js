@@ -21,7 +21,7 @@ const applyChromeSetting = (prop, value) => {
     const settingsObject = get(chrome, prop);
     if (settingsObject === undefined) {
         console.info('Setting `chrome.' + prop + '` cannot be handled by this browser. This is the expected behavior ' +
-            'if you don\'t run the standalone NanoWallet!');
+            'if you don\'t run the standalone NEM Wallet!');
         return;
     }
 

@@ -29,7 +29,7 @@ class InvoiceCtrl {
                     "addr": "",
                     "amount": 0,
                     "msg": "",
-                    "name": "NanoWallet XEM invoice"
+                    "name": "NEM Wallet XEM invoice"
                 }
             };
 

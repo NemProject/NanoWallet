@@ -4,7 +4,7 @@ function ItalianProvider($translateProvider) {
     $translateProvider.translations('it', {
 
         // HEADER COMPONENT
-        WALLET_NAME_1: 'nano',
+        WALLET_NAME_1: 'NEM',
         WALLET_NAME_2: 'Wallet',
         APP_NAME_SUB: 'L"interfaccia wallet più sicura per la tua connessione alla piattaforma NEM',
         HEADER_LOGIN_BUTTON: 'Accedi',
@@ -54,9 +54,9 @@ function ItalianProvider($translateProvider) {
         DASHBOARD_MARKET_INFO_CHANGES_24H: '24h',
         DASHBOARD_MARKET_INFO_CHANGES_7D: '7d',
         DASHBOARD_MARKET_INFO_NOTE: '<a href="http://coinmarketcap.com/" target="_blank">CoinMarketCap</a> dati aggiornati ogni 5 minuti.',
-        DASHBOARD_NOTICE_1: 'Benvenuto in Nano Wallet Beta!',
+        DASHBOARD_NOTICE_1: 'Benvenuto in NEM Wallet Beta!',
         DASHBOARD_NOTICE_2: 'Prego <a href="https://github.com/NemProject/NanoWallet" target="_blank">segnalare problemi qui</a>.',
-        DASHBOARD_NOTICE_3: 'Il team NEM suggerisce di testare prima su TestNet per familiarizzare con NanoWallet prima di utilizzare la rete principale MainNet. Una guida semplice può essere trovata <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank">qui</a>. Gli utenti sono responsabili della sicurezza dei fondi e del mantenimento di un backup sicuro di tutte le proprie chiavi private.Il team NEM non è responsabile per eventuali perdite di fondi dovute a un uso improprio di questa applicazione sulla rete principale (MainNet).',
+        DASHBOARD_NOTICE_3: 'Il team NEM suggerisce di testare prima su TestNet per familiarizzare con NEM Wallet prima di utilizzare la rete principale MainNet. Una guida semplice può essere trovata <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank">qui</a>. Gli utenti sono responsabili della sicurezza dei fondi e del mantenimento di un backup sicuro di tutte le proprie chiavi private.Il team NEM non è responsabile per eventuali perdite di fondi dovute a un uso improprio di questa applicazione sulla rete principale (MainNet).',
         DASHBOARD_NOTICE_4: 'Ti suggeriamo di scrivere le tue chiavi private su carta e tenerle in un posto sicuro. Puoi anche importare i tuoi account in app Android e iOS come backup.',
         DASHBOARD_NOTICE_5: 'Grazie per la tua partecipazione!',
 
@@ -165,7 +165,7 @@ function ItalianProvider($translateProvider) {
         GENERAL_INVOICE: 'Fattura',
 
         // HOME MODULE
-        HOME_UNSUPPORTED_BROWSER: 'Mi dispiace, ma con questo browser non è possibile utilizzare Nano Wallet in modo sicuro ...',
+        HOME_UNSUPPORTED_BROWSER: 'Mi dispiace, ma con questo browser non è possibile utilizzare NEM Wallet in modo sicuro ...',
         HOME_RECOMMENDED_BROWSERS: 'I browser consigliati sono:',
         HOME_FEATURE_STAND_BY: 'Passa il mouse su una delle funzioni per visualizzare le tue informazioni.',
         HOME_FEATURE_1: 'Invia e ricevi XEM facilmente e quasi istantaneamente con blocchi di tempo di solo 1 minuto!',
@@ -698,14 +698,14 @@ function ItalianProvider($translateProvider) {
 
         // FAQ MODULE
         FAQ_TITLE: 'Domande frequenti',
-        FAQ_QUESTION_1: 'Come funziona Nano Wallet?',
-        FAQ_ANSWER_1: 'Il portafoglio Nano è realizzato con AngularJS ed ES6. È un"applicazione che funziona totalmente sul lato client e non invia mai alcuna informazione sensibile attraverso i cavi; tutto accade nel tuo browser locale, dalla creazione delle chiavi private alla firma delle transazioni.',
+        FAQ_QUESTION_1: 'Come funziona NEM Wallet?',
+        FAQ_ANSWER_1: 'Il portafoglio NEM è realizzato con AngularJS ed ES6. È un"applicazione che funziona totalmente sul lato client e non invia mai alcuna informazione sensibile attraverso i cavi; tutto accade nel tuo browser locale, dalla creazione delle chiavi private alla firma delle transazioni.',
         FAQ_QUESTION_2: 'È gratuito da usare?',
         FAQ_ANSWER_2: 'Assolutamente tutte le operazioni sono a carico del cliente, solo tu controlli le tue monete, nessun terzo coinvolto e nessun costo aggiuntivo.',
         FAQ_QUESTION_3: 'Perché possiedo già un mosaico?',
         FAQ_ANSWER_3: 'Poiché XEM è la valuta predefinita della catena di blocchi NEM, ogni utente lo ha già registrato nel proprio portafoglio anche quando il saldo è pari a 0. La sua registrazione del nome è NEM e il nome del mosaico è XEM',
         FAQ_QUESTION_4: 'Mappa dello sviluppo?',
-        FAQ_ANSWER_4: 'L"attuale mappa di sviluppo include l"integrazione di tutte le funzionalità di Nano Wallet v1.x.x e il completamento di progetti finanziati dalla comunità per lavorare attraverso questo portfolio.',
+        FAQ_ANSWER_4: 'L"attuale mappa di sviluppo include l"integrazione di tutte le funzionalità di NEM Wallet v1.x.x e il completamento di progetti finanziati dalla comunità per lavorare attraverso questo portfolio.',
         FAQ_QUESTION_5: 'Come posso ottenere XEM gratuitamente?',
         FAQ_ANSWER_5: 'I tap XEM sono attualmente fuori servizio ma puoi consultare il forum NEM per saperne di più sul programma di premi NEM.',
         FAQ_QUESTION_6: 'Dove trovare ulteriori informazioni su NEM?',
@@ -717,7 +717,7 @@ function ItalianProvider($translateProvider) {
         FAQ_QUESTION_8: 'I pignoratori non possono vedere la transazione da firmare.',
         FAQ_ANSWER_8: 'In questo caso, andare su "Servizi", cercare "Account multi-firma o multi-utente" e fare clic su "Firma transazioni multi-firma".',
         FAQ_QUESTION_9: 'Quali sono le migliori pratiche di sicurezza?',
-        FAQ_ANSWER_9: 'Ti consigliamo vivamente di conservare sempre le tue chiavi private su carta. <br> Puoi stamparli e salvarli in un posto sicuro. <br> <br> Per quanto riguarda i file di portafoglio, è necessario conservare sempre più copie in diversi ambienti freddi (scollegati) come le schede USB. <br> Le password devono essere uniche e complesse, quindi scrivile sempre prima. <br> <br> Quando vuoi controllare il tuo portafoglio o eseguire operazioni: <br> - Collega la tua scheda usb <br> - Importa il tuo portafoglio in Nano <br> <br> Scollega la tua scheda USB. <br> < Una copia del tuo portafoglio verrà archiviata nella memoria locale non appena ne avrai bisogno.Una volta terminato, esci e rimuovi i portafogli dalla tua memoria locale con il pulsante Elimina sul lato destro della barra dei piè di pagina.',
+        FAQ_ANSWER_9: 'Ti consigliamo vivamente di conservare sempre le tue chiavi private su carta. <br> Puoi stamparli e salvarli in un posto sicuro. <br> <br> Per quanto riguarda i file di portafoglio, è necessario conservare sempre più copie in diversi ambienti freddi (scollegati) come le schede USB. <br> Le password devono essere uniche e complesse, quindi scrivile sempre prima. <br> <br> Quando vuoi controllare il tuo portafoglio o eseguire operazioni: <br> - Collega la tua scheda usb <br> - Importa il tuo portafoglio in NEM Wallet <br> <br> Scollega la tua scheda USB. <br> < Una copia del tuo portafoglio verrà archiviata nella memoria locale non appena ne avrai bisogno.Una volta terminato, esci e rimuovi i portafogli dalla tua memoria locale con il pulsante Elimina sul lato destro della barra dei piè di pagina.',
         FAQ_QUESTION_10: 'Dove posso trovare informazioni sul mio account (indirizzo, ecc.)?',
         FAQ_ANSWER_10: 'Se guardi nella barra di navigazione in alto, vedrai il pulsante <b> <i> "Account" </ b> </ i> tra <b> <i> "Nodo" </ i> e <b> <i> "Lingua" </ b> </ i>. Qui puoi trovare il tuo indirizzo, la chiave pubblica, il saldo coperto e altri dati importanti.',
         FAQ_QUESTION_11: 'Ho depositato XEM in una casa di brokeraggio ma nulla è stato accreditato?',

@@ -4,7 +4,7 @@ function DutchProvider($translateProvider) {
     $translateProvider.translations('nl', {
 
         // HEADER COMPONENT
-        WALLET_NAME_1: 'nano',
+        WALLET_NAME_1: 'NEM',
         WALLET_NAME_2: 'Wallet',
         APP_NAME_SUB: 'De veilige interface naar het NEM platform',
         HEADER_LOGIN_BUTTON: 'Inloggen',
@@ -54,9 +54,9 @@ function DutchProvider($translateProvider) {
         DASHBOARD_MARKET_INFO_CHANGES_24H: '24u',
         DASHBOARD_MARKET_INFO_CHANGES_7D: '7d',
         DASHBOARD_MARKET_INFO_NOTE: '<a href="http://coinmarketcap.com/" target="_blank">CoinMarketCap</a> data wordt elke 5 minuten bijgewerkt',
-        DASHBOARD_NOTICE_1: 'Welkom bij NanoWallet!',
+        DASHBOARD_NOTICE_1: 'Welkom bij NEM Wallet!',
         DASHBOARD_NOTICE_2: '<a href="https://github.com/NemProject/NanoWallet" target="_blank">Meldt hier problemen</a>.',
-        DASHBOARD_NOTICE_3: 'Het NEM-team adviseert je om eerst op het Testnet vertrouwd te raken met NanoWallet voordat je het Mainnet gaat gebruiken. Een eenvoudige gids vindt je <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank"> hier</a>. Gebruikers zijn zelf verantwoordelijk voor hun geld en moeten zelf van de persoonlijke sleutels een back-up maken. Het NEM-team is niet verantwoordelijk voor het verlies van geld door deze applicatie op het Mainnet te gebruiken.',
+        DASHBOARD_NOTICE_3: 'Het NEM-team adviseert je om eerst op het Testnet vertrouwd te raken met NEM Wallet voordat je het Mainnet gaat gebruiken. Een eenvoudige gids vindt je <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank"> hier</a>. Gebruikers zijn zelf verantwoordelijk voor hun geld en moeten zelf van de persoonlijke sleutels een back-up maken. Het NEM-team is niet verantwoordelijk voor het verlies van geld door deze applicatie op het Mainnet te gebruiken.',
         DASHBOARD_NOTICE_4: 'Wij raden je aan om persoonlijke sleutels op papier te zetten en op een veilige plaats op te slaan. Daarnaast kun je je accounts importeren in de Android- en iOS-apps als back-up.',
         DASHBOARD_NOTICE_5: 'Bedankt voor het gebruik!',
         DASHBOARD_MORE_TXES: 'Bekijk meer transacties',
@@ -168,7 +168,7 @@ function DutchProvider($translateProvider) {
         GENERAL_VERIFY: 'Verifieer',
 
         // HOME MODULE
-        HOME_UNSUPPORTED_BROWSER: 'Sorry, je kan Nano Wallet niet veilig gebruiken met deze browser...',
+        HOME_UNSUPPORTED_BROWSER: 'Sorry, je kan NEM Wallet niet veilig gebruiken met deze browser...',
         HOME_RECOMMENDED_BROWSERS: 'Aanbevolen browsers zijn:',
         HOME_FEATURE_STAND_BY: 'Plaats de cursor op een functie om informatie weer te geven.',
         HOME_FEATURE_1: 'Verzend en ontvang XEM eenvoudig en bijna onmiddellijk, slechts 1 minuut bloktijd!',
@@ -708,8 +708,8 @@ function DutchProvider($translateProvider) {
 
         // FAQ MODULE
         FAQ_TITLE: 'Vaak gestelde vragen',
-        FAQ_QUESTION_1: 'Hoe werkt Nano Wallet?',
-        FAQ_ANSWER_1: 'Nano Wallet is gebouwd met behulp van de nieuwste cryptobibliotheken met ES6 en AngularJS. Het is een volledige client-applicatie die nooit gevoelige gegevens verzendt; Alles gebeurt in je browser m.b.t. het creëren van persoonlijke sleutels voor het ondertekenen van transacties.',
+        FAQ_QUESTION_1: 'Hoe werkt NEM Wallet?',
+        FAQ_ANSWER_1: 'NEM Wallet is gebouwd met behulp van de nieuwste cryptobibliotheken met ES6 en AngularJS. Het is een volledige client-applicatie die nooit gevoelige gegevens verzendt; Alles gebeurt in je browser m.b.t. het creëren van persoonlijke sleutels voor het ondertekenen van transacties.',
         FAQ_QUESTION_2: 'Is het vrij om te gebruiken?',
         FAQ_ANSWER_2: 'Absoluut alle handelingen zijn klant-kant, alleen jij hebt controle over je munten, geen derden en geen extra kosten.',
         FAQ_QUESTION_3: 'Waarom heb ik al een Mozaïek ?',
@@ -727,7 +727,7 @@ function DutchProvider($translateProvider) {
         FAQ_QUESTION_8: 'Mede-ondertekenaars kunnen de transactie die getekend moet worden niet zien',
         FAQ_ANSWER_8: 'Ga in dit geval naar "Diensten", ga naar "Multi-handtekening en multi-gebruiker accounts" en klik op "Teken een multi-handtekening transactie".',
         FAQ_QUESTION_9: 'Wat zijn de beste veiligheidsoverwegingen?',
-        FAQ_ANSWER_9: 'Het is ten strengste aan te bevelen om je persoonlijke sleutel op papier op te slaan.<br> Je kan hem printen en hem dan ergens veilig opslaan.<br><br>Met betrekking tot de portemonnee bestanden, hiervan altijd meerdere kopieën opslaan op verschillende locaties, zoals USB sitcks.<br>Wachtwoord moet uniek en complex zijn, schrijf hem daarom altijd eerst op.<br><br>Wanneer je je portemonnee wilt controleren of bewerkingen wilt uitvoeren:<br> - Sluit de USB-stick aan - Importeer de portemonnee in Nano<br> - Koppel de USB-stick los.<br><br>Een kopie van uw portemonnee wordt opgeslagen in de lokale cache van de browser. <br> Als je klaar bent, log je uit en verwijder je de portemonnee uit de lokale cache via de knop voor opschonen aan de rechterkant van de footer.',
+        FAQ_ANSWER_9: 'Het is ten strengste aan te bevelen om je persoonlijke sleutel op papier op te slaan.<br> Je kan hem printen en hem dan ergens veilig opslaan.<br><br>Met betrekking tot de portemonnee bestanden, hiervan altijd meerdere kopieën opslaan op verschillende locaties, zoals USB sitcks.<br>Wachtwoord moet uniek en complex zijn, schrijf hem daarom altijd eerst op.<br><br>Wanneer je je portemonnee wilt controleren of bewerkingen wilt uitvoeren:<br> - Sluit de USB-stick aan - Importeer de portemonnee in NEM Wallet<br> - Koppel de USB-stick los.<br><br>Een kopie van uw portemonnee wordt opgeslagen in de lokale cache van de browser. <br> Als je klaar bent, log je uit en verwijder je de portemonnee uit de lokale cache via de knop voor opschonen aan de rechterkant van de footer.',
         FAQ_QUESTION_10: 'Waar vind ik informatie over mijn account (adres, enz.)?',
         FAQ_ANSWER_10: 'Als u naar de bovenste navigatiebalk kijkt, ziet u een <b><i>"Account"</b></i> knop tussen <b><i>"Node"</b></i> en <b><i>"Taal"</b></i>. Daar kunt u uw adres, openbare sleutel, toegekende balans en andere belangrijke gegevens vinden.',
         FAQ_QUESTION_11: 'Ik heb XEM naar een Exchange overgemaakt, maar er is niets bijgeschreven?',

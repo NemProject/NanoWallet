@@ -4,7 +4,7 @@ function JapaneseProvider($translateProvider) {
     $translateProvider.translations('jp', {
 
       // HEADER COMPONENT
-      WALLET_NAME_1: 'nano',
+      WALLET_NAME_1: 'NEM',
       WALLET_NAME_2: 'Wallet',
       APP_NAME_SUB: "NEM プラットフォームに接続するための安全な方法\n(ボランティアによる日本語翻訳版)",
       HEADER_LOGIN_BUTTON: "ログイン",
@@ -54,9 +54,9 @@ function JapaneseProvider($translateProvider) {
       DASHBOARD_MARKET_INFO_CHANGES_24H: "24時間",
       DASHBOARD_MARKET_INFO_CHANGES_7D: "7日間",
       DASHBOARD_MARKET_INFO_NOTE: "<a href=\"http://coinmarketcap.com/\" target=\"_blank\">CoinMarketCap</a> CoinMarketCapのデータは 5 分毎に更新されます。",
-      DASHBOARD_NOTICE_1: 'Nano Wallet Beta にようこそ！',
+      DASHBOARD_NOTICE_1: 'NEM Wallet Beta にようこそ！',
       DASHBOARD_NOTICE_2: '問題の報告は<a href="https://github.com/NemProject/NanoWallet" target="_blank">こちら</a>へお願いします。',
-      DASHBOARD_NOTICE_3: 'NEM チームは、メインネットを利用する前に、最初にテストネットにて NanoWallet の操作を行い、利用方法を習得する事をお勧めします。英文のガイドブックは<a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank">こちら</a>にあります。利用者は自身の資金を管理し、秘密鍵をバックアップしてください。NEM チームは、メインネット上でこのアプリケーションを利用することに起因する、資金の消失について責任を負いません。',
+      DASHBOARD_NOTICE_3: 'NEM チームは、メインネットを利用する前に、最初にテストネットにて NEM Wallet の操作を行い、利用方法を習得する事をお勧めします。英文のガイドブックは<a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank">こちら</a>にあります。利用者は自身の資金を管理し、秘密鍵をバックアップしてください。NEM チームは、メインネット上でこのアプリケーションを利用することに起因する、資金の消失について責任を負いません。',
       DASHBOARD_NOTICE_4: '紙に秘密鍵を書き留めて、安全な場所に保存することをお勧めします。また、あなたのアカウントをAndroid 及び iOS アプリにインポートして、バックアップする事もできます。',
       DASHBOARD_NOTICE_5: 'Thanks for your participation!', //すまねぇ、ここどう訳すか迷ってそのままｗ
       DASHBOARD_MORE_TXES: 'もっとトランザクションを見る',
@@ -168,7 +168,7 @@ function JapaneseProvider($translateProvider) {
       GENERAL_VERIFY: '検証',
 
       // HOME MODULE
-      HOME_UNSUPPORTED_BROWSER: '申し訳ありません。このブラウザでは安全に NanoWallet を使用する事ができません。',
+      HOME_UNSUPPORTED_BROWSER: '申し訳ありません。このブラウザでは安全に NEM Wallet を使用する事ができません。',
       HOME_RECOMMENDED_BROWSERS: '推奨ブラウザ：',
       HOME_FEATURE_STAND_BY: '各機能の説明はカーソルを合わせると表示されます。',
       HOME_FEATURE_1: 'XEMの送受信は早くて簡単、ブロックタイムは1分です！',
@@ -234,7 +234,7 @@ function JapaneseProvider($translateProvider) {
       IMPORTANCE_TRANSFER_REMOTE_ACCOUNT: "リモートアカウント",
       IMPORTANCE_TRANSFER_REMOTE_PUBLIC: "リモート公開鍵",
       IMPORTANCE_TRANSFER_INFO_PART_1: "インポータンストランザクションがブロックに入れられてから有効になるまで6時間かかります。6時間の後、ノードの選択や起動/停止を行うことができます。",
-      IMPORTANCE_TRANSFER_INFO_PART_2: "既に委任アクティベート要求済のアカウントを NanoWallet にインポートした場合は、一旦過去の委任公開鍵を停止させてから再度要求して下さい。\n",
+      IMPORTANCE_TRANSFER_INFO_PART_2: "既に委任アクティベート要求済のアカウントを NEM Wallet にインポートした場合は、一旦過去の委任公開鍵を停止させてから再度要求して下さい。\n",
       IMPORTANCE_TRANSFER_INFO_PART_MULTISIG: "マルチシグの場合、インポータンストランスファートランザクションを実施した連署者のみハーベストの開始停止が可能です。その他の連署人が処理を行う場合は Deactivate → Activate が必要になります。",
       IMPORTANCE_TRANSFER_NO_BLOCKS_HARVESTED: "収穫ブロック無し",
       IMPORTANCE_TRANSFER_HARVESTING_PANEL: "収穫パネル",
@@ -346,7 +346,7 @@ function JapaneseProvider($translateProvider) {
       ACCOUNT_DELEGATED_PUBLIC: "委任公開鍵",
       ACCOUNT_HARVESTED_BLOCKS: "ハーベストされたブロック",
       ACCOUNT_START_STOP_HARVESTING: "デリゲートハーベスティングを開始 / 停止",
-      ACCOUNT_HARVESTING_NOTE: "このアカウントでハーベストに利用したノードは、<b>ブラウザのローカルストレージ</b>に保存されます。ブラウザのローカルストレージが削除されると、NanoWallet はどのノードを利用していたのかわからない為、<b>ハーベスティング</b>に<b>無効</b>と表示されます。この場合、使用していたノードを再度選択すると、収穫情報が自動的に復元されます。ステータスが復元されない場合は、正しいノードが選択されているかを確認してください。それ以外の場合は、ノードが再起動されたために、このアカウントでハーベストされていないことを意味します。",
+      ACCOUNT_HARVESTING_NOTE: "このアカウントでハーベストに利用したノードは、<b>ブラウザのローカルストレージ</b>に保存されます。ブラウザのローカルストレージが削除されると、NEM Wallet はどのノードを利用していたのかわからない為、<b>ハーベスティング</b>に<b>無効</b>と表示されます。この場合、使用していたノードを再度選択すると、収穫情報が自動的に復元されます。ステータスが復元されない場合は、正しいノードが選択されているかを確認してください。それ以外の場合は、ノードが再起動されたために、このアカウントでハーベストされていないことを意味します。",
       ACCOUNT_HARVESTING_NODE_SELECT: "ハーベストを行うノードを選択",
       ACCOUNT_HARVESTING_START: "デリゲートハーベスティング（委任収穫）を開始",
       ACCOUNT_HARVESTING_STOP: "デリゲートハーベスティング（委任収穫）を停止",
@@ -717,14 +717,14 @@ function JapaneseProvider($translateProvider) {
 
       // FAQ MODULE
       FAQ_TITLE: "よくある質問",
-      FAQ_QUESTION_1: "どのように NanoWallet は動作しますか？",
-      FAQ_ANSWER_1: "NanoWallet は ES6, AngularJS そして 最新の暗号ライブラリを使用して構築されています。これは完全なクライアントサイドアプリケーションで、ネット上に機密データが送信されることはありません。秘密鍵の作成からトランザクションの署名まで全てあなたのブラウザ上で完結します。",
+      FAQ_QUESTION_1: "どのように NEM Wallet は動作しますか？",
+      FAQ_ANSWER_1: "NEM Wallet は ES6, AngularJS そして 最新の暗号ライブラリを使用して構築されています。これは完全なクライアントサイドアプリケーションで、ネット上に機密データが送信されることはありません。秘密鍵の作成からトランザクションの署名まで全てあなたのブラウザ上で完結します。",
       FAQ_QUESTION_2: "このウォレットは無料で使えますか？",
       FAQ_ANSWER_2: "はい。追加使用料等は発生しません。全処理は完全にクライアント側で行われます。あなたのコインは第三者の干渉を受けずあなたしか操作することができません。",
       FAQ_QUESTION_3: "なぜ最初からに モザイク を1つ所有しているのですか？",
       FAQ_ANSWER_3: "XEMはNEMブロックチェーンのデフォルトの通貨なので、その残高がゼロであっても、すべてのユーザーのウォレットにはそれが登録されています。そのネームスペースは NEM であり、モザイクの名前は XEM です。",
       FAQ_QUESTION_4: "今後の予定は？",
-      FAQ_ANSWER_4: "現在のロードマップには、NEM クライアントの機能を組み込むこと、NanoWallet の中で機能するコミュニティによって出資されたプロジェクトの完成などが含まれています。",
+      FAQ_ANSWER_4: "現在のロードマップには、NEM クライアントの機能を組み込むこと、NEM Wallet の中で機能するコミュニティによって出資されたプロジェクトの完成などが含まれています。",
       FAQ_QUESTION_5: "無料で XEM を入手することはできますか？",
       FAQ_ANSWER_5: "現在 NEM フォーセットは停止していますが、NEM フォーラムで報酬として受け取る方法について相談できます。",
       FAQ_QUESTION_6: "どこで NEM に関するもっと詳しい情報を得ることができますか？",
@@ -736,7 +736,7 @@ function JapaneseProvider($translateProvider) {
       FAQ_QUESTION_8: '連署者に署名してほしいトランザクション表示されません。',
       FAQ_ANSWER_8: 'この場合、"サービス"へ移動し、"マルチシグおよびマルチユーザーアカウント"の項目から"マルチシグトランザクションの署名"を選択してください。',
       FAQ_QUESTION_9: '最適なセキュリティは？',
-      FAQ_ANSWER_9: '特に推奨するのは秘密鍵を紙に保存することです。<br>プリントアウトしてどこか安全な所で保管してください。<br><br>ウォレットファイルについても同様に、複数のコピーをUSBメモリなどのオフラインな場所に保存してください。<br>パスワードは一意で複雑にしてください。そのため、まずは書き留めておいてください。<br><br>ウォレットを確認する、もしくは操作をしたいときは:<br> - USBメモリを指します<br> - NanoWalletにインポートします<br> - USBメモリを抜きます<br><br> ウォレットのコピーは必要な時にブラウザのローカルストレージに保存されます。<br>作業が終わったら、ログアウトし、フッターの右端にある削除ボタンでローカルストレージ内のウォレットを削除してください。',
+      FAQ_ANSWER_9: '特に推奨するのは秘密鍵を紙に保存することです。<br>プリントアウトしてどこか安全な所で保管してください。<br><br>ウォレットファイルについても同様に、複数のコピーをUSBメモリなどのオフラインな場所に保存してください。<br>パスワードは一意で複雑にしてください。そのため、まずは書き留めておいてください。<br><br>ウォレットを確認する、もしくは操作をしたいときは:<br> - USBメモリを指します<br> - NEM Walletにインポートします<br> - USBメモリを抜きます<br><br> ウォレットのコピーは必要な時にブラウザのローカルストレージに保存されます。<br>作業が終わったら、ログアウトし、フッターの右端にある削除ボタンでローカルストレージ内のウォレットを削除してください。',
       FAQ_QUESTION_10: 'どこに自分のアカウントの情報(アドレスなど)がありますか？',
       FAQ_ANSWER_10: '上部のナビゲーションバーにある<b><i>"ノード"</b></i>と<b><i>"言語"</b></i>の間に<b><i>"アカウント"</b></i>ボタンがあります。ここでアドレスや公開鍵、既得バランスなどの重要な情報を得られます。',
       FAQ_QUESTION_11: '交換所にXEMを入金しましたが、残高に反映されません。',
