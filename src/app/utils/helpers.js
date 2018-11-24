@@ -186,17 +186,15 @@ let toShortDate = function(date) {
 
 /**
  * index 1 - ([0-9]+\.[0-9]+\.[0-9]+) - mandatory - 3 numbers separated by dots - major.minor.patch
- * index 3 - (-([a-zA-Z0-9\.]+))? - optional - minus and alphanumeric prerelease info separated by dots
- * index 5 - (\+([a-zA-Z0-9]+))? - optional - plus and alphanumeric metadata
+ * index 3 - (-([0-9A-Za-z-\.]+))? - optional - minus and [0-9A-Za-z-] prerelease info separated by dots
+ * index 5 - (\+([0-9A-Za-z-\.]+))? - optional - plus and [0-9A-Za-z-] metadata separated by dots
  * index 7 - (\s+(.*))? - optional - space and any text
  * 
  * metadata and text do not influence precedence
  */
-const VERSION_PATTERN = /([0-9]+\.[0-9]+\.[0-9]+)(-([a-zA-Z0-9\.]+))?(\+([a-zA-Z0-9]+))?(\s+(.*))?/;
+const VERSION_PATTERN = /([0-9]+\.[0-9]+\.[0-9]+)(-([0-9A-Za-z-\.]+))?(\+([0-9A-Za-z-\.]+))?(\s+(.*))?/;
 /**
  * Compares two software version numbers (e.g. "1.7.1" or "1.2.3-alpha.3+meta comment").
- *
- * From http://stackoverflow.com/a/6832721 but heavily adjusted to support semver2
  *
  * @param {string} v1 The first version to be compared.
  * @param {string} v2 The second version to be compared.
@@ -205,39 +203,75 @@ let versionCompare = function(v1, v2) {
     var v1match = VERSION_PATTERN.exec(v1);
     var v2match = VERSION_PATTERN.exec(v2);
 
-    /** return an array with version */
-    function getVersion(v) {
-        return v.split('.').map(Number);
+    /** return an array with version fields or empty array */
+    function split(v) {
+        if (typeof v == 'undefined') {
+            return [];
+        } else {
+            return v.split('.');
+        }
     }
-
-    // compare the version information
-    var v1version = getVersion(v1match[1]);
-    var v2version = getVersion(v2match[1]);
-    // iterate over major, minor and patch
-    for (var i = 0; i < 3; ++i) {
-        if (v1version[i] > v2version[i]) {
+    /** try to convert value to number */
+    function compare(v1, v2) {
+        if (isNaN(v1) && isNaN(v2)) {
+            // neither is number so compare alphabetically
+            return v1.localeCompare(v2);
+        } else if (!isNaN(v1) && !isNaN(v2)) {
+            // both are numbers so compare numerically
+            return Number(v1) - Number(v2);
+        } else if (isNaN(v1)) {
+            // first is string and second number - number is smaller per semver
             return 1;
-        } else if (v1version[i] < v2version[i]){
+        } else {
+            // first is number and second is string - number is smaller per semver
             return -1;
         }
     }
+    /** compare 2 arrays per semver spec */
+    function compareArrays(a1, a2) {
+        // go item by item and report first difference
+        for (var i=0; i<a1.length; i++) {
+            // if there is no such item in second array then the first shorter is bigger
+            if (a2.length <= i || typeof a2[i] == 'undefined') {
+                return 1;
+            }
+            // compare the 2
+            var result;
+            if (result = compare(a1[i], a2[i])) {
+                return result;
+            }
+        }
+        // if a1 is shorter then it is bigger
+        if (a1.length < a2.length) {
+            return -1;
+        }
+        // failed to find difference so report equality
+        return 0;
+    }
+
+    var result;
+    // compare the version information numerically
+    if (result = compareArrays(split(v1match[1]), split(v2match[1]))) {
+        return result;
+    }
     // version was the same so let's see the pre-release info
-    var v1isPrerelease = typeof v1match[2] !== 'undefined';
-    var v2isPrerelease = typeof v2match[2] !== 'undefined';
-    if (v1isPrerelease > v2isPrerelease) {
+    var preInfo1 = split(v1match[3]);
+    var preInfo2 = split(v2match[3]);
+    // special case is when one is there and the other is not
+    var hasPreInfo1 = preInfo1.length > 0;
+    var hasPreInfo2 = preInfo2.length > 0;
+    if (hasPreInfo1 && !hasPreInfo2) {
         return -1;
-    } else if (v1isPrerelease < v2isPrerelease) {
+    } else if (!hasPreInfo1 && hasPreInfo2) {
         return 1;
     }
-    // try comparing prerelease info if applicable
-    if (v1isPrerelease && v2isPrerelease) {
-        // TODO iterate over the prerelease info and decide
-        return NaN;
+    // if both are there then compare the arrays
+    if (result = compareArrays(preInfo1, preInfo2)) {
+        return result;
     }
     // still not decided so that means equal
     return 0;
 }
-
 
 /**
  * Fix "FAILURE_TIMESTAMP_TOO_FAR_IN_FUTURE"

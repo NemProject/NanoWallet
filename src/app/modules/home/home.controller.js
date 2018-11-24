@@ -93,8 +93,7 @@ class HomeCtrl {
         this._$http.get("https://api.github.com/repos/bad-weather-corp/NEMWallet/releases/latest").then((res) => {
             let currentVersion = this._AppConstants.version;
             let version = res.data.name;
-            let isVersion2 = parseInt(version.split(".")[0]) > 1;
-            if (isVersion2 && Helpers.versionCompare(currentVersion, version) < 0) {
+            if (Helpers.versionCompare(currentVersion, version) < 0) {
                 this.newUpdate = true;
                 this.updateInfo = res.data;
             }
