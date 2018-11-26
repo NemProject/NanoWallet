@@ -118,9 +118,28 @@ export default class Alert {
 
     transactionError(message) {
         this._ngToast.create({
-            content: message,
+            content: this.getTranslatedNisError(message),
             className: 'danger'
         });
+    }
+
+    getTranslatedNisError(message) {
+        // try to standardize errors to codes
+        switch (message) {
+            case 'Request method \'GET\' not supported': message = 'REQ_GET_UNSUPPORTED'; break;
+            case 'address must be valid': message = 'ADDRESS_INVALID'; break;
+            case 'JSON Object was expected': message = 'INVALID_JSON'; break;
+            case 'block not found in the db': message = 'BLOCK_NOT_FOUND'; break;
+            case 'height must be positive': message = 'NEGATIVE_HEIGHT'; break;
+            case 'network has not been booted yet': message = 'NETWORK_NOT_BOOTED'; break;
+            case '': message = ''; break;
+        }
+        // capital and underscore codes are used to map to translations prefixed by NIS_ERR_
+        if (/^[A-Z_]+$/.test(message)) {
+            return this._$filter('translate')('NIS_ERR_' + message);
+        }
+        // fall-back to original implementation where error message from server is printed out
+        return message;
     }
 
     cosignatoryAlreadyPresentInList(){
