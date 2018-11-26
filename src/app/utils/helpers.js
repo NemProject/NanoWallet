@@ -185,61 +185,93 @@ let toShortDate = function(date) {
 };
 
 /**
- * Compares two software version numbers (e.g. "1.7.1" or "1.2b").
- *
- * From http://stackoverflow.com/a/6832721.
+ * index 1 - ([0-9]+\.[0-9]+\.[0-9]+) - mandatory - 3 numbers separated by dots - major.minor.patch
+ * index 3 - (-([0-9A-Za-z-\.]+))? - optional - minus and [0-9A-Za-z-] prerelease info separated by dots
+ * index 5 - (\+([0-9A-Za-z-\.]+))? - optional - plus and [0-9A-Za-z-] metadata separated by dots
+ * index 7 - (\s+(.*))? - optional - space and any text
+ * 
+ * metadata and text do not influence precedence
+ */
+const VERSION_PATTERN = /([0-9]+\.[0-9]+\.[0-9]+)(-([0-9A-Za-z-\.]+))?(\+([0-9A-Za-z-\.]+))?(\s+(.*))?/;
+/**
+ * Compares two software version numbers (e.g. "1.7.1" or "1.2.3-alpha.3+meta comment").
  *
  * @param {string} v1 The first version to be compared.
  * @param {string} v2 The second version to be compared.
- * @param {object} [options] Optional flags that affect comparison behavior:
  */
-let versionCompare = function(v1, v2, options) {
-    var lexicographical = options && options.lexicographical,
-        zeroExtend = options && options.zeroExtend,
-        v1parts = v1.split('.'),
-        v2parts = v2.split('.');
+let versionCompare = function(v1, v2) {
+    var v1match = VERSION_PATTERN.exec(v1);
+    var v2match = VERSION_PATTERN.exec(v2);
 
-    function isValidPart(x) {
-        return (lexicographical ? /^\d+[A-Za-z]*$/ : /^\d+$/).test(x);
+    /** return an array with version fields or empty array */
+    function split(v) {
+        if (typeof v == 'undefined') {
+            return [];
+        } else {
+            return v.split('.');
+        }
     }
-
-    if (!v1parts.every(isValidPart) || !v2parts.every(isValidPart)) {
-        return NaN;
-    }
-
-    if (zeroExtend) {
-        while (v1parts.length < v2parts.length) v1parts.push("0");
-        while (v2parts.length < v1parts.length) v2parts.push("0");
-    }
-
-    if (!lexicographical) {
-        v1parts = v1parts.map(Number);
-        v2parts = v2parts.map(Number);
-    }
-
-    for (var i = 0; i < v1parts.length; ++i) {
-        if (v2parts.length == i) {
+    /** try to convert value to number */
+    function compare(v1, v2) {
+        if (isNaN(v1) && isNaN(v2)) {
+            // neither is number so compare alphabetically
+            return v1.localeCompare(v2);
+        } else if (!isNaN(v1) && !isNaN(v2)) {
+            // both are numbers so compare numerically
+            return Number(v1) - Number(v2);
+        } else if (isNaN(v1)) {
+            // first is string and second number - number is smaller per semver
             return 1;
-        }
-
-        if (v1parts[i] == v2parts[i]) {
-            continue;
-        }
-        else if (v1parts[i] > v2parts[i]) {
-            return 1;
-        }
-        else {
+        } else {
+            // first is number and second is string - number is smaller per semver
             return -1;
         }
     }
-
-    if (v1parts.length != v2parts.length) {
-        return -1;
+    /** compare 2 arrays per semver spec */
+    function compareArrays(a1, a2) {
+        // go item by item and report first difference
+        for (var i=0; i<a1.length; i++) {
+            // if there is no such item in second array then the first shorter is bigger
+            if (a2.length <= i || typeof a2[i] == 'undefined') {
+                return 1;
+            }
+            // compare the 2
+            var result;
+            if (result = compare(a1[i], a2[i])) {
+                return result;
+            }
+        }
+        // if a1 is shorter then it is bigger
+        if (a1.length < a2.length) {
+            return -1;
+        }
+        // failed to find difference so report equality
+        return 0;
     }
 
+    var result;
+    // compare the version information numerically
+    if (result = compareArrays(split(v1match[1]), split(v2match[1]))) {
+        return result;
+    }
+    // version was the same so let's see the pre-release info
+    var preInfo1 = split(v1match[3]);
+    var preInfo2 = split(v2match[3]);
+    // special case is when one is there and the other is not
+    var hasPreInfo1 = preInfo1.length > 0;
+    var hasPreInfo2 = preInfo2.length > 0;
+    if (hasPreInfo1 && !hasPreInfo2) {
+        return -1;
+    } else if (!hasPreInfo1 && hasPreInfo2) {
+        return 1;
+    }
+    // if both are there then compare the arrays
+    if (result = compareArrays(preInfo1, preInfo2)) {
+        return result;
+    }
+    // still not decided so that means equal
     return 0;
 }
-
 
 /**
  * Fix "FAILURE_TIMESTAMP_TOO_FAR_IN_FUTURE"
