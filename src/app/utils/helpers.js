@@ -285,12 +285,13 @@ let fixTimestamp = function(transaction, chainTime, network) {
     let timeStamp = Math.floor(chainTime) + Math.floor(d.getSeconds() / 10);
     let due = network === nem.model.network.data.testnet.id ? 60 : 24 * 60;
     let deadline = timeStamp + due * 60
-    if (transaction.type === nem.model.transactionTypes.multisigTransaction) {
+    // update transaction timestamp
+    transaction.timeStamp = timeStamp;
+    transaction.deadline = deadline;
+    // for multisig (transaction having otherTrans) update also the otherTrans
+    if (transaction.otherTrans) {
         transaction.otherTrans.timeStamp = timeStamp;
         transaction.otherTrans.deadline = deadline;
-    } else {
-        transaction.timeStamp = timeStamp;
-        transaction.deadline = deadline;
     }
     return transaction;
 }
