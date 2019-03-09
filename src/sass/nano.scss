@@ -29,9 +29,9 @@
 }
 
 /*** GLOBAL VARIABLES ***/
-$blue: #0d5295; /*#69b2e5;**/
-$blueLite: rgba(015, 122, 225, 0.6);
-$blueXLite: rgba(015, 122, 225, 0.1);
+$blue: #009688; /*#69b2e5;**/
+$blueLite: #009688;
+$blueXLite: #009688;
 $blueDark: darken( $blue, 10% );
 $pad: 20px;
 $grayLite: rgba(0 ,0 ,0 ,0.1);
@@ -134,6 +134,11 @@ select {
 .well {
 	overflow: hidden;
 	white-space: nowrap;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #129a8e !important;
+  border-color: #009688 !important;
 }
 
 @import 'new';

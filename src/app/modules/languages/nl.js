@@ -4,9 +4,9 @@ function DutchProvider($translateProvider) {
     $translateProvider.translations('nl', {
 
         // HEADER COMPONENT
-        WALLET_NAME_1: 'NEM',
+        WALLET_NAME_1: 'PROXIMAX',
         WALLET_NAME_2: 'Wallet',
-        APP_NAME_SUB: 'De veilige interface naar het NEM platform',
+        APP_NAME_SUB: 'De veilige interface naar het PROXIMAX platform',
         HEADER_LOGIN_BUTTON: 'Inloggen',
         HEADER_SIGNUP_BUTTON: 'Aanmelden',
         HEADER_DASHBOARD: 'Dashboard',
@@ -32,7 +32,7 @@ function DutchProvider($translateProvider) {
 
         // FOOTER COMPONENT
         FOOTER_POWERED_BY_1: 'Powered by',
-        FOOTER_POWERED_BY_2: 'NEM technology.',
+        FOOTER_POWERED_BY_2: 'PROXIMAX technology.',
         FOOTER_VERSION: 'Versie',
 
         // DASHBOARD MODULE
@@ -54,9 +54,9 @@ function DutchProvider($translateProvider) {
         DASHBOARD_MARKET_INFO_CHANGES_24H: '24u',
         DASHBOARD_MARKET_INFO_CHANGES_7D: '7d',
         DASHBOARD_MARKET_INFO_NOTE: '<a href="http://coinmarketcap.com/" target="_blank">CoinMarketCap</a> data wordt elke 5 minuten bijgewerkt',
-        DASHBOARD_NOTICE_1: 'Welkom bij NEM Wallet!',
+        DASHBOARD_NOTICE_1: 'Welkom bij PROXIMAX Wallet!',
         DASHBOARD_NOTICE_2: '<a href="https://github.com/NemProject/NanoWallet" target="_blank">Meldt hier problemen</a>.',
-        DASHBOARD_NOTICE_3: 'Het NEM-team adviseert je om eerst op het Testnet vertrouwd te raken met NEM Wallet voordat je het Mainnet gaat gebruiken. Een eenvoudige gids vindt je <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank"> hier</a>. Gebruikers zijn zelf verantwoordelijk voor hun geld en moeten zelf van de persoonlijke sleutels een back-up maken. Het NEM-team is niet verantwoordelijk voor het verlies van geld door deze applicatie op het Mainnet te gebruiken.',
+        DASHBOARD_NOTICE_3: 'Het PROXIMAX-team adviseert je om eerst op het Testnet vertrouwd te raken met PROXIMAX Wallet voordat je het Mainnet gaat gebruiken. Een eenvoudige gids vindt je <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank"> hier</a>. Gebruikers zijn zelf verantwoordelijk voor hun geld en moeten zelf van de persoonlijke sleutels een back-up maken. Het PROXIMAX-team is niet verantwoordelijk voor het verlies van geld door deze applicatie op het Mainnet te gebruiken.',
         DASHBOARD_NOTICE_4: 'Wij raden je aan om persoonlijke sleutels op papier te zetten en op een veilige plaats op te slaan. Daarnaast kun je je accounts importeren in de Android- en iOS-apps als back-up.',
         DASHBOARD_NOTICE_5: 'Bedankt voor het gebruik!',
         DASHBOARD_MORE_TXES: 'Bekijk meer transacties',
@@ -168,7 +168,7 @@ function DutchProvider($translateProvider) {
         GENERAL_VERIFY: 'Verifieer',
 
         // HOME MODULE
-        HOME_UNSUPPORTED_BROWSER: 'Sorry, je kan NEM Wallet niet veilig gebruiken met deze browser...',
+        HOME_UNSUPPORTED_BROWSER: 'Sorry, je kan PROXIMAX Wallet niet veilig gebruiken met deze browser...',
         HOME_RECOMMENDED_BROWSERS: 'Aanbevolen browsers zijn:',
         HOME_FEATURE_STAND_BY: 'Plaats de cursor op een functie om informatie weer te geven.',
         HOME_FEATURE_1: 'Verzend en ontvang XEM eenvoudig en bijna onmiddellijk, slechts 1 minuut bloktijd!',
@@ -288,7 +288,7 @@ function DutchProvider($translateProvider) {
         MOSAIC_DEFINITION_INFORMATION_13: 'Er zijn twee soorten heffing, constante heffing en procentuele heffing.',
         MOSAIC_DEFINITION_INFORMATION_14: 'De heffing wordt opgegeven als constante hoeveelheid en hangt dus niet af van de hoeveelheid die wordt overgedragen.',
         MOSAIC_DEFINITION_INFORMATION_15: 'De heffing wordt opgegeven als percentage van de overgedragen hoeveelheid. De heffing stijgt dus lineair met de overgedragen mozaïekhoeveelheid.',
-        MOSAIC_DEFINITION_INFORMATION_16: 'Het verzenden van mozaïeken op het NEM blockchain vereist een heffing. De exacte heffing wordt berekend afhankelijk van het totale aantal en hoeveel worden verzonden tijdens een transactie. <b>Kleinschalige mozaïeken</b> krijgen een kortingstarief van 0.05 XEM per mozaiek per overdracht. Dit zijn mozaïeken met een hoeveelheid van minder dan 10.000 en een verdeelbaarheid van 0.',
+        MOSAIC_DEFINITION_INFORMATION_16: 'Het verzenden van mozaïeken op het PROXIMAX blockchain vereist een heffing. De exacte heffing wordt berekend afhankelijk van het totale aantal en hoeveel worden verzonden tijdens een transactie. <b>Kleinschalige mozaïeken</b> krijgen een kortingstarief van 0.05 XEM per mozaiek per overdracht. Dit zijn mozaïeken met een hoeveelheid van minder dan 10.000 en een verdeelbaarheid van 0.',
         MOSAIC_DEFINITION_INFORMATION_17: 'Wanneer je 100% van de voorraad bezit, dan kun je alle mozaïek eigenschappen overschrijven door opnieuw een transactie te creëeren en te verzenden met dezelfde naam: "namespace:mosaic".',
 
         // EDIT MOSAIC MODULE
@@ -315,7 +315,7 @@ function DutchProvider($translateProvider) {
         NAMESPACE_PROVISION_RESTRICTIONS: 'Namespace beperkingen',
         NAMESPACE_PROVISION_INFORMATION_1: 'Namespaces hebben bepaalde beperkingen met betrekking tot de karakters die in de delen zijn toegestaan evenals de lengte van een deel. Een root namespace kan een lengte hebben van 16 karakters terwijl sub-namespaces een lengte van 64 karakters kunnen hebben. Geldige karakters zijn:',
         NAMESPACE_PROVISION_INFORMATION_2: 'Een deel moet beginnen met een letter of cijfer, dus \'alice\' is een toegestaan deel voor een root namespace terwijl \'_alice\' dat niet is. Bepaalde teksten zijn gereserveerd en dus niet toegestaan als namespace-onderdelen. Onder de niet-toegelaten namespace delen zijn:',
-        NAMESPACE_PROVISION_INFORMATION_3: 'Deze lijst is niet definitief en kan in de toekomst worden uitgebreid. Dus \'user.alice\' of \'alice.user\' zijn niet toegestaan in het NEM namespace-systeem. De namespace kan maximaal 3 delen bevatten, dus \'qm.metals.silver\' is geldig terwijl \'qm.metals.silver.coin\' dat niet is.',
+        NAMESPACE_PROVISION_INFORMATION_3: 'Deze lijst is niet definitief en kan in de toekomst worden uitgebreid. Dus \'user.alice\' of \'alice.user\' zijn niet toegestaan in het PROXIMAX namespace-systeem. De namespace kan maximaal 3 delen bevatten, dus \'qm.metals.silver\' is geldig terwijl \'qm.metals.silver.coin\' dat niet is.',
 
         // RENEW NAMESPACE MODULE
         RENEW_NS_TITLE: 'Vernieuw namespaces',
@@ -363,7 +363,7 @@ function DutchProvider($translateProvider) {
         ACCOUNT_BACKUP_WALLET_NOTE: 'Het is <b><u>uiterst belangrijk</u></b> dat je back-ups hebt van je portemonnees. Heb je dit niet dan loopt je het risico dat je XEM verloren gaat.',
         ACCOUNT_BACKUP_WALLET_DOWNLOAD: 'Download portemonnee',
         ACCOUNT_INFO_QR_TITLE: 'Account informatie QR',
-        ACCOUNT_WALLET_QR_NOTE: 'Deze QR werkt alleen met de NEMpay mobiele app die binnenkort uit komt',
+        ACCOUNT_WALLET_QR_NOTE: 'Deze QR werkt alleen met de PROXIMAXpay mobiele app die binnenkort uit komt',
         ACCOUNT_WALLET_QR_ANDROID_IOS_TITLE: 'Portemonnee QR voor Android & IOS apps',
         ACCOUNT_ADD_NEW_ACCOUNT_WARNING: 'Alle accounts zijn afgeleid van je primaire persoonlijke sleutel en wachtwoord doormiddel van BIP32, dus je primaire persoonlijke sleutel en je wachtwoord zijn beide nodig om je secundaire accounts te laden. Het wordt <b>sterk aangeraden</b> om een back-up te maken van je portemonnee nadat je nieuwe accounts hebt toegevoegd om te voorkomen dat je de acties moet herhalen als je lokale opslag verwijderd wordt.',
         ACCOUNT_CUSTOM_NODE: 'Gebruik aangepaste node',
@@ -388,11 +388,11 @@ function DutchProvider($translateProvider) {
         PORTAL_NS_TEXT: 'Namespaces zijn domeinnamen. Elke domeinnaam is uniek en verifieert mozaïeken (bezittingen) die erop zijn uitgegeven of op de subdomeinen ervan.',
         PORTAL_NS_BTN: 'Creëer namespace',
         PORTAL_MOSAIC_TITLE: 'Mozaïeken',
-        PORTAL_MOSAIC_TEXT: 'NEM mozaïeken zijn bezittingen die extra eigenschappen en andere kenmerken hebben. Om een mozaïek te kunnen creëren, moet een account ten minste één root namespace huren.',
+        PORTAL_MOSAIC_TEXT: 'PROXIMAX mozaïeken zijn bezittingen die extra eigenschappen en andere kenmerken hebben. Om een mozaïek te kunnen creëren, moet een account ten minste één root namespace huren.',
         PORTAL_MOSAIC_BTN_1: 'Creëer mozaïek',
         PORTAL_MOSAIC_BTN_2: 'Bewerk mozaïek',
         PORTAL_APOSTILLE_TITLE: 'Apostille',
-        PORTAL_APOSTILLE_TEXT: 'Gebruik de NEM Apostille-dienst om blockchain gebaseerde notariële aktes te maken met een tijdstempel en het volgen en controleren van de bestandsechtheid.',
+        PORTAL_APOSTILLE_TEXT: 'Gebruik de PROXIMAX Apostille-dienst om blockchain gebaseerde notariële aktes te maken met een tijdstempel en het volgen en controleren van de bestandsechtheid.',
         PORTAL_APOSTILLE_BTN_1: 'Creëer',
 	PORTAL_APOSTILLE_BTN_2: 'Verifieer',
         PORTAL_ADDRESS_BOOK_TEXT: 'Ken labels toe aan adressen om je contacten gemakkelijk bij te houden.',
@@ -475,7 +475,7 @@ function DutchProvider($translateProvider) {
         APOSTILLE_INFORMATION_5: 'Voor accounts in een multi-handtekeningcontract waar "<b>Persoonlijk, overdraagbaar en bewerkbaar</b>" is geselecteerd, wordt de persoonlijke sleutel van de initiële mede-ondertekenaar gebruikt om de hash te ondertekenen en een speciaal HD-account aan te maken, niet het multi-handtekening account.',
         APOSTILLE_INFORMATION_6: 'Het HD-account is een speciaal account dat wordt gegenereerd van de hash van de bestandsnaam die vervolgens door je persoonlijke sleutel is ondertekend. De resulterende hash van dit proces wordt dan gebruikt om een tweede persoonlijke sleutel te maken. Dit is de persoonlijke sleutel van het bestand met de tijdstempel; de eerste in blockchain technologie die alleen in Apostille wordt gevonden.',
         APOSTILLE_INFORMATION_7: 'Met het speciale HD-account kun je de originele ondertekende hash en de updates van een speciaal account opslaan. Als "<b>Openbaar</b>" is geselecteerd, gaat de transactie naar de openbare vergaarbak (standaard).',
-        APOSTILLE_INFORMATION_8: 'Nadat de transacties zijn verzonden, wordt de download van een archief geactiveerd. Het bevat uw ondertekende bestanden, uw Apostille-certificaat voor dat bestand en het nieuwe of bijgewerkte .nty-bestand om elk bestand bij te houden die is gemarkeerd met de tijd in de NEM-keten.',
+        APOSTILLE_INFORMATION_8: 'Nadat de transacties zijn verzonden, wordt de download van een archief geactiveerd. Het bevat uw ondertekende bestanden, uw Apostille-certificaat voor dat bestand en het nieuwe of bijgewerkte .nty-bestand om elk bestand bij te houden die is gemarkeerd met de tijd in de PROXIMAX-keten.',
         APOSTILLE_NO_NTY: 'Geen nty bestand geladen, klik hier om er één te importeren anders wordt een nieuwe aangemaakt.',
         APOSTILLE_IMPORT_FILES: 'Geïmporteerde bestanden',
         APOSTILLE_CREATE_TEXT: 'Creëer een tekst document',
@@ -655,7 +655,7 @@ function DutchProvider($translateProvider) {
         LOGIN_NOTE: 'Geen portemonnee? Importeer er één of <a href="#!/signup">Meld je aan</a>.',
 
         // SIGNUP MODULE
-        SIGNUP_TITLE: 'Nieuw bij NEM?',
+        SIGNUP_TITLE: 'Nieuw bij PROXIMAX?',
         SIGNUP_SELECT_WALLET_TYPE: 'Selecteer een type portemonnee die je wilt creëren',
         SIGNUP_SELECT_WALLET_TYPE_STAND_BY: 'Plaats de cursor op een type portemonnee om informatie te tonen.',  
         SIGNUP_CREATE_WALLET_TITLE: 'Eenvoudige portemonnee',
@@ -667,11 +667,11 @@ function DutchProvider($translateProvider) {
         SIGNUP_CREATE_WALLET_BUTTON: 'Maak een eenvoudige portemonnee',
         SIGNUP_PRIVATE_KEY_WALLET_BUTTON: 'Maak een persoonlijke sleutel portemonnee',
         SIGNUP_BRAIN_WALLET_BUTTON: 'Maak een brein portemonnee',
-        SIGNUP_CREATE_WALLET_WARNING: 'Lees over <a href="https://www.w3.org/TR/2014/WD-WebCryptoAPI-20140325/#RandomSource-interface" rel="nofollow" target="_blank"><b>gevaren</b></a> die door de klant gegenereerde sleutels vormen; Wij zijn niet verantwoordelijk voor enig verlies dat zou kunnen zijn door de entropie van de belangrijkste generatie. Zelfs als het onwaarschijnlijk zal gebeuren, wordt het nog steeds aanbevolen om een persoonlijke sleutel te gebruiken die is gegenereerd vanuit een NEM-client (NCC).',
+        SIGNUP_CREATE_WALLET_WARNING: 'Lees over <a href="https://www.w3.org/TR/2014/WD-WebCryptoAPI-20140325/#RandomSource-interface" rel="nofollow" target="_blank"><b>gevaren</b></a> die door de klant gegenereerde sleutels vormen; Wij zijn niet verantwoordelijk voor enig verlies dat zou kunnen zijn door de entropie van de belangrijkste generatie. Zelfs als het onwaarschijnlijk zal gebeuren, wordt het nog steeds aanbevolen om een persoonlijke sleutel te gebruiken die is gegenereerd vanuit een PROXIMAX-client (NCC).',
         SIGNUP_NETWORK_SELECT: 'Selecteer een netwerk',
-        SIGNUP_NETWORK_MAINNET: 'Mainnet is het <b><u>echte</u></b> NEM netwerk. Adressen beginnen met \'N\'.',
+        SIGNUP_NETWORK_MAINNET: 'Mainnet is het <b><u>echte</u></b> PROXIMAX netwerk. Adressen beginnen met \'N\'.',
         SIGNUP_NETWORK_TESTNET: 'Testnet is het <b><u>test</u></b> netwerk. Adressen beginnen met \'T\'.',
-        SIGNUP_NETWORK_MIJIN: 'Mijin is de privé versie van NEM. Adressen beginnen met \'M\'.',
+        SIGNUP_NETWORK_MIJIN: 'Mijin is de privé versie van PROXIMAX. Adressen beginnen met \'M\'.',
         SIGNUP_BRAIN_WALLET_WARNING: 'Lees over <a href="https://en.bitcoin.it/wiki/Brainwallet" rel="nofollow" target="_blank"> gevaren </a> die brein portemonnee vormen. Brein portemonnees gebruikt ALLEEN de wachtwoordzin-hash meerdere keren. Daarom is het van cruciaal belang een VEILIGE wachtwoordzin te selecteren met minstens 40 karakters. <a href="https://xkcd.com/936/" rel="nofollow" target="_blank"> XKCD #936 </a>',
         SIGNUP_PRIVATE_KEY_WALLET_WARNING: 'Persoonlijke sleutel portemonnees gebruiken ALLEEN een wachtwoord om de geïmporteerde persoonlijke sleutel te coderen. Daarom is het van cruciaal belang om een veilig wachtwoord te selecteren.',
         SIGNUP_CREATE_START_WARNING: 'Volg alstublieft elke stap zorgvuldig!',
@@ -704,21 +704,21 @@ function DutchProvider($translateProvider) {
         SIGNUP_COMMON_WALLET_WARNING_DOWNLOAD: 'Download portemonnee',
         SIGNUP_ESTIMATED_PASSPHRASE_STRENGTH: 'Geschatte wachtwoord sterkte',
         SIGNUP_ESTIMATED_GUESS_TIMES: 'Geschat aantal keer raden',
-        SIGNUP_CONGRATS_MSG: '<b>Gefeliciteerd!</b> Je NEM adres is',
+        SIGNUP_CONGRATS_MSG: '<b>Gefeliciteerd!</b> Je PROXIMAX adres is',
 
         // FAQ MODULE
         FAQ_TITLE: 'Vaak gestelde vragen',
-        FAQ_QUESTION_1: 'Hoe werkt NEM Wallet?',
-        FAQ_ANSWER_1: 'De NEM Wallet is gebouwd met behulp van de nieuwste cryptobibliotheken met ES6 en AngularJS. Het is een volledige client-applicatie die nooit gevoelige gegevens verzendt; Alles gebeurt in je browser m.b.t. het creëren van persoonlijke sleutels voor het ondertekenen van transacties.',
+        FAQ_QUESTION_1: 'Hoe werkt PROXIMAX Wallet?',
+        FAQ_ANSWER_1: 'De PROXIMAX Wallet is gebouwd met behulp van de nieuwste cryptobibliotheken met ES6 en AngularJS. Het is een volledige client-applicatie die nooit gevoelige gegevens verzendt; Alles gebeurt in je browser m.b.t. het creëren van persoonlijke sleutels voor het ondertekenen van transacties.',
         FAQ_QUESTION_2: 'Is het vrij om te gebruiken?',
         FAQ_ANSWER_2: 'Absoluut alle handelingen zijn klant-kant, alleen jij hebt controle over je munten, geen derden en geen extra kosten.',
         FAQ_QUESTION_3: 'Waarom heb ik al een Mozaïek ?',
-        FAQ_ANSWER_3: 'Omdat XEM de standaardvaluta van de NEM blockchain is, heeft elke gebruiker het al in hun portemonnee geregistreerd, zelfs als hun saldo 0. De namepsace is NEM en de mozaïeknaam is XEM',
+        FAQ_ANSWER_3: 'Omdat XEM de standaardvaluta van de PROXIMAX blockchain is, heeft elke gebruiker het al in hun portemonnee geregistreerd, zelfs als hun saldo 0. De namepsace is PROXIMAX en de mozaïeknaam is XEM',
         FAQ_QUESTION_4: 'Roadmap?',
-        FAQ_ANSWER_4: 'De huidige roadmap omvat integratie van alle NEM-clientfuncties en de voltooiing van door de gemeenschap gefinancierde projecten te integreren.',
+        FAQ_ANSWER_4: 'De huidige roadmap omvat integratie van alle PROXIMAX-clientfuncties en de voltooiing van door de gemeenschap gefinancierde projecten te integreren.',
         FAQ_QUESTION_5: 'Kan ik gratis XEM krijgen?',
-        FAQ_ANSWER_5: 'De NEM Faucet is momenteel leeg, maar je kunt het NEM forum raadplegen om te weten te komen over de beschikbare bounties.',
-        FAQ_QUESTION_6: 'Waar vindt je meer informatie over NEM?',
+        FAQ_ANSWER_5: 'De PROXIMAX Faucet is momenteel leeg, maar je kunt het PROXIMAX forum raadplegen om te weten te komen over de beschikbare bounties.',
+        FAQ_QUESTION_6: 'Waar vindt je meer informatie over PROXIMAX?',
         FAQ_ANSWER_6_FORUM: 'Officieel forum',
         FAQ_ANSWER_6_WEBSITE: 'Officiële website',
         FAQ_ANSWER_6_BTT: 'Officiële BitcoinTalk thread',
@@ -727,7 +727,7 @@ function DutchProvider($translateProvider) {
         FAQ_QUESTION_8: 'Mede-ondertekenaars kunnen de transactie die getekend moet worden niet zien',
         FAQ_ANSWER_8: 'Ga in dit geval naar "Diensten", ga naar "Multi-handtekening en multi-gebruiker accounts" en klik op "Teken een multi-handtekening transactie".',
         FAQ_QUESTION_9: 'Wat zijn de beste veiligheidsoverwegingen?',
-        FAQ_ANSWER_9: 'Het is ten strengste aan te bevelen om je persoonlijke sleutel op papier op te slaan.<br> Je kan hem printen en hem dan ergens veilig opslaan.<br><br>Met betrekking tot de portemonnee bestanden, hiervan altijd meerdere kopieën opslaan op verschillende locaties, zoals USB sitcks.<br>Wachtwoord moet uniek en complex zijn, schrijf hem daarom altijd eerst op.<br><br>Wanneer je je portemonnee wilt controleren of bewerkingen wilt uitvoeren:<br> - Sluit de USB-stick aan - Importeer de portemonnee in de NEM Wallet<br> - Koppel de USB-stick los.<br><br>Een kopie van uw portemonnee wordt opgeslagen in de lokale cache van de browser. <br> Als je klaar bent, log je uit en verwijder je de portemonnee uit de lokale cache via de knop voor opschonen aan de rechterkant van de footer.',
+        FAQ_ANSWER_9: 'Het is ten strengste aan te bevelen om je persoonlijke sleutel op papier op te slaan.<br> Je kan hem printen en hem dan ergens veilig opslaan.<br><br>Met betrekking tot de portemonnee bestanden, hiervan altijd meerdere kopieën opslaan op verschillende locaties, zoals USB sitcks.<br>Wachtwoord moet uniek en complex zijn, schrijf hem daarom altijd eerst op.<br><br>Wanneer je je portemonnee wilt controleren of bewerkingen wilt uitvoeren:<br> - Sluit de USB-stick aan - Importeer de portemonnee in de PROXIMAX Wallet<br> - Koppel de USB-stick los.<br><br>Een kopie van uw portemonnee wordt opgeslagen in de lokale cache van de browser. <br> Als je klaar bent, log je uit en verwijder je de portemonnee uit de lokale cache via de knop voor opschonen aan de rechterkant van de footer.',
         FAQ_QUESTION_10: 'Waar vind ik informatie over mijn account (adres, enz.)?',
         FAQ_ANSWER_10: 'Als u naar de bovenste navigatiebalk kijkt, ziet u een <b><i>"Account"</b></i> knop tussen <b><i>"Node"</b></i> en <b><i>"Taal"</b></i>. Daar kunt u uw adres, openbare sleutel, toegekende balans en andere belangrijke gegevens vinden.',
         FAQ_QUESTION_11: 'Ik heb XEM naar een Exchange overgemaakt, maar er is niets bijgeschreven?',
@@ -789,7 +789,7 @@ function DutchProvider($translateProvider) {
         OFFLINE_TX_TITLE: 'Bereid een offline transactie voor',
         OFFLINE_TX_NO_WALLET: 'Importeer een portemonnee vanuit de login module om dit formulier te zien.',
         OFFLINE_TX_INFO_1: 'Zorg ervoor dat de verbinding met internet is verbroken tijdens het importeren van uw portemonnee en het maken van de transactie!',
-        OFFLINE_TX_INFO_2: 'Er kunnen alleen eenvoudige transacties worden gemaakt, omdat een verbinding nodig is om mozaïeken en multi-handtekeningsinformatie op te halen uit NEM-nodes.',
+        OFFLINE_TX_INFO_2: 'Er kunnen alleen eenvoudige transacties worden gemaakt, omdat een verbinding nodig is om mozaïeken en multi-handtekeningsinformatie op te halen uit PROXIMAX-nodes.',
         OFFLINE_TX_INFO_3: 'Na het klikken op "Creëren" in het linkse paneel, dan vind je de ondertekende transactie hieronder.',
         OFFLINE_TX_INFO_4: 'Een ondertekende transactie is onveranderbaar en zal alleen van kracht zijn als deze vóór het verstrijken van de standaardtermijn van 24 uur op het netwerk wordt vrijgegeven.',
         OFFLINE_TX_SIGNED: 'Ondertekende transactie',
@@ -840,7 +840,7 @@ function DutchProvider($translateProvider) {
         DNS_OTHERINFO:"Overige info",
         DNS_JSONMSG:"Json bericht",
         DNS_CHAR_LEFT:"Tekens over",
-        DNS_HELP1:"De eigenaar van een NEM namespace kan de NEM DNS in enkele eenvoudige stappen gebruiken. De DNS is gebouwd rond het namespace-platform in het NEM-ecosysteem en een bijbehorend 'pointer'-adres (PA). De eigenaar van de namespace moet een transactie naar het namespace 'pointer'-adres verzenden, inclusief een ongecodeerd bericht in json-formaat met informatie over de namespace. Het bericht kan relevante informatie bevatten, zoals IP-adres, eigendomsinformatie, fysiek adres, contactgegevens en nog veel meer.",
+        DNS_HELP1:"De eigenaar van een PROXIMAX namespace kan de PROXIMAX DNS in enkele eenvoudige stappen gebruiken. De DNS is gebouwd rond het namespace-platform in het PROXIMAX-ecosysteem en een bijbehorend 'pointer'-adres (PA). De eigenaar van de namespace moet een transactie naar het namespace 'pointer'-adres verzenden, inclusief een ongecodeerd bericht in json-formaat met informatie over de namespace. Het bericht kan relevante informatie bevatten, zoals IP-adres, eigendomsinformatie, fysiek adres, contactgegevens en nog veel meer.",
         DNS_HELP2:"Zo kun je het doen:",
         DNS_HELP3:"1. selecteer namespace",
         DNS_HELP4:"2. schrijf relevante of update DNS informatie",
@@ -851,16 +851,16 @@ function DutchProvider($translateProvider) {
 
         // IMPORT WALLET QRCODE
         IMPORT_WALLET_QRCODE_TITLE: 'Importeer portemonnee QR Code',
-        IMPORT_WALLET_QRCODE_INFORMATION: 'Ondersteuning voor portemonnee QR Code: NEM WeChat Wallet, iOS, Android.',
+        IMPORT_WALLET_QRCODE_INFORMATION: 'Ondersteuning voor portemonnee QR Code: PROXIMAX WeChat Wallet, iOS, Android.',
         IMPORT_WALLET_QRCODE_LOAD: 'Laad portemonnee QR Code',
         IMPORT_WALLET_QRCODE_SCAN: 'Scan',
         IMPORT_WALLET_QRCODE_STOP_SCAN: 'Stop scannen',
 
-        //NEMonster
-        NEMONSTER_SHORT_DESC: "Welkom bij NEMonsters, een grappig klein verzamelspel gebaseerd op de NEM-blockchain.",
+        //PROXIMAXonster
+        NEMONSTER_SHORT_DESC: "Welkom bij PROXIMAXonsters, een grappig klein verzamelspel gebaseerd op de PROXIMAX-blockchain.",
         NEMONSTER_CATCH: "Vang",
         NEMONSTER_GET: "Vang wat monsters",
-        NEMONSTER_DESC: "Welkom bij NEMonsters, een grappig klein verzamelspel gebaseerd op de NEM-blockchain. Je kunt meer dan 110.000.000 verschillende combinaties van gegenereerde monsters verzamelen met verschillende kleuren, namen en andere pittige kenmerken. Je vang een nieuw monster door een vaste transactie te sturen, het monster wordt opgeroepen wanneer de transactie wordt bevestigd. De kenmerken van je nieuwe (kwaadaardige) monster zijn gebaseerd op de transactiehash - hoe gaaf is dat. Kijk of je een aantal van de monsters kunt vangen van de NEM Foundation."
+        NEMONSTER_DESC: "Welkom bij PROXIMAXonsters, een grappig klein verzamelspel gebaseerd op de PROXIMAX-blockchain. Je kunt meer dan 110.000.000 verschillende combinaties van gegenereerde monsters verzamelen met verschillende kleuren, namen en andere pittige kenmerken. Je vang een nieuw monster door een vaste transactie te sturen, het monster wordt opgeroepen wanneer de transactie wordt bevestigd. De kenmerken van je nieuwe (kwaadaardige) monster zijn gebaseerd op de transactiehash - hoe gaaf is dat. Kijk of je een aantal van de monsters kunt vangen van de PROXIMAX Foundation."
     });
 }
 

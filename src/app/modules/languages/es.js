@@ -4,9 +4,9 @@ function SpanishProvider($translateProvider) {
     $translateProvider.translations('es', {
 
         // HEADER COMPONENT
-        WALLET_NAME_1: 'NEM',
+        WALLET_NAME_1: 'PROXIMAX',
         WALLET_NAME_2: 'Wallet',
-        APP_NAME_SUB: 'La aplicación segura que se conecta a la plataforma NEM',
+        APP_NAME_SUB: 'La aplicación segura que se conecta a la plataforma PROXIMAX',
         HEADER_LOGIN_BUTTON: 'Ingresar',
         HEADER_SIGNUP_BUTTON: 'Crear Cuenta',
         HEADER_DASHBOARD: 'Escritorio',
@@ -32,7 +32,7 @@ function SpanishProvider($translateProvider) {
 
         // FOOTER COMPONENT
         FOOTER_POWERED_BY_1: 'Creado por',
-        FOOTER_POWERED_BY_2: 'NEM technology.',
+        FOOTER_POWERED_BY_2: 'PROXIMAX technology.',
         FOOTER_VERSION: 'Versión',
 
         // DASHBOARD MODULE
@@ -56,7 +56,7 @@ function SpanishProvider($translateProvider) {
         DASHBOARD_MARKET_INFO_NOTE: '<a href="http://coinmarketcap.com/" target="_blank">CoinMarketCap</a> datos actualizados cada 5 minutos',
         DASHBOARD_NOTICE_1: 'Bienvenido(a) a la NanoWallet Beta!',
         DASHBOARD_NOTICE_2: 'Por favor <a href="https://github.com/NemProject/NanoWallet" target="_blank">reportar incidencias aquí</a>.',
-        DASHBOARD_NOTICE_3: 'El equipo de NEM sugiere hacer pruebas en el testnet para familiarizarse primero con NanoWallet antes de usar el mainnet. Se puede encontrar una guía simple <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank"> aquí </a>. Los usuarios son responsables de sus fondos y de realizar una copia de seguridad de sus claves privadas. El equipo de NEM no es responsable de ninguna pérdida de fondos debido al uso de esta aplicación en la red mainnet.',
+        DASHBOARD_NOTICE_3: 'El equipo de PROXIMAX sugiere hacer pruebas en el testnet para familiarizarse primero con NanoWallet antes de usar el mainnet. Se puede encontrar una guía simple <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank"> aquí </a>. Los usuarios son responsables de sus fondos y de realizar una copia de seguridad de sus claves privadas. El equipo de PROXIMAX no es responsable de ninguna pérdida de fondos debido al uso de esta aplicación en la red mainnet.',
         DASHBOARD_NOTICE_4: 'Sugerimos escribir las claves privadas en papel y almacenarlas en un lugar seguro. Además, puedes importar tus cuentas en las aplicaciones oficiales para Android e iOS.',
         DASHBOARD_NOTICE_5: '!Gracias por tu participación!',
 
@@ -285,7 +285,7 @@ function SpanishProvider($translateProvider) {
         MOSAIC_DEFINITION_INFORMATION_13: 'Hay dos tipos de tarifas admitidas, tarifa fija y tarifa porcentual.',
         MOSAIC_DEFINITION_INFORMATION_14: 'La tarifa se especifica como cantidad absoluta y, por lo tanto, no depende de la cantidad que se transfiere.',
         MOSAIC_DEFINITION_INFORMATION_15: 'La tarifa se especifica como múltiplo del porcentaje de la cantidad que se transfiere. Por lo tanto, la tarifa aumenta linealmente con la cantidad de mosaico transferida.',
-        MOSAIC_DEFINITION_INFORMATION_16: 'Enviar mosaicos en el blockchain NEM requiere una tarifa. La tarifa exacta se calcula según su número total y cuántos se envían durante una transacción. <b>Mosaicos de pequeños negocios</b> reciben una tarifa plana con descuento de 0.05 XEM por mosaico por transferencia. Estos son mosaicos con una cantidad de menos de 10,000 y una divisibilidad de 0.',
+        MOSAIC_DEFINITION_INFORMATION_16: 'Enviar mosaicos en el blockchain PROXIMAX requiere una tarifa. La tarifa exacta se calcula según su número total y cuántos se envían durante una transacción. <b>Mosaicos de pequeños negocios</b> reciben una tarifa plana con descuento de 0.05 XEM por mosaico por transferencia. Estos son mosaicos con una cantidad de menos de 10,000 y una divisibilidad de 0.',
         MOSAIC_DEFINITION_INFORMATION_17: 'Si posees el 100% de la emisión, puedes sobrescribir todas las propiedades del mosaico, enviando una transacción de creación nuevamente con el mismo nombre de "namespace:mosaic".',
 
         // EDIT MOSAIC MODULE
@@ -312,7 +312,7 @@ function SpanishProvider($translateProvider) {
         NAMESPACE_PROVISION_RESTRICTIONS: 'Restricciones del Namespace',
         NAMESPACE_PROVISION_INFORMATION_1: 'Los namespace tienen ciertas restricciones con respecto a los caracteres permitidos en las partes, así como la longitud de una parte. Un namespace raíz puede tener una longitud de 16 caracteres, mientras que los namespace secundarios pueden tener una longitud de 64 caracteres. Los caracteres válidos son:',
         NAMESPACE_PROVISION_INFORMATION_2: 'Sin embargo, una parte solo puede comenzar con una letra del alfabeto o un número, así \'alice\' es una parte permitida para un namespace raíz, mientras que \'_ alice\' no lo es. Algunas cadenas están reservadas y, por lo tanto, no están permitidas como partes de namespace. Entre las partes del namespace no permitidas están:',
-        NAMESPACE_PROVISION_INFORMATION_3: 'Esta lista no es definitiva y puede ampliarse en el futuro. Por lo tanto, \'user.alice\' o \'alice.user\' no están permitidos en el sistema de espacio de nombres NEM. El espacio de nombre puede tener hasta 3 partes, por lo tanto, \'qm.metals.silver\' es válido, mientras que \'qm.metals.silver.coin\' no lo es.',
+        NAMESPACE_PROVISION_INFORMATION_3: 'Esta lista no es definitiva y puede ampliarse en el futuro. Por lo tanto, \'user.alice\' o \'alice.user\' no están permitidos en el sistema de espacio de nombres PROXIMAX. El espacio de nombre puede tener hasta 3 partes, por lo tanto, \'qm.metals.silver\' es válido, mientras que \'qm.metals.silver.coin\' no lo es.',
 
         // RENEW NAMESPACE MODULE // nos quedamos hasta aquí 2
         RENEW_NS_TITLE: 'Renovar namespace',
@@ -360,7 +360,7 @@ function SpanishProvider($translateProvider) {
         ACCOUNT_BACKUP_WALLET_NOTE: 'Es <b><u>muy importante</u></b> que tengas copias de seguridad de tus carteras para iniciar sesión o se perderán tus monedas XEM.',
         ACCOUNT_BACKUP_WALLET_DOWNLOAD: 'Descargar cartera',
         ACCOUNT_INFO_QR_TITLE: 'QR de la información de la cuenta',
-        ACCOUNT_WALLET_QR_NOTE: 'Este QR solo funciona en la nueva aplicación móvil NEMpay',
+        ACCOUNT_WALLET_QR_NOTE: 'Este QR solo funciona en la nueva aplicación móvil PROXIMAXpay',
         ACCOUNT_WALLET_QR_ANDROID_IOS_TITLE: 'QR de la cartera para aplicaciones Android e IOS',
         ACCOUNT_ADD_NEW_ACCOUNT_WARNING: 'Todas las cuentas están derivadas de tu clave privada principal y contraseña usando BIP32, por lo que tu clave privada primaria y tu contraseña son necesarias para obtener / reconstruir todas tus cuentas secundarias. <br> Es <b> muy recomendable </b> hacer una copia de seguridad de tu cartera después de agregar nuevas cuentas para no repetir la operación nuevamente si se borra el almacenamiento local.',
         ACCOUNT_CUSTOM_NODE: 'Usar un nodo personalizado',
@@ -385,11 +385,11 @@ function SpanishProvider($translateProvider) {
         PORTAL_NS_TEXT: 'Los namespaces son nombres de dominio. Cada namespace es único y autentica los mosaicos (activos) emitidos en él o en sus subnamespaces.',
         PORTAL_NS_BTN: 'Crear namespace',
         PORTAL_MOSAIC_TITLE: 'Mosaicos',
-        PORTAL_MOSAIC_TEXT: 'Los mosaicos NEM son activos que exponen propiedades adicionales y otras características. Para poder crear un mosaico, una cuenta debe rentar al menos un namespace raíz.',
+        PORTAL_MOSAIC_TEXT: 'Los mosaicos PROXIMAX son activos que exponen propiedades adicionales y otras características. Para poder crear un mosaico, una cuenta debe rentar al menos un namespace raíz.',
         PORTAL_MOSAIC_BTN_1: 'Crear mosaico',
         PORTAL_MOSAIC_BTN_2: 'Editar mosaico',
         PORTAL_APOSTILLE_TITLE: 'Apostilla',
-        PORTAL_APOSTILLE_TEXT: 'Utilice el servicio de Apostilla NEM para crear notarizaciones basadas en blockchain para fecharlo, seguir y auditar la autenticidad del archivo.',
+        PORTAL_APOSTILLE_TEXT: 'Utilice el servicio de Apostilla PROXIMAX para crear notarizaciones basadas en blockchain para fecharlo, seguir y auditar la autenticidad del archivo.',
         PORTAL_APOSTILLE_BTN_1: 'Crear',
         PORTAL_APOSTILLE_BTN_2: 'Auditar',
         PORTAL_ADDRESS_BOOK_TEXT: 'Asignar etiquetas a las direcciones para realizar un seguimiento de sus contactos fácilmente.',
@@ -467,7 +467,7 @@ function SpanishProvider($translateProvider) {
         APOSTILLE_INFORMATION_5: 'Para las cuentas en un contrato multifirma que han seleccionado "<b>Privada, transferible y actualizable</b>", la clave privada del cofirmante inicial se utiliza para firmar el hash y crear una cuenta de HD dedicada, no la cuenta que fue firmada por múltiples firmas.',
         APOSTILLE_INFORMATION_6: 'La cuenta HD es una cuenta dedicada generada de un hash del nombre del archivo que luego se firma con tu clave privada. El hash resultante de este proceso se usa para crear una segunda clave privada. Esta es la clave privada del archivo con el fechado; el primero en la tecnología blockchain que solo se encuentra en la Apostilla.',
         APOSTILLE_INFORMATION_7: 'La cuenta HD dedicada le permite almacenar el hash firmado del archivo original y sus actualizaciones en una cuenta dedicada. Si <b>"Público"</b> está seleccionado, la transacción se dirige a la dirección pública del receptor (predeterminado).', //aquíe va la palabra sink, validar traducción
-        APOSTILLE_INFORMATION_8: 'Después de enviar las transacciones, se inicia la descarga de un archivo. Contiene tus archivos firmados, tu certificado de Apostilla para ese archivo y el archivo .nty nuevo o actualizado para realizar un seguimiento de cada archivo que hayas fechado en la cadena NEM.',
+        APOSTILLE_INFORMATION_8: 'Después de enviar las transacciones, se inicia la descarga de un archivo. Contiene tus archivos firmados, tu certificado de Apostilla para ese archivo y el archivo .nty nuevo o actualizado para realizar un seguimiento de cada archivo que hayas fechado en la cadena PROXIMAX.',
         APOSTILLE_NO_NTY: 'No se ha cargado ningún archivo nty, haz clic aquí para importar uno o se creará uno nuevo automáticamente.',
         APOSTILLE_IMPORT_FILES: 'Importar archivos',
         APOSTILLE_CREATE_TEXT: 'Crear documento de texto',
@@ -635,7 +635,7 @@ function SpanishProvider($translateProvider) {
         SIGN_MULTISIG_TRANSACTIONS_TITLE: 'Firmar transacciones multifirma',
 
         // LOGIN MODULE
-        LOGIN_MEMBER_TITLE: '¿Ya eres NEMber?',
+        LOGIN_MEMBER_TITLE: '¿Ya eres PROXIMAXber?',
         LOGIN_UPGRADE_TITLE: 'La cartera necesita actualizarse',
         LOGIN_UPGRADE_MESSAGE: 'La cartera seleccionada necesita una actualización. Esta acción generará una clave pública secundaria y la agregará a tu cuenta principal.',
         LOGIN_UPGRADE_BUTTON: 'Actualizar cartera',
@@ -646,7 +646,7 @@ function SpanishProvider($translateProvider) {
         LOGIN_NOTE: '¿No cuentas con una cartera? Importa una o <a href="#!/signup">Regístrate</a>.',
 
         // SIGNUP MODULE
-        SIGNUP_TITLE: '¿Nuevo en NEM?',
+        SIGNUP_TITLE: '¿Nuevo en PROXIMAX?',
         SIGNUP_SELECT_WALLET_TYPE: 'Selecciona un tipo de cartera a crear',
         SIGNUP_SELECT_WALLET_TYPE_STAND_BY: ' Coloca el cursor en un tipo de cartera para mostrar información.',
         SIGNUP_CREATE_WALLET_TITLE: 'Cartera simple',
@@ -660,9 +660,9 @@ function SpanishProvider($translateProvider) {
         SIGNUP_BRAIN_WALLET_BUTTON: 'Crear cartera mnemónica',
         SIGNUP_CREATE_WALLET_WARNING: 'Lee sobre <a href="https://www.w3.org/TR/2014/WD-WebCryptoAPI-20140325/#RandomSource-interface" rel="nofollow" target="_blank"><b>las advertencias</b></a> que la generación de claves del lado del cliente suponen; no somos responsables de ninguna pérdida que pueda deberse a la entropía de la generación de claves. Incluso si no es probable que suceda, se recomienda utilizar una clave privada generada a partir de una fuerte fuente de entropía.',
         SIGNUP_NETWORK_SELECT: 'Seleccionar una red', //
-        SIGNUP_NETWORK_MAINNET: 'Mainnet es la <b><u>red de producción</u></b> de NEM. Las direcciones comienzan con \'N\'.',
-        SIGNUP_NETWORK_TESTNET: 'Testnet es la <b><u>red de pruebas</u></b> de NEM. Las direcciones comienzan con \'T\'.',
-        SIGNUP_NETWORK_MIJIN: 'Mijin es la versión privada de NEM. Las direcciones comienzan con \'M\'.',
+        SIGNUP_NETWORK_MAINNET: 'Mainnet es la <b><u>red de producción</u></b> de PROXIMAX. Las direcciones comienzan con \'N\'.',
+        SIGNUP_NETWORK_TESTNET: 'Testnet es la <b><u>red de pruebas</u></b> de PROXIMAX. Las direcciones comienzan con \'T\'.',
+        SIGNUP_NETWORK_MIJIN: 'Mijin es la versión privada de PROXIMAX. Las direcciones comienzan con \'M\'.',
         SIGNUP_BRAIN_WALLET_WARNING: 'Lee sobre <a href="https://en.bitcoin.it/wiki/Brainwallet" rel="nofollow" target="_blank"> <b>las advertencias</b></a> que suponen las carteras mnemónicas. Las carteras mnemónicas usan solo una frase de contraseña hasheada varias veces. Por lo tanto, es crucial seleccionar una frase segura con al menos 40 caracteres. <a href="https://xkcd.com/936/" rel="nofollow" target="_blank"><b>XKCD # 936</b></a>',
         SIGNUP_PRIVATE_KEY_WALLET_WARNING: 'Las carteras de clave privada usan SOLO una contraseña para encriptar la clave privada importada. Por lo tanto, es crucial seleccionar una contraseña SEGURA.',
         SIGNUP_CREATE_START_WARNING: '¡Por favor, sigue cada paso cuidadosamente!',
@@ -703,12 +703,12 @@ function SpanishProvider($translateProvider) {
         FAQ_QUESTION_2: '¿Es de uso libre/gratuito? ',
         FAQ_ANSWER_2: 'Absolutamente todas las operaciones son del lado del cliente, solo tu tienes control sobre tus monedas, sin terceros, y sin tarifas adicionales.',
         FAQ_QUESTION_3: '¿Por qué ya tengo un mosaico?',
-        FAQ_ANSWER_3: 'Porque XEM es la moneda por defecto del blockchain NEM, cada usuario ya lo tiene registrado en su cartera, incluso si tu saldo es 0. Tu namespace es NEM y el nombre del mosaico es XEM',
+        FAQ_ANSWER_3: 'Porque XEM es la moneda por defecto del blockchain PROXIMAX, cada usuario ya lo tiene registrado en su cartera, incluso si tu saldo es 0. Tu namespace es PROXIMAX y el nombre del mosaico es XEM',
         FAQ_QUESTION_4: '¿Hoja de ruta?',
         FAQ_ANSWER_4: 'La hoja de ruta actual incluye integración de todas las características de Nano Wallet v1.x.x y la finalización de proyectos financiados por la comunidad para trabajar a través de esta cartera.',
         FAQ_QUESTION_5: '¿Puedo obtener XEM gratis?',
-        FAQ_ANSWER_5: 'El NEM faucet está actualmente fuera de servicio, pero puedes consultar el foro NEM para conocer las recompensas disponibles.',
-        FAQ_QUESTION_6: '¿Dónde encontrar más información de NEM?',
+        FAQ_ANSWER_5: 'El PROXIMAX faucet está actualmente fuera de servicio, pero puedes consultar el foro PROXIMAX para conocer las recompensas disponibles.',
+        FAQ_QUESTION_6: '¿Dónde encontrar más información de PROXIMAX?',
         FAQ_ANSWER_6_FORUM: 'Foro Oficial',
         FAQ_ANSWER_6_WEBSITE: 'Sitio web oficial',
         FAQ_ANSWER_6_BTT: 'Hilo ficial de BitcoinTalk',
@@ -779,7 +779,7 @@ function SpanishProvider($translateProvider) {
         OFFLINE_TX_TITLE: 'Preparar una transacción fuera de línea',
         OFFLINE_TX_NO_WALLET: 'Por favor importa una cartera desde el módulo de ingresar, para ver el formulario.',
         OFFLINE_TX_INFO_1: '¡Asegúrate de desconectarte de internet cuando importes tu cartera y crees la transacción!',
-        OFFLINE_TX_INFO_2: 'Solo se pueden crear transacciones simples, porque se necesita una conexión para usar mosaicos e información de cuentas multifirma de nodos NEM.',
+        OFFLINE_TX_INFO_2: 'Solo se pueden crear transacciones simples, porque se necesita una conexión para usar mosaicos e información de cuentas multifirma de nodos PROXIMAX.',
         OFFLINE_TX_INFO_3: 'Después de hacer clic en el botón "crear" en el panel izquierdo, encontrarás la transacción firmada debajo.',
         OFFLINE_TX_INFO_4: 'Una transacción firmada es inmutable y solo será efectiva si se envía a la red antes del tiempo límite predeterminado de 24 horas.',
         OFFLINE_TX_SIGNED: 'Transacción firmada',

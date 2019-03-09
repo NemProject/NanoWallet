@@ -4,9 +4,9 @@ function EnglishProvider($translateProvider) {
     $translateProvider.translations('en', {
 
         // HEADER COMPONENT
-        WALLET_NAME_1: 'NEM',
+        WALLET_NAME_1: 'PROXIMAX',
         WALLET_NAME_2: 'Wallet',
-        APP_NAME_SUB: 'The secure interface connecting to the NEM platform',
+        APP_NAME_SUB: 'The secure interface connecting to the PROXIMAX platform',
         HEADER_LOGIN_BUTTON: 'Login',
         HEADER_SIGNUP_BUTTON: 'Sign Up',
         HEADER_DASHBOARD: 'Dashboard',
@@ -32,7 +32,7 @@ function EnglishProvider($translateProvider) {
 
         // FOOTER COMPONENT
         FOOTER_POWERED_BY_1: 'Powered by',
-        FOOTER_POWERED_BY_2: 'NEM technology.',
+        FOOTER_POWERED_BY_2: 'PROXIMAX technology.',
         FOOTER_VERSION: 'Version',
 
         // DASHBOARD MODULE
@@ -54,9 +54,9 @@ function EnglishProvider($translateProvider) {
         DASHBOARD_MARKET_INFO_CHANGES_24H: '24h',
         DASHBOARD_MARKET_INFO_CHANGES_7D: '7d',
         DASHBOARD_MARKET_INFO_NOTE: '<a href="http://coinmarketcap.com/" target="_blank">CoinMarketCap</a> data updated every 5 minutes',
-        DASHBOARD_NOTICE_1: 'Welcome to the NEM Wallet Beta!',
+        DASHBOARD_NOTICE_1: 'Welcome to the PROXIMAX Wallet Beta!',
         DASHBOARD_NOTICE_2: 'Please <a href="https://github.com/NemProject/NanoWallet" target="_blank">report issues here</a>.',
-        DASHBOARD_NOTICE_3: 'The NEM Team suggests primarily testing on the testnet to familiarize yourself with the NEM Wallet first before using the mainnet. A simple guide can be found <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank">here</a>. Users are responsible for their funds and having their private keys backed up. The NEM team is not responsible for any loss of funds due to using this app on the mainnet.',
+        DASHBOARD_NOTICE_3: 'The PROXIMAX Team suggests primarily testing on the testnet to familiarize yourself with the PROXIMAX Wallet first before using the mainnet. A simple guide can be found <a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank">here</a>. Users are responsible for their funds and having their private keys backed up. The PROXIMAX team is not responsible for any loss of funds due to using this app on the mainnet.',
         DASHBOARD_NOTICE_4: 'We suggest writing down private keys on paper and storing it in a safe place. Additionally, you can import your accounts into the Android and iOS apps as a backup.',
         DASHBOARD_NOTICE_5: 'Thanks for your participation!',
         DASHBOARD_MORE_TXES: 'See more transactions',
@@ -168,7 +168,7 @@ function EnglishProvider($translateProvider) {
         GENERAL_VERIFY: 'Verify',
 
         // HOME MODULE
-        HOME_UNSUPPORTED_BROWSER: 'Sorry but you cannot use NEM Wallet safely with this browser...',
+        HOME_UNSUPPORTED_BROWSER: 'Sorry but you cannot use PROXIMAX Wallet safely with this browser...',
         HOME_RECOMMENDED_BROWSERS: 'Recommended browsers are:',
         HOME_FEATURE_STAND_BY: 'Place the cursor on a feature to show information.',
         HOME_FEATURE_1: 'Send and receive XEM easily and almost instantly, only 1 minute block time!',
@@ -288,7 +288,7 @@ function EnglishProvider($translateProvider) {
         MOSAIC_DEFINITION_INFORMATION_13: 'There are two fee types supported, absolute fee and percentile fee.',
         MOSAIC_DEFINITION_INFORMATION_14: 'The fee is specified as absolute quantity and thus does not depend on the quantity that is transferred.',
         MOSAIC_DEFINITION_INFORMATION_15: 'The fee is specified as multiple of the percentile of the quantity that is transferred. The fee is thus linearly increasing with the transferred mosaic quantity.',
-        MOSAIC_DEFINITION_INFORMATION_16: 'Sending mosaics on the NEM blockchain requires a fee. The exact fee is calculated depending on their total number and how many are being sent during a transaction. <b>Small business mosaics</b> are given a discounted flat rate of 0.05 XEM per mosaic per transfer. These are mosaics with a quantity of less than 10,000 and a divisibility of 0.',
+        MOSAIC_DEFINITION_INFORMATION_16: 'Sending mosaics on the PROXIMAX blockchain requires a fee. The exact fee is calculated depending on their total number and how many are being sent during a transaction. <b>Small business mosaics</b> are given a discounted flat rate of 0.05 XEM per mosaic per transfer. These are mosaics with a quantity of less than 10,000 and a divisibility of 0.',
         MOSAIC_DEFINITION_INFORMATION_17: 'If you own 100% of the supply, you can overwrite all the mosaic properties by sending a creation transaction again with the same "namespace:mosaic" name.',
 
         // EDIT MOSAIC MODULE
@@ -315,7 +315,7 @@ function EnglishProvider($translateProvider) {
         NAMESPACE_PROVISION_RESTRICTIONS: 'Namespace Restrictions',
         NAMESPACE_PROVISION_INFORMATION_1: 'Namespaces have certain restrictions with respect to the characters being allowed in the parts as well as the length of a part. A root namespace may have a length of 16 characters while sub-namespaces may have a length of 64 characters. Valid characters are:',
         NAMESPACE_PROVISION_INFORMATION_2: 'However a part is only allowed to begin with a letter of the alphabet or a number, thus \'alice\' is an allowed part for a root namespace while \'_alice\' is not. Certain strings are reserved and thus not allowed as namespace parts. Among the disallowed namespace parts are:',
-        NAMESPACE_PROVISION_INFORMATION_3: 'This list is not final and can be extended in the future. Thus \'user.alice\' or \'alice.user\' are not allowed in the NEM namespace system. The namespace may have up to 3 parts, thus \'qm.metals.silver\' is valid while \'qm.metals.silver.coin\' is not.',
+        NAMESPACE_PROVISION_INFORMATION_3: 'This list is not final and can be extended in the future. Thus \'user.alice\' or \'alice.user\' are not allowed in the PROXIMAX namespace system. The namespace may have up to 3 parts, thus \'qm.metals.silver\' is valid while \'qm.metals.silver.coin\' is not.',
 
         // RENEW NAMESPACE MODULE
         RENEW_NS_TITLE: 'Renew namespaces',
@@ -363,7 +363,7 @@ function EnglishProvider($translateProvider) {
         ACCOUNT_BACKUP_WALLET_NOTE: 'It is <b><u>very important</u></b> that you have backups of your wallets to log in with or your XEM will be lost.',
         ACCOUNT_BACKUP_WALLET_DOWNLOAD: 'Download wallet',
         ACCOUNT_INFO_QR_TITLE: 'Account information QR',
-        ACCOUNT_WALLET_QR_NOTE: 'This QR is only working on upcoming NEMpay mobile app',
+        ACCOUNT_WALLET_QR_NOTE: 'This QR is only working on upcoming PROXIMAXpay mobile app',
         ACCOUNT_WALLET_QR_ANDROID_IOS_TITLE: 'Wallet QR for Android & IOS apps',
         ACCOUNT_ADD_NEW_ACCOUNT_WARNING: 'All accounts are derived from your primary private key and password using BIP32, so both your primary private key and your password are needed to retrieve/recreate all your secondary accounts. <br> It is still <b>highly recommended</b> to backup your wallet after adding new accounts to not repeat the operation again if local storage is erased.',
         ACCOUNT_CUSTOM_NODE: 'Use custom node',
@@ -388,11 +388,11 @@ function EnglishProvider($translateProvider) {
         PORTAL_NS_TEXT: 'Namespaces are domain names. Each namespace is unique and authenticates mosaics (assets) issued on it or on its subdomains.',
         PORTAL_NS_BTN: 'Create namespace',
         PORTAL_MOSAIC_TITLE: 'Mosaics',
-        PORTAL_MOSAIC_TEXT: 'NEM mosaics are assets that expose additional properties and other features. To be able to create a mosaic, an account must rent at least one root namespace.',
+        PORTAL_MOSAIC_TEXT: 'PROXIMAX mosaics are assets that expose additional properties and other features. To be able to create a mosaic, an account must rent at least one root namespace.',
         PORTAL_MOSAIC_BTN_1: 'Create mosaic',
         PORTAL_MOSAIC_BTN_2: 'Edit mosaic',
         PORTAL_APOSTILLE_TITLE: 'Apostille',
-        PORTAL_APOSTILLE_TEXT: 'Use the NEM Apostille service to create blockchain based notarizations to time stamp, follow and audit file authenticity.',
+        PORTAL_APOSTILLE_TEXT: 'Use the PROXIMAX Apostille service to create blockchain based notarizations to time stamp, follow and audit file authenticity.',
         PORTAL_APOSTILLE_BTN_1: 'Create',
         PORTAL_APOSTILLE_BTN_2: 'Audit',
         PORTAL_ADDRESS_BOOK_TEXT: 'Assign labels to addresses to easily keep track of your contacts.',
@@ -476,7 +476,7 @@ function EnglishProvider($translateProvider) {
         APOSTILLE_INFORMATION_5: 'For accounts in a multisignature contract that have selected "<b>Private, transferable, and updateable</b>", the initiating cosigner\'s private key is used to sign the hash and create a dedicated HD account, not the account that was multisigged.',
         APOSTILLE_INFORMATION_6: 'The HD account is a dedicated account generated from a hash of the filename that is then signed by your private key. This resulting hash of this process is then used to form a second private key.  This is the time-stamped file\'s private key; a first in blockchain technology only found in Apostille.',
         APOSTILLE_INFORMATION_7: 'The dedicated HD account allows you to store the original file\'s signed hash and its updates on a dedicated account. If <b>"Public"</b> is selected, the transaction goes to the public sink address (default).',
-        APOSTILLE_INFORMATION_8: 'After the transactions are sent the download of an archive is triggered. It contains your signed files, your Apostille certificate for that file, and the new or updated .nty file to keep track of every file you time stamped on the NEM chain.',
+        APOSTILLE_INFORMATION_8: 'After the transactions are sent the download of an archive is triggered. It contains your signed files, your Apostille certificate for that file, and the new or updated .nty file to keep track of every file you time stamped on the PROXIMAX chain.',
         APOSTILLE_NO_NTY: 'No nty file loaded, please click here to import one or a new will be created automatically.',
         APOSTILLE_IMPORT_FILES: 'Import files',
         APOSTILLE_CREATE_TEXT: 'Create text document',
@@ -645,7 +645,7 @@ function EnglishProvider($translateProvider) {
         SIGN_MULTISIG_TRANSACTIONS_TITLE: 'Sign multisignature transactions',
 
         // LOGIN MODULE
-        LOGIN_MEMBER_TITLE: 'Already a NEMber?',
+        LOGIN_MEMBER_TITLE: 'Already a PROXIMAXber?',
         LOGIN_UPGRADE_TITLE: 'Wallet needs an upgrade',
         LOGIN_UPGRADE_MESSAGE: 'Selected wallet needs an upgrade. This action will generate a child public key and add it into your primary account.',
         LOGIN_UPGRADE_BUTTON: 'Upgrade wallet',
@@ -656,7 +656,7 @@ function EnglishProvider($translateProvider) {
         LOGIN_NOTE: 'No wallet? <a href="#!/import-wallet-qr-code">Import one</a> or <a href="#!/signup">sign up</a>.',
 
         // SIGNUP MODULE
-        SIGNUP_TITLE: 'New to NEM?',
+        SIGNUP_TITLE: 'New to PROXIMAX?',
         SIGNUP_SELECT_WALLET_TYPE: 'Select a type of wallet to create',
         SIGNUP_SELECT_WALLET_TYPE_STAND_BY: 'Place the cursor on a wallet type to show information.',
         SIGNUP_CREATE_WALLET_TITLE: 'Simple wallet',
@@ -670,9 +670,9 @@ function EnglishProvider($translateProvider) {
         SIGNUP_BRAIN_WALLET_BUTTON: 'Create brain wallet',
         SIGNUP_CREATE_WALLET_WARNING: 'Please read about <a href="https://www.w3.org/TR/2014/WD-WebCryptoAPI-20140325/#RandomSource-interface" rel="nofollow" target="_blank"><b>dangers</b></a> that client side generated keys pose; we are not responsible for any loss that could be due to the entropy of key generation. Even if it is unlikely to happen, it is recommended to use a private key generated from a strong source of entropy.',
         SIGNUP_NETWORK_SELECT: 'Select a network',
-        SIGNUP_NETWORK_MAINNET: 'Mainnet is the <b><u>real</u></b> NEM network. Addresses start with \'N\'.',
+        SIGNUP_NETWORK_MAINNET: 'Mainnet is the <b><u>real</u></b> PROXIMAX network. Addresses start with \'N\'.',
         SIGNUP_NETWORK_TESTNET: 'Testnet is the <b><u>test</u></b> network. Addresses start with \'T\'.',
-        SIGNUP_NETWORK_MIJIN: 'Mijin is the private version of NEM. Addresses start with \'M\'.',
+        SIGNUP_NETWORK_MIJIN: 'Mijin is the private version of PROXIMAX. Addresses start with \'M\'.',
         SIGNUP_BRAIN_WALLET_WARNING: 'Please read about <a href="https://en.bitcoin.it/wiki/Brainwallet" rel="nofollow" target="_blank"><b>dangers</b></a> that brain wallets pose. Brain wallets use ONLY a passphrase hashed multiple times. Therefore it\'s crucial to select a SAFE passphrase with at least 40 characters. <a href="https://xkcd.com/936/" rel="nofollow" target="_blank"><b>XKCD #936</b></a>',
         SIGNUP_PRIVATE_KEY_WALLET_WARNING: 'Private key wallets use ONLY a password to encrypt the imported private key. Therefore it\'s crucial to select a SAFE password.',
         SIGNUP_CREATE_START_WARNING: 'Please, follow each step carefully!',
@@ -705,21 +705,21 @@ function EnglishProvider($translateProvider) {
         SIGNUP_COMMON_WALLET_WARNING_DOWNLOAD: 'Download wallet',
         SIGNUP_ESTIMATED_PASSPHRASE_STRENGTH: 'Estimated passphrase strength',
         SIGNUP_ESTIMATED_GUESS_TIMES: 'Estimated guess times',
-        SIGNUP_CONGRATS_MSG: '<b>Congratulations!</b> Your NEM address is',
+        SIGNUP_CONGRATS_MSG: '<b>Congratulations!</b> Your PROXIMAX address is',
 
         // FAQ MODULE
         FAQ_TITLE: 'Frequently Asked Questions',
-        FAQ_QUESTION_1: 'How the NEM Wallet works?',
-        FAQ_ANSWER_1: 'The NEM Wallet is built with AngularJS and ES6. It is a full client-side application that never sends any sensitive data through the wire; everything happens in your browser from creating private keys to the signing of transactions.',
+        FAQ_QUESTION_1: 'How the PROXIMAX Wallet works?',
+        FAQ_ANSWER_1: 'The PROXIMAX Wallet is built with AngularJS and ES6. It is a full client-side application that never sends any sensitive data through the wire; everything happens in your browser from creating private keys to the signing of transactions.',
         FAQ_QUESTION_2: 'Is it free to use?',
         FAQ_ANSWER_2: 'Absolutely all operations are client-side, only you have control of your coins, no third parties, and no extra fees.',
         FAQ_QUESTION_3: 'Why do I already have one mosaic?',
-        FAQ_ANSWER_3: 'Because XEM is the default currency of the NEM blockchain, every user already has it registered to their wallet, even if their balance is 0. Its namespace is NEM and the mosaic name is XEM',
+        FAQ_ANSWER_3: 'Because XEM is the default currency of the PROXIMAX blockchain, every user already has it registered to their wallet, even if their balance is 0. Its namespace is PROXIMAX and the mosaic name is XEM',
         FAQ_QUESTION_4: 'Roadmap?',
         FAQ_ANSWER_4: 'The current roadmap includes integration of all features from NanoWallet v1.x.x and completion of community funded projects to work across this wallet.',
         FAQ_QUESTION_5: 'Can I get free XEM?',
-        FAQ_ANSWER_5: 'The NEM faucet is currently down, but you can consult the NEM forum to know about the available bounties.',
-        FAQ_QUESTION_6: 'Where to find more information about NEM?',
+        FAQ_ANSWER_5: 'The PROXIMAX faucet is currently down, but you can consult the PROXIMAX forum to know about the available bounties.',
+        FAQ_QUESTION_6: 'Where to find more information about PROXIMAX?',
         FAQ_ANSWER_6_FORUM: 'Official forum',
         FAQ_ANSWER_6_WEBSITE: 'Official website',
         FAQ_ANSWER_6_BTT: 'Official BitcoinTalk thread',
@@ -728,7 +728,7 @@ function EnglishProvider($translateProvider) {
         FAQ_QUESTION_8: 'Cosignatories cannot see the transaction to sign',
         FAQ_ANSWER_8: 'In this case go to "Services", look for "Multisignature and Multi-User Accounts" and click on "Sign multisig transactions".',
         FAQ_QUESTION_9: 'What are the best security practices ?',
-        FAQ_ANSWER_9: 'It is hightly recommended to always store private keys on paper.<br> You can print them and archive them somewhere safe. <br><br> Regarding wallet files you should always keep multiple copies on different cold locations, like usb sticks. <br> Passwords must always be unique and complex, for this reason, always write it down first. <br><br> When you want to check your wallet or realise operations:<br> - Plug the usb stick <br> - Import the wallet file in the NEM Wallet<br> - Unplug the usb stick.<br><br> A copy of your wallet is stored in the browser local storage for all the time you need.<br> Once you are done, logout and purge the wallets in local storage using the purge button on the right side of the footer.',
+        FAQ_ANSWER_9: 'It is hightly recommended to always store private keys on paper.<br> You can print them and archive them somewhere safe. <br><br> Regarding wallet files you should always keep multiple copies on different cold locations, like usb sticks. <br> Passwords must always be unique and complex, for this reason, always write it down first. <br><br> When you want to check your wallet or realise operations:<br> - Plug the usb stick <br> - Import the wallet file in the PROXIMAX Wallet<br> - Unplug the usb stick.<br><br> A copy of your wallet is stored in the browser local storage for all the time you need.<br> Once you are done, logout and purge the wallets in local storage using the purge button on the right side of the footer.',
         FAQ_QUESTION_10: 'Where to find information about my account (address, etc) ?',
         FAQ_ANSWER_10: 'If you look at the top navigation bar, you will see an <b><i>"Account"</b></i> button between <b><i>"Node"</b></i> and <b><i>"Language"</b></i>. There you can find your address, public key, vested balance and other important data.',
         FAQ_QUESTION_11: 'I have deposited XEM to an exchange but nothing has been credited ?',
@@ -790,7 +790,7 @@ function EnglishProvider($translateProvider) {
         OFFLINE_TX_TITLE: 'Prepare an offline transaction',
         OFFLINE_TX_NO_WALLET: 'Please import a wallet from login module to see the form.',
         OFFLINE_TX_INFO_1: 'To be completely safe, make sure to use a computer that is <b>NEVER</b> connected to internet.',
-        OFFLINE_TX_INFO_2: 'Only simple transactions can be created because a connection is needed to fetch mosaics and multisig information from NEM nodes.',
+        OFFLINE_TX_INFO_2: 'Only simple transactions can be created because a connection is needed to fetch mosaics and multisig information from PROXIMAX nodes.',
         OFFLINE_TX_INFO_3: 'After clicking the "create" button in the left panel, you will find the signed transaction below.',
         OFFLINE_TX_INFO_4: 'A signed transaction is immutable and will be effective only if released to the network before the default deadline of 24 hours.',
         OFFLINE_TX_SIGNED: 'Signed transaction',
@@ -841,7 +841,7 @@ function EnglishProvider($translateProvider) {
         DNS_OTHERINFO:"Other info",
         DNS_JSONMSG:"Json message",
         DNS_CHAR_LEFT:"Characters Left",
-        DNS_HELP1:"The owner of a NEM namespace can use the NEM DNS in a few easy steps. The DNS is built around the namespace platform in the NEM ecosystem and an associated pointer address (PA). The namespace owner needs to send a transaction to the namespace pointer address including a non-encrypted message in json format with information related to the namespace. The message can include relevant information such as IP address, ownership info, physical address, contact info and much more.",
+        DNS_HELP1:"The owner of a PROXIMAX namespace can use the PROXIMAX DNS in a few easy steps. The DNS is built around the namespace platform in the PROXIMAX ecosystem and an associated pointer address (PA). The namespace owner needs to send a transaction to the namespace pointer address including a non-encrypted message in json format with information related to the namespace. The message can include relevant information such as IP address, ownership info, physical address, contact info and much more.",
         DNS_HELP2:"This is how you do it:",
         DNS_HELP3:"1. select namespace",
         DNS_HELP4:"2. write relevant or update DNS information",
@@ -852,16 +852,16 @@ function EnglishProvider($translateProvider) {
 
         // IMPORT WALLET QRCODE
         IMPORT_WALLET_QRCODE_TITLE: 'Import wallet QR code',
-        IMPORT_WALLET_QRCODE_INFORMATION: 'Support wallet QR code: NEM wechat wallet, ios, android.',
+        IMPORT_WALLET_QRCODE_INFORMATION: 'Support wallet QR code: PROXIMAX wechat wallet, ios, android.',
         IMPORT_WALLET_QRCODE_LOAD: 'Load wallet QR code',
         IMPORT_WALLET_QRCODE_SCAN: 'Scan',
         IMPORT_WALLET_QRCODE_STOP_SCAN: 'Stop scan',
 
         //NEMonster
-        NEMONSTER_SHORT_DESC: "Welcome to NEMonsters, a witty little collection game based on the NEM blockchain.",
+        NEMONSTER_SHORT_DESC: "Welcome to PROXIMAXonsters, a witty little collection game based on the PROXIMAX blockchain.",
         NEMONSTER_CATCH: "Catch",
         NEMONSTER_GET: "Get some monsters",
-        NEMONSTER_DESC: "Welcome to NEMonsters, a witty little collection game based on the NEM blockchain. You can catch and collect over 110,000,000 different combinations of generated monsters; spanning from different colors, names and other spicy characteristics.  You catch a new monster by sending a fixed transaction; the monster is summoned when the transaction is confirmed. The characteristics of your new (evil) monster is based on the transaction hash – how cool is that. See if you can catch some of the monsters from the NEM foundation."
+        NEMONSTER_DESC: "Welcome to PROXIMAXonsters, a witty little collection game based on the PROXIMAX blockchain. You can catch and collect over 110,000,000 different combinations of generated monsters; spanning from different colors, names and other spicy characteristics.  You catch a new monster by sending a fixed transaction; the monster is summoned when the transaction is confirmed. The characteristics of your new (evil) monster is based on the transaction hash – how cool is that. See if you can catch some of the monsters from the PROXIMAX foundation."
     });
 }
 

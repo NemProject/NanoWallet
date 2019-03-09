@@ -4,9 +4,9 @@ function JapaneseProvider($translateProvider) {
     $translateProvider.translations('jp', {
 
       // HEADER COMPONENT
-      WALLET_NAME_1: 'NEM',
+      WALLET_NAME_1: 'PROXIMAX',
       WALLET_NAME_2: 'Wallet',
-      APP_NAME_SUB: "NEM プラットフォームに接続するための安全な方法\n(ボランティアによる日本語翻訳版)",
+      APP_NAME_SUB: "PROXIMAX プラットフォームに接続するための安全な方法\n(ボランティアによる日本語翻訳版)",
       HEADER_LOGIN_BUTTON: "ログイン",
       HEADER_SIGNUP_BUTTON: "アカウントの作成",
       HEADER_DASHBOARD: 'ダッシュボード',
@@ -32,7 +32,7 @@ function JapaneseProvider($translateProvider) {
 
       // FOOTER COMPONENT
       FOOTER_POWERED_BY_1: 'Powered by',
-      FOOTER_POWERED_BY_2: 'NEM technology.',
+      FOOTER_POWERED_BY_2: 'PROXIMAX technology.',
       FOOTER_VERSION: "Version",
 
       // DASHBOARD MODULE
@@ -54,9 +54,9 @@ function JapaneseProvider($translateProvider) {
       DASHBOARD_MARKET_INFO_CHANGES_24H: "24時間",
       DASHBOARD_MARKET_INFO_CHANGES_7D: "7日間",
       DASHBOARD_MARKET_INFO_NOTE: "<a href=\"http://coinmarketcap.com/\" target=\"_blank\">CoinMarketCap</a> CoinMarketCapのデータは 5 分毎に更新されます。",
-      DASHBOARD_NOTICE_1: 'NEM Wallet Beta にようこそ！',
+      DASHBOARD_NOTICE_1: 'PROXIMAX Wallet Beta にようこそ！',
       DASHBOARD_NOTICE_2: '問題の報告は<a href="https://github.com/NemProject/NanoWallet" target="_blank">こちら</a>へお願いします。',
-      DASHBOARD_NOTICE_3: 'NEM チームは、メインネットを利用する前に、最初にテストネットにて NEM Wallet の操作を行い、利用方法を習得する事をお勧めします。英文のガイドブックは<a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank">こちら</a>にあります。利用者は自身の資金を管理し、秘密鍵をバックアップしてください。NEM チームは、メインネット上でこのアプリケーションを利用することに起因する、資金の消失について責任を負いません。',
+      DASHBOARD_NOTICE_3: 'PROXIMAX チームは、メインネットを利用する前に、最初にテストネットにて PROXIMAX Wallet の操作を行い、利用方法を習得する事をお勧めします。英文のガイドブックは<a href="https://blog.nem.io/nanowallet-tutorial/" target="_blank">こちら</a>にあります。利用者は自身の資金を管理し、秘密鍵をバックアップしてください。PROXIMAX チームは、メインネット上でこのアプリケーションを利用することに起因する、資金の消失について責任を負いません。',
       DASHBOARD_NOTICE_4: '紙に秘密鍵を書き留めて、安全な場所に保存することをお勧めします。また、あなたのアカウントをAndroid 及び iOS アプリにインポートして、バックアップする事もできます。',
       DASHBOARD_NOTICE_5: 'Thanks for your participation!', //すまねぇ、ここどう訳すか迷ってそのままｗ
       DASHBOARD_MORE_TXES: 'もっとトランザクションを見る',
@@ -168,7 +168,7 @@ function JapaneseProvider($translateProvider) {
       GENERAL_VERIFY: '検証',
 
       // HOME MODULE
-      HOME_UNSUPPORTED_BROWSER: '申し訳ありません。このブラウザでは安全に NEM Wallet を使用する事ができません。',
+      HOME_UNSUPPORTED_BROWSER: '申し訳ありません。このブラウザでは安全に PROXIMAX Wallet を使用する事ができません。',
       HOME_RECOMMENDED_BROWSERS: '推奨ブラウザ：',
       HOME_FEATURE_STAND_BY: '各機能の説明はカーソルを合わせると表示されます。',
       HOME_FEATURE_1: 'XEMの送受信は早くて簡単、ブロックタイムは1分です！',
@@ -234,7 +234,7 @@ function JapaneseProvider($translateProvider) {
       IMPORTANCE_TRANSFER_REMOTE_ACCOUNT: "リモートアカウント",
       IMPORTANCE_TRANSFER_REMOTE_PUBLIC: "リモート公開鍵",
       IMPORTANCE_TRANSFER_INFO_PART_1: "インポータンストランザクションがブロックに入れられてから有効になるまで6時間かかります。6時間の後、ノードの選択や起動/停止を行うことができます。",
-      IMPORTANCE_TRANSFER_INFO_PART_2: "既に委任アクティベート要求済のアカウントを NEM Wallet にインポートした場合は、一旦過去の委任公開鍵を停止させてから再度要求して下さい。\n",
+      IMPORTANCE_TRANSFER_INFO_PART_2: "既に委任アクティベート要求済のアカウントを PROXIMAX Wallet にインポートした場合は、一旦過去の委任公開鍵を停止させてから再度要求して下さい。\n",
       IMPORTANCE_TRANSFER_INFO_PART_MULTISIG: "マルチシグの場合、インポータンストランスファートランザクションを実施した連署者のみハーベストの開始停止が可能です。その他の連署人が処理を行う場合は Deactivate → Activate が必要になります。",
       IMPORTANCE_TRANSFER_NO_BLOCKS_HARVESTED: "収穫ブロック無し",
       IMPORTANCE_TRANSFER_HARVESTING_PANEL: "収穫パネル",
@@ -292,7 +292,7 @@ function JapaneseProvider($translateProvider) {
       MOSAIC_DEFINITION_INFORMATION_13: "手数料の種類: 固定徴収方式とパーセンタイル徴収方式の2種類があります。",
       MOSAIC_DEFINITION_INFORMATION_14: "固定徴収方式の場合、徴収額は転送される量に依存しません。",
       MOSAIC_DEFINITION_INFORMATION_15: "パーセンタイル徴収方式の場合、徴収額は送信するモザイクの量に従って変化します。",
-      MOSAIC_DEFINITION_INFORMATION_16: "モザイクを NEM ブロックチェーンに送信するには手数料がかかります。実際の手数料はそのモザイクの総量と送信量に依存します。<b>スモールビジネスモザイク</b>は割引が適用され、一回の送信あたり0.05 XEMが定額手数料となります。",
+      MOSAIC_DEFINITION_INFORMATION_16: "モザイクを PROXIMAX ブロックチェーンに送信するには手数料がかかります。実際の手数料はそのモザイクの総量と送信量に依存します。<b>スモールビジネスモザイク</b>は割引が適用され、一回の送信あたり0.05 XEMが定額手数料となります。",
       MOSAIC_DEFINITION_INFORMATION_17: 'あなたが供給量の100%を保有している場合、同名の"namespace:mosaic"にて、モザイク作成トランザクションを再度送信することで、全てのモザイクプロパティを上書きすることができます。',
 
       // EDIT MOSAIC MODULE
@@ -319,7 +319,7 @@ function JapaneseProvider($translateProvider) {
       NAMESPACE_PROVISION_RESTRICTIONS: 'ネームスペースの制限',
       NAMESPACE_PROVISION_INFORMATION_1: "ネームスペースには制約があります。ルートネームスペースは16字以内で、ルート以下のネームスペースは64文字までです。使用できる文字は以下の通りです。",
       NAMESPACE_PROVISION_INFORMATION_2: "ネームスペースの頭文字はアルファベット又は数字で始めて下さい。\’alice\’はルートネームスペースとしては妥当ですが、\'_alice\'では作成できません。予約語（システムとして既に使われている文字列）もネームスペースとしては認められません。許可されない語は以下の通りです。",
-      NAMESPACE_PROVISION_INFORMATION_3: 'このリストは最終的なものではなく、将来拡張される事があります。 したがって、\'user.alice\' または \'alice.user\' はNEMのネームスペースでは使用できません。ネームスペースには最大3つの部分で構成されるので、\'gimre.metals.silver\'は有効ですが、\'gimre.metals.silver.coin\' は有効ではありません。',
+      NAMESPACE_PROVISION_INFORMATION_3: 'このリストは最終的なものではなく、将来拡張される事があります。 したがって、\'user.alice\' または \'alice.user\' はPROXIMAXのネームスペースでは使用できません。ネームスペースには最大3つの部分で構成されるので、\'gimre.metals.silver\'は有効ですが、\'gimre.metals.silver.coin\' は有効ではありません。',
 
       // RENEW NAMESPACE MODULE
       RENEW_NS_TITLE: 'ネームスペースの更新',
@@ -346,7 +346,7 @@ function JapaneseProvider($translateProvider) {
       ACCOUNT_DELEGATED_PUBLIC: "委任公開鍵",
       ACCOUNT_HARVESTED_BLOCKS: "ハーベストされたブロック",
       ACCOUNT_START_STOP_HARVESTING: "デリゲートハーベスティングを開始 / 停止",
-      ACCOUNT_HARVESTING_NOTE: "このアカウントでハーベストに利用したノードは、<b>ブラウザのローカルストレージ</b>に保存されます。ブラウザのローカルストレージが削除されると NEM Wallet はどのノードを利用していたのかわからない為、<b>ハーベスティング</b>に<b>無効</b>と表示されます。この場合、使用していたノードを再度選択すると、収穫情報が自動的に復元されます。ステータスが復元されない場合は、正しいノードが選択されているかを確認してください。それ以外の場合は、ノードが再起動されたために、このアカウントでハーベストされていないことを意味します。",
+      ACCOUNT_HARVESTING_NOTE: "このアカウントでハーベストに利用したノードは、<b>ブラウザのローカルストレージ</b>に保存されます。ブラウザのローカルストレージが削除されると PROXIMAX Wallet はどのノードを利用していたのかわからない為、<b>ハーベスティング</b>に<b>無効</b>と表示されます。この場合、使用していたノードを再度選択すると、収穫情報が自動的に復元されます。ステータスが復元されない場合は、正しいノードが選択されているかを確認してください。それ以外の場合は、ノードが再起動されたために、このアカウントでハーベストされていないことを意味します。",
       ACCOUNT_HARVESTING_NODE_SELECT: "ハーベストを行うノードを選択",
       ACCOUNT_HARVESTING_START: "デリゲートハーベスティング（委任収穫）を開始",
       ACCOUNT_HARVESTING_STOP: "デリゲートハーベスティング（委任収穫）を停止",
@@ -367,7 +367,7 @@ function JapaneseProvider($translateProvider) {
       ACCOUNT_BACKUP_WALLET_NOTE: "ウォレットのバックアップはXEMを紛失しない為の<b><u>重要</u></b>な作業です。",
       ACCOUNT_BACKUP_WALLET_DOWNLOAD: "ウォレットをダウンロード",
       ACCOUNT_INFO_QR_TITLE: "アカウント情報 QR",
-      ACCOUNT_WALLET_QR_NOTE: "この QR はまもなく公開予定の NEMpay モバイルアプリにのみ対応しています。",
+      ACCOUNT_WALLET_QR_NOTE: "この QR はまもなく公開予定の PROXIMAXpay モバイルアプリにのみ対応しています。",
       ACCOUNT_WALLET_QR_ANDROID_IOS_TITLE: "Android & iOS アプリ用のウォレット QR",
       ACCOUNT_ADD_NEW_ACCOUNT_WARNING: "全てのアカウントは、BIP32 方式を使用して主秘密鍵とパスワードから派生して作られており、他の全ての複アカウントを取得・再作成するためにも必要になります。<br>ローカルストレージが消去された場合に再度操作を繰り返すことをしない為にも、新しいアカウントを追加した場合には、ウォレットのバックアップを<b>強くお勧めします</b>。",
       ACCOUNT_CUSTOM_NODE: "カスタムノードを使う",
@@ -379,7 +379,7 @@ function JapaneseProvider($translateProvider) {
       // PORTAL MODULE
       PORTAL_TITLE: "各種機能",
       PORTAL_MULTISIG_TITLE: "マルチシグおよびマルチユーザーアカウント",
-      PORTAL_MULTISIG_TEXT: "NEMのマルチシグは編集可能なオンチェーンのコントラクトであり、連署アカウントを有効にすることで最も強力な資金保護方法にもなり、非中央集権型組織の基盤にもなります。",
+      PORTAL_MULTISIG_TEXT: "PROXIMAXのマルチシグは編集可能なオンチェーンのコントラクトであり、連署アカウントを有効にすることで最も強力な資金保護方法にもなり、非中央集権型組織の基盤にもなります。",
       PORTAL_MULTISIG_BTN_1: "アカウントをマルチシグに変更",
       PORTAL_MULTISIG_BTN_2: "既存コントラクトを編集",
       PORTAL_MULTISIG_BTN_3: 'マルチシグトランザクションの署名',
@@ -392,11 +392,11 @@ function JapaneseProvider($translateProvider) {
       PORTAL_NS_TEXT: "ネームスペースはドメイン名のようなものです。ネームスペース名はユニーク(他に同一の名称無し)であり、その配下にサブネームスペースやモザイク （アセット） を発行する事ができます。",
       PORTAL_NS_BTN: "ネームスペースを作成",
       PORTAL_MOSAIC_TITLE: "モザイク",
-      PORTAL_MOSAIC_TEXT: "NEM のモザイクは追加プロパティ、及びその他の機能を有するアセットです。\nモザイクを作成する為には少なくとも１つのネームスペースをレンタルする必要があります。",
+      PORTAL_MOSAIC_TEXT: "PROXIMAX のモザイクは追加プロパティ、及びその他の機能を有するアセットです。\nモザイクを作成する為には少なくとも１つのネームスペースをレンタルする必要があります。",
       PORTAL_MOSAIC_BTN_1: "モザイク作成",
       PORTAL_MOSAIC_BTN_2: "モザイク編集",
       PORTAL_APOSTILLE_TITLE: "アポスティーユ （公証機能）",
-      PORTAL_APOSTILLE_TEXT: "NEM アポスティーユ（公証機能）はブロックチェーンにファイルの情報とタイムスタンプを刻んだ公証を作成し、ファイルの信頼性を監査できるようにする機能です。",
+      PORTAL_APOSTILLE_TEXT: "PROXIMAX アポスティーユ（公証機能）はブロックチェーンにファイルの情報とタイムスタンプを刻んだ公証を作成し、ファイルの信頼性を監査できるようにする機能です。",
       PORTAL_APOSTILLE_BTN_1: "作成",
       PORTAL_APOSTILLE_BTN_2: "監査（公証の確認）",
       PORTAL_ADDRESS_BOOK_TEXT: 'アドレスにラベルを付けることによって、 連絡先を簡単に管理する事ができます。',
@@ -481,7 +481,7 @@ function JapaneseProvider($translateProvider) {
       APOSTILLE_INFORMATION_5: "<b>プライベートで、譲渡とアップデートが可能</b>なように設定されたマルチシグネチャのコントラクトのアカウントでは、発案者である連署人のプライベートキーを使ってハッシュに署名を行い、専用の HD アカウントを作成します（マルチシグ化されたアカウントではありません）",
       APOSTILLE_INFORMATION_6: "HDアカウントは、あなたのプライベートキーで署名されることになるファイル名のハッシュを元に作られた専用のアカウントです。そのプロセスの結果として生まれるハッシュは、その後に第二のプライベートキーを作るために使用します。これが、タイムスタンプされたファイルのプライベートキーです。これはブロックチェーン技術で初のものであり、アポスティーユにしか存在しないものです。",
       APOSTILLE_INFORMATION_7: "専用のHDカウントによって、ハッシュに署名されたオリジナルのファイルや、それのアップデートをHDアカウントに保存しておくことが可能になります。<b>\"パブリック\"</b>を選択した場合には、トランザクションはオープンなシンクのアドレスへ送られることになります（デフォルト設定）",
-      APOSTILLE_INFORMATION_8: "そのトランザクションが送られた後に、アーカイブのダウンロードが開始します。そこには以下のものが入っています。署名されたファイル、そのファイルについてのアポスティーユの証明書、NEM のチェーン上であなたがタイムスタンプを押したすべてのファイルを記録している新規もしくはアップデートされた .nty ファイルといったものです。",
+      APOSTILLE_INFORMATION_8: "そのトランザクションが送られた後に、アーカイブのダウンロードが開始します。そこには以下のものが入っています。署名されたファイル、そのファイルについてのアポスティーユの証明書、PROXIMAX のチェーン上であなたがタイムスタンプを押したすべてのファイルを記録している新規もしくはアップデートされた .nty ファイルといったものです。",
       APOSTILLE_NO_NTY: "NTYファイルがロードされていません、自動的にインポートするにはこちらをクリックしてください。もしくは自動的に生成されます。",
       APOSTILLE_IMPORT_FILES: "ファイルのインポート",
       APOSTILLE_CREATE_TEXT: "テキストドキュメントを作成",
@@ -651,7 +651,7 @@ function JapaneseProvider($translateProvider) {
       SIGN_MULTISIG_TRANSACTIONS_TITLE: 'マルチシグトランザクションの署名',
 
       // LOGIN MODULE
-      LOGIN_MEMBER_TITLE: "あなたは NEMber ですか？",
+      LOGIN_MEMBER_TITLE: "あなたは PROXIMAXber ですか？",
       LOGIN_UPGRADE_TITLE: "ウォレットのアップグレードが必要です",
       LOGIN_UPGRADE_MESSAGE: "選択されたウォレットは、アップグレードが必要です。このアクションでは、サブの公開鍵を生成し、メインのアカウントに追加されます。更新されたウォレットのダウンロードが自動的に開始される為には、それを <b><u>ダウンロード</u></b>する必要があります。",
       LOGIN_UPGRADE_BUTTON: "ウォレットをアップグレード",
@@ -662,7 +662,7 @@ function JapaneseProvider($translateProvider) {
       LOGIN_NOTE: 'ウォレットがない？インポートするか<a href="#!/signup">作成しましょう</a>',
 
       // SIGNUP MODULE
-      SIGNUP_TITLE: "NEM を始めますか?",
+      SIGNUP_TITLE: "PROXIMAX を始めますか?",
       SIGNUP_SELECT_WALLET_TYPE: 'ウォレットのタイプを選んでください',
       SIGNUP_SELECT_WALLET_TYPE_STAND_BY: 'ウォレットタイプの説明はカーソルを合わせると表示されます。',
       SIGNUP_CREATE_WALLET_TITLE: "シンプルウォレット",
@@ -674,10 +674,10 @@ function JapaneseProvider($translateProvider) {
       SIGNUP_CREATE_WALLET_BUTTON: "シンプルウォレットを作成",
       SIGNUP_PRIVATE_KEY_WALLET_BUTTON: "プライベートキーウォレットを作成",
       SIGNUP_BRAIN_WALLET_BUTTON: "ブレインウォレットを作成",
-      SIGNUP_CREATE_WALLET_WARNING: "クライアント側で生成された鍵の<a href=\"https://www.w3.org/TR/2014/WD-WebCryptoAPI-20140325/#RandomSource-interface\" rel=\"nofollow\" target=\"_blank\">危険性</a>についてお読みください。鍵生成の偏りなどが原因で損失が発生しても保証できません。損失が発生する可能性は極めて低いですが、NEM クライアントから生成された秘密鍵を使用することをお勧めします。",
+      SIGNUP_CREATE_WALLET_WARNING: "クライアント側で生成された鍵の<a href=\"https://www.w3.org/TR/2014/WD-WebCryptoAPI-20140325/#RandomSource-interface\" rel=\"nofollow\" target=\"_blank\">危険性</a>についてお読みください。鍵生成の偏りなどが原因で損失が発生しても保証できません。損失が発生する可能性は極めて低いですが、PROXIMAX クライアントから生成された秘密鍵を使用することをお勧めします。",
       SIGNUP_NETWORK_SELECT: "ネットワークを選択してください。",
-      SIGNUP_NETWORK_MAINNET: 'Mainnetは<b><u>現実に価値を持つ</u></b>NEMのネットワークです。アドレスは\'N\'から始まります。',
-      SIGNUP_NETWORK_TESTNET: 'Testnetは<b><u>テスト用</u></b>のNEMのネットワークです。アドレスは\'T\'から始まります。',
+      SIGNUP_NETWORK_MAINNET: 'Mainnetは<b><u>現実に価値を持つ</u></b>PROXIMAXのネットワークです。アドレスは\'N\'から始まります。',
+      SIGNUP_NETWORK_TESTNET: 'Testnetは<b><u>テスト用</u></b>のPROXIMAXのネットワークです。アドレスは\'T\'から始まります。',
       SIGNUP_NETWORK_MIJIN: 'MijinはNEMのプライベート版です。アドレスは\'M\'から始まります。',
       SIGNUP_BRAIN_WALLET_WARNING: "ブレインウォレットの<a href=\"https://en.bitcoin.it/wiki/Brainwallet\" rel=\"nofollow\" target=\"_blank\">危険性</a>について留意してください。ブレインウォレットはハッシュ化されたパスフレーズのみを利用し何度も使用されます。したがって、少なくとも40文字以上の「安全な」パスフレーズを選んでください。<a href=\"https://xkcd.com/936/\" rel=\"nofollow\" target=\"_blank\">XKCD #936</a>",
       SIGNUP_PRIVATE_KEY_WALLET_WARNING: "プライベートキーウォレットは、インポートされた秘密鍵を暗号化するためにパスワードのみを使用します。したがって、「安全な」パスワードを利用する事が重要です。 ",
@@ -713,21 +713,21 @@ function JapaneseProvider($translateProvider) {
       SIGNUP_COMMON_WALLET_WARNING_DOWNLOAD: 'ウォレットをダウンロードする',
       SIGNUP_ESTIMATED_PASSPHRASE_STRENGTH: '推定パスフレーズ強度',
       SIGNUP_ESTIMATED_GUESS_TIMES: '推定解析時間',
-      SIGNUP_CONGRATS_MSG: '<b>おめでとう！</b> あなたの NEM アドレスは',
+      SIGNUP_CONGRATS_MSG: '<b>おめでとう！</b> あなたの PROXIMAX アドレスは',
 
       // FAQ MODULE
       FAQ_TITLE: "よくある質問",
-      FAQ_QUESTION_1: "どのように NEM Wallet は動作しますか？",
-      FAQ_ANSWER_1: "NEM Wallet は ES6, AngularJS そして 最新の暗号ライブラリを使用して構築されています。これは完全なクライアントサイドアプリケーションで、ネット上に機密データが送信されることはありません。秘密鍵の作成からトランザクションの署名まで全てあなたのブラウザ上で完結します。",
+      FAQ_QUESTION_1: "どのように PROXIMAX Wallet は動作しますか？",
+      FAQ_ANSWER_1: "PROXIMAX Wallet は ES6, AngularJS そして 最新の暗号ライブラリを使用して構築されています。これは完全なクライアントサイドアプリケーションで、ネット上に機密データが送信されることはありません。秘密鍵の作成からトランザクションの署名まで全てあなたのブラウザ上で完結します。",
       FAQ_QUESTION_2: "このウォレットは無料で使えますか？",
       FAQ_ANSWER_2: "はい。追加使用料等は発生しません。全処理は完全にクライアント側で行われます。あなたのコインは第三者の干渉を受けずあなたしか操作することができません。",
       FAQ_QUESTION_3: "なぜ最初からに モザイク を1つ所有しているのですか？",
-      FAQ_ANSWER_3: "XEMはNEMブロックチェーンのデフォルトの通貨なので、その残高がゼロであっても、すべてのユーザーのウォレットにはそれが登録されています。そのネームスペースは NEM であり、モザイクの名前は XEM です。",
+      FAQ_ANSWER_3: "XEMはNEMブロックチェーンのデフォルトの通貨なので、その残高がゼロであっても、すべてのユーザーのウォレットにはそれが登録されています。そのネームスペースは PROXIMAX であり、モザイクの名前は XEM です。",
       FAQ_QUESTION_4: "今後の予定は？",
-      FAQ_ANSWER_4: "現在のロードマップには、NEM クライアントの機能を組み込むこと、NEM Wallet の中で機能するコミュニティによって出資されたプロジェクトの完成などが含まれています。",
+      FAQ_ANSWER_4: "現在のロードマップには、PROXIMAX クライアントの機能を組み込むこと、PROXIMAX Wallet の中で機能するコミュニティによって出資されたプロジェクトの完成などが含まれています。",
       FAQ_QUESTION_5: "無料で XEM を入手することはできますか？",
-      FAQ_ANSWER_5: "現在 NEM フォーセットは停止していますが、NEM フォーラムで報酬として受け取る方法について相談できます。",
-      FAQ_QUESTION_6: "どこで NEM に関するもっと詳しい情報を得ることができますか？",
+      FAQ_ANSWER_5: "現在 PROXIMAX フォーセットは停止していますが、PROXIMAX フォーラムで報酬として受け取る方法について相談できます。",
+      FAQ_QUESTION_6: "どこで PROXIMAX に関するもっと詳しい情報を得ることができますか？",
       FAQ_ANSWER_6_FORUM: "公式フォーラム",
       FAQ_ANSWER_6_WEBSITE: "公式ウェブサイト",
       FAQ_ANSWER_6_BTT: "公式 BitcoinTalk スレッド",
@@ -736,7 +736,7 @@ function JapaneseProvider($translateProvider) {
       FAQ_QUESTION_8: '連署者に署名してほしいトランザクション表示されません。',
       FAQ_ANSWER_8: 'この場合、"サービス"へ移動し、"マルチシグおよびマルチユーザーアカウント"の項目から"マルチシグトランザクションの署名"を選択してください。',
       FAQ_QUESTION_9: '最適なセキュリティは？',
-      FAQ_ANSWER_9: '特に推奨するのは秘密鍵を紙に保存することです。<br>プリントアウトしてどこか安全な所で保管してください。<br><br>ウォレットファイルについても同様に、複数のコピーをUSBメモリなどのオフラインな場所に保存してください。<br>パスワードは一意で複雑にしてください。そのため、まずは書き留めておいてください。<br><br>ウォレットを確認する、もしくは操作をしたいときは:<br> - USBメモリを指します<br> - NEM Walletにインポートします<br> - USBメモリを抜きます<br><br> ウォレットのコピーは必要な時にブラウザのローカルストレージに保存されます。<br>作業が終わったら、ログアウトし、フッターの右端にある削除ボタンでローカルストレージ内のウォレットを削除してください。',
+      FAQ_ANSWER_9: '特に推奨するのは秘密鍵を紙に保存することです。<br>プリントアウトしてどこか安全な所で保管してください。<br><br>ウォレットファイルについても同様に、複数のコピーをUSBメモリなどのオフラインな場所に保存してください。<br>パスワードは一意で複雑にしてください。そのため、まずは書き留めておいてください。<br><br>ウォレットを確認する、もしくは操作をしたいときは:<br> - USBメモリを指します<br> - PROXIMAX Walletにインポートします<br> - USBメモリを抜きます<br><br> ウォレットのコピーは必要な時にブラウザのローカルストレージに保存されます。<br>作業が終わったら、ログアウトし、フッターの右端にある削除ボタンでローカルストレージ内のウォレットを削除してください。',
       FAQ_QUESTION_10: 'どこに自分のアカウントの情報(アドレスなど)がありますか？',
       FAQ_ANSWER_10: '上部のナビゲーションバーにある<b><i>"ノード"</b></i>と<b><i>"言語"</b></i>の間に<b><i>"アカウント"</b></i>ボタンがあります。ここでアドレスや公開鍵、既得バランスなどの重要な情報を得られます。',
       FAQ_QUESTION_11: '交換所にXEMを入金しましたが、残高に反映されません。',
@@ -798,7 +798,7 @@ function JapaneseProvider($translateProvider) {
       OFFLINE_TX_TITLE: 'オフライントランザクションの準備',
       OFFLINE_TX_NO_WALLET: 'フォームを表示するためにログイン画面からウォレットをインポートしてください。',
       OFFLINE_TX_INFO_1: '安全性を確保するため、コンピュータがインターネットに<b>接続していない</b>ことを確認してください。',
-      OFFLINE_TX_INFO_2: 'NEMノードからモザイクやマルチシグ情報を取得するにインターネット接続が必要なので、単純なトランザクションだけ作成できます。',
+      OFFLINE_TX_INFO_2: 'PROXIMAXノードからモザイクやマルチシグ情報を取得するにインターネット接続が必要なので、単純なトランザクションだけ作成できます。',
       OFFLINE_TX_INFO_3: '左側のパネルの"作成"ボタンをクリックすると、下部に署名済みトランザクションが表示されます。',
       OFFLINE_TX_INFO_4: '署名済みトランザクションは変更不可であり、デフォルト期限の24時間以内にリリースされた場合にだけ有効になります。',
       OFFLINE_TX_SIGNED: '署名済みトランザクション',
@@ -849,7 +849,7 @@ function JapaneseProvider($translateProvider) {
       DNS_OTHERINFO:"その他",
       DNS_JSONMSG:"JSONメッセージ",
       DNS_CHAR_LEFT:"残り文字数",
-      DNS_HELP1:"NEMネームスペースの所有者はNEM DNSが簡単な数ステップで使用できます。DNSはNEMエコシステムの名前空間プラットフォームと、関連付けられたポインターアドレス(PA)を中心に構築されています。ネームスペースの所有者は、ネームスペースに関連する情報を使用して、JSON形式の暗号化されていないメッセージを含む、ネームスペースポインタアドレスにトランザクションを送信する必要があります。メッセージには、IPアドレス、所有権情報、物理アドレス、連絡先情報などの関連情報を含めることができます。",
+      DNS_HELP1:"PROXIMAXネームスペースの所有者はPROXIMAX DNSが簡単な数ステップで使用できます。DNSはPROXIMAXエコシステムの名前空間プラットフォームと、関連付けられたポインターアドレス(PA)を中心に構築されています。ネームスペースの所有者は、ネームスペースに関連する情報を使用して、JSON形式の暗号化されていないメッセージを含む、ネームスペースポインタアドレスにトランザクションを送信する必要があります。メッセージには、IPアドレス、所有権情報、物理アドレス、連絡先情報などの関連情報を含めることができます。",
       DNS_HELP2:"このように使います:",
       DNS_HELP3:"1. ネームスペースを選ぶ",
       DNS_HELP4:"2. 関連を書き込むかDNS情報を更新する",
@@ -860,16 +860,16 @@ function JapaneseProvider($translateProvider) {
 
       // IMPORT WALLET QRCODE
       IMPORT_WALLET_QRCODE_TITLE: 'ウォレットQRコードのインポート',
-      IMPORT_WALLET_QRCODE_INFORMATION: 'サポートしているウォレットQRコード: NEM wechat wallet, ios, android.',
+      IMPORT_WALLET_QRCODE_INFORMATION: 'サポートしているウォレットQRコード: PROXIMAX wechat wallet, ios, android.',
       IMPORT_WALLET_QRCODE_LOAD: 'ウォレットQRコードを読み込む',
       IMPORT_WALLET_QRCODE_SCAN: 'スキャン',
       IMPORT_WALLET_QRCODE_STOP_SCAN: 'スキャン停止',
 
       //NEMonster
-      NEMONSTER_SHORT_DESC: "NEMonsters へようこそ！NEMブロックチェーン上のウィットに富んだちょっとしたコレクションゲームです。",
+      NEMONSTER_SHORT_DESC: "PROXIMAXonsters へようこそ！PROXIMAXブロックチェーン上のウィットに富んだちょっとしたコレクションゲームです。",
       NEMONSTER_CATCH: "捕まえる",
       NEMONSTER_GET: "モンスターをゲットする",
-      NEMONSTER_DESC: "NEMonstersへようこそ！NEMブロックチェーン上のウィットに富んだちょっとしたコレクションゲームです。あなたは色、名前、特徴付けのスパイスより110,000,000種の異なる組み合わせから作られたモンスターを捕獲して集めることができます。決まったトランザクションを送ることでモンスターを捕獲できます。モンスターはトランザクションが承認されると召喚されます。あなたの新しい(邪悪な)モンスターの特徴はトランザクションハッシュに基づきます。クールでしょ？NEM基盤からモンスターを捕まえられるか確かめてみよう。"
+      NEMONSTER_DESC: "PROXIMAXonstersへようこそ！PROXIMAXブロックチェーン上のウィットに富んだちょっとしたコレクションゲームです。あなたは色、名前、特徴付けのスパイスより110,000,000種の異なる組み合わせから作られたモンスターを捕獲して集めることができます。決まったトランザクションを送ることでモンスターを捕獲できます。モンスターはトランザクションが承認されると召喚されます。あなたの新しい(邪悪な)モンスターの特徴はトランザクションハッシュに基づきます。クールでしょ？PROXIMAX基盤からモンスターを捕まえられるか確かめてみよう。"
     });
 
 }

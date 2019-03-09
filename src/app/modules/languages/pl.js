@@ -4,9 +4,9 @@ function PolishProvider($translateProvider) {
     $translateProvider.translations('pl', {
 
         // HEADER COMPONENT
-        WALLET_NAME_1: 'NEM',
+        WALLET_NAME_1: 'PROXIMAX',
         WALLET_NAME_2: 'Wallet',
-        APP_NAME_SUB: 'Bezpieczny interfejs łączący z platformą NEM',
+        APP_NAME_SUB: 'Bezpieczny interfejs łączący z platformą PROXIMAX',
         HEADER_LOGIN_BUTTON: 'Logowanie',
         HEADER_SIGNUP_BUTTON: 'Rejestracja',
         HEADER_DASHBOARD: 'Dashboard',
@@ -32,7 +32,7 @@ function PolishProvider($translateProvider) {
         
         // FOOTER COMPONENT
         FOOTER_POWERED_BY_1: 'Zasilany',
-        FOOTER_POWERED_BY_2: 'technologią NEM.',
+        FOOTER_POWERED_BY_2: 'technologią PROXIMAX.',
         FOOTER_VERSION: 'Wersja',
 
         // DASHBOARD MODULE
@@ -56,7 +56,7 @@ function PolishProvider($translateProvider) {
         DASHBOARD_MARKET_INFO_NOTE: '<a href="http://coinmarketcap.com/" target="_blank">CoinMarketCap</a> dane aktulizowane co 5 minut',
         DASHBOARD_NOTICE_1: 'Witamy w Nano Wallet Beta!',
         DASHBOARD_NOTICE_2: 'Proszę <a href="https://github.com/NemProject/NanoWallet" target="_blank">wypełnić raport o błędzie.</a>',
-        DASHBOARD_NOTICE_3: 'Zespół NEM nie ponosi odpowiedzialności za straty związane z używaniem tej aplikacji w sieci głównej NEM (mainnet). Sugerowane jest zapoznanie się z aplikacją używając sieci testowej NEM (testnet). Użytkownicy ponoszą odpowiedzialność za swoje środki i zabezpieczenie swoich kluczy prywatnych.',
+        DASHBOARD_NOTICE_3: 'Zespół PROXIMAX nie ponosi odpowiedzialności za straty związane z używaniem tej aplikacji w sieci głównej PROXIMAX (mainnet). Sugerowane jest zapoznanie się z aplikacją używając sieci testowej PROXIMAX (testnet). Użytkownicy ponoszą odpowiedzialność za swoje środki i zabezpieczenie swoich kluczy prywatnych.',
         DASHBOARD_NOTICE_4: 'Proszę nie używać sieci głównej jeśli nie ma się pewności, że środki są zabezpieczone na kopii zapasowej. Sugerowane jest zapisanie klucza prywatnego w formie papierowej i przechowywanie w bezpiecznym miejscu. Dodatkowo istnieje możliwość importu kont do programu Lightwallet/NCC.',
         DASHBOARD_NOTICE_5: 'Dziękujemy za współpracę!',
 
@@ -289,7 +289,7 @@ function PolishProvider($translateProvider) {
         MOSAIC_DEFINITION_INFORMATION_13: 'Dostępne są dwa rodzaje opłat: stała i procentowa.',
         MOSAIC_DEFINITION_INFORMATION_14: 'Opłata jest określona jako stała, a więc nie jest uzależniona od ilości mozaiki, która jest przekazywana.',
         MOSAIC_DEFINITION_INFORMATION_15: 'Opłata jest określona jako iloczn oprocentowania i transferowanej ilości. Wobc tego opłata wzrasta liniowo wraz z ilością transferowanej mozaiki.',
-        MOSAIC_DEFINITION_INFORMATION_16: 'Wysyłanie mozaiki na blockchainie NEM wymaga opłaty. Dokładna wartość opłaty jest obliczana w zależności od ich łącznej liczby i ilości wysyłanej podczas transakcji. <b>Mozaiki małych firm</b> otrzymują tańszą, stałą stawkę 0.05 XEM za transfer mozaiki. To mozaiki z ilością mniejszą niż 10 000 i podzielnością 0.',
+        MOSAIC_DEFINITION_INFORMATION_16: 'Wysyłanie mozaiki na blockchainie PROXIMAX wymaga opłaty. Dokładna wartość opłaty jest obliczana w zależności od ich łącznej liczby i ilości wysyłanej podczas transakcji. <b>Mozaiki małych firm</b> otrzymują tańszą, stałą stawkę 0.05 XEM za transfer mozaiki. To mozaiki z ilością mniejszą niż 10 000 i podzielnością 0.',
         MOSAIC_DEFINITION_INFORMATION_17: 'If you own 100% of the supply, you can overwrite all the mosaic properties by sending a creation transaction again with the same "namespace:mosaic" name.',
 
         // EDIT MOSAIC MODULE
@@ -318,7 +318,7 @@ function PolishProvider($translateProvider) {
         NAMESPACE_PROVISION_RESTRICTIONS: 'Ograniczenia Namespace',
         NAMESPACE_PROVISION_INFORMATION_1: 'Namespaces mają pewne ograniczenia w odniesieniu do akceptowanych znaków jak również długości nazw. Namespace główna może mieć długość do 16 znaków, podczas gdy sub-namespace może mieć długość 64 znaków. Poprawne znaki to:',
         NAMESPACE_PROVISION_INFORMATION_2: 'Nazwa Namespace musi zaczynać się od litery z alfabetu, wobec tego \'alice\' jest dozwoloną nazwą dla Głównej Namespace, podczas gdy \'1alice\' nie jest. Pewne ciągi znaków są zarezerwowane i nie można ich użyć jako nazwy Namespace. Wśród tych ciągów znaków są:',
-        NAMESPACE_PROVISION_INFORMATION_3: '这个清单将可能会增加内容，请注意查看。 \'user.alice\' 和 \'alice.user\' 都不被NEM命名空间系统允许申请。命名空间最多可以被定义为三层，如\'gimre.metals.silver\' 有效，而 \'gimre.metals.silver.coin\' 无效。',
+        NAMESPACE_PROVISION_INFORMATION_3: '这个清单将可能会增加内容，请注意查看。 \'user.alice\' 和 \'alice.user\' 都不被PROXIMAX命名空间系统允许申请。命名空间最多可以被定义为三层，如\'gimre.metals.silver\' 有效，而 \'gimre.metals.silver.coin\' 无效。',
 
         // RENEW NAMESPACE MODULE
         RENEW_NS_TITLE: 'Odnów namespaces',
@@ -366,7 +366,7 @@ function PolishProvider($translateProvider) {
         ACCOUNT_BACKUP_WALLET_NOTE: 'Jest <b><u>bardzo ważne</u></b> aby mieć kopie bezpieczeństwa swoich portfeli aby nie stracić XEM',
         ACCOUNT_BACKUP_WALLET_DOWNLOAD: 'Pobierz portfel',
         ACCOUNT_INFO_QR_TITLE: 'Informacje o koncie QR',
-        ACCOUNT_WALLET_QR_NOTE: 'Ten kod QR działa tylko z nadciągającą aplikacją mobilną NEMpay',
+        ACCOUNT_WALLET_QR_NOTE: 'Ten kod QR działa tylko z nadciągającą aplikacją mobilną PROXIMAXpay',
         ACCOUNT_WALLET_QR_ANDROID_IOS_TITLE: 'QR portfela dla aplikacji na Androida i IOS',
         ACCOUNT_ADD_NEW_ACCOUNT_WARNING: 'Wszystkie konta uzyskiwane są z klucza prywatnego przy użyciu BIP32, czyli tylko jeden klucz prywatny i Twoje hasło są potrzebne, aby pobrać wszystkie pozostałe konta. <br>Jest <b><u>wysoce zalecane</u></b> aby wykonać kopię bezpieczeństwa portfela po dodaniu nowych kont, aby nie dodawać ich ponownie kiedy lokalna pamięć zostanie wyczyszczona.',
         ACCOUNT_CUSTOM_NODE: 'Użyj własnego serwera',
@@ -389,11 +389,11 @@ function PolishProvider($translateProvider) {
         PORTAL_NS_TEXT: 'Namespaces to nazwy domen. Każda namespace jest unikalna i  uwierzytelnia mozaiki (aktywa) wyemitowane przez nią lub przez jej subdomeny.',
         PORTAL_NS_BTN: 'Utwórz namespace',
         PORTAL_MOSAIC_TITLE: 'Mozaiki',
-        PORTAL_MOSAIC_TEXT: 'Mozaiki NEM to aktywa, które posiadają dodatkowe właściwości i funkcje. Aby móc stworzyć mozaikę, konto musi posiadać przynajmniej jedną Główną Namespace.',
+        PORTAL_MOSAIC_TEXT: 'Mozaiki PROXIMAX to aktywa, które posiadają dodatkowe właściwości i funkcje. Aby móc stworzyć mozaikę, konto musi posiadać przynajmniej jedną Główną Namespace.',
         PORTAL_MOSAIC_BTN_1: 'Utwórz mozaikę',
         PORTAL_MOSAIC_BTN_2: 'Edytuj mozaikę',
         PORTAL_APOSTILLE_TITLE: 'Apostille',
-        PORTAL_APOSTILLE_TEXT: 'Użyj usługi NEM Apostille, aby stworzyć notaryzacje oparte na blockchainie w celu datowania, śledzenia i  badania autentyczności plików.',
+        PORTAL_APOSTILLE_TEXT: 'Użyj usługi PROXIMAX Apostille, aby stworzyć notaryzacje oparte na blockchainie w celu datowania, śledzenia i  badania autentyczności plików.',
         PORTAL_APOSTILLE_BTN_1: 'Utwórz',
         PORTAL_APOSTILLE_BTN_2: 'Audytuj',
         PORTAL_ADDRESS_BOOK_TEXT: 'Przydziel etykiety do adresu\' by prosto zarządzać swoimi kontaktami.',
@@ -473,7 +473,7 @@ function PolishProvider($translateProvider) {
         APOSTILLE_INFORMATION_5: 'W przypadku kont w kontrakcie z multipodpisem, które wybrały opcję "<b>Prywatne, transferowalne i aktualizowalne</b>", do podpisania haszu i utworzenia dedykowanego konta HD użyty jest klucz prywatny inicjującego sygnatariusza, a nie konto, które zostało przekonwertowane na multipodpis.',
         APOSTILLE_INFORMATION_6: 'Konto HD jest kontem dedykowanym wygenerowanym z hasza pliku, który następnie jest podpisany przez twoj klucz prywatny. Hasz powstały w tym procesie stosuje się następnie do wytworzenia drugiego klucza prywatnego. To jest klucz prywatny oznaczonego w łańcuchu bloków pliku; pierwszy w technologii blockchain, dostępny tylko w technologii Apostille.',
         APOSTILLE_INFORMATION_7: 'Dedykowane konto HD pozwala na przechowywanie oryginalnego hasza pliku i jego aktualizacje na dedykowanym koncie. Jeśli <b>"Publiczny"</b> jest wybrany, transakcja idzie na adres pulicznego konta zbiorczego(domyślnie).',
-        APOSTILLE_INFORMATION_8: 'Po wysłaniu transakcji uruchamiane jest pobieranie zarchiwizowanego pliku. Zawiera on Twoje podpisane pliki, Twój certyfikat Apostille dla tego pliku i nowy lub zaktualizowany plik .nty aby śledzić wszystkie pliki, które oznaczyłeś na łańcuchu bloków NEM.',
+        APOSTILLE_INFORMATION_8: 'Po wysłaniu transakcji uruchamiane jest pobieranie zarchiwizowanego pliku. Zawiera on Twoje podpisane pliki, Twój certyfikat Apostille dla tego pliku i nowy lub zaktualizowany plik .nty aby śledzić wszystkie pliki, które oznaczyłeś na łańcuchu bloków PROXIMAX.',
         APOSTILLE_NO_NTY: 'Plik nty nie załadowany, kliknij tutaj, aby go zaimportować lub automatycznie utworzony zostanie nowy plik.',
         APOSTILLE_IMPORT_FILES: 'Importuj pliki',
         APOSTILLE_CREATE_TEXT: 'Utwórz dokument tekstowy',
@@ -642,7 +642,7 @@ function PolishProvider($translateProvider) {
         SIGN_MULTISIG_TRANSACTIONS_TITLE: 'Zatwierdź transakcję z multipodpisem',
 
         // LOGIN MODULE
-        LOGIN_MEMBER_TITLE: 'Jesteś już członkiem NEM ?',
+        LOGIN_MEMBER_TITLE: 'Jesteś już członkiem PROXIMAX ?',
         LOGIN_UPGRADE_TITLE: 'Portfel wymaga aktualizacji',
         LOGIN_UPGRADE_MESSAGE: 'Wybrany portfel wymaga aktualizacji. Ta czynność spowoduje wygenerowanie pochodnego klucza publicznego i dodanie go do konta głównego. Pobieranie zaktualizowanego portfela zostanie automatycznie rozpoczęte. <b><u>Musisz</u></b> go pobrać !',
         LOGIN_UPGRADE_BUTTON: 'Aktualizuj portfel',
@@ -653,7 +653,7 @@ function PolishProvider($translateProvider) {
         LOGIN_NOTE: 'No wallet? Import one or <a href="#!/signup">signup</a>.',
 
         // SIGNUP MODULE
-        SIGNUP_TITLE: 'Nowy w NEM ?',
+        SIGNUP_TITLE: 'Nowy w PROXIMAX ?',
         SIGNUP_SELECT_WALLET_TYPE: 'Select a type of wallet to create',
         SIGNUP_SELECT_WALLET_TYPE_STAND_BY: 'Place the cursor on a wallet type to show information.',
         SIGNUP_CREATE_WALLET_TITLE: 'Prosty portfel',
@@ -665,11 +665,11 @@ function PolishProvider($translateProvider) {
         SIGNUP_CREATE_WALLET_BUTTON: 'Utwórz prosty portfel',
         SIGNUP_PRIVATE_KEY_WALLET_BUTTON: 'Utwórz portfel z klucza prywatnego',
         SIGNUP_BRAIN_WALLET_BUTTON: 'Utwórz brain wallet',
-        SIGNUP_CREATE_WALLET_WARNING: 'Proszę, przeczytaj o <a href="https://www.w3.org/TR/2014/WD-WebCryptoAPI-20140325/#RandomSource-interface" rel="nofollow" target="_blank">niebezpieczeństwach</a> związanych z własnoręcznie generowanymi kluczami, nie jesteśmy odpowiedzialni za ewentualne straty, które mogłyby być spowodowane entropią generowania kluczy. Mimo, że szansa na to jest bardzo mała, zaleca się użycie klucza prywatnego generowanego przez klienta NEM.',
+        SIGNUP_CREATE_WALLET_WARNING: 'Proszę, przeczytaj o <a href="https://www.w3.org/TR/2014/WD-WebCryptoAPI-20140325/#RandomSource-interface" rel="nofollow" target="_blank">niebezpieczeństwach</a> związanych z własnoręcznie generowanymi kluczami, nie jesteśmy odpowiedzialni za ewentualne straty, które mogłyby być spowodowane entropią generowania kluczy. Mimo, że szansa na to jest bardzo mała, zaleca się użycie klucza prywatnego generowanego przez klienta PROXIMAX.',
         SIGNUP_NETWORK_SELECT: 'Wybierz sieć',
-        SIGNUP_NETWORK_MAINNET: 'Mainnet is the <b><u>real</u></b> NEM network. Addresses start with \'N\'.',
+        SIGNUP_NETWORK_MAINNET: 'Mainnet is the <b><u>real</u></b> PROXIMAX network. Addresses start with \'N\'.',
         SIGNUP_NETWORK_TESTNET: 'Testnet is the <b><u>test</u></b> network. Addresses start with \'T\'.',
-        SIGNUP_NETWORK_MIJIN: 'Mijin is the private version of NEM. Addresses start with \'M\'.',
+        SIGNUP_NETWORK_MIJIN: 'Mijin is the private version of PROXIMAX. Addresses start with \'M\'.',
         SIGNUP_BRAIN_WALLET_WARNING: 'Proszę, przeczytaj o <a href="https://en.bitcoin.it/wiki/Brainwallet" rel="nofollow" target="_blank">niebezpieczeństwach</a> związanych z używaniem brain wallet. Brain wallet używa tylko zakodowanego wielokrotnie hasła, dlatego istotne jest, aby wybrać BEZPIECZNE hasło. <a href="https://xkcd.com/936/" rel="nofollow" target="_blank">XKCD #936</a>',
         SIGNUP_PRIVATE_KEY_WALLET_WARNING: 'Portfel z klucza prywatnego używa TYLKO wielokrotnie zakodowanego hasła, dlatego istotne jest, aby wybrać BEZPIECZNE hasło.',
         SIGNUP_CREATE_START_WARNING: 'Please, follow each step carefully!',
@@ -710,12 +710,12 @@ function PolishProvider($translateProvider) {
         FAQ_QUESTION_2: 'Czy jest bezpłatny?',
         FAQ_ANSWER_2: 'Absolutnie wszystkie operacje wykonywane są po stronie klienta, tylko ty masz kontrolę nad swoimi monetami, bez osób trzecich, bez dodatkowych opłat.',
         FAQ_QUESTION_3: 'Dlaczego posiadam już jedną mozaikę ?',
-        FAQ_ANSWER_3: 'Ponieważ XEM jest domyślną walutą blockchaina NEM, każdy użytkownik ma ją już zarejestrowaną w portfelu, nawet jeśli jej bilans wynosi 0. Nazwa jej Namespace to NEM a nazwa mozaiki to XEM.',
+        FAQ_ANSWER_3: 'Ponieważ XEM jest domyślną walutą blockchaina PROXIMAX, każdy użytkownik ma ją już zarejestrowaną w portfelu, nawet jeśli jej bilans wynosi 0. Nazwa jej Namespace to PROXIMAX a nazwa mozaiki to XEM.',
         FAQ_QUESTION_4: 'Plan działań ?',
-        FAQ_ANSWER_4: 'Bieżący plan to zintegrowanie z portfelem Nano wszystkich funkcji klienta NEM i projektów finansowanych przez społeczność.',
+        FAQ_ANSWER_4: 'Bieżący plan to zintegrowanie z portfelem Nano wszystkich funkcji klienta PROXIMAX i projektów finansowanych przez społeczność.',
         FAQ_QUESTION_5: 'Czy mogę otrzymać darmowe XEM ?',
-        FAQ_ANSWER_5: 'Faucet NEM jest w tej chwili niedostępny, ale możesz odwiedzić forum NEM aby dowiedzieć się o dostępnych nagrodach za pomoc w testowaniu i programowaniu.',
-        FAQ_QUESTION_6: 'Gdzie znaleźć więcej informacji na temat NEM ?',
+        FAQ_ANSWER_5: 'Faucet PROXIMAX jest w tej chwili niedostępny, ale możesz odwiedzić forum PROXIMAX aby dowiedzieć się o dostępnych nagrodach za pomoc w testowaniu i programowaniu.',
+        FAQ_QUESTION_6: 'Gdzie znaleźć więcej informacji na temat PROXIMAX ?',
         FAQ_ANSWER_6_FORUM: 'Oficjalne forum',
         FAQ_ANSWER_6_WEBSITE: 'Oficjalna strona',
         FAQ_ANSWER_6_BTT: 'Oficjalny wątek BitcoinTalk',
@@ -789,7 +789,7 @@ function PolishProvider($translateProvider) {
         OFFLINE_TX_TITLE: 'Prepare an offline transaction',
         OFFLINE_TX_NO_WALLET: 'Please import a wallet from login module to see the form.',
         OFFLINE_TX_INFO_1: 'Make sure to be disconnected of internet when importing your wallet and creating the transaction!',
-        OFFLINE_TX_INFO_2: 'Only simple transactions can be created because a connection is needed to fetch mosaics and multisig information from NEM nodes.',
+        OFFLINE_TX_INFO_2: 'Only simple transactions can be created because a connection is needed to fetch mosaics and multisig information from PROXIMAX nodes.',
         OFFLINE_TX_INFO_3: 'After clicking the "create" button in the left panel, you will find the signed transaction below.',
         OFFLINE_TX_INFO_4: 'A signed transaction is immutable and will be effective only if released to the network before the default deadline of 24 hours.',
         OFFLINE_TX_SIGNED: 'Signed transaction',

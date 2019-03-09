@@ -4,9 +4,9 @@ function ChineseProvider($translateProvider) {
     $translateProvider.translations('cn', {
 
         // HEADER COMPONENT
-        WALLET_NAME_1: 'NEM',
+        WALLET_NAME_1: 'PROXIMAX',
         WALLET_NAME_2: 'Wallet',
-        APP_NAME_SUB: '安全界面正在连接NEM平台',
+        APP_NAME_SUB: '安全界面正在连接PROXIMAX平台',
         HEADER_LOGIN_BUTTON: '登录',
         HEADER_SIGNUP_BUTTON: '注册',
         HEADER_DASHBOARD: '仪表板',
@@ -32,7 +32,7 @@ function ChineseProvider($translateProvider) {
 
         // FOOTER COMPONENT
         FOOTER_POWERED_BY_1: '基于',
-        FOOTER_POWERED_BY_2: 'NEM技术实现.',
+        FOOTER_POWERED_BY_2: 'PROXIMAX技术实现.',
         FOOTER_VERSION: '版本',
 
         // DASHBOARD MODULE
@@ -56,7 +56,7 @@ function ChineseProvider($translateProvider) {
         DASHBOARD_MARKET_INFO_NOTE: '<a href="http://coinmarketcap.com/" target="_blank">CoinMarketCap</a> 数据每5分钟更新一次',
         DASHBOARD_NOTICE_1:  '欢迎来到 Nano Wallet Beta!',
         DASHBOARD_NOTICE_2: '请 <a href="https://github.com/NemProject/NanoWallet" target="_blank">在这里报告问题</a>',
-        DASHBOARD_NOTICE_3: 'NEM team 不对由于在主网上使用此应用程序而导致的任何资金损失负责，以及我们建议您首先在测试网上进行测试，以便先熟悉NanoWallet. 用户自己负责其资金并具有其私钥。.',
+        DASHBOARD_NOTICE_3: 'PROXIMAX team 不对由于在主网上使用此应用程序而导致的任何资金损失负责，以及我们建议您首先在测试网上进行测试，以便先熟悉NanoWallet. 用户自己负责其资金并具有其私钥。.',
         DASHBOARD_NOTICE_4: '如果您不确定您的所有资金是否安全，请勿使用该网络。我们建议在纸上写下私钥并将其存放在安全的地方。 此外，您可以将您的账户导入Lightwallet/NCC.',
         DASHBOARD_NOTICE_5: '感谢您的参与!',
 
@@ -286,7 +286,7 @@ function ChineseProvider($translateProvider) {
         MOSAIC_DEFINITION_INFORMATION_13: '支持百分比和绝对值两种征费类型。',
         MOSAIC_DEFINITION_INFORMATION_14: '征费已选择使用绝对值，它将不取决于传输的量。',
         MOSAIC_DEFINITION_INFORMATION_15: '征费已选择为百分比。费用将随传输的量线性增加。',
-        MOSAIC_DEFINITION_INFORMATION_16: '在NEM区块链上发送马赛克需要收费. 确切的费用根据其总数和在交易期间发送的数量计算.对于任何<b>小型商业马赛克</ b>的转让佣金为0.05 XEM. 这是一个可分割度为0且金额≤10000的马赛克.',
+        MOSAIC_DEFINITION_INFORMATION_16: '在PROXIMAX区块链上发送马赛克需要收费. 确切的费用根据其总数和在交易期间发送的数量计算.对于任何<b>小型商业马赛克</ b>的转让佣金为0.05 XEM. 这是一个可分割度为0且金额≤10000的马赛克.',
         MOSAIC_DEFINITION_INFORMATION_17: '如果您拥有100％的供应量，则可以通过使用相同的“namespace：mosaic”名称再次发送创建事务来覆盖所有马赛克属性.',
 
         // EDIT MOSAIC MODULE
@@ -315,7 +315,7 @@ function ChineseProvider($translateProvider) {
         NAMESPACE_PROVISION_RESTRICTIONS: '命名空间限制',
         NAMESPACE_PROVISION_INFORMATION_1: '命名空间所使用的长度和字符均存在限制。根命名空间长度限制为16个字符以内，二级命名空间长度限制为64个字符以内。有效的字符有：',
         NAMESPACE_PROVISION_INFORMATION_2: '命名空间的首个字符必须使用英文字母。 \'alice\'是有效命名空间，而 \'1alice\'不是。部分字符串被保留，不可用于命名空间的申请。不被允许的命名空间包含字符串如下：',
-        NAMESPACE_PROVISION_INFORMATION_3: '这个清单将可能会增加内容，请注意查看。 \'user.alice\' 和 \'alice.user\' 都不被NEM命名空间系统允许申请。命名空间最多可以被定义为三层，如\'gimre.metals.silver\' 有效，而 \'gimre.metals.silver.coin\' 无效。',
+        NAMESPACE_PROVISION_INFORMATION_3: '这个清单将可能会增加内容，请注意查看。 \'user.alice\' 和 \'alice.user\' 都不被PROXIMAX命名空间系统允许申请。命名空间最多可以被定义为三层，如\'gimre.metals.silver\' 有效，而 \'gimre.metals.silver.coin\' 无效。',
 
         // RENEW NAMESPACE MODULE
         RENEW_NS_TITLE: '更新命名空间',
@@ -358,13 +358,13 @@ function ChineseProvider($translateProvider) {
         ACCOUNT_PRIVATE_KEY_SHOW: '显示私钥',
         ACCOUNT_EXPORT_MOBILE: '导出至移动钱包',
         ACCOUNT_INFO_QR_BTN: '账户二维码',
-        ACCOUNT_WALLET_QR_BTN: 'NEMpay二维码',
+        ACCOUNT_WALLET_QR_BTN: 'PROXIMAXpay二维码',
         ACCOUNT_WALLET_QR_BTN_2: '移动钱包二维码',
         ACCOUNT_BACKUP_WALLET: '备份钱包',
         ACCOUNT_BACKUP_WALLET_NOTE: '备份您的钱包<b><u>非常重要</u></b>否则您将可能丢失账户',
         ACCOUNT_BACKUP_WALLET_DOWNLOAD: '下载钱包',
         ACCOUNT_INFO_QR_TITLE: '账户信息二维码',
-        ACCOUNT_WALLET_QR_NOTE: '这个二维码将被用于未推出的NEMpay移动应用',
+        ACCOUNT_WALLET_QR_NOTE: '这个二维码将被用于未推出的PROXIMAXpay移动应用',
         ACCOUNT_WALLET_QR_ANDROID_IOS_TITLE: '移动端钱包二维码',
         ACCOUNT_ADD_NEW_ACCOUNT_WARNING: '所有的账户均使用BIP32由主私钥获取，使用您的主私钥和密码您可以列出所有已导入其他账户信息。 <br><b><u>强烈建议</u></b>添加新账户后再次备份您的新账户私钥',
         ACCOUNT_CUSTOM_NODE: '使用自定义节点',
@@ -389,11 +389,11 @@ function ChineseProvider($translateProvider) {
         PORTAL_NS_TEXT: '命名空间是存储马赛克的域名，每个命名空间在区块链中唯一，可在多层子命名空间上定义和认证马赛克。',
         PORTAL_NS_BTN: '创建命名空间',
         PORTAL_MOSAIC_TITLE: '马赛克',
-        PORTAL_MOSAIC_TEXT: 'NEM马赛克是具备丰富属性和功能的智能资产。如需创建马赛克，必须为账户置备根命名空间。',
+        PORTAL_MOSAIC_TEXT: 'PROXIMAX马赛克是具备丰富属性和功能的智能资产。如需创建马赛克，必须为账户置备根命名空间。',
         PORTAL_MOSAIC_BTN_1: '创建马赛克',
         PORTAL_MOSAIC_BTN_2: '编辑马赛克',
         PORTAL_APOSTILLE_TITLE: 'Apostille',
-        PORTAL_APOSTILLE_TEXT: '使用NEM Apostille服务创建区块链公证时间戳,跟踪和审计文件认证状态。',
+        PORTAL_APOSTILLE_TEXT: '使用PROXIMAX Apostille服务创建区块链公证时间戳,跟踪和审计文件认证状态。',
         PORTAL_APOSTILLE_BTN_1: '创建',
         PORTAL_APOSTILLE_BTN_2: '审计',
         PORTAL_ADDRESS_BOOK_TEXT: ' 将标签分配给地址以轻松跟踪联系人.',
@@ -472,7 +472,7 @@ function ChineseProvider($translateProvider) {
         APOSTILLE_INFORMATION_5: '对于选择了“私人，传输和更新”选项的多重签名合同中的帐户，签名发起人的私钥用于对哈希进行签名并创建分层账户, 而不是多重签名的母账户.',
         APOSTILLE_INFORMATION_6: '分层账户是一个特殊帐户，由文件名称的哈希创建，然后使用您的私钥签名.在此过程中创建的哈希用于创建第二个私钥. 该私钥在文件的块中标记; 此技术属区块链应用创新，仅在Apostille中存在. ',
         APOSTILLE_INFORMATION_7: '特殊的分层帐户允许您存储文件的原始哈希并将其更新到特殊帐户.如果选择<b>公共<b />，交易将转到公共账户（默认）.',
-        APOSTILLE_INFORMATION_8: '交易完成后，下载档案. 存档包含您的签名文件，此文件包含Apostille证书以及新的或更新的* .nty文件，文件名中存在NEM线程中跟踪您的时间戳记.',
+        APOSTILLE_INFORMATION_8: '交易完成后，下载档案. 存档包含您的签名文件，此文件包含Apostille证书以及新的或更新的* .nty文件，文件名中存在PROXIMAX线程中跟踪您的时间戳记.',
         APOSTILLE_NO_NTY: '没有加载nty文件，请点击这里导入或自动生成。',
         APOSTILLE_IMPORT_FILES: '导入文件',
         APOSTILLE_CREATE_TEXT: '创建字符文档',
@@ -666,9 +666,9 @@ function ChineseProvider($translateProvider) {
         SIGNUP_BRAIN_WALLET_BUTTON: '创建脑钱包',
         SIGNUP_CREATE_WALLET_WARNING: '请参阅获知客户端生成密钥的<a href="https://www.w3.org/TR/2014/WD-WebCryptoAPI-20140325/#RandomSource-interface" rel="nofollow" target="_blank">风险</a>。',
         SIGNUP_NETWORK_SELECT: '选择网络', //
-        SIGNUP_NETWORK_MAINNET: 'Mainnet 是 <b> <u>真正的</ u> </ b> NEM网络. 地址以\'N \'开头.',
+        SIGNUP_NETWORK_MAINNET: 'Mainnet 是 <b> <u>真正的</ u> </ b> PROXIMAX网络. 地址以\'N \'开头.',
         SIGNUP_NETWORK_TESTNET: 'Testnet 是 <b><u>实验</u></b> 网络. 地址以 \'T\'开头.',
-        SIGNUP_NETWORK_MIJIN: 'Mijin是NEM的私人版本. 地址以 \'M\'开头.',
+        SIGNUP_NETWORK_MIJIN: 'Mijin是PROXIMAX的私人版本. 地址以 \'M\'开头.',
         SIGNUP_BRAIN_WALLET_WARNING: '请阅读脑钱包的<a href="https://en.bitcoin.it/wiki/Brainwallet" rel="nofollow" target="_blank">风险</a>。脑钱包只使用hash处理的单一密码作为私钥，长期或不当使用会导致失窃。使用中选择一个安全的密码至关重要。 请遵从<a href="https://xkcd.com/936/" rel="nofollow" target="_blank">XKCD #936</a>国际密码安全标准。',
         SIGNUP_PRIVATE_KEY_WALLET_WARNING: '脑钱包只使用hash处理的单一密码作为私钥，长期或不当使用会导致失窃。使用中选择一个安全的密码至关重要。',
         SIGNUP_CREATE_START_WARNING: '请仔细按照每一步!',
@@ -711,10 +711,10 @@ function ChineseProvider($translateProvider) {
         FAQ_QUESTION_3: '我为何已经拥有了马赛克？',
         FAQ_ANSWER_3: '每个用户都拥有nem作为命名空间，以及xem作为马赛克。数字货币XEM也是马赛克的一种，即使您的余额为0，您仍拥有"nem:xem"命名空间。',
         FAQ_QUESTION_4: '未来计划?',
-        FAQ_ANSWER_4: '当前的计划是集成所有的NEM客户端的功能，并将提供接口使得将来的社区开发项目能够在该钱包中使用。',
+        FAQ_ANSWER_4: '当前的计划是集成所有的PROXIMAX客户端的功能，并将提供接口使得将来的社区开发项目能够在该钱包中使用。',
         FAQ_QUESTION_5: '我可以免费获得XEM吗？',
-        FAQ_ANSWER_5: 'NEM水龙站目前关闭，但您可以在论坛中接受赏金项目以获取大量XEM',
-        FAQ_QUESTION_6: '如何获取关于NEM的更多信息？',
+        FAQ_ANSWER_5: 'PROXIMAX水龙站目前关闭，但您可以在论坛中接受赏金项目以获取大量XEM',
+        FAQ_QUESTION_6: '如何获取关于PROXIMAX的更多信息？',
         FAQ_ANSWER_6_FORUM: '官方论坛',
         FAQ_ANSWER_6_WEBSITE: '官方网站',
         FAQ_ANSWER_6_BTT: '官方BTT帖子',
@@ -780,7 +780,7 @@ function ChineseProvider($translateProvider) {
         OFFLINE_TX_TITLE: '准备离线交易',
         OFFLINE_TX_NO_WALLET: '请从登录模块导入钱包以查看表单.',
         OFFLINE_TX_INFO_1: '确保在导入钱包并创建交易时断开互联网连接!',
-        OFFLINE_TX_INFO_2: '由于需要连接才能从NEM节点获取马赛克和多重信息，因此只能创建简单的事务.',
+        OFFLINE_TX_INFO_2: '由于需要连接才能从PROXIMAX节点获取马赛克和多重信息，因此只能创建简单的事务.',
         OFFLINE_TX_INFO_3: '点击左侧面板中的“创建”按钮后，下面您会找到签名的交易.',
         OFFLINE_TX_INFO_4: '已签名的交易是不可变的，并且只有在24小时的默认截止日期之前发布到网络才会生效.',
         OFFLINE_TX_SIGNED: '已签名的交易',
@@ -799,7 +799,7 @@ function ChineseProvider($translateProvider) {
 
         // IMPORT WALLET QRCODE
         IMPORT_WALLET_QRCODE_TITLE: 'Import wallet QR code',
-        IMPORT_WALLET_QRCODE_INFORMATION: '支持导入钱包类型: NEM微信钱包, 苹果钱包, 安卓钱包．',
+        IMPORT_WALLET_QRCODE_INFORMATION: '支持导入钱包类型: PROXIMAX微信钱包, 苹果钱包, 安卓钱包．',
         IMPORT_WALLET_QRCODE_LOAD: 'Load wallet QR code',
         IMPORT_WALLET_QRCODE_SCAN: 'Scan',
         IMPORT_WALLET_QRCODE_STOP_SCAN: 'Stop scan'
