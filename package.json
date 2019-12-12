@@ -42,7 +42,7 @@
     "ngstorage": "0.3.10",
     "nw": "^0.26.6",
     "nw-builder": "^3.4.1",
-    "url-parse": "1.1.9",
+    "url-parse": "1.4.7",
     "vinyl-source-stream": "^1.1.0",
     "zxcvbn": "4.4.2"
   },
