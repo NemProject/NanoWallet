@@ -1,6 +1,17 @@
 import angular from 'angular';
 
 // Create the module where our functionality can attach to
+let AlfacashierModule = angular.module('app.alfacashier', []);
+
+// Include our UI-Router config settings
+import AlfacashierConfig from './alfacashier/alfacashier.config';
+AlfacashierModule.config(AlfacashierConfig);
+
+// Controllers
+import AlfacashierCtrl from './alfacashier/alfacashier.controller';
+AlfacashierModule.controller('AlfacashierCtrl', AlfacashierCtrl);
+
+// Create the module where our functionality can attach to
 let ChangellyModule = angular.module('app.changelly', []);
 
 // Include our UI-Router config settings
@@ -22,4 +33,5 @@ ShapeshiftModule.config(ShapeshiftConfig);
 import ShapeshiftCtrl from './shapeshift/shapeshift.controller';
 ShapeshiftModule.controller('ShapeshiftCtrl', ShapeshiftCtrl);
 
-export default ChangellyModule;
+export { AlfacashierModule as default, ChangellyModule };
+
