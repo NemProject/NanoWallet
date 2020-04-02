@@ -86,6 +86,7 @@ const requires = [
     'chart.js',
     'pascalprecht.translate',
     'app.lang',
+    'app.alfacashier',
     'app.changelly',
     'app.addressBook',
     'app.importanceTransfer',

@@ -1194,6 +1194,24 @@ textarea {
   }
 }
 
+/*** ALFACASHIER WIDGET ***/
+  #alfacashierwidget {
+    margin-top: $pad * 3;
+  }
+.explorer-home-page, .explorer-apostilles, .explorer-namespaces-mosaics-page, .explorer-accounts, explorer-transactions {
+  overflow: hidden;
+  li {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.explorerNav {
+  li {
+    overflow: visible;
+  }
+}
+
 /*** CHANGELLY WIDGET ***/
   #changwidget {
     margin-top: $pad * 3;

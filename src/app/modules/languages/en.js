@@ -382,7 +382,7 @@ function EnglishProvider($translateProvider) {
         PORTAL_HARVESTING_TITLE: 'Delegated Harvesting',
         PORTAL_HARVESTING_TEXT: 'Delegated harvesting is the feature that allows "mining" even while your account is closed.',
         PORTAL_EXCHANGE_TITLE: 'Instant Exchanges',
-        PORTAL_EXCHANGE_TEXT: 'Use Changelly widget to buy XEM at the best rates!',
+        PORTAL_EXCHANGE_TEXT: 'Use ALFAcashier widget or Changelly widget to buy XEM at the best rates!',
         PORTAL_EXCHANGE_BTN: 'Buy XEM',
         PORTAL_NS_TITLE: 'Namespaces & Subdomains',
         PORTAL_NS_TEXT: 'Namespaces are domain names. Each namespace is unique and authenticates mosaics (assets) issued on it or on its subdomains.',
