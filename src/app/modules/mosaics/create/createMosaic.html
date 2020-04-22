@@ -35,7 +35,7 @@
                 <span class="input-group-btn">
                   <label for="namespaceParent" class="control-label">{{ 'MOSAIC_DEFINITION_PARENT' | translate }}:</label>
                 </span>
-                <select class="form-control" ng-options="namespace.fqn for namespace in $ctrl.namespaceOwned track by namespace.fqn" ng-model="$ctrl.formData.namespaceParent">
+                <select class="form-control" ng-options="namespace.fqn for namespace in $ctrl.namespaceOwned track by namespace.fqn" ng-model="$ctrl.formData.namespaceParent" ng-change="$ctrl.updateLevyMosaic($ctrl.hasLevy, $ctrl.levyInNewlyCreatedMosaic)">
                 </select>
               </div>
             </div>
@@ -144,7 +144,7 @@
                 <label for="box3" class="col-md-12 control-label">{{ 'MOSAIC_DEFINITION_TRANSFERABLE' | translate }}</label>
                 <input id="box4" type="checkbox" ng-model="$ctrl.formData.properties.supplyMutable">
                 <label for="box4" class="col-md-12 control-label">{{ 'MOSAIC_DEFINITION_MUTABLE_SUPPLY' | translate }}</label>
-                <input id="box5" type="checkbox" ng-model="$ctrl.hasLevy" ng-change="$ctrl.updateLevyMosaic($ctrl.hasLevy)">
+                <input id="box5" type="checkbox" ng-model="$ctrl.hasLevy" ng-change="$ctrl.updateLevyMosaic($ctrl.hasLevy, $ctrl.levyInNewlyCreatedMosaic)">
                 <label for="box5" class="col-md-12 control-label">{{ 'MOSAIC_DEFINITION_REQUIRES_LEVY' | translate }}</label>
               </fieldset>
             </div>
@@ -190,13 +190,21 @@
             <div class="panel-body">
               <div class="row">
 
+                <!-- Levy in newly created mosaic -->
+                <div class="col-md-12">
+                  <fieldset class="form-group row mosaicCheckboxes">
+                    <input id="box6" type="checkbox" ng-model="$ctrl.levyInNewlyCreatedMosaic" ng-change="$ctrl.updateLevyMosaic(true, $ctrl.levyInNewlyCreatedMosaic)">
+                    <label for="box6" class="col-md-12 control-label">{{ 'MOSAIC_DEFINITION_LEVY_IS_NEW_MOSAIC' | translate }}</label>
+                  </fieldset>
+                </div>
                 <div class="col-md-12">
                   <fieldset class="form-group">
                     <div class="input-group">
                       <span class="input-group-btn">
                         <label>{{ 'MOSAIC_DEFINITION_LEVY_SELECT_MOSAIC' | translate }}: </label>
                       </span>
-                      <select class="form-control" ng-options="mosaicName for mosaicName in $ctrl.currentAccountMosaicNames" ng-model="$ctrl.selectedMosaic" ng-change="$ctrl.updateLevyMosaic(true)"></select>
+                      <span class="form-control" readOnly ng-show="$ctrl.levyInNewlyCreatedMosaic">{{ $ctrl.formData.namespaceParent.fqn }}:{{ $ctrl.formData.mosaicName }}</span>
+                      <select class="form-control" ng-hide="$ctrl.levyInNewlyCreatedMosaic" ng-options="mosaicName for mosaicName in $ctrl.currentAccountMosaicNames" ng-model="$ctrl.selectedMosaic" ng-change="$ctrl.updateLevyMosaic(true, false)"></select>
                     </div>
                   </fieldset>
                 </div>
@@ -220,7 +228,16 @@
                       </span>
                       <div class="form-control formFloat">
                         <input class="levy" type="number" ng-model="$ctrl.formData.levy.fee" min="0" max="9000000000">
-                        <label class="floatRight">{{ $ctrl.selectedMosaic }} (μ)</label>
+                        <span class="floatRight" ng-show="! $ctrl.levyInNewlyCreatedMosaic">
+                          <label>{{ $ctrl.selectedMosaic }}</label>
+                          <label ng-show="$ctrl.formData.levy.feeType===1">{{['','(×0.1)','(×0.01)','(×0.001)','(×0.0001)','(×0.00001)','(μ)'][$ctrl.selectedMosaicDivisibility()]}}</label>
+                          <label ng-show="$ctrl.formData.levy.feeType===2">(×0.01 %)</label>
+                        </span>
+                        <span class="floatRight" ng-show="$ctrl.levyInNewlyCreatedMosaic">
+                          <label>{{ $ctrl.formData.namespaceParent.fqn }}:{{ $ctrl.formData.mosaicName }}</label>
+                          <label ng-show="$ctrl.formData.levy.feeType===1">{{['','(×0.1)','(×0.01)','(×0.001)','(×0.0001)','(×0.00001)','(μ)'][$ctrl.formData.properties.divisibility]}}</label>
+                          <label ng-show="$ctrl.formData.levy.feeType===2">(×0.01 %)</label>
+                        </span>
                       </div>
                     </div>
                   </fieldset>
@@ -245,22 +262,40 @@
 
               <!-- Levy fee examples -->
               <div class="panel-footer bg-info">
-                <div ng-show="$ctrl.formData.levy.feeType === 1">
+                <div ng-show="$ctrl.formData.levy.feeType === 1 && ! $ctrl.levyInNewlyCreatedMosaic">
                   {{ 'MOSAIC_DEFINITION_LEVY_FEE_TYPE_1_NOTE' | translate }}
                   <strong>{{($ctrl.formData.levy.fee | fmtSupply:$ctrl.mosaicOwned[$ctrl.selectedMosaic].mosaicId:$ctrl._DataStore.mosaic.metaData)[0]}}</strong>
                   <span class="text-muted">.{{($ctrl.formData.levy.fee | fmtSupply:$ctrl.mosaicOwned[$ctrl.selectedMosaic].mosaicId:$ctrl._DataStore.mosaic.metaData)[1]}}</span> {{$ctrl.selectedMosaic}}
                 </div>
-                <div ng-show="$ctrl.formData.levy.feeType === 2">
+                <div ng-show="$ctrl.formData.levy.feeType === 1 && $ctrl.levyInNewlyCreatedMosaic">
+                  {{ 'MOSAIC_DEFINITION_LEVY_FEE_TYPE_1_NOTE' | translate }}
+                  <strong>{{($ctrl.formData.levy.fee | fmtSupplyRaw:$ctrl.formData.properties.divisibility)[0]}}</strong>
+                  <span class="text-muted">.{{ ($ctrl.formData.levy.fee | fmtSupplyRaw:$ctrl.formData.properties.divisibility)[1]}}</span> {{$ctrl.formData.namespaceParent.fqn}}:{{$ctrl.formData.mosaicName}}
+                </div>
+                <div ng-show="$ctrl.formData.levy.feeType === 2 && ! $ctrl.levyInNewlyCreatedMosaic">
                   {{ 'MOSAIC_DEFINITION_LEVY_FEE_TYPE_2_NOTE' | translate }}
                   <ul style="list-style:none">
-                     <li ng-repeat="amountSend in [100, 1000, 3145, 10000, $ctrl.formData.properties.initialSupply] track by $index">
+                    <li ng-repeat="amountSend in [100, 1000, 3145, 10000, $ctrl.formData.properties.initialSupply] track by $index">
                         {{ 'MOSAIC_DEFINITION_LEVY_FEE_TYPE_2_NOTE_2' | translate }}
-                        <strong>{{(amountSend | fmtSupplyRaw:$ctrl.formData.properties.divisibility)[0]}}</strong>
-                        <span class="text-muted">.{{(amountSend | fmtSupplyRaw:$ctrl.formData.properties.divisibility)[1]}}</span>
+                        <strong>{{(amountSend*$ctrl.Math.pow(10, $ctrl.selectedMosaicDivisibility()) | fmtSupplyRaw:$ctrl.selectedMosaicDivisibility())[0]}}</strong>
+                        <span class="text-muted">.{{(amountSend*$ctrl.Math.pow(10, $ctrl.selectedMosaicDivisibility()) | fmtSupplyRaw:$ctrl.selectedMosaicDivisibility())[1]}}</span>
                         <span class="text-muted">{{$ctrl.formData.namespaceParent.fqn}}:</span>{{$ctrl.formData.mosaicName}} {{ 'MOSAIC_DEFINITION_LEVY_FEE_TYPE_2_NOTE_3' | translate }}
-                        <strong>{{( (amountSend * $ctrl.formData.levy.fee / 10000) | fmtSupply:$ctrl.mosaicOwned[$ctrl.selectedMosaic].mosaicId:$ctrl._DataStore.mosaic.metaData)[0]}}</strong>
-                        <span class="text-muted">.{{( (amountSend * $ctrl.formData.levy.fee / 10000) | fmtSupply:$ctrl.mosaicOwned[$ctrl.selectedMosaic].mosaicId:$ctrl._DataStore.mosaic.metaData)[1]}}</span> {{$ctrl.selectedMosaic}}
-                     </li>
+                        <strong>{{( (amountSend * $ctrl.Math.pow(10, $ctrl.selectedMosaicDivisibility()) * $ctrl.formData.levy.fee / 10000) | fmtSupply:$ctrl.mosaicOwned[$ctrl.selectedMosaic].mosaicId:$ctrl._DataStore.mosaic.metaData)[0]}}</strong>
+                        <span class="text-muted">.{{((amountSend * $ctrl.Math.pow(10, $ctrl.selectedMosaicDivisibility()) * $ctrl.formData.levy.fee / 10000) | fmtSupply:$ctrl.mosaicOwned[$ctrl.selectedMosaic].mosaicId:$ctrl._DataStore.mosaic.metaData)[1]}}</span> {{$ctrl.selectedMosaic}}
+                    </li>
+                  </ul>
+                </div>
+                <div ng-show="$ctrl.formData.levy.feeType === 2 && $ctrl.levyInNewlyCreatedMosaic">
+                  {{ 'MOSAIC_DEFINITION_LEVY_FEE_TYPE_2_NOTE' | translate }}
+                  <ul style="list-style:none">
+                    <li ng-repeat="amountSend in [100, 1000, 3145, 10000, $ctrl.formData.properties.initialSupply] track by $index">
+                        {{ 'MOSAIC_DEFINITION_LEVY_FEE_TYPE_2_NOTE_2' | translate }}
+                        <strong>{{(amountSend*$ctrl.Math.pow(10, $ctrl.formData.properties.divisibility) | fmtSupplyRaw:$ctrl.formData.properties.divisibility)[0]}}</strong>
+                        <span class="text-muted">.{{(amountSend*$ctrl.Math.pow(10, $ctrl.formData.properties.divisibility) | fmtSupplyRaw:$ctrl.formData.properties.divisibility)[1]}}</span>
+                        <span class="text-muted">{{$ctrl.formData.namespaceParent.fqn}}:</span>{{$ctrl.formData.mosaicName}} {{ 'MOSAIC_DEFINITION_LEVY_FEE_TYPE_2_NOTE_3' | translate }}
+                        <strong>{{( (amountSend * $ctrl.Math.pow(10, $ctrl.formData.properties.divisibility) * $ctrl.formData.levy.fee / 10000) | fmtSupplyRaw:$ctrl.formData.properties.divisibility)[0]}}</strong>
+                        <span class="text-muted">.{{((amountSend * $ctrl.Math.pow(10, $ctrl.formData.properties.divisibility) * $ctrl.formData.levy.fee / 10000) | fmtSupplyRaw:$ctrl.formData.properties.divisibility)[1]}}</span> {{$ctrl.formData.namespaceParent.fqn}}:{{$ctrl.formData.mosaicName}}
+                    </li>
                   </ul>
                 </div>
               </div>

@@ -263,6 +263,7 @@ function GermanProvider($translateProvider) {
         MOSAIC_DEFINITION_REQUIRES_LEVY: 'Benötigt Levy',
         MOSAIC_DEFINITION_LEVY_LIMITATION: 'Einschränkung der UI: Momentan können nur Mosaike als Levy verwendet werden die sich im eigenen Besitz befinden.',
         MOSAIC_DEFINITION_LEVY_SELECT_MOSAIC: 'Levy Mosaik auswählen',
+        MOSAIC_DEFINITION_LEVY_IS_NEW_MOSAIC: 'Das neue Mosaik benutzen',
         MOSAIC_DEFINITION_LEVY_ADDRESS: 'Levy Adresse',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE: 'Gebührentyp',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE_1: 'Absolut',

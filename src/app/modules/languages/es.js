@@ -259,6 +259,7 @@ function SpanishProvider($translateProvider) {
         MOSAIC_DEFINITION_REQUIRES_LEVY: 'Impuesto requerido',
         MOSAIC_DEFINITION_LEVY_LIMITATION: 'Limitación de la interfaz de usuario: en este momento, solo los mosaicos en propiedad pueden ser usados como un impuesto.',
         MOSAIC_DEFINITION_LEVY_SELECT_MOSAIC: 'Seleccionar el mosaico del impuesto',
+        MOSAIC_DEFINITION_LEVY_IS_NEW_MOSAIC: 'Usar el mosaico nuevo',
         MOSAIC_DEFINITION_LEVY_ADDRESS: 'Dirección de impuesto',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE: 'Tipo de tarifa',
         MOSAIC_DEFINITION_LEVY_FEE_TYPE_1: 'Fija',
