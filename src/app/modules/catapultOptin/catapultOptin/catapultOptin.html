@@ -38,13 +38,13 @@
         </div>
 
         <!-- STEP 1.0: ENTROPY -->
-        <div class="row container-div" ng-show="$ctrl.step == 10">
+        <div class="row container-div" ng-show="$ctrl.step == 10 && $ctrl._Wallet.algo != 'ledger'">
             <div class="col-md-12">
                 <img src="images/account.png">
                 <h1>{{'CREATE_SYMBOL_ACCOUNT' | translate}}</h1>
             </div>
         </div>
-        <div class="row text-center" ng-show="$ctrl.step == 10">
+        <div class="row text-center" ng-show="$ctrl.step == 10 && $ctrl._Wallet.algo != 'ledger'">
             <div class="col-md-12 centered-col" style="margin-bottom: 50px;">
                 <img src="images/logo_white.png" style="width: 15%;">
             </div>
@@ -77,6 +77,49 @@
             </div>
         </div>
 
+        <!-- STEP 1.0.1: LEDGER - SYMBOL ACCOUNT -->
+        <div class="row container-div" ng-show="$ctrl.step == 10 && $ctrl._Wallet.algo == 'ledger'">
+            <div class="col-md-12">
+                <img src="images/account.png">
+                <h1>{{'CREATE_SYMBOL_ACCOUNT' | translate}}</h1>
+            </div>
+        </div>
+        <div class="row text-center" ng-show="$ctrl.step == 10 && $ctrl._Wallet.algo == 'ledger'">
+            <div class="col-md-12 centered-col" style="margin-bottom: 50px;">
+                <img src="images/logo_white.png" style="width: 15%;">
+            </div>
+
+            <div class="col-md-12 text-center">
+                <!-- Entropy info -->
+                <div>
+                    <p>{{'LEDGER_CREATE_AND_EXPORT_SYMBOL_ADDRESS' | translate}}</p>
+                    <p><b>{{'SWAP_TO_SYMBOL_BOLOS_APP' | translate}}</b></p>
+                </div>
+                <div class="mt-4">
+                    <div class="row">
+                        <p ng-show="$ctrl.loadingSymbolLedgerInfo">{{ 'EXPORTING_ADDRESS_FOLLOW_INSTRUCTIONS' | translate }}</p>
+                        <button class="btn symbol-button" ng-click="$ctrl.exportSymbolAddress()" ng-show="!$ctrl.loadingSymbolLedgerInfo && !$ctrl.formData.optinAddress"> {{ 'GENERAL_START' | translate }}</button>
+                        <div class="form-group" ng-show="$ctrl.formData.optinAddress">
+                            <p>{{ 'YOUR_SYMBOL_ADDRESS' | translate }}</p>
+                            <label class="text-center optin-label-form">{{ $ctrl.formData.optinAddress }}</label>
+                            <img ng-click="$ctrl.copyToClipboard($ctrl.formData.optinAddress);" src="images/Clipboard.png" class="clipboard-icon">
+                        </div>
+                    </div>
+                </div>
+                <!-- Wallet type buttons -->
+                <div class="col-md-6 col-md-offset-3 mt-4" ng-show="$ctrl.formData.optinAddress">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn symbol-button" style="float:right;" ng-click="$ctrl.step = 0;"><span class="fa fa-chevron-left" aria-hidden="true"></span> {{ 'GENERAL_BACK' | translate }}</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn symbol-button" style="float:left;" ng-show="$ctrl.formData.optinAddress" ng-click="$ctrl.step = 4">{{ 'GENERAL_NEXT' | translate }} <span class="fa fa-chevron-right" aria-hidden="true"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- STEP 1.1: YOUR SYMBOL ACCOUNT -->
         <div class="row container-div" ng-show="$ctrl.step == 11">
             <div class="col-md-12">
@@ -92,7 +135,7 @@
                 <img ng-click="$ctrl.copyToClipboard($ctrl.formData.optinAddress);" src="images/Clipboard.png" class="clipboard-icon">
             </div>
 
-            <div class="form-group" style="margin-bottom: 4em;">
+            <div class="form-group" style="margin-bottom: 4em;" ng-show="$ctrl.formData.optinMnemonic">
                 <p>{{ 'YOUR_SYMBOL_MNEMONIC' | translate }}</p>
                 <label class="text-center optin-label-form">{{ $ctrl.formData.optinMnemonic }}</label>
                 <img ng-click="$ctrl.copyToClipboard($ctrl.formData.optinMnemonic);" src="images/Clipboard.png" class="clipboard-icon">
@@ -103,7 +146,6 @@
                 <a class="btn symbol-button" id="downloadWallet" ng-click="$ctrl.step = $ctrl.skipNamespaces ? 3: 2"><span class="fa fa-download" aria-hidden="true"></span> {{ 'SIGNUP_COMMON_WALLET_WARNING_DOWNLOAD' | translate }}</a>
             </div>
         </div>
-
 
         <!-- STEP 1.2: PASSWORD TO BACKUP -->
         <div class="row container-div" ng-show="$ctrl.step == 12">
@@ -268,7 +310,7 @@
                     <div class="row">
 
                         <div class="col-md-6">
-                            <button class="btn symbol-button symbol-button__block" style="float:right;" ng-click="$ctrl.step = 3;  $ctrl.formData.backupConfirm = false; $ctrl.formData.understandConfirm = false; $ctrl.formData.acceptTerms = false;"> <span class="fa fa-chevron-left" aria-hidden="true"></span> {{ 'GENERAL_BACK' | translate }}</button>
+                            <button class="btn symbol-button symbol-button__block" style="float:right;" ng-click="$ctrl.step = $ctrl._Wallet.algo ? 10: 3;  $ctrl.formData.backupConfirm = false; $ctrl.formData.understandConfirm = false; $ctrl.formData.acceptTerms = false;"> <span class="fa fa-chevron-left" aria-hidden="true"></span> {{ 'GENERAL_BACK' | translate }}</button>
                         </div>
                         <div class="col-md-6">
                             <button class="btn symbol-button symbol-button__block" style="float:left; background: rgb(255,0,255);
@@ -301,7 +343,7 @@ background: linear-gradient(42deg, rgba(255,0,255,1) 0%, rgba(255,255,255,1) 100
                     <p>{{ 'YOUR_SYMBOL_ADDRESS' | translate }}</p>
                     <label class="text-center optin-label-form" style="width: 100%;">{{$ctrl.formData.optinAddress}}</label>
                 </div>
-                <div class="mt-4">
+                <div class="mt-4" ng-show="$ctrl.formData.optinMnemonic">
                     <p>{{ 'YOUR_SYMBOL_MNEMONIC' | translate }}</p>
                     <label class="text-center optin-label-form" style="width: 100%;">{{$ctrl.formData.optinMnemonic}}</label>
                 </div>

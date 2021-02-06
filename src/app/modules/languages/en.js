@@ -992,8 +992,11 @@ function EnglishProvider($translateProvider) {
         CREATE_SYMBOL_ACCOUNT: 'Create your Symbol account',
         OPTIN_SYMBOL_READY: 'Your Symbol account is ready',
         OPTIN_COPY_SUCCESS: 'Copied!',
-        CATAPULT_OPT_IN_ERROR_TOO_MUCH_COSIGNATORIES: 'This account has more than 8 cosignatories. Opt In protocol only allows multisig accounts with less than 9 cosignatories'
+        CATAPULT_OPT_IN_ERROR_TOO_MUCH_COSIGNATORIES: 'This account has more than 8 cosignatories. Opt In protocol only allows multisig accounts with less than 9 cosignatories',
 
+        LEDGER_CREATE_AND_EXPORT_SYMBOL_ADDRESS: 'You must create a symbol account on ledger to receive the funds',
+        EXPORTING_ADDRESS_FOLLOW_INSTRUCTIONS: 'Exporting address, follow instructions on your ledger device',
+        SWAP_TO_SYMBOL_BOLOS_APP: 'Open the Symbol app on ledger',
     });
 }
 

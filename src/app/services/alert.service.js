@@ -588,6 +588,13 @@ export default class Alert {
         });
     }
 
+    ledgerNotUsingSymbolApp() {
+        this._ngToast.create({
+            content: this._$filter('translate')('NANO_LEDGER_NOT_USING_SYMBOL_APP'),
+            className: 'danger'
+        });
+    }
+
     ledgerNotSupportApp() {
         this._ngToast.create({
             content: this._$filter('translate')('NANO_LEDGER_NOT_SUPPORTED_APP'),

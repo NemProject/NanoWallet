@@ -1,6 +1,7 @@
 import nem from "nem-sdk";
 const TransportNodeHid = window['TransportNodeHid'] && window['TransportNodeHid'].default;
 import NemH from "./hw-app-nem";
+import SymbolH from "./hw-app-symbol";
 const SUPPORT_VERSION = {
     LEDGER_MAJOR_VERSION: 0,
     LEDGER_MINOR_VERSION: 0,
@@ -37,7 +38,7 @@ class Ledger {
     /**
      * Pop-up alert handler
      */
-    alertHandler(inputErrorCode, isTxSigning, txStatusText) {
+    alertHandler(inputErrorCode, isTxSigning, txStatusText, isSymbol) {
         switch (inputErrorCode) {
             case 'NoDevice':
                 this._Alert.ledgerDeviceNotFound();
@@ -49,7 +50,11 @@ class Ledger {
                 this._Alert.ledgerNotOpenApp();
                 break;
             case 27264:
-                this._Alert.ledgerNotUsingNemApp();
+                if (isSymbol) {
+                    this._Alert.ledgerNotUsingSymbolApp();
+                } else {
+                    this._Alert.ledgerNotUsingNemApp();
+                }
                 break;
             case 27013:
                 isTxSigning ? this._Alert.ledgerTransactionCancelByUser() : this._Alert.ledgerRequestCancelByUser();
@@ -140,6 +145,21 @@ class Ledger {
         });
     }
 
+    showSymbolAccount(account) {
+        alert("Please check your Ledger device!");
+        this._Alert.ledgerFollowInstruction();
+        return new Promise((resolve, reject) => {
+            this.getSymbolAccount(account.hdKeypath, account.network).then((result) => {
+                resolve(result.publicKey);
+            }).catch(e => {
+                this._$timeout(() => {
+                    this.alertHandler(e, undefined, undefined, true);
+                    reject(e);
+                });
+            });
+        });
+    }
+
     async getAccount(hdKeypath, network, label) {
         try {
             const transport = await TransportNodeHid.open("");
@@ -160,6 +180,28 @@ class Ledger {
                         "publicKey": result.publicKey
                     }
                 );
+            } catch (err) {
+                throw err
+            } finally {
+                transport.close();
+            }
+        } catch (err) {
+            if (err.statusCode != null) {
+                return Promise.reject(err.statusCode);
+            } else if (err.id != null) {
+                return Promise.reject(err.id);
+            } else {
+                return Promise.reject(err);
+            }
+        }
+    }
+
+    async getSymbolAccount(hdKeypath, network) {
+        try {
+            const transport = await TransportNodeHid.open("");
+            const symbolH = new SymbolH(transport);
+            try {
+                return await symbolH.getAccount(hdKeypath, network, true);
             } catch (err) {
                 throw err
             } finally {

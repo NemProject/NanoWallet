@@ -72,6 +72,20 @@ class CatapultOptin {
         };
     }
 
+    getSymbolOptInAddress(hdPath) {
+        const config = this.getOptinConfig();
+        return new Promise((resolve, reject) => {
+            this._Ledger.showSymbolAccount({ hdKeypath: hdPath, network: config.CATNetwork })
+                .then(publicKey => {
+                    const publicAccount = PublicAccount.createFromPublicKey(publicKey, config.CATNetwork);
+                    resolve(publicAccount);
+                }).catch(e => {
+                    console.log(e);
+                    reject(e);
+            })
+        });
+    }
+
     getNormalCache(account, forceRefresh = false) {
         return new Promise(resolve => {
             if (!this.normalCaches[account.account.address] || forceRefresh) {

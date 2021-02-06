@@ -100,6 +100,26 @@ class NormalOptInCtrl {
         this.statusLoading = true;
         this.isOptedIn = false;
         this.optinStopped = false;
+
+        this.loadingSymbolLedgerInfo = false;
+    }
+
+    exportSymbolAddress() {
+        this.loadingSymbolLedgerInfo = true;
+        this._CatapultOptin.getSymbolOptInAddress(DEFAULT_ACCOUNT_PATH).then( publicAccount => {
+            this.loadingSymbolLedgerInfo = false;
+            this.formData.optinAddress = publicAccount.address.pretty();
+            this.formData.optinAccount = {
+                address: publicAccount.address,
+                keyPair: {
+                    publicKey: publicAccount.publicKey
+                },
+                publicAccount,
+            };
+        }).catch(e => {
+            this.loadingSymbolLedgerInfo = false;
+            console.log(e);
+        });
     }
 
     /**
@@ -304,6 +324,7 @@ class NormalOptInCtrl {
 
     getEntropy() {
         // Prepare
+        if (this._Wallet.algo) return;
         let elem = document.getElementById("pBarOptIn");
         this.formData.entropyWidth = 0;
         this.formData.entropy = "";
