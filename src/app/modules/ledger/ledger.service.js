@@ -219,6 +219,51 @@ class Ledger {
         }
     }
 
+    async signSymbolAggregateTransaction(path, transaction, networkGenerationHash, signerPublicKey) {
+        return new Promise((resolve, reject) => {
+            this.getAppVersion(true).then(checkVersion => {
+                if (checkVersion === 1) {
+                    this._signSymbolAggregateTransaction(path, transaction, networkGenerationHash, signerPublicKey).then((result) => {
+                        resolve(result);
+                    }).catch((error) => {
+                        reject({ ledgerError: [error, true, false] });
+                    });
+
+                } else {
+                    reject({ ledgerError: [checkVersion, true, false] });
+                }
+            }).catch(error => {
+                reject({ ledgerError: [error, true, false] });
+            });
+        });
+    }
+
+    async _signSymbolAggregateTransaction(path, cosignatureTransaction, networkGenerationHash, signerPublicKey) {
+        try {
+            const transport = await TransportNodeHid.open("");
+            const symbolH = new SymbolH(transport);
+            try {
+                const result = await symbolH.signCosignatureTransaction(path, cosignatureTransaction, networkGenerationHash, signerPublicKey);
+                return Promise.resolve(result);
+            } catch (err) {
+                throw err
+            } finally {
+                transport.close();
+            }
+        } catch (err) {
+            if (err.statusCode != null) {
+                return Promise.reject(err.statusCode);
+            } else if (err.id != null) {
+                return Promise.reject(err.id);
+            } else if (err.name == "TransportError") {
+                Promise.reject(err.message);
+                return;
+            } else {
+                return Promise.reject(err);
+            }
+        }
+    }
+
     showAccount(account) {
         alert(this._$filter('translate')('LEDGER_NANO_CHECK_DEVICE'));
         this._Alert.ledgerFollowInstruction();

@@ -15,7 +15,7 @@
  */
 // internal dependencies
 import * as BIPPath from 'bip32-path';
-import { Transaction, SignedTransaction, Convert } from 'symbol-sdk';
+import { Transaction, SignedTransaction, CosignatureSignedTransaction, Convert } from 'symbol-sdk';
 
 export default class SymbolLedger {
 
@@ -135,6 +135,31 @@ export default class SymbolLedger {
             transaction.networkType,
         );
         return signedTransaction;
+    }
+
+    /**
+     * sign a Symbol Cosignature transaction with a given BIP 44 path
+     *
+     * @param path a path in BIP 44 format
+     * @param cosignatureTransaction a cosinature transaction needs to be signed
+     * @param signerPublicKey the public key of signer
+     * @param isOptinSymbolWallet if Opt-in Symbol wallet uses curve Secp256K1 else uses curve Ed25519
+     * @return a Signed Cosignature Transaction which is signed by account at path on Ledger
+     */
+    async signCosignatureTransaction(path, cosignatureTransaction, signerPublicKey, isOptinSymbolWallet) {
+        const rawPayload = cosignatureTransaction.serialize();
+        const signingBytes = cosignatureTransaction.transactionInfo.hash + rawPayload.slice(216);
+        const rawTx = Buffer.from(signingBytes, 'hex');
+        const response = await this.ledgerMessageHandler(path, rawTx, false, isOptinSymbolWallet);
+        // Response from Ledger
+        const h = response.toString('hex');
+        const signature = h.slice(0, 128);
+        const cosignatureSignedTransaction = new CosignatureSignedTransaction(
+            cosignatureTransaction.transactionInfo.hash,
+            signature,
+            signerPublicKey,
+        );
+        return cosignatureSignedTransaction;
     }
 
     /**
