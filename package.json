@@ -64,7 +64,7 @@
     "symbol-paper-wallets": "1.0.2-optin",
     "symbol-qr-library": "^0.9.0",
     "symbol-sdk": "1.0.0",
-    "url-parse": "1.1.9",
+    "url-parse": "1.5.0",
     "utf-8-validate": "^5.0.2",
     "vinyl-source-stream": "^1.1.0",
     "zxcvbn": "4.4.2"
