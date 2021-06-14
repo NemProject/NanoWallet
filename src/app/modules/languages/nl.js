@@ -654,7 +654,7 @@ function DutchProvider($translateProvider) {
         LOGIN_SELECT_WALLET_YOURS: 'Selecteer portemonnee',
         LOGIN_SELECT_WALLET: 'Selecteer een portemonnee...',
         LOGIN_LOGIN_BUTTON: 'Inloggen',
-        LOGIN_NOTE: 'Geen portemonnee? Importeer er één of <a href="#!/signup">Meld je aan</a>.',
+        LOGIN_NOTE: 'Geen portemonnee? <a href="#!/import-wallet-qr-code">Importeer er één</a> of <a href="#!/signup">meld je aan</a>.',
 
         // SIGNUP MODULE
         SIGNUP_TITLE: 'Nieuw bij NEM?',
