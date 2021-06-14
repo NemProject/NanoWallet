@@ -786,6 +786,7 @@ function DutchProvider($translateProvider) {
         TREZOR_TITLE: 'TREZOR',
         TREZOR_TEXT: 'De TREZOR hardware portemonnee maakt veilig werken met XEM, Mozaïeken en Multi-handtekening accounts mogelijk',
         TREZOR_BUTTON: 'Aanmelden met TREZOR',
+	TREZOR_SELECT_ACCOUNT: 'Selecteer een account',
 
         // LEDGER NANO RELATED
         LEDGER_NANO_TITLE: 'LEDGER NANO',

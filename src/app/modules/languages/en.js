@@ -790,6 +790,7 @@ function EnglishProvider($translateProvider) {
         TREZOR_TITLE: 'TREZOR',
         TREZOR_TEXT: 'The TREZOR hardware wallet allows you to secure your XEM, mosaics and multisig accounts',
         TREZOR_BUTTON: 'Login with TREZOR',
+		TREZOR_SELECT_ACCOUNT: 'Select an account',
 
         // LEDGER NANO RELATED
         LEDGER_NANO_TITLE: 'LEDGER NANO',

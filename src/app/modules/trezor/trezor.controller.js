@@ -20,8 +20,7 @@ class TrezorCtrl {
 
         //// End dependencies region ////
 
-        //// Module properties region ////
-
+        //// Module properties region ////        
         /**
          * Default network
          *
@@ -36,6 +35,31 @@ class TrezorCtrl {
          */
         this.networks = nem.model.network.data;
 
+        /**
+         * Account
+         *
+         * @type {object}
+         */
+        this.account;
+
+	/**
+         * All accounts available
+         *
+         * @type {array of objects}
+         */        
+	this.accounts = [
+	  {id:0,text:'#1'},
+	  {id:1,text:'#2'},
+	  {id:2,text:'#3'},
+	  {id:3,text:'#4'},
+	  {id:4,text:'#5'},
+	  {id:5,text:'#6'},
+	  {id:6,text:'#7'},
+	  {id:7,text:'#8'},
+	  {id:8,text:'#9'},
+	  {id:9,text:'#10'}
+	];
+        
         //// End properties region ////
     }
 
@@ -63,10 +87,19 @@ class TrezorCtrl {
     }
 
     /**
+     * Change account
+     *
+     * @param {object}
+     */
+    changeAccount(account) {
+        this.account = account;
+    }
+    
+    /**
      * Login with TREZOR
      */
     login() {
-        this._Trezor.createWallet(this.network).then((wallet) => {
+        this._Trezor.createWallet(this.network, this.account.id, this.account.text).then((wallet) => {
             this._Login.login({}, wallet);
         }, (error) => {
             this._$timeout(() => {

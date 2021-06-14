@@ -23,6 +23,15 @@
         <p ng-show="$ctrl.network === -104"><span ng-bind-html="'SIGNUP_NETWORK_TESTNET' | translate"></span></p>
         <p ng-show="$ctrl.network === 96"><span ng-bind-html="'SIGNUP_NETWORK_MIJIN' | translate"></span></p>
       </div>
+      <fieldset class="form-group">
+        <p class="text-center">{{'TREZOR_SELECT_ACCOUNT' | translate}}</p>
+        <select class="form-control"
+                ng-model="$ctrl.account"
+                ng-change="$ctrl.changeAccount($ctrl.account)"
+                ng-options="account as account.text for account in $ctrl.accounts track by account.id">
+          <option value="" disabled selected>{{'TREZOR_SELECT_ACCOUNT' | translate}}</option>
+        </select>
+      </fieldset>      
       <div class="form-group">
         <hr style="border-color:#444;">
         <div class="row">
@@ -35,5 +44,4 @@
       </div>
     </div>
   </div>
-
 </div>
