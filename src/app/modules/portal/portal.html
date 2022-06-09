@@ -117,18 +117,17 @@
         <div class="col-sm-4">
           <div class="panel-heading row">
             <div class="col-sm-3">
-              <img src="images/symbol.jpg"/>
+              <img src="images/nem-logo.png"/>
             </div>
             <div class="col-sm-9">
-              <h5>{{ 'PORTAL_CATAPULTOPTIN_TITLE' | translate }}</h5>
+              <h5>{{ 'PORTAL_NODE_REWARDS_PROGRAM_TITLE' | translate }}</h5>
             </div>
           </div>
           <div class="panel-body">
-            <p>{{ 'PORTAL_CATAPULTOPTIN_TEXT' | translate }} <a href="https://nemplatform.com/symbol-migration" target="_blank" style="color: rgba(0, 0, 0, 0.4); text-decoration: underline;">{{ 'PORTAL_CATAPULTOPTIN_TEXT_LINK' | translate }}</a></p>
+            <p>{{ 'PORTAL_NODE_REWARDS_PROGRAM_TEXT' | translate }} <a href="https://nem-supernode.netlify.app" target="_blank" style="color: rgba(0, 0, 0, 0.4); text-decoration: underline;">{{ 'PORTAL_NODE_REWARDS_PROGRAM_TEXT_LINK' | translate }}</a></p>
           </div>
           <div class="panelFooter">
-            <p ng-hide="!$ctrl._DataStore.account.metaData.meta.cosignatories.length" class="text-danger">{{ 'PORTAL_CATAPULTOPTIN_MULTISIG_TEXT' | translate }}</p>
-            <button class="btn" ui-sref="app.catapultOptin" ng-hide="$ctrl._DataStore.account.metaData.meta.cosignatories.length">{{ 'PORTAL_CATAPULTOPTIN_BTN_1' | translate }}</button>
+            <button class="btn" ui-sref="app.nodeRewardsProgram">{{ 'PORTAL_NODE_REWARDS_PROGRAM_BTN_1' | translate }}</button>
           </div>
         </div>
       </div>

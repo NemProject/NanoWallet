@@ -57,6 +57,7 @@ import './modules/domainNameSystem';
 import './modules/importWalletQrCode';
 import './modules/NEMonster';
 import './modules/catapultOptin';
+import './modules/nodeRewardsProgram';
 
 // Create and bootstrap application
 const requires = [
@@ -116,6 +117,7 @@ const requires = [
     'app.dnsSearch',
     'app.NEMonster',
     'app.importWalletQrCode',
+    'app.nodeRewardsProgram',
     'app.catapultOptin'
 ];
 
