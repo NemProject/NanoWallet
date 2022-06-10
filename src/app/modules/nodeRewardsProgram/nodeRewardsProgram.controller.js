@@ -1,5 +1,3 @@
-// import Helpers from '../../utils/helpers';
-
 class NodeRewardsProgramCtrl {
 
     /**
@@ -14,7 +12,6 @@ class NodeRewardsProgramCtrl {
 
         this._Wallet = Wallet;
         this._DataStore = DataStore;
-        // this._Helpers = Helpers;
 
         //// End dependencies region ////
     }

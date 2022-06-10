@@ -1053,9 +1053,6 @@ function EnglishProvider($translateProvider) {
         POST_OPTIN_CONFIRM_MODAL_TEXT_MULTISIG: "Please verify that the Symbol destination address is your Symbol multisig account address. If it doesn’t match, please start the process again and provide a valid Symbol public key of the multisig account.",
         POST_OPTIN_CONFIRM_MODAL_CHECKBOX_MULTISIG: "I confirm that the Symbol destination address matches the Symbol multisig account address",
         OPTIN_NIS1_PUBLIC_KEY: 'The public key you entered is a NIS1 key! You need to enter a Symbol public key.'
-
-        // NODE REWARDS PROGRAM IN MODULE
-
     });
 }
 
