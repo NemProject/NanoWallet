@@ -75,7 +75,7 @@ class nodeRewardsProgram {
         const response = await fetch(this.apiBaseUrl + `/enrollment/check/address/${address}`);
 
         if (!response.ok) {
-            throw Error('failed_validate_enroll_address');
+            throw Error('failed_to_validate_enroll_address');
         }
         
         const status = await response.text();
@@ -121,7 +121,7 @@ class nodeRewardsProgram {
         const response = await fetch(this.apiBaseUrl + `/codeword/${publicKey}`);
 
         if (!response.ok) {
-            throw Error('failed_get_enroll_hash');
+            throw Error('failed_to_get_enroll_hash');
         }
         
         return await response.text();
