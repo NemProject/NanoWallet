@@ -403,6 +403,10 @@ function EnglishProvider($translateProvider) {
         PORTAL_ADDRESS_BOOK_BTN: 'Manage address book',
         PORTAL_INVOICE_TEXT: 'Create an invoice to share via QR code',
         PORTAL_SIGNED_MSG_TEXT: 'Create and verify signed messages to authenticate account ownership without transacting.',
+        PORTAL_NODE_REWARDS_PROGRAM_TITLE: 'Node Rewards Program',
+        PORTAL_NODE_REWARDS_PROGRAM_TEXT: 'Use this module to enroll to NEM Node Rewards Program. Please, read more ',
+        PORTAL_NODE_REWARDS_PROGRAM_TEXT_LINK: 'here.',
+        PORTAL_NODE_REWARDS_PROGRAM_BTN_1: 'Check & Enroll to Program',
 
         // ADDRESS BOOK MODULE
         ADDRESS_BOOK_TITLE: 'Address book',
