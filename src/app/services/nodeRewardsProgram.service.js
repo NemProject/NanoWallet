@@ -3,7 +3,7 @@ import nem from 'nem-sdk';
 const NODE_REWARDS_PROGRAM_API_BASE_URL = 'https://supernodesapi.nem.io';
 
 /** Service to enroll in the Node Rewards Program and to get the status related information */
-class nodeRewardsProgram {
+class NodeRewardsProgram {
 
     /**
      * Initialize dependencies and properties
@@ -130,4 +130,4 @@ class nodeRewardsProgram {
     // End methods region //
 }
 
-export default nodeRewardsProgram;
+export default NodeRewardsProgram;
