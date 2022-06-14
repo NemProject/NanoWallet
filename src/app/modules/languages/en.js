@@ -1052,7 +1052,24 @@ function EnglishProvider($translateProvider) {
         POST_OPTIN_CONFIRM_MODAL_CHECKBOX: "I confirm that the Symbol destination address matches my Symbol account address",
         POST_OPTIN_CONFIRM_MODAL_TEXT_MULTISIG: "Please verify that the Symbol destination address is your Symbol multisig account address. If it doesn’t match, please start the process again and provide a valid Symbol public key of the multisig account.",
         POST_OPTIN_CONFIRM_MODAL_CHECKBOX_MULTISIG: "I confirm that the Symbol destination address matches the Symbol multisig account address",
-        OPTIN_NIS1_PUBLIC_KEY: 'The public key you entered is a NIS1 key! You need to enter a Symbol public key.'
+        OPTIN_NIS1_PUBLIC_KEY: 'The public key you entered is a NIS1 key! You need to enter a Symbol public key.',
+
+        // NODE REWARDS PROGRAM IN MODULE
+        NODE_REWARDS_PROGRAM_TITLE: 'NODE REWARDS PROGRAM',
+        ACCOUNT_NAME: 'Account',
+        BALANCE_NAME: 'Balance',
+        TAB_STATUS_NAME: 'Status',
+        TAB_ENROLL_TO_PROGRAM_NAME: 'Enroll to Program',
+        TAB_PAYOUT_HISTORY_NAME: 'Payout History',
+
+        STATUS_NODE_NAME: 'Node Name',
+        STATUS_NAME: 'Status',
+        STATUS_ACTIVE_NAME: 'Active',
+        STATUS_INACTIVE_NAME: 'Inactive',
+        STATUS_PUBLIC_KEY_NAME: 'Public Key',
+        STATUS_REMOTE_PUBLIC_KEY_NAME: 'Remote Public Key',
+        STATUS_TOTAL_REWARDS_NAME: 'Total Rewards',
+
     });
 }
 

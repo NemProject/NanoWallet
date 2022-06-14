@@ -1,0 +1,45 @@
+<div class="node-rewards-program-page">
+    <div class="container-fluid main">
+        <div class="row">
+          <div class="col-sm-8">
+            <h2>{{ 'NODE_REWARDS_PROGRAM_TITLE' | translate }}</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-12">
+            <div class="panel-heading">
+                <h3>{{ 'ACCOUNT_NAME' | translate }}</h3>
+            </div>
+            <!-- Account Info -->
+            <div class="panel-body">
+              <!-- Signer Account -->
+              <fieldset class="form-group">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <label>{{ 'ACCOUNT_NAME' | translate }}: </label>
+                  </span>
+                  <select
+                    class="form-control form-control-lg"
+                    ng-model="$ctrl.selectedAccount"
+                    ng-if="$ctrl.accounts.length"
+                    ng-options="account as account.label for account in $ctrl.accounts"
+                    ng-change="$ctrl.onChangeAccount();"></select>
+                  <input class="form-control form-control-lg"  ng-if="!$ctrl.accounts.length" type="text" ng-model="$ctrl.selectedAccount" readOnly/>
+                </div>
+              </fieldset>
+              <!-- Balance -->
+              <fieldset class="form-group">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                      <label>{{'BALANCE_NAME' | translate}}: </label>
+                  </span>
+                  <div class="form-control formFloat" readOnly>
+                    <input ng-model="$ctrl.balance" disabled />
+                    <label class="floatRight"><small>XEM</small></label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+</div>
