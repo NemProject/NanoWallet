@@ -55,7 +55,7 @@ class NodeRewardsProgram {
         }        
 
         // Set the message
-        const hash = await this.getEnrollmentHash(mainPublicKey);
+        const hash = await this.getCodewordHash(mainPublicKey);
         transferTransaction.message = `enroll ${host} ${hash}`;
 
         // Set no mosaics
@@ -91,23 +91,22 @@ class NodeRewardsProgram {
      * @return {Promise<boolean>} - If the public key is enrolled in the current period.
      */
     async checkEnrollmentStatus(publicKey) {
-        try {
-            const successEnrollmentResponse = await fetch(this.apiBaseUrl + `/enrollment/successes/${publicKey}?count=1`);
+        const successEnrollmentResponse = await fetch(this.apiBaseUrl + `/enrollment/successes/${publicKey}?count=1`);
 
-            const successEnrollments = await successEnrollmentResponse.json();
-
-            if (successEnrollments.length === 0) {
-                return false;
-            }
-
-            const latestSuccessEnrollment = successEnrollments[0];
-            const enrollAddress = latestSuccessEnrollment.recipientAddress;
-
-            return this.checkEnrollAddress(enrollAddress);
+        if (!successEnrollmentResponse.ok) {
+            throw Error('failed_to_get_success_enrollments');
         }
-        catch {
-            throw Error('failed_to_get_enroll_status');
+
+        const successEnrollments = await successEnrollmentResponse.json();
+
+        if (successEnrollments.length === 0) {
+            return false;
         }
+
+        const latestSuccessEnrollment = successEnrollments[0];
+        const enrollAddress = latestSuccessEnrollment.recipientAddress;
+
+        return this.checkEnrollmentAddress(enrollAddress);
     }
 
     /**
@@ -117,11 +116,11 @@ class NodeRewardsProgram {
      *
      * @return {Promise<string>} - The result of keccak_256(codeword || public_key) as a hex string, which should be used in enrollment messages.
      */
-    async getEnrollmentHash(publicKey) {
+    async getCodewordHash(publicKey) {
         const response = await fetch(this.apiBaseUrl + `/codeword/${publicKey}`);
 
         if (!response.ok) {
-            throw Error('failed_to_get_enroll_hash');
+            throw Error('failed_to_get_codeword_hash');
         }
         
         return await response.text();
