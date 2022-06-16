@@ -155,7 +155,7 @@ class NodeRewardsProgram {
      *   - Hex encoded node main public key
      *   - Node IP (or host)
      *
-     * @return {Promise<Array<object>>} - List of payouts.
+     * @return {Promise<object>} - Node info.
      */
     async getNodeInfo(nodeId) {
         const response = await fetch(this.apiBaseUrl + `/node/${nodeId}`);
