@@ -126,6 +126,47 @@ class NodeRewardsProgram {
         return await response.text();
     }
 
+    /**
+     * Gets payout information for a single node.
+     *
+     * @param {string} nodeId - Id of the node to search.
+     * @param {number} pageNumber - Page number to return.
+     *
+     * @return {Promise<Array<object>>} - List of payouts.
+     */
+    async getNodePayouts(nodeId, pageNumber) {
+        const count = 15;
+        const offset = count * pageNumber;
+
+        const response = await fetch(this.apiBaseUrl + `/node/${nodeId}/payouts?count=${count}&offset=${offset}`);
+
+        if (!response.ok) {
+            throw Error('failed_to_get_payouts_page');
+        }
+        
+        return await response.json();
+    }
+
+    /**
+     * Gets detailed information about a single node.
+     *
+     * @param {string} nodeId - Id of the node to search. Can be one of:
+     *   - Database node id
+     *   - Hex encoded node main public key
+     *   - Node IP (or host)
+     *
+     * @return {Promise<Array<object>>} - List of payouts.
+     */
+    async getNodeInfo(nodeId) {
+        const response = await fetch(this.apiBaseUrl + `/node/${nodeId}`);
+
+        if (!response.ok) {
+            throw Error('failed_to_get_node_info');
+        }
+        
+        return await response.json();
+    }
+
     // End methods region //
 }
 
