@@ -26,7 +26,7 @@ describe('NodeRewardsProgram service tests', () => {
 
     describe('prepareEnrollTransaction()', () => {
         it('should return valid enroll transaction', async (done) => {
-            // Arrange
+            // Arrange:
             spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('hash'));
             const mainPublicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
             const host = 'http://108.61.168.86:7890';
@@ -34,10 +34,10 @@ describe('NodeRewardsProgram service tests', () => {
             const expectedMessage = nem.utils.convert.utf8ToHex(`enroll ${host} hash`);
             const transferTransactionType = 257;
 
-            //Act
+            // Act:
             const transaction = await NodeRewardsProgram.prepareEnrollTransaction(mainPublicKey, host, enrollmentAddress);
 
-            // Assert
+            // Assert:
             expect(transaction.type).toBe(transferTransactionType);
             expect(transaction.recipient).toBe(enrollmentAddress);
             expect(transaction.amount).toBe(0);
@@ -47,7 +47,7 @@ describe('NodeRewardsProgram service tests', () => {
         });
 
         it('should return valid multisig enroll transaction', async (done) => {
-            // Arrange
+            // Arrange:
             spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('hash'));
             const mainPublicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
             const host = 'http://108.61.168.86:7890';
@@ -57,10 +57,10 @@ describe('NodeRewardsProgram service tests', () => {
             const transferTransactionType = 257;
             const multisigTransactionType = 4100;
 
-            //Act
+            // Act:
             const transaction = await NodeRewardsProgram.prepareEnrollTransaction(mainPublicKey, host, enrollmentAddress, multisigAddress);
 
-            // Assert
+            // Assert:
             expect(transaction.type).toBe(multisigTransactionType);
             expect(transaction.otherTrans.type).toBe(transferTransactionType);
             expect(transaction.otherTrans.recipient).toBe(enrollmentAddress);
@@ -73,42 +73,42 @@ describe('NodeRewardsProgram service tests', () => {
 
     describe('checkEnrollmentAddress()', () => {
         it('should return true when API returns "true" string', async (done) => {
-            // Arrange
+            // Arrange:
             mockFetch('true');
             const expectedResult = true;
 
-            //Act
+            // Act:
             const result = await NodeRewardsProgram.checkEnrollmentAddress('');
 
-            // Assert
+            // Assert:
             expect(result).toBe(expectedResult);
             done();
         });
 
         it('should return false when API returns "false" string', async (done) => {
-            // Arrange
+            // Arrange:
             mockFetch('false');
             const expectedResult = false;
 
-            //Act
+            // Act:
             const result = await NodeRewardsProgram.checkEnrollmentAddress('');
 
-            // Assert
+            // Assert:
             expect(result).toBe(expectedResult);
             done();
         });
 
         it('should throw an error when request failed', async (done) => {
-            // Arrange
+            // Arrange:
             mockFetch(null, false);
             const expectedError = Error('failed_to_validate_enroll_address');
 
-            // Act
+            // Act:
             try {
                 await NodeRewardsProgram.checkEnrollmentAddress('');
             }
             catch(e) {
-                // Assert
+                // Assert:
                 expect(e.message).toBe(expectedError.message);
                 done();
             }
@@ -117,7 +117,7 @@ describe('NodeRewardsProgram service tests', () => {
 
     describe('checkEnrollmentStatus()', () => {
         it('should return true when there is successfull enrollment for given public key and recipient address is a valid enrollment address', async (done) => {
-            // Arrange
+            // Arrange:
             spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(true));
             mockFetch([{
                 recipientAddress: 'NCHESTYVD2P6P646AMY7WSNG73PCPZDUQNSD6JAK',
@@ -129,16 +129,16 @@ describe('NodeRewardsProgram service tests', () => {
             const publicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
             const expectedEnrollmentStatus = true;
 
-            //Act
+            // Act:
             const enrollmentStatus = await NodeRewardsProgram.checkEnrollmentStatus(publicKey);
 
-            // Assert
+            // Assert:
             expect(enrollmentStatus).toBe(expectedEnrollmentStatus);
             done();
         });
 
         it('should return false when there is successfull enrollment for given public key and recipient address is not a valid enrollment address', async (done) => {
-            // Arrange
+            // Arrange:
             spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(false));
             mockFetch([{
                 recipientAddress: 'NCHESTYVD2P6P646AMY7WSNG73PCPZDUQNSD6JAK',
@@ -149,40 +149,40 @@ describe('NodeRewardsProgram service tests', () => {
             const publicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
             const expectedEnrollmentStatus = false;
 
-            //Act
+            // Act:
             const enrollmentStatus = await NodeRewardsProgram.checkEnrollmentStatus(publicKey);
 
-            // Assert
+            // Assert:
             expect(enrollmentStatus).toBe(expectedEnrollmentStatus);
             done();
         });
 
         it('should return false when there is no successfull enrollment for given public key', async (done) => {
-            // Arrange
+            // Arrange:
             mockFetch([]);
             const publicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
             const expectedEnrollmentStatus = false;
 
-            //Act
+            // Act:
             const enrollmentStatus = await NodeRewardsProgram.checkEnrollmentStatus(publicKey);
 
-            // Assert
+            // Assert:
             expect(enrollmentStatus).toBe(expectedEnrollmentStatus);
             done();
         });
 
         it('should throw an error when request failed', async (done) => {
-            // Arrange
+            // Arrange:
             mockFetch(null, false);
             const publicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
             const expectedError = Error('failed_to_get_success_enrollments');
 
-            // Act
+            // Act:
             try {
                 await NodeRewardsProgram.checkEnrollmentStatus(publicKey);
             }
             catch(e) {
-                // Assert
+                // Assert:
                 expect(e.message).toBe(expectedError.message);
                 done();
             }
@@ -191,46 +191,46 @@ describe('NodeRewardsProgram service tests', () => {
 
     describe('getCodewordHash()', () => {
         it('should fetch to be called with valid endpoint url when publicKey passed', async (done) => {
-            // Arrange
+            // Arrange:
             const mockedFetch = mockFetch(null);
             const baseUrl = NODE_REWARDS_PROGRAM_API_BASE_URL;
             const publicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
             const expectedEndpoint = `${baseUrl}/codeword/${publicKey}`;
 
-            //Act
+            // Act:
             await NodeRewardsProgram.getCodewordHash(publicKey);
 
-            // Assert
+            // Assert:
             expect(mockedFetch).toHaveBeenCalledWith(expectedEndpoint);
             done()
         });
 
         it('should return valid codeword hash string', async (done) => {
-            // Arrange
+            // Arrange:
             const expectedString = 'hash';
             const publicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
             mockFetch(expectedString);
 
-            //Act
+            // Act:
             const result = await NodeRewardsProgram.getCodewordHash(publicKey);
 
-            // Assert
+            // Assert:
             expect(result).toEqual(expectedString);
             done();
         });
 
         it('should throw an error when request failed', async (done) => {
-            // Arrange
+            // Arrange:
             mockFetch(null, false);
             const publicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
             const expectedError = Error('failed_to_get_codeword_hash');
 
-            // Act
+            // Act:
             try {
                 await NodeRewardsProgram.getCodewordHash(publicKey);
             }
             catch(e) {
-                // Assert
+                // Assert:
                 expect(e.message).toBe(expectedError.message);
                 done();
             }
@@ -239,7 +239,7 @@ describe('NodeRewardsProgram service tests', () => {
 
     describe('getNodePayouts()', () => {
         it('should fetch to be called with valid endpoint url when nodeId and pageNumber=0 passed', async (done) => {
-            // Arrange
+            // Arrange:
             const mockedFetch = mockFetch([]);
             const baseUrl = NODE_REWARDS_PROGRAM_API_BASE_URL;
             const nodeId = 1;
@@ -248,16 +248,16 @@ describe('NodeRewardsProgram service tests', () => {
             const offset = 0;
             const expectedEndpoint = `${baseUrl}/node/${nodeId}/payouts?count=${count}&offset=${offset}`;
 
-            //Act
+            // Act:
             await NodeRewardsProgram.getNodePayouts(nodeId, pageNumber);
 
-            // Assert
+            // Assert:
             expect(mockedFetch).toHaveBeenCalledWith(expectedEndpoint);
             done();
         });
 
         it('should fetch to be called with valid endpoint url when nodeId and pageNumber=4 passed', async (done) => {
-            // Arrange
+            // Arrange:
             const mockedFetch = mockFetch([]);
             const baseUrl = NODE_REWARDS_PROGRAM_API_BASE_URL;
             const nodeId = 1;
@@ -266,16 +266,16 @@ describe('NodeRewardsProgram service tests', () => {
             const offset = 60;
             const expectedEndpoint = `${baseUrl}/node/${nodeId}/payouts?count=${count}&offset=${offset}`;
 
-            //Act
+            // Act:
             await NodeRewardsProgram.getNodePayouts(nodeId, pageNumber);
 
-            // Assert
+            // Assert:
             expect(mockedFetch).toHaveBeenCalledWith(expectedEndpoint);
             done();
         });
 
         it('should return valid DTO', async (done) => {
-            // Arrange
+            // Arrange:
             const expectedDTO = new Array(15).fill({
                 amount: 0,
                 fromRoundId: 844,
@@ -288,27 +288,27 @@ describe('NodeRewardsProgram service tests', () => {
             const pageNumber = 0;
             mockFetch(expectedDTO);
 
-            //Act
+            // Act:
             const result = await NodeRewardsProgram.getNodePayouts(nodeId, pageNumber);
 
-            // Assert
+            // Assert:
             expect(result).toEqual(expectedDTO);
             done();
         });
 
         it('should throw an error when request failed', async (done) => {
-            // Arrange
+            // Arrange:
             mockFetch(null, false);
             const nodeId = 1;
             const pageNumber = 4;
             const expectedError = Error('failed_to_get_payouts_page');
 
-            // Act
+            // Act:
             try {
                 await NodeRewardsProgram.getNodePayouts(nodeId, pageNumber);
             }
             catch(e) {
-                // Assert
+                // Assert:
                 expect(e.message).toBe(expectedError.message);
                 done();
             }
@@ -317,22 +317,22 @@ describe('NodeRewardsProgram service tests', () => {
 
     describe('getNodeInfo()', () => {
         it('should fetch to be called with valid endpoint url', async (done) => {
-            // Arrange
+            // Arrange:
             const mockedFetch = mockFetch(null);
             const baseUrl = NODE_REWARDS_PROGRAM_API_BASE_URL;
             const nodeId = 1;
             const expectedEndpoint = `${baseUrl}/node/${nodeId}`;
 
-            //Act
+            // Act:
             await NodeRewardsProgram.getNodeInfo(nodeId);
 
-            // Assert
+            // Assert:
             expect(mockedFetch).toHaveBeenCalledWith(expectedEndpoint);
             done();
         });
 
         it('should return valid DTO', async (done) => {
-            // Arrange
+            // Arrange:
             const expectedDTO = {
                 endpoint: 'http://108.61.168.86:7890',
                 lastPayoutRound: 9172,
@@ -345,26 +345,26 @@ describe('NodeRewardsProgram service tests', () => {
             const nodeId = 1;
             mockFetch(expectedDTO);
 
-            //Act
+            // Act:
             const result = await NodeRewardsProgram.getNodeInfo(nodeId);
 
-            // Assert
+            // Assert:
             expect(result).toEqual(expectedDTO);
             done();
         });
 
         it('should throw an error when request failed', async (done) => {
-            // Arrange
+            // Arrange:
             mockFetch(null, false);
             const nodeId = 1;
             const expectedError = Error('failed_to_get_node_info');
 
-            // Act
+            // Act:
             try {
                 await NodeRewardsProgram.getNodeInfo(nodeId);
             }
             catch(e) {
-                // Assert
+                // Assert:
                 expect(e.message).toBe(expectedError.message);
                 done();
             }
