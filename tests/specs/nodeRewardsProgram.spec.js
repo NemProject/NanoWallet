@@ -1,5 +1,6 @@
 import WalletFixture from '../data/wallet';
 import nem from 'nem-sdk';
+import { runPromiseErrorTest } from '../helper';
 
 const NODE_REWARDS_PROGRAM_API_BASE_URL = 'https://supernodesapi.nem.io';
 
@@ -102,58 +103,40 @@ describe('NodeRewardsProgram service tests', () => {
             // Arrange:
             mockFetch(null, false);
             const expectedError = Error('failed_to_validate_enroll_address');
+            const promiseToTest = NodeRewardsProgram.checkEnrollmentAddress('');
 
-            // Act:
-            try {
-                await NodeRewardsProgram.checkEnrollmentAddress('');
-            }
-            catch(e) {
-                // Assert:
-                expect(e.message).toBe(expectedError.message);
-                done();
-            }
+            // Act + Assert:
+            await runPromiseErrorTest(promiseToTest, expectedError);
+            done();
         });
     });
 
     describe('checkEnrollmentStatus()', () => {
-        it('should return true when there is successfull enrollment for given public key and recipient address is a valid enrollment address', async (done) => {
+        const runSuccessfullEnrollmentRecipientAddressValidityTest = async isAddressValid => {
             // Arrange:
-            spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(true));
+            spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(isAddressValid));
             mockFetch([{
                 recipientAddress: 'NCHESTYVD2P6P646AMY7WSNG73PCPZDUQNSD6JAK',
                 transactionHeight: 1,
                 transactionHash: 'bba40188dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891aua',
                 host: 'http://108.61.168.86:7890'
             }]);
-
             const publicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
-            const expectedEnrollmentStatus = true;
 
             // Act:
             const enrollmentStatus = await NodeRewardsProgram.checkEnrollmentStatus(publicKey);
 
             // Assert:
-            expect(enrollmentStatus).toBe(expectedEnrollmentStatus);
+            expect(enrollmentStatus).toBe(isAddressValid);
+        };
+
+        it('should return true when there is successfull enrollment for given public key and recipient address is a valid enrollment address', async (done) => {
+            await runSuccessfullEnrollmentRecipientAddressValidityTest(true);
             done();
         });
 
         it('should return false when there is successfull enrollment for given public key and recipient address is not a valid enrollment address', async (done) => {
-            // Arrange:
-            spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(false));
-            mockFetch([{
-                recipientAddress: 'NCHESTYVD2P6P646AMY7WSNG73PCPZDUQNSD6JAK',
-                transactionHeight: 1,
-                transactionHash: 'bba40188dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891aua',
-                host: 'http://108.61.168.86:7890'
-            }]);
-            const publicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
-            const expectedEnrollmentStatus = false;
-
-            // Act:
-            const enrollmentStatus = await NodeRewardsProgram.checkEnrollmentStatus(publicKey);
-
-            // Assert:
-            expect(enrollmentStatus).toBe(expectedEnrollmentStatus);
+            await runSuccessfullEnrollmentRecipientAddressValidityTest(false);
             done();
         });
 
@@ -176,16 +159,11 @@ describe('NodeRewardsProgram service tests', () => {
             mockFetch(null, false);
             const publicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
             const expectedError = Error('failed_to_get_success_enrollments');
+            const promiseToTest = NodeRewardsProgram.checkEnrollmentStatus(publicKey);
 
-            // Act:
-            try {
-                await NodeRewardsProgram.checkEnrollmentStatus(publicKey);
-            }
-            catch(e) {
-                // Assert:
-                expect(e.message).toBe(expectedError.message);
-                done();
-            }
+            // Act + Assert:
+            await runPromiseErrorTest(promiseToTest, expectedError);
+            done();
         });
     });
 
@@ -222,18 +200,12 @@ describe('NodeRewardsProgram service tests', () => {
         it('should throw an error when request failed', async (done) => {
             // Arrange:
             mockFetch(null, false);
-            const publicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
             const expectedError = Error('failed_to_get_codeword_hash');
+            const promiseToTest = NodeRewardsProgram.getCodewordHash('');
 
-            // Act:
-            try {
-                await NodeRewardsProgram.getCodewordHash(publicKey);
-            }
-            catch(e) {
-                // Assert:
-                expect(e.message).toBe(expectedError.message);
-                done();
-            }
+            // Act + Assert:
+            await runPromiseErrorTest(promiseToTest, expectedError);
+            done();
         });
     });
 
@@ -302,16 +274,11 @@ describe('NodeRewardsProgram service tests', () => {
             const nodeId = 1;
             const pageNumber = 4;
             const expectedError = Error('failed_to_get_payouts_page');
+            const promiseToTest = NodeRewardsProgram.getNodePayouts(nodeId, pageNumber);
 
-            // Act:
-            try {
-                await NodeRewardsProgram.getNodePayouts(nodeId, pageNumber);
-            }
-            catch(e) {
-                // Assert:
-                expect(e.message).toBe(expectedError.message);
-                done();
-            }
+            // Act + Assert:
+            await runPromiseErrorTest(promiseToTest, expectedError);
+            done();
         });
     });
 
@@ -358,16 +325,11 @@ describe('NodeRewardsProgram service tests', () => {
             mockFetch(null, false);
             const nodeId = 1;
             const expectedError = Error('failed_to_get_node_info');
+            const promiseToTest = NodeRewardsProgram.getNodeInfo(nodeId);
 
-            // Act:
-            try {
-                await NodeRewardsProgram.getNodeInfo(nodeId);
-            }
-            catch(e) {
-                // Assert:
-                expect(e.message).toBe(expectedError.message);
-                done();
-            }
+            // Act + Assert:
+            await runPromiseErrorTest(promiseToTest, expectedError);
+            done();
         });
     });
 });
