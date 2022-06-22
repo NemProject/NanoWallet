@@ -52,7 +52,7 @@ class NodeRewardsProgram {
         if (multisigAccountAddress) {
             transferTransaction.isMultisig = true;
             transferTransaction.multisigAccount = multisigAccountAddress.toUpperCase().replace(/-/g, '');
-        }        
+        }
 
         // Set the message
         const hash = await this.getCodewordHash(mainPublicKey);
@@ -77,9 +77,9 @@ class NodeRewardsProgram {
         if (!response.ok) {
             throw Error('failed_to_validate_enroll_address');
         }
-        
+
         const status = await response.text();
-        
+
         return status === 'true';
     }
 
@@ -122,7 +122,7 @@ class NodeRewardsProgram {
         if (!response.ok) {
             throw Error('failed_to_get_codeword_hash');
         }
-        
+
         return await response.text();
     }
 
@@ -143,7 +143,7 @@ class NodeRewardsProgram {
         if (!response.ok) {
             throw Error('failed_to_get_payouts_page');
         }
-        
+
         return await response.json();
     }
 
@@ -163,7 +163,7 @@ class NodeRewardsProgram {
         if (!response.ok) {
             throw Error('failed_to_get_node_info');
         }
-        
+
         return await response.json();
     }
 

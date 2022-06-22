@@ -125,7 +125,7 @@ describe('NodeRewardsProgram service tests', () => {
                 transactionHash: 'bba40188dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891aua',
                 host: 'http://108.61.168.86:7890'
             }]);
-            
+
             const publicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
             const expectedEnrollmentStatus = true;
 
