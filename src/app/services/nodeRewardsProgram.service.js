@@ -6,7 +6,7 @@ const NODE_REWARDS_PROGRAM_API_BASE_URL = 'https://supernodesapi.nem.io';
 class NodeRewardsProgram {
 
     /**
-     * Initialize dependencies and properties
+     * Initialize dependencies and properties.
      *
      * @params {services} - Angular services to inject
      */
@@ -32,14 +32,32 @@ class NodeRewardsProgram {
     // Service methods region //
 
     /**
-     * Prepare the enroll transaction
+     * Make get request.
+     *
+     * @param {string} url -  URL of the resource to fetch.
+     * @param {string} errorMessage - Description of the error that will be thrown in case of an unsuccessful request.
+     *
+     * @return {Promise<object>} - Response.
+     */
+    async _get(url, errorMessage) {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw Error(errorMessage);
+        }
+
+        return response;
+    }
+
+    /**
+     * Prepare the enroll transaction.
      *
      * @param {string} mainPublicKey - Delegated harvesting public key.
      * @param {string} host - IP or domain of the node.
      * @param {string} enrollmentAddress - Node Rewards Program enrollment address.
      * @param {string} [multisigAccountAddress] - Multisig account address. For multisig enrollment only.
      *
-     * @return {Promise<object>} - Prepared enroll transaction
+     * @return {Promise<object>} - Prepared enroll transaction.
      */
     async prepareEnrollTransaction(mainPublicKey, host, enrollmentAddress, multisigAccountAddress) {
         // Create a new transaction object
@@ -72,12 +90,7 @@ class NodeRewardsProgram {
      * @return {Promise<boolean>} - If the address to check matches the current enrollment address.
      */
     async checkEnrollmentAddress(address) {
-        const response = await fetch(this.apiBaseUrl + `/enrollment/check/address/${address}`);
-
-        if (!response.ok) {
-            throw Error('failed_to_validate_enroll_address');
-        }
-
+        const response = await this._get(`${this.apiBaseUrl}/enrollment/check/address/${address}`, 'failed_to_validate_enroll_address');
         const status = await response.text();
 
         return status === 'true';
@@ -91,12 +104,7 @@ class NodeRewardsProgram {
      * @return {Promise<boolean>} - If the public key is enrolled in the current period.
      */
     async checkEnrollmentStatus(publicKey) {
-        const successEnrollmentResponse = await fetch(this.apiBaseUrl + `/enrollment/successes/${publicKey}?count=1`);
-
-        if (!successEnrollmentResponse.ok) {
-            throw Error('failed_to_get_success_enrollments');
-        }
-
+        const successEnrollmentResponse = await this._get(`${this.apiBaseUrl}/enrollment/successes/${publicKey}?count=1`, 'failed_to_get_success_enrollments');
         const successEnrollments = await successEnrollmentResponse.json();
 
         if (successEnrollments.length === 0) {
@@ -114,16 +122,12 @@ class NodeRewardsProgram {
      *
      * @param {string} publicKey - Signer public key to use in hash calculation.
      *
-     * @return {Promise<string>} - The result of keccak_256(codeword || public_key) as a hex string, which should be used in enrollment messages.
+     * @return {Promise<string>} - The codeword hex string, which should be used in enrollment messages.
      */
     async getCodewordHash(publicKey) {
-        const response = await fetch(this.apiBaseUrl + `/codeword/${publicKey}`);
+        const response = await this._get(`${this.apiBaseUrl}/codeword/${publicKey}`, 'failed_to_get_codeword_hash');
 
-        if (!response.ok) {
-            throw Error('failed_to_get_codeword_hash');
-        }
-
-        return await response.text();
+        return response.text();
     }
 
     /**
@@ -137,14 +141,9 @@ class NodeRewardsProgram {
     async getNodePayouts(nodeId, pageNumber) {
         const count = 15;
         const offset = count * pageNumber;
+        const response = await this._get(`${this.apiBaseUrl}/node/${nodeId}/payouts?count=${count}&offset=${offset}`, 'failed_to_get_payouts_page');
 
-        const response = await fetch(this.apiBaseUrl + `/node/${nodeId}/payouts?count=${count}&offset=${offset}`);
-
-        if (!response.ok) {
-            throw Error('failed_to_get_payouts_page');
-        }
-
-        return await response.json();
+        return response.json();
     }
 
     /**
@@ -158,13 +157,9 @@ class NodeRewardsProgram {
      * @return {Promise<object>} - Node info.
      */
     async getNodeInfo(nodeId) {
-        const response = await fetch(this.apiBaseUrl + `/node/${nodeId}`);
+        const response = await this._get(`${this.apiBaseUrl}/node/${nodeId}`, 'failed_to_get_node_info');
 
-        if (!response.ok) {
-            throw Error('failed_to_get_node_info');
-        }
-
-        return await response.json();
+        return response.json();
     }
 
     // End methods region //
