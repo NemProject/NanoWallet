@@ -168,31 +168,19 @@ describe('NodeRewardsProgram service tests', () => {
     });
 
     describe('getCodewordHash()', () => {
-        it('should fetch to be called with valid endpoint url when publicKey passed', async (done) => {
+        it('should fetch codeword hash string', async (done) => {
             // Arrange:
-            const mockedFetch = mockFetch(null);
             const baseUrl = NODE_REWARDS_PROGRAM_API_BASE_URL;
             const publicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
-            const expectedEndpoint = `${baseUrl}/codeword/${publicKey}`;
-
-            // Act:
-            await NodeRewardsProgram.getCodewordHash(publicKey);
-
-            // Assert:
-            expect(mockedFetch).toHaveBeenCalledWith(expectedEndpoint);
-            done()
-        });
-
-        it('should return valid codeword hash string', async (done) => {
-            // Arrange:
             const expectedString = 'hash';
-            const publicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
-            mockFetch(expectedString);
+            const expectedEndpoint = `${baseUrl}/codeword/${publicKey}`;
+            const mockedFetch = mockFetch(expectedString);
 
             // Act:
             const result = await NodeRewardsProgram.getCodewordHash(publicKey);
 
             // Assert:
+            expect(mockedFetch).toHaveBeenCalledWith(expectedEndpoint);
             expect(result).toEqual(expectedString);
             done();
         });
