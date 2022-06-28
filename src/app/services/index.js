@@ -55,4 +55,8 @@ servicesModule.service('Voting', VotingService);
 import CatapultOptinService from './catapultOptin.service'
 servicesModule.service('CatapultOptin', CatapultOptinService);
 
+// Set Node Rewards Program service
+import NodeRewardsProgramService from './nodeRewardsProgram.service'
+servicesModule.service('NodeRewardsProgram', NodeRewardsProgramService);
+
 export default servicesModule;
