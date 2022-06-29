@@ -1070,6 +1070,17 @@ function EnglishProvider($translateProvider) {
         STATUS_REMOTE_PUBLIC_KEY_NAME: 'Remote Public Key',
         STATUS_TOTAL_REWARDS_NAME: 'Total Rewards',
 
+        ENROLL_TO_PROGRAM_ADDRESS_NAME: 'Enroll Address',
+        ENROLL_TO_PROGRAM_IP_DOMAIN_NAME: 'Node IP or Domain',
+        ENROLL_TO_PROGRAM_FEE_NAME: 'Fee',
+        ENROLL_TO_PROGRAM_BUTTON_NAME: 'Enroll to Program',
+
+        PAYOUT_HISTORY_FROM_NAME: 'From Round',
+        PAYOUT_HISTORY_TO_NAME: 'To Round',
+        PAYOUT_HISTORY_AMOUNT_NAME: 'Amount',
+        PAYOUT_HISTORY_TRANSACTION_HASH_NAME: 'Transaction Hash',
+        PAYOUT_HISTORY_DATE_NAME: 'Date',
+
         INVALID_ENROLLMENT_ADDRESS: 'Invalid enrollment address.',
         ADDRESS_ENROLLED: 'Current address already enrolled to this period.',
     });
