@@ -1070,6 +1070,8 @@ function EnglishProvider($translateProvider) {
         STATUS_REMOTE_PUBLIC_KEY_NAME: 'Remote Public Key',
         STATUS_TOTAL_REWARDS_NAME: 'Total Rewards',
 
+        INVALID_ENROLLMENT_ADDRESS: 'Invalid enrollment address.',
+        ADDRESS_ENROLLED: 'Current address already enrolled to this period.',
     });
 }
 
