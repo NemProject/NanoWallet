@@ -658,7 +658,7 @@ export default class Alert {
         });
     }
 
-    AddressEnrolled() {
+    addressEnrolled() {
         this._ngToast.create({
             content: this._$filter('translate')('ADDRESS_ENROLLED'),
             className: 'warning',

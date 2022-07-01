@@ -24,7 +24,7 @@
                     ng-if="$ctrl.accounts.length"
                     ng-options="account as account.display for account in $ctrl.accounts"
                     ng-change="$ctrl.onChangeAccount();"></select>
-                  <input class="form-control form-control-lg"  ng-if="!$ctrl.accounts.length" type="text" ng-model="$ctrl.selectedAccount" readOnly/>
+                  <input class="form-control form-control-lg"  ng-if="!$ctrl.accounts.length" type="text" ng-model="$ctrl.selectedAccount.display" readOnly/>
                 </div>
               </fieldset>
               <!-- Balance -->
@@ -47,19 +47,9 @@
             <div class="panel-heading">
               <!-- TABS -->
               <ul class="nav nav-tabs">
-                <li ng-class="{ active: $ctrl.isTabSelected($ctrl.tab.status) }">
-                  <a ng-click="$ctrl.setTab($ctrl.tab.status)">
-                    {{ 'TAB_STATUS_NAME' | translate }}
-                  </a>
-                </li>
-                <li ng-class="{ active: $ctrl.isTabSelected($ctrl.tab.enroll) }">
-                  <a ng-click="$ctrl.setTab($ctrl.tab.enroll)">
-                    {{ 'TAB_ENROLL_TO_PROGRAM_NAME' | translate }}
-                  </a>
-                </li>
-                <li ng-class="{ active: $ctrl.isTabSelected($ctrl.tab.payout) }">
-                  <a ng-click="$ctrl.setTab($ctrl.tab.payout)">
-                    {{ 'TAB_PAYOUT_HISTORY_NAME' | translate }}
+                <li ng-repeat="item in $ctrl.tabs" ng-class="{ active: $ctrl.isTabSelected(item.key) }">
+                  <a ng-click="$ctrl.setTab(item.key)">
+                    {{ item.name | translate }}
                   </a>
                 </li>
               </ul>
@@ -176,6 +166,10 @@
                     </tr>
                   </tbody>
                 </table>
+
+                <div ng-show="$ctrl.lastPage == 0 && $ctrl.payoutHistory.length == 0">
+                  <p>{{ 'GENERAL_NO_RESULTS' | translate }}</p>
+                </div>
 
                 <div class="row">
                   <div class="col-lg-6" style="margin-top: 25px;">
