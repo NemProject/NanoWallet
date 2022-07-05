@@ -1054,7 +1054,7 @@ function EnglishProvider($translateProvider) {
         POST_OPTIN_CONFIRM_MODAL_CHECKBOX_MULTISIG: "I confirm that the Symbol destination address matches the Symbol multisig account address",
         OPTIN_NIS1_PUBLIC_KEY: 'The public key you entered is a NIS1 key! You need to enter a Symbol public key.',
 
-        // NODE REWARDS PROGRAM IN MODULE
+        // NODE REWARDS PROGRAM MODULE
         NODE_REWARDS_PROGRAM_TITLE: 'NODE REWARDS PROGRAM',
         ACCOUNT_NAME: 'Account',
         BALANCE_NAME: 'Balance',

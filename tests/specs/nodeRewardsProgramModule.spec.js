@@ -9,7 +9,7 @@ describe('Node rewards program module tests', () => {
         endpoint: 'https://superlong.domain.name:7890',
         lastPayoutRound: 9999,
         name: 'Alice6',
-        remotePublicKey: '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d',
+        remotePublicKey: 'ca37a2ee96b94fd5e7879105733c97a21ffc2c00d961b2995a59a82463708e6a',
         mainPublicKey: '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d',
         status: 'active',
         totalRewardsEarned: 12000000
@@ -279,7 +279,7 @@ describe('Node rewards program module tests', () => {
             expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.domainOrIP} ${'0'.repeat(64)}`));
         })
 
-    it('returns multisig account transaction object', () => {
+        it('returns multisig account transaction object', () => {
             // Arrange:
             DataStore.account.metaData = AccountDataFixture.mainnetCosignerAccountData;
 
@@ -524,29 +524,29 @@ describe('Node rewards program module tests', () => {
         it('returns payout history records', async (done) => {
             // Arrange:
             const mockPayouts = [{
-                    amount: 24000000,
-                    fromRoundId: 1267,
-                    isPaid: true,
-                    timestamp: "2022-06-30T23:22:48.135315+00:00",
-                    toRoundId: 1267,
-                    transactionHash: "442D3EC7E12202B3DD8C4A54660BE088235BFD4522A165A522BDC0D368434D94"
-                },
-                {
-                    amount: 24000000,
-                    fromRoundId: 1266,
-                    isPaid: true,
-                    timestamp: "2022-06-30T23:17:48.114989+00:00",
-                    toRoundId: 1266,
-                    transactionHash: "B5D55D9858479441C81F6A638F17C1E30692BE8771FC44BFF62A989E3048A77E"
-                },
-                {
-                    amount: 24000000,
-                    fromRoundId: 1265,
-                    isPaid: true,
-                    timestamp: "2022-06-30T23:07:48.093682+00:00",
-                    toRoundId: 1265,
-                    transactionHash: "4C5A91F8FE70A49506176634E30AF7436D42E8BB951CB2DE6E485175CC99781F"
-                }]
+                amount: 24000000,
+                fromRoundId: 1267,
+                isPaid: true,
+                timestamp: "2022-06-30T23:22:48.135315+00:00",
+                toRoundId: 1267,
+                transactionHash: "442D3EC7E12202B3DD8C4A54660BE088235BFD4522A165A522BDC0D368434D94"
+            },
+            {
+                amount: 24000000,
+                fromRoundId: 1266,
+                isPaid: true,
+                timestamp: "2022-06-30T23:17:48.114989+00:00",
+                toRoundId: 1266,
+                transactionHash: "B5D55D9858479441C81F6A638F17C1E30692BE8771FC44BFF62A989E3048A77E"
+            },
+            {
+                amount: 24000000,
+                fromRoundId: 1265,
+                isPaid: true,
+                timestamp: "2022-06-30T23:07:48.093682+00:00",
+                toRoundId: 1265,
+                transactionHash: "4C5A91F8FE70A49506176634E30AF7436D42E8BB951CB2DE6E485175CC99781F"
+            }];
 
             spyOn(NodeRewardsProgram, 'getNodeInfo').and.returnValue(Promise.resolve(mockEnrollStatus));
             spyOn(NodeRewardsProgram, 'getNodePayouts').and.returnValue(Promise.resolve(mockPayouts));

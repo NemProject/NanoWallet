@@ -128,7 +128,7 @@ class NodeRewardsProgramCtrl {
      * @returns {boolean} boolean
      */
     isTabSelected(tab) {
-        return (this.selectedTab === tab);
+        return this.selectedTab === tab;
     }
 
     /**
@@ -172,19 +172,17 @@ class NodeRewardsProgramCtrl {
      * @returns {object} transaction object
      */
     prepareTransaction(codewordHash) {
-        // Create a new object to not affect the view
         let transferTransaction = nem.model.objects.get("transferTransaction");
 
-        // Set recipient
+        // Set enroll address to recipient
         transferTransaction.recipient = this.formData.enrollAddress.toUpperCase().replace(/-/g, '');
 
-        // Set amount
         transferTransaction.amount = 0
 
-        // Set empty mosaics
         transferTransaction.mosaics = null;
 
-        // Set the message
+        // If codewordHash is not provided, use the default one to make sure we have the right message length
+        // to calculate transaction fees
         transferTransaction.message = `enroll ${this.formData.domainOrIP} ${codewordHash ? codewordHash :'0'.repeat(64)}`;
 
         // Set multisig, if selected
@@ -199,7 +197,6 @@ class NodeRewardsProgramCtrl {
         // Set the entity for fees in view
         this.preparedTransaction = entity;
 
-        // Return prepared transaction
         return entity;
     }
 
@@ -244,7 +241,10 @@ class NodeRewardsProgramCtrl {
         this.okPressed = true;
 
         // Password validation
-        if (!this._Wallet.decrypt(this.common)) return this.okPressed = false;
+        if (!this._Wallet.decrypt(this.common)) {
+            this.okPressed = false;
+            return;
+        }
 
         // Enroll validation and request codeWord
         const [isEnrolled, isEnrollmentAddressValid, codewordHash] = await Promise.all([
