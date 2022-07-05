@@ -218,7 +218,7 @@ class NodeRewardsProgramCtrl {
                     nodeId: result.id,
                 }
 
-                this.lastPage = Number((result.rewardCount / 15).toFixed())
+                this.lastPage = Math.ceil(result.rewardCount/15);
             })
         } catch (error) {
             this._$timeout(() => {
