@@ -110,6 +110,7 @@ class NodeRewardsProgramCtrl {
     setSelectedAccountInfo() {
         this.balance = this.selectedAccount.formatBalance;
         this.formData.mainPublicKey = this.selectedAccount.publicKey;
+        // this.formData.mainPublicKey = '38876E7C5309C325833E6D5809834CDD04B0A84EF191723E3F3E2D156C16CD09';
         this.formData.isMultisig = this.selectedAccount.isMultisig || false;
     }
 
@@ -216,6 +217,7 @@ class NodeRewardsProgramCtrl {
                     remotePublicKey: result.remotePublicKey,
                     totalReward: this.computeXEMBalance(result.totalRewardsEarned),
                     nodeId: result.id,
+                    lastPayoutRound: result.lastPayoutRound,
                 }
 
                 this.lastPage = Math.ceil(result.rewardCount/15);
@@ -229,6 +231,7 @@ class NodeRewardsProgramCtrl {
                     publicKey: '-',
                     remotePublicKey: '-',
                     totalReward: '-',
+                    lastPayoutRound: '-'
                 };
             })
         }

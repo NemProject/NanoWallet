@@ -12,7 +12,8 @@ describe('Node rewards program module tests', () => {
         remotePublicKey: 'ca37a2ee96b94fd5e7879105733c97a21ffc2c00d961b2995a59a82463708e6a',
         mainPublicKey: '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d',
         status: 'active',
-        totalRewardsEarned: 12000000
+        totalRewardsEarned: 12000000,
+        lastPayoutRound: 12
     };
 
     beforeEach(() => {
@@ -334,6 +335,7 @@ describe('Node rewards program module tests', () => {
                 publicKey: '-',
                 remotePublicKey: '-',
                 totalReward: '-',
+                lastPayoutRound: '-',
             };
 
             expect(ctrl.enrollStatus).toEqual(expectedEnrollStatus);
@@ -360,7 +362,8 @@ describe('Node rewards program module tests', () => {
                 publicKey: mockEnrollStatus.mainPublicKey,
                 remotePublicKey: mockEnrollStatus.remotePublicKey,
                 totalReward: ctrl.computeXEMBalance(mockEnrollStatus.totalRewardsEarned),
-                nodeId: mockEnrollStatus.id
+                nodeId: mockEnrollStatus.id,
+                lastPayoutRound: mockEnrollStatus.lastPayoutRound,
             };
 
             expect(ctrl.enrollStatus).toEqual(expectedEnrollStatus);

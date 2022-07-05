@@ -96,6 +96,15 @@
                       <input class="form-control" ng-model="$ctrl.enrollStatus.remotePublicKey" readonly />
                     </div>
                   </fieldset>
+                  <!-- Last Payout Round -->
+                  <fieldset class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <label>{{ 'STATUS_LAST_PAYOUT_ROUND_NAME' | translate }}:</label>
+                      </span>
+                      <input class="form-control" ng-model="$ctrl.enrollStatus.lastPayoutRound" readonly />
+                    </div>
+                  </fieldset>
                   <!-- Total Rewards -->
                   <fieldset class="form-group">
                     <div class="input-group">

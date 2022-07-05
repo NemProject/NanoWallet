@@ -1068,6 +1068,7 @@ function EnglishProvider($translateProvider) {
         STATUS_INACTIVE_NAME: 'Inactive',
         STATUS_PUBLIC_KEY_NAME: 'Public Key',
         STATUS_REMOTE_PUBLIC_KEY_NAME: 'Remote Public Key',
+        STATUS_LAST_PAYOUT_ROUND_NAME: 'Last Payout Round',
         STATUS_TOTAL_REWARDS_NAME: 'Total Rewards',
 
         ENROLL_TO_PROGRAM_ADDRESS_NAME: 'Enroll Address',
