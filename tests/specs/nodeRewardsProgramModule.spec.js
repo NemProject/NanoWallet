@@ -86,6 +86,47 @@ describe('Node rewards program module tests', () => {
         })
     })
 
+    describe('setSelectedAccountInfo', () => {
+        const runBasicSetSelectedAccountInfoTests = (selectedAccount) => {
+            // Arrange:
+            const ctrl = $controller('NodeRewardsProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            ctrl.selectedAccount = selectedAccount;
+
+            // Act:
+            ctrl.setSelectedAccountInfo();
+
+            // Assert:
+            expect(ctrl.balance).toEqual(selectedAccount.formatBalance);
+            expect(ctrl.formData.isMultisig).toEqual(selectedAccount.isMultisig);
+            expect(ctrl.formData.mainPublicKey).toEqual(selectedAccount.publicKey);
+        }
+
+        it('set normal account info to form data and balance', () => {
+            // Arrange:
+            const mockSelectedAccount = {
+                publicKey: 'ca37a2ee96b94fd5e7879105733c97a21ffc2c00d961b2995a59a82463708e6a',
+                formatBalance: '0.000010',
+                isMultisig: false
+            }
+
+            runBasicSetSelectedAccountInfoTests(mockSelectedAccount);
+        })
+
+        it('set multisig account info to form data and balance', () => {
+            // Arrange:
+            const mockSelectedMultisigAccount = {
+                publicKey: 'ca37a2ee96b94fd5e7879105733c97a21ffc2c00d961b2995a59a82463708e6a',
+                formatBalance: '0.000010',
+                isMultisig: true
+            }
+
+            runBasicSetSelectedAccountInfoTests(mockSelectedMultisigAccount);
+        })
+    })
+
     describe('computeXEMBalance', () => {
         it('returns formatted XEM balance in string (6 divisibility)', () => {
             // Arrange:
@@ -196,13 +237,13 @@ describe('Node rewards program module tests', () => {
     })
 
     describe('onChangeAccount', () => {
-        it('returns selected multisig account info', () => {
+        it('returns selected account info', () => {
             // Arrange:
-            DataStore.account.metaData = AccountDataFixture.mainnetCosignerAccountData;
-
             const ctrl = $controller('NodeRewardsProgramCtrl', {
                 $scope: $rootScope.$new()
             });
+
+            spyOn(ctrl, 'setSelectedAccountInfo');
 
             spyOn(ctrl, 'resetTab');
 
@@ -210,9 +251,7 @@ describe('Node rewards program module tests', () => {
             ctrl.onChangeAccount();
 
             // Assert:
-            expect(ctrl.balance).toEqual('16.000000');
-            expect(ctrl.formData.isMultisig).toEqual(true);
-            expect(ctrl.formData.mainPublicKey).toEqual(AccountDataFixture.mainnetCosignerAccountData.meta.cosignatoryOf[0].publicKey);
+            expect(ctrl.setSelectedAccountInfo).toHaveBeenCalled();
             expect(ctrl.resetTab).toHaveBeenCalled();
         })
     })

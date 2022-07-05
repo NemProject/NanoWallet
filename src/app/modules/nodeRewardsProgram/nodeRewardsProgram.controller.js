@@ -101,6 +101,13 @@ class NodeRewardsProgramCtrl {
             this.selectedAccount = currentAccount;
         }
 
+        this.setSelectedAccountInfo();
+    }
+
+    /**
+     * Assign the selected account to the balance view and form data
+     */
+    setSelectedAccountInfo() {
         this.balance = this.selectedAccount.formatBalance;
         this.formData.mainPublicKey = this.selectedAccount.publicKey;
         this.formData.isMultisig = this.selectedAccount.isMultisig || false;
@@ -155,10 +162,7 @@ class NodeRewardsProgramCtrl {
      * Switch account if account contain multisig
      */
     onChangeAccount() {
-        this.balance = this.selectedAccount.formatBalance;
-        this.formData.isMultisig = this.selectedAccount.isMultisig || false;
-        this.formData.mainPublicKey = this.selectedAccount.publicKey;
-
+        this.setSelectedAccountInfo();
         this.resetTab();
     }
 
