@@ -258,7 +258,7 @@ describe('Node rewards program module tests', () => {
             expect(ctrl.preparedTransaction.otherTrans.recipient).toEqual(ctrl.formData.enrollAddress);
             expect(ctrl.preparedTransaction.otherTrans.fee).toEqual(200000);
             expect(ctrl.preparedTransaction.otherTrans.amount).toEqual(0);
-            expect(ctrl.preparedTransaction.// Assert:otherTrans.mosaics).toEqual(null);
+            expect(ctrl.preparedTransaction.otherTrans.mosaics).toEqual(null);
             expect(ctrl.preparedTransaction.otherTrans.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.domainOrIP} ${'0'.repeat(64)}`));
         })
 

@@ -97,12 +97,8 @@ class NodeRewardsProgramCtrl {
             this.accounts = [...multisigAccounts, currentAccount];
 
             this.selectedAccount = this.accounts[0];
-            this.balance = this.accounts[0].formatBalance;
-            this.formData.mainPublicKey = this.accounts[0].publicKey;
         } else {
             this.selectedAccount = currentAccount;
-            this.balance = currentAccount.formatBalance;
-            this.formData.mainPublicKey = currentAccount.publicKey;
         }
 
         this.balance = this.selectedAccount.formatBalance;
