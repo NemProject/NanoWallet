@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-8 col-md-12">
+          <div class="col-lg-12 col-md-12">
             <div class="panel-heading">
               <!-- TABS -->
               <ul class="nav nav-tabs">
@@ -57,7 +57,7 @@
 
             <div class="panel-body">
               <!-- Status Tab -->
-              <div ng-show="$ctrl.isTabSelected($ctrl.tab.status)">
+              <div class="col-lg-8" ng-show="$ctrl.isTabSelected($ctrl.tab.status)">
                   <!-- NODE NAME -->
                   <fieldset class="form-group">
                     <div class="input-group">
@@ -111,7 +111,7 @@
               </div>
 
               <!-- Enroll To Program Tab -->
-              <div ng-show="$ctrl.isTabSelected($ctrl.tab.enroll)">
+              <div class="col-lg-8" ng-show="$ctrl.isTabSelected($ctrl.tab.enroll)">
                 <!-- Enroll Address Field -->
                 <fieldset class="form-group">
                   <div class="input-group">
