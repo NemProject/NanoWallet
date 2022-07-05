@@ -211,7 +211,7 @@ class NodeRewardsProgramCtrl {
                 this.enrollStatus = {
                     nodeName: result.name,
                     status: result.status,
-                    endpoint: result.endpoint,
+                    endpoint: new URL(result.endpoint).hostname || '' ,
                     publicKey: result.mainPublicKey,
                     remotePublicKey: result.remotePublicKey,
                     totalReward: this.computeXEMBalance(result.totalRewardsEarned),

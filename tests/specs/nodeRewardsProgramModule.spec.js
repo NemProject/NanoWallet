@@ -356,7 +356,7 @@ describe('Node rewards program module tests', () => {
             const expectedEnrollStatus = {
                 nodeName: mockEnrollStatus.name,
                 status: mockEnrollStatus.status,
-                endpoint: mockEnrollStatus.endpoint,
+                endpoint: new URL(mockEnrollStatus.endpoint).hostname,
                 publicKey: mockEnrollStatus.mainPublicKey,
                 remotePublicKey: mockEnrollStatus.remotePublicKey,
                 totalReward: ctrl.computeXEMBalance(mockEnrollStatus.totalRewardsEarned),
@@ -462,9 +462,9 @@ describe('Node rewards program module tests', () => {
             ctrl.selectEnrollTab();
 
             // Assert:
-            expect(ctrl.formData.domainOrIP).toEqual(mockEnrollStatus.endpoint);
+            expect(ctrl.formData.domainOrIP).toEqual(new URL(mockEnrollStatus.endpoint).hostname);
             expect(ctrl.preparedTransaction.type).toEqual(nem.model.transactionTypes.transfer);
-            expect(ctrl.preparedTransaction.fee).toEqual(250000);
+            expect(ctrl.preparedTransaction.fee).toEqual(200000);
             expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.domainOrIP} ${'0'.repeat(64)}`));
             done()
         })
