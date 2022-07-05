@@ -275,7 +275,7 @@ describe('Node rewards program module tests', () => {
             expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.domainOrIP} ${'0'.repeat(64)}`));
         })
 
-        it('returns multisig account transaction object', () => {
+    it('returns multisig account transaction object', () => {
             // Arrange:
             DataStore.account.metaData = AccountDataFixture.mainnetCosignerAccountData;
 
