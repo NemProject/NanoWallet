@@ -143,8 +143,8 @@ describe('Node rewards program module tests', () => {
     })
 
     describe('isTabSelected', () => {
-        const runBasicTabSelectedTests = (selectedTab, currentTab) => {
-            it(`returns ${selectedTab === currentTab} when selected tab ${selectedTab === currentTab ? 'matched' : 'unmatched'} with current tab`, () => {
+        const runBasicTabSelectedTests = ({selectedTab, tabToTest, expectedResult}) => {
+            it(`returns ${expectedResult} when selected tab ${expectedResult ? 'matched' : 'unmatched'} with current tab`, () => {
                 // Arrange:
                 const ctrl = $controller('NodeRewardsProgramCtrl', {
                     $scope: $rootScope.$new()
@@ -153,10 +153,10 @@ describe('Node rewards program module tests', () => {
                 ctrl.selectedTab = selectedTab;
 
                 // Act:
-                const selectedTab = ctrl.isTabSelected(currentTab);
+                const resultTab = ctrl.isTabSelected(tabToTest);
 
                 // Assert:
-                expect(selectedTab).toEqual(selectedTab === currentTab);
+                expect(resultTab).toEqual(expectedResult);
             });
         };
 
@@ -164,16 +164,18 @@ describe('Node rewards program module tests', () => {
         const tabs = [
             {
                 selectedTab: 'status',
-                currentTab: 'status'
+                tabToTest: 'status',
+                expectedResult: true
             },
             {
                 selectedTab: 'enroll',
-                currentTab: 'status'
+                currentTab: 'status',
+                expectedResult: false
             },
         ]
 
         tabs.forEach(tab => {
-            runBasicTabSelectedTests(tab.selectedTab, tab.currentTab);
+            runBasicTabSelectedTests(tab);
         })
     })
 
@@ -201,15 +203,15 @@ describe('Node rewards program module tests', () => {
         const tabs = [
             {
                 selectedTab: 'status',
-                fn: 'getStatus'
+                fn: 'selectStatusTab'
             },
             {
                 selectedTab: 'enroll',
-                fn: 'setEnroll'
+                fn: 'selectEnrollTab'
             },
             {
                 selectedTab: 'payout',
-                fn: 'getPayoutHistory'
+                fn: 'selectPayoutHistory'
             }
         ]
 
@@ -315,8 +317,8 @@ describe('Node rewards program module tests', () => {
         })
     })
 
-    describe('getStatus', () => {
-        it('returns default enroll status when the accounts have not enroll', async (done) => {
+    describe('selectStatusTab', () => {
+        it('returns default enroll status when no accounts have enrolled', async (done) => {
             // Arrange:
             spyOn(NodeRewardsProgram, 'getNodeInfo').and.returnValue(Promise.reject('error'));
 
@@ -325,7 +327,7 @@ describe('Node rewards program module tests', () => {
             });
 
             // Act:
-            await ctrl.getStatus();
+            await ctrl.selectStatusTab();
             $timeout.flush();
 
             // Assert:
@@ -351,7 +353,7 @@ describe('Node rewards program module tests', () => {
             });
 
             // Act:
-            await ctrl.getStatus();
+            await ctrl.selectStatusTab();
             $timeout.flush();
 
             // Assert:
@@ -426,8 +428,8 @@ describe('Node rewards program module tests', () => {
         });
     })
 
-    describe('setEnroll', () => {
-        it('set IP or domain to empty when accounts have not enroll', async (done) => {
+    describe('selectEnrollTab', () => {
+        it('set IP or domain to empty when no accounts have enrolled', async (done) => {
             // Arrange:
             spyOn(NodeRewardsProgram, 'getNodeInfo').and.returnValue(Promise.reject('error'));
 
@@ -435,11 +437,11 @@ describe('Node rewards program module tests', () => {
                 $scope: $rootScope.$new()
             });
 
-            await ctrl.getStatus();
+            await ctrl.selectStatusTab();
             $timeout.flush();
 
             // Act:
-            ctrl.setEnroll();
+            ctrl.selectEnrollTab();
 
             // Assert:
             expect(ctrl.formData.domainOrIP).toEqual('');
@@ -457,11 +459,11 @@ describe('Node rewards program module tests', () => {
                 $scope: $rootScope.$new()
             });
 
-            await ctrl.getStatus();
-            $timeout.flush()
+            await ctrl.selectStatusTab();
+            $timeout.flush();
 
             // Act:
-            ctrl.setEnroll();
+            ctrl.selectEnrollTab();
 
             // Assert:
             expect(ctrl.formData.domainOrIP).toEqual(mockEnrollStatus.endpoint);
@@ -472,7 +474,7 @@ describe('Node rewards program module tests', () => {
         })
     })
 
-    describe('getPayoutHistory', () => {
+    describe('selectPayoutHistory', () => {
         const runBasicPaginationTests = ({page, fn, expectedResult}) => {
             it(`returns ${page} page of payout history`, () => {
                 // Arrange:
@@ -480,7 +482,7 @@ describe('Node rewards program module tests', () => {
                     $scope: $rootScope.$new()
                 });
 
-                spyOn(ctrl, 'getPayoutHistory');
+                spyOn(ctrl, 'selectPayoutHistory');
 
                 ctrl.currentPage = 5;
                 ctrl.lastPage = 10;
@@ -490,7 +492,7 @@ describe('Node rewards program module tests', () => {
 
                 // Assert:
                 expect(ctrl.currentPage).toEqual(expectedResult);
-                expect(ctrl.getPayoutHistory).toHaveBeenCalled();
+                expect(ctrl.selectPayoutHistory).toHaveBeenCalled();
             })
         }
 
@@ -553,11 +555,11 @@ describe('Node rewards program module tests', () => {
                 $scope: $rootScope.$new()
             });
 
-            await ctrl.getStatus();
+            await ctrl.selectStatusTab();
             $timeout.flush();
 
             // Act:
-            await ctrl.getPayoutHistory();
+            await ctrl.selectPayoutHistory();
             $timeout.flush();
 
             // Assert:

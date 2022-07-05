@@ -140,13 +140,13 @@ class NodeRewardsProgramCtrl {
 
         switch (tab) {
             case this.tab.status:
-                this.getStatus();
+                this.selectStatusTab();
                 break;
             case this.tab.enroll:
-                this.setEnroll();
+                this.selectEnrollTab();
                 break;
             case this.tab.payout:
-                this.getPayoutHistory();
+                this.selectPayoutHistory();
                 break;
         }
     }
@@ -204,9 +204,9 @@ class NodeRewardsProgramCtrl {
     }
 
     /**
-     * Get enroll status
+     * Select enroll status tab
      */
-    async getStatus() {
+    async selectStatusTab() {
         try {
             const result = await this._nodeRewardsProgram.getNodeInfo(this.formData.mainPublicKey);
 
@@ -295,7 +295,7 @@ class NodeRewardsProgramCtrl {
     /**
      * Set enroll endpoint, when current account is enrolled
      */
-    setEnroll() {
+    selectEnrollTab() {
         if (this.enrollStatus.endpoint !== '-') {
             this.formData.domainOrIP = this.enrollStatus.endpoint;
             // Update Fee view
@@ -308,7 +308,7 @@ class NodeRewardsProgramCtrl {
      */
     fetchFirst() {
         this.currentPage = 0;
-        this.getPayoutHistory();
+        this.selectPayoutHistory();
     }
 
     /**
@@ -316,29 +316,29 @@ class NodeRewardsProgramCtrl {
      */
     fetchLast() {
         this.currentPage = this.lastPage;
-        this.getPayoutHistory();
+        this.selectPayoutHistory();
     }
 
     /**
      * Fetch next page of payout history
      */
     fetchNext() {
-        this.currentPage++;
-        this.getPayoutHistory();
+        ++this.currentPage;
+        this.selectPayoutHistory();
     }
 
     /**
      * Fetch previous page of payout history
      */
     fetchPrevious() {
-        this.currentPage--;
-        this.getPayoutHistory();
+        --this.currentPage;
+        this.selectPayoutHistory();
     }
 
     /**
      * Fetch payout history records
      */
-    async getPayoutHistory() {
+    async selectPayoutHistory() {
         try {
             const payouts = await this._nodeRewardsProgram.getNodePayouts(this.enrollStatus.nodeId, this.currentPage);
 
