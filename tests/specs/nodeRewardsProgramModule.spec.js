@@ -238,7 +238,7 @@ describe('Node rewards program module tests', () => {
             expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.domainOrIP} ${'0'.repeat(64)}`));
         })
 
-        it('returns multisig account transaction object', () => {
+    it('returns multisig account transaction object', () => {
             // Arrange:
             DataStore.account.metaData = AccountDataFixture.mainnetCosignerAccountData;
 
@@ -336,7 +336,7 @@ describe('Node rewards program module tests', () => {
             // Arrange:
             spyOn(Wallet, 'decrypt').and.returnValue(true);
 
-            spyOn(NodeRewardsProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(false));
+            spyOn(NodeRewardsProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(true));
             spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(false));
             spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('hash'));
 

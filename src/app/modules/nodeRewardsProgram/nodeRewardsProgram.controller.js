@@ -249,7 +249,7 @@ class NodeRewardsProgramCtrl {
             this._nodeRewardsProgram.getCodewordHash(this.formData.mainPublicKey)
         ])
 
-        if (!isEnrolled) {
+        if (isEnrolled) {
             this._$timeout(() => {
                 this._Alert.addressEnrolled();
                 this.okPressed = false;
