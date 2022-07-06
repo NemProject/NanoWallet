@@ -87,7 +87,7 @@ describe('Node rewards program module tests', () => {
     })
 
     describe('setSelectedAccountInfo', () => {
-        const runBasicSetSelectedAccountInfoTests = (selectedAccount) => {
+        const runBasicSetSelectedAccountInfoTests = selectedAccount => {
             // Arrange:
             const ctrl = $controller('NodeRewardsProgramCtrl', {
                 $scope: $rootScope.$new()
@@ -106,24 +106,20 @@ describe('Node rewards program module tests', () => {
 
         it('set normal account info to form data and balance', () => {
             // Arrange:
-            const mockSelectedAccount = {
+            runBasicSetSelectedAccountInfoTests({
                 publicKey: 'ca37a2ee96b94fd5e7879105733c97a21ffc2c00d961b2995a59a82463708e6a',
                 formatBalance: '0.000010',
                 isMultisig: false
-            }
-
-            runBasicSetSelectedAccountInfoTests(mockSelectedAccount);
+            });
         })
 
         it('set multisig account info to form data and balance', () => {
             // Arrange:
-            const mockSelectedMultisigAccount = {
+            runBasicSetSelectedAccountInfoTests({
                 publicKey: 'ca37a2ee96b94fd5e7879105733c97a21ffc2c00d961b2995a59a82463708e6a',
                 formatBalance: '0.000010',
                 isMultisig: true
-            }
-
-            runBasicSetSelectedAccountInfoTests(mockSelectedMultisigAccount);
+            });
         })
     })
 
@@ -143,7 +139,7 @@ describe('Node rewards program module tests', () => {
     })
 
     describe('isTabSelected', () => {
-        const runBasicTabSelectedTests = ({selectedTab, tabToTest, expectedResult}) => {
+        const runBasicTabSelectedTests = ({selectedTab, isTabToTestSelected, expectedResult}) => {
             it(`returns ${expectedResult} when selected tab ${expectedResult ? 'matched' : 'unmatched'} with current tab`, () => {
                 // Arrange:
                 const ctrl = $controller('NodeRewardsProgramCtrl', {
@@ -153,7 +149,7 @@ describe('Node rewards program module tests', () => {
                 ctrl.selectedTab = selectedTab;
 
                 // Act:
-                const resultTab = ctrl.isTabSelected(tabToTest);
+                const resultTab = ctrl.isTabSelected(isTabToTestSelected);
 
                 // Assert:
                 expect(resultTab).toEqual(expectedResult);
@@ -164,12 +160,12 @@ describe('Node rewards program module tests', () => {
         const tabs = [
             {
                 selectedTab: 'status',
-                tabToTest: 'status',
+                isTabToTestSelected: 'status',
                 expectedResult: true
             },
             {
                 selectedTab: 'enroll',
-                currentTab: 'status',
+                isTabToTestSelected: 'status',
                 expectedResult: false
             },
         ]
