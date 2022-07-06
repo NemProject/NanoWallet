@@ -315,7 +315,34 @@ describe('Node rewards program module tests', () => {
     })
 
     describe('selectStatusTab', () => {
-        it('returns default enroll status when no accounts have enrolled', async (done) => {
+        const expectedEnrollStatus = {
+            nodeName: '-',
+            status: false,
+            endpoint: '-',
+            publicKey: '-',
+            remotePublicKey: '-',
+            totalReward: '-',
+            lastPayoutRound: '-',
+        };
+
+        it('returns default enroll status when public key is not exist', async (done) => {
+            // Arrange:
+            const ctrl = $controller('NodeRewardsProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            ctrl.formData.mainPublicKey = '';
+
+            // Act:
+            await ctrl.selectStatusTab();
+            $timeout.flush();
+
+            // Assert:
+            expect(ctrl.enrollStatus).toEqual(expectedEnrollStatus);
+            done();
+        })
+
+        it('returns default enroll status when node reward service throws error', async (done) => {
             // Arrange:
             spyOn(NodeRewardsProgram, 'getNodeInfo').and.returnValue(Promise.reject('error'));
 
@@ -328,16 +355,6 @@ describe('Node rewards program module tests', () => {
             $timeout.flush();
 
             // Assert:
-            const expectedEnrollStatus = {
-                nodeName: '-',
-                status: false,
-                endpoint: '-',
-                publicKey: '-',
-                remotePublicKey: '-',
-                totalReward: '-',
-                lastPayoutRound: '-',
-            };
-
             expect(ctrl.enrollStatus).toEqual(expectedEnrollStatus);
             done();
         })
@@ -518,6 +535,38 @@ describe('Node rewards program module tests', () => {
             page.forEach(pageInfo => {
                 runBasicPaginationTests(pageInfo);
             })
+        })
+
+        it('returns empty array when node id is not exist', async (done) => {
+            // Arrange:
+            const ctrl = $controller('NodeRewardsProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            // Act:
+            await ctrl.selectPayoutHistory();
+            $timeout.flush();
+
+            // Assert:
+            expect(ctrl.payoutHistory).toEqual([]);
+            done();
+        })
+
+        it('returns empty array when node reward services throws error', async (done) => {
+            // Arrange:
+            spyOn(NodeRewardsProgram, 'getNodePayouts').and.returnValue(Promise.reject('error'));
+
+            const ctrl = $controller('NodeRewardsProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            // Act:
+            await ctrl.selectPayoutHistory();
+            $timeout.flush();
+
+            // Assert:
+            expect(ctrl.payoutHistory).toEqual([]);
+            done();
         })
 
         it('returns payout history records', async (done) => {

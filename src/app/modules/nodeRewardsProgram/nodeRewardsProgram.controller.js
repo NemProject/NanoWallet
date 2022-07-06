@@ -205,6 +205,20 @@ class NodeRewardsProgramCtrl {
      * Select enroll status tab
      */
     async selectStatusTab() {
+        this.enrollStatus = {
+            nodeName: '-',
+            status: false,
+            endpoint: '-',
+            publicKey: '-',
+            remotePublicKey: '-',
+            totalReward: '-',
+            lastPayoutRound: '-'
+        }
+
+        if (!this.formData.mainPublicKey) {
+            return;
+        }
+
         try {
             const result = await this._nodeRewardsProgram.getNodeInfo(this.formData.mainPublicKey);
 
@@ -223,17 +237,7 @@ class NodeRewardsProgramCtrl {
                 this.lastPage = Math.ceil(result.rewardCount/15);
             })
         } catch (error) {
-            this._$timeout(() => {
-                this.enrollStatus = {
-                    nodeName: '-',
-                    status: false,
-                    endpoint: '-',
-                    publicKey: '-',
-                    remotePublicKey: '-',
-                    totalReward: '-',
-                    lastPayoutRound: '-'
-                };
-            })
+            console.log(error);
         }
     }
 
@@ -342,6 +346,12 @@ class NodeRewardsProgramCtrl {
      * Fetch payout history records
      */
     async selectPayoutHistory() {
+        this.payoutHistory = [];
+
+        if (!this.enrollStatus.nodeId) {
+            return;
+        }
+
         try {
             const payouts = await this._nodeRewardsProgram.getNodePayouts(this.enrollStatus.nodeId, this.currentPage);
 
@@ -355,9 +365,7 @@ class NodeRewardsProgramCtrl {
                 })
             })
         } catch (error) {
-            this._$timeout(() => {
-                this.payoutHistory = [];
-            })
+            console.log(error);
         }
     }
 
