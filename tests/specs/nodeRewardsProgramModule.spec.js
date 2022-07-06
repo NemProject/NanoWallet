@@ -389,7 +389,35 @@ describe('Node rewards program module tests', () => {
     })
 
     describe('sendEnroll', () => {
-        it('returns alert when account enrolled or enrollment address incorrect', async (done) => {
+        it('returns alert when account enrolled and new domain name same as previously registered', async (done) => {
+            // Arrange:
+            spyOn(Wallet, 'decrypt').and.returnValue(true);
+
+            spyOn(NodeRewardsProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(true));
+            spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(true));
+            spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('40DA0977BE27B03B61FBE461225007E1528FD87F20A92BF8E031CDA59C4592E1'));
+
+            spyOn(Alert, 'addressEnrolled');
+
+            const ctrl = $controller('NodeRewardsProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            ctrl.enrollStatus.endpoint = 'old.domain.name';
+
+            ctrl.formData.domainOrIP = 'old.domain.name';
+
+            // Act:
+            await ctrl.sendEnroll();
+
+            $timeout.flush();
+
+            // Assert:
+            expect(Alert.addressEnrolled).toHaveBeenCalled();
+            done();
+        })
+
+        it('returns alert when enrollment address incorrect', async (done) => {
             // Arrange:
             spyOn(Wallet, 'decrypt').and.returnValue(true);
 
@@ -397,7 +425,6 @@ describe('Node rewards program module tests', () => {
             spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(false));
             spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('40DA0977BE27B03B61FBE461225007E1528FD87F20A92BF8E031CDA59C4592E1'));
 
-            spyOn(Alert, 'addressEnrolled');
             spyOn(Alert, 'invalidEnrollmentAddress');
 
             const ctrl = $controller('NodeRewardsProgramCtrl', {
@@ -410,7 +437,6 @@ describe('Node rewards program module tests', () => {
             $timeout.flush();
 
             // Assert:
-            expect(Alert.addressEnrolled).toHaveBeenCalled();
             expect(Alert.invalidEnrollmentAddress).toHaveBeenCalled();
             expect(ctrl.okPressed).toEqual(false);
             done();

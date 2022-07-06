@@ -110,7 +110,6 @@ class NodeRewardsProgramCtrl {
     setSelectedAccountInfo() {
         this.balance = this.selectedAccount.formatBalance;
         this.formData.mainPublicKey = this.selectedAccount.publicKey;
-        // this.formData.mainPublicKey = '38876E7C5309C325833E6D5809834CDD04B0A84EF191723E3F3E2D156C16CD09';
         this.formData.isMultisig = this.selectedAccount.isMultisig || false;
     }
 
@@ -266,7 +265,7 @@ class NodeRewardsProgramCtrl {
             this._nodeRewardsProgram.getCodewordHash(this.formData.mainPublicKey)
         ])
 
-        if (isEnrolled) {
+        if (isEnrolled && this.formData.domainOrIP === this.enrollStatus.endpoint) {
             this._$timeout(() => {
                 this._Alert.addressEnrolled();
                 this.okPressed = false;
