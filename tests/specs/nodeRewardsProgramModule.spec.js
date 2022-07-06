@@ -395,7 +395,7 @@ describe('Node rewards program module tests', () => {
 
             spyOn(NodeRewardsProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(true));
             spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(false));
-            spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('hash'));
+            spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('40DA0977BE27B03B61FBE461225007E1528FD87F20A92BF8E031CDA59C4592E1'));
 
             spyOn(Alert, 'addressEnrolled');
             spyOn(Alert, 'invalidEnrollmentAddress');
@@ -416,6 +416,31 @@ describe('Node rewards program module tests', () => {
             done();
         });
 
+        it('returns alert when codeword hash is empty', async (done) => {
+            // Arrange:
+            spyOn(Wallet, 'decrypt').and.returnValue(true);
+
+            spyOn(NodeRewardsProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(false));
+            spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(true));
+            spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('0'));
+
+            spyOn(Alert, 'invalidCodewordHash');
+
+            const ctrl = $controller('NodeRewardsProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            // Act:
+            await ctrl.sendEnroll();
+
+            $timeout.flush();
+
+            // Assert:
+            expect(Alert.invalidCodewordHash).toHaveBeenCalled();
+            expect(ctrl.okPressed).toEqual(false);
+            done();
+        });
+
         it('returns transaction object and announce transaction', async (done) => {
             // Arrange:
             spyOn(Wallet, 'decrypt').and.returnValue(true);
@@ -423,7 +448,7 @@ describe('Node rewards program module tests', () => {
 
             spyOn(NodeRewardsProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(false));
             spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(true));
-            spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('hash'));
+            spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('40DA0977BE27B03B61FBE461225007E1528FD87F20A92BF8E031CDA59C4592E1'));
 
             const ctrl = $controller('NodeRewardsProgramCtrl', {
                 $scope: $rootScope.$new()

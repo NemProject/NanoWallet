@@ -665,6 +665,13 @@ export default class Alert {
         });
     }
 
+    invalidCodewordHash() {
+        this._ngToast.create({
+            content: this._$filter('translate')('INVALID_CODEWORD_HASH'),
+            className: 'danger',
+        });
+    }
+
     /***
      * Success alerts
      */

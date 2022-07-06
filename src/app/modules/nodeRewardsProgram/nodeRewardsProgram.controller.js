@@ -276,7 +276,16 @@ class NodeRewardsProgramCtrl {
             })
         }
 
-        if (!isEnrolled && isEnrollmentAddressValid) {
+        if (codewordHash.length !== 64) {
+            this._$timeout(() => {
+                this._Alert.invalidCodewordHash();
+                this.okPressed = false;
+                return;
+            })
+        }
+
+        if(!isEnrolled && isEnrollmentAddressValid && codewordHash.length === 64) {
+            // Prepare transaction for enrollment
             const entity = this.prepareTransaction(codewordHash);
 
             try {
