@@ -651,6 +651,20 @@ export default class Alert {
         });
     }
 
+    invalidEnrollmentAddress() {
+        this._ngToast.create({
+            content: this._$filter('translate')('INVALID_ENROLLMENT_ADDRESS'),
+            className: 'danger'
+        });
+    }
+
+    addressEnrolled() {
+        this._ngToast.create({
+            content: this._$filter('translate')('ADDRESS_ENROLLED'),
+            className: 'warning',
+        });
+    }
+
     /***
      * Success alerts
      */

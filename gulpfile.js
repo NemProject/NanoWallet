@@ -59,7 +59,8 @@ gulp.task('browserify', ['views'], function() {
         plugins: [
           "syntax-dynamic-import",
           "transform-runtime",
-          "transform-async-to-generator"
+          "transform-async-to-generator",
+          ["transform-object-rest-spread", { "useBuiltIns": true }]
         ],
         ignore: /(bower_components)|(node_modules)/
     }))
@@ -83,7 +84,8 @@ gulp.task('browserifyTests', function() {
         plugins: [
           "syntax-dynamic-import",
           "transform-runtime",
-          "transform-async-to-generator"
+          "transform-async-to-generator",
+          ["transform-object-rest-spread", { "useBuiltIns": true }]
         ],
         ignore: /(bower_components)|(node_modules)/
       }))

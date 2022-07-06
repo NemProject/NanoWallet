@@ -134,11 +134,42 @@ let mainnetAccountData = {
                 "balance": 0,
                 "importance": 0,
                 "vestedBalance": 0,
-                "publicKey": null,
+                "publicKey": '343648ce70fcaf85a7cb32d1dd76dcacae81303eed1fb0cdfad2847f2482017f',
                 "label": null,
                 "multisigInfo": {}
             }
         }
+
+let mainnetCosignerAccountData = {
+    meta: {
+        cosignatories: [],
+        cosignatoryOf: [{
+            address: "NCC7KUVPQYBTPBABABR5D724CJAOMIA2RJERW3N7",
+            harvestedBlocks: 0,
+            balance: 16000000,
+            importance: 0,
+            vestedBalance: 0,
+            publicKey: "671ca866718ed174a21e593fc1e250837c03935bc79e2daad3bd018c444d78a7",
+            label: null,
+            multisigInfo: {
+                cosignatoriesCount: 1,
+                minCosignatories: 1
+            }
+        }],
+        status: "LOCKED",
+        remoteStatus: "INACTIVE"
+    },
+    account: {
+        address: "NC2YRCZB25RHND45HMX7YAZPHYMBKT5VQYMNAOCO",
+        harvestedBlocks: 0,
+        balance: 0,
+        importance: 0,
+        vestedBalance: 0,
+        publicKey: "405b4ca23f4851d32af03f6d7f8877b1184deed93e37ebd54b974e953629999e",
+        label: null,
+        multisigInfo: {}
+    }
+}
 
 let mainnetNamespaceOwned = {
             "NCTIKLMIWKRZC3TRKD5JYZUQHV76LGS3TTSUIXM6": {
@@ -228,6 +259,7 @@ module.exports = {
     testnetMosaicOwned,
     testnetMosaicDefinitionMetaDataPair,
     mainnetAccountData,
+    mainnetCosignerAccountData,
     mainnetNamespaceOwned,
     mainnetMosaicOwned,
     mainnetMosaicDefinitionMetaDataPair

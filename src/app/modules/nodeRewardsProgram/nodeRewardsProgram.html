@@ -1,0 +1,197 @@
+<div class="node-rewards-program-page">
+    <div class="container-fluid main">
+        <div class="row">
+          <div class="col-sm-8">
+            <h2>{{ 'NODE_REWARDS_PROGRAM_TITLE' | translate }}</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-12">
+            <div class="panel-heading">
+                <h3>{{ 'ACCOUNT_NAME' | translate }}</h3>
+            </div>
+            <!-- Account Info -->
+            <div class="panel-body">
+              <!-- Signer Account -->
+              <fieldset class="form-group">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <label>{{ 'ACCOUNT_NAME' | translate }}: </label>
+                  </span>
+                  <select
+                    class="form-control form-control-lg"
+                    ng-model="$ctrl.selectedAccount"
+                    ng-if="$ctrl.accounts.length"
+                    ng-options="account as account.display for account in $ctrl.accounts"
+                    ng-change="$ctrl.onChangeAccount();"></select>
+                  <input class="form-control form-control-lg"  ng-if="!$ctrl.accounts.length" type="text" ng-model="$ctrl.selectedAccount.display" readOnly/>
+                </div>
+              </fieldset>
+              <!-- Balance -->
+              <fieldset class="form-group">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                      <label>{{'BALANCE_NAME' | translate}}: </label>
+                  </span>
+                  <div class="form-control formFloat" readOnly>
+                    <input ng-model="$ctrl.balance" disabled />
+                    <label class="floatRight"><small>XEM</small></label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 col-md-12">
+            <div class="panel-heading">
+              <!-- TABS -->
+              <ul class="nav nav-tabs">
+                <li ng-repeat="item in $ctrl.tabs" ng-class="{ active: $ctrl.isTabSelected(item.key) }">
+                  <a ng-click="$ctrl.setTab(item.key)">
+                    {{ item.name | translate }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="panel-body">
+              <!-- Status Tab -->
+              <div ng-show="$ctrl.isTabSelected($ctrl.tab.status)">
+                  <!-- NODE NAME -->
+                  <fieldset class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <label>{{ 'STATUS_NODE_NAME' | translate }}:</label>
+                      </span>
+                      <input class="form-control" ng-model="$ctrl.enrollStatus.nodeName" readonly />
+                    </div>
+                  </fieldset>
+                  <!-- Status -->
+                  <fieldset class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <label>{{ 'STATUS_NAME' | translate }}:</label>
+                      </span>
+                      <span ng-class="$ctrl.enrollStatus.status ? 'status-active' : 'status-inactive'">
+                        {{ $ctrl.enrollStatus.status ? 'STATUS_ACTIVE_NAME' : 'STATUS_INACTIVE_NAME' | translate }}
+                      </span>
+                    </div>
+                  </fieldset>
+                  <!-- Public Key -->
+                  <fieldset class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <label>{{ 'STATUS_PUBLIC_KEY_NAME' | translate }}:</label>
+                      </span>
+                      <input class="form-control" ng-model="$ctrl.enrollStatus.publicKey" readonly />
+                    </div>
+                  </fieldset>
+                  <!-- Remote Public Key -->
+                  <fieldset class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <label>{{ 'STATUS_REMOTE_PUBLIC_KEY_NAME' | translate }}:</label>
+                      </span>
+                      <input class="form-control" ng-model="$ctrl.enrollStatus.remotePublicKey" readonly />
+                    </div>
+                  </fieldset>
+                  <!-- Total Rewards -->
+                  <fieldset class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <label>{{ 'STATUS_TOTAL_REWARDS_NAME' | translate }}:</label>
+                      </span>
+                      <div class="form-control formFloat" readOnly>
+                        <input ng-model="$ctrl.enrollStatus.totalReward" disabled/>
+                        <label class="floatRight"><small>XEM</small></label>
+                      </div>
+                    </div>
+                  </fieldset>
+              </div>
+
+              <!-- Enroll To Program Tab -->
+              <div ng-show="$ctrl.isTabSelected($ctrl.tab.enroll)">
+                <!-- Enroll Address Field -->
+                <fieldset class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <label>{{ 'ENROLL_TO_PROGRAM_ADDRESS_NAME' | translate }}:</label>
+                    </span>
+                    <input class="form-control" ng-model="$ctrl.formData.enrollAddress" />
+                  </div>
+                </fieldset>
+                <!-- Node IP Or Domain Field -->
+                <fieldset class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <label>{{ 'ENROLL_TO_PROGRAM_IP_DOMAIN_NAME' | translate }}:</label>
+                    </span>
+                    <input class="form-control" ng-model="$ctrl.formData.domainOrIP" ng-change="$ctrl.prepareTransaction();" />
+                  </div>
+                </fieldset>
+                <!-- Fee Field -->
+                <fee-input tx="$ctrl.preparedTransaction" is-multisig="$ctrl.formData.isMultisig"></fee-input>
+                <!-- Password Field -->
+                <password-input common="$ctrl.common"></password-input>
+                <!-- Enroll button is disabled if already pressed or no password -->
+                <button class="btn btn-success" type="submit" ng-disabled="$ctrl.okPressed || !$ctrl.common.password.length || $ctrl.formData.enrollAddress.length !== 40" ng-click="$ctrl.sendEnroll()"
+                >
+                  <i class="fa fa-send"></i> {{ 'ENROLL_TO_PROGRAM_BUTTON_NAME' | translate }}
+                </button>
+              </div>
+
+              <!-- Payout History Tab -->
+              <div ng-show="$ctrl.isTabSelected($ctrl.tab.payout)">
+                <table class="table table-condensed">
+                  <thead>
+                    <tr>
+                      <th>{{ 'PAYOUT_HISTORY_FROM_NAME' | translate }}</th>
+                      <th>{{ 'PAYOUT_HISTORY_TO_NAME' | translate }}</th>
+                      <th>{{ 'PAYOUT_HISTORY_AMOUNT_NAME' | translate }}</th>
+                      <th>{{ 'PAYOUT_HISTORY_TRANSACTION_HASH_NAME' | translate }}</th>
+                      <th>{{ 'PAYOUT_HISTORY_DATE_NAME' | translate }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="payout in $ctrl.payoutHistory | startFrom:$ctrl.currentPage*$ctrl.pageSize | limitTo:$ctrl.pageSize">
+                      <td>{{ payout.fromRoundId }}</td>
+                      <td>{{ payout.toRoundId }}</td>
+                      <td><span style="color:green">+</span> <strong>{{ payout.amount }}</strong></td>
+                      <td>
+                        <a ng-show="payout.isPaid" href="{{$ctrl._Wallet.chainLink}}{{payout.transactionHash}}" target="_blank">{{payout.transactionHash}}</a>
+                        <span ng-show="!payout.isPaid"> - </span>
+                      </td>
+                      <td>{{ payout.timestamp }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div ng-show="$ctrl.lastPage == 0 && $ctrl.payoutHistory.length == 0">
+                  <p>{{ 'GENERAL_NO_RESULTS' | translate }}</p>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-6" style="margin-top: 25px;">
+                    <div class="arrows">
+                        <button class="buttonStyle" ng-disabled="$ctrl.currentPage == 0" ng-click="$ctrl.fetchFirst()">
+                          <span class="fa fa-angle-double-left" aria-hidden="true"></span>
+                        </button>
+                        <button class="buttonStyle" ng-disabled="$ctrl.currentPage == 0" ng-click="$ctrl.fetchPrevious()">
+                          <span class="fa fa-chevron-circle-left" aria-hidden="true"></span>
+                        </button>
+                        <b>{{$ctrl.currentPage + 1}}/{{$ctrl.lastPage + 1}}</b>
+                        <button class="buttonStyle" ng-disabled="$ctrl.currentPage == $ctrl.lastPage" ng-click="$ctrl.fetchNext()">
+                          <span class="fa fa-chevron-circle-right" aria-hidden="true"></span>
+                        </button>
+                        <button class="buttonStyle" ng-disabled="$ctrl.currentPage == $ctrl.lastPage" ng-click="$ctrl.fetchLast()">
+                          <span class="fa fa-angle-double-right" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
