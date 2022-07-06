@@ -253,6 +253,12 @@ class NodeRewardsProgramCtrl {
             return;
         }
 
+        // When account does not have a public key in network
+        // generate public key from private key
+        if(!this.formData.mainPublicKey) {
+            this.formData.mainPublicKey = new nem.crypto.keyPair.create(this.common.privateKey).publicKey.toString();
+        }
+
         // Enroll validation and request codeWord
         const [isEnrolled, isEnrollmentAddressValid, codewordHash] = await Promise.all([
             this._nodeRewardsProgram.checkEnrollmentStatus(this.formData.mainPublicKey),

@@ -456,6 +456,14 @@ describe('Node rewards program module tests', () => {
 
             spyOn(ctrl, 'prepareTransaction');
 
+            ctrl.formData.mainPublicKey = '';
+
+            ctrl.common = {
+                password: '',
+                privateKey: '3c11dc7bc6d8cda5c75b041975362d87eb7de5aef1316f432a1bbfe3e9f19ffb',
+                isHW: false
+            }
+
             // Act:
             await ctrl.sendEnroll();
 
@@ -463,6 +471,7 @@ describe('Node rewards program module tests', () => {
 
             // Assert:
             expect(Wallet.transact).toHaveBeenCalled();
+            expect(ctrl.formData.mainPublicKey).toEqual('b6405c6d3e96228e8a57c7c84013600486dfd64a7bf14ed7c1daccfbd391f386');
             expect(ctrl.prepareTransaction).toHaveBeenCalled();
             expect(ctrl.okPressed).toEqual(false);
             done();
