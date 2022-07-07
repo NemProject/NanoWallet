@@ -204,6 +204,20 @@ class NodeRewardsProgramCtrl {
      * Select enroll status tab
      */
     async selectStatusTab() {
+        this.enrollStatus = {
+            nodeName: '-',
+            status: false,
+            endpoint: '-',
+            publicKey: '-',
+            remotePublicKey: '-',
+            totalReward: '-',
+            lastPayoutRound: '-'
+        }
+
+        if (!this.formData.mainPublicKey) {
+            return;
+        }
+
         try {
             const result = await this._nodeRewardsProgram.getNodeInfo(this.formData.mainPublicKey);
 
@@ -211,26 +225,18 @@ class NodeRewardsProgramCtrl {
                 this.enrollStatus = {
                     nodeName: result.name,
                     status: result.status,
-                    endpoint: result.endpoint,
+                    endpoint: new URL(result.endpoint).hostname || '' ,
                     publicKey: result.mainPublicKey,
                     remotePublicKey: result.remotePublicKey,
                     totalReward: this.computeXEMBalance(result.totalRewardsEarned),
                     nodeId: result.id,
+                    lastPayoutRound: result.lastPayoutRound,
                 }
 
                 this.lastPage = Math.ceil(result.rewardCount/15);
             })
         } catch (error) {
-            this._$timeout(() => {
-                this.enrollStatus = {
-                    nodeName: '-',
-                    status: false,
-                    endpoint: '-',
-                    publicKey: '-',
-                    remotePublicKey: '-',
-                    totalReward: '-',
-                };
-            })
+            console.log(error);
         }
     }
 
@@ -246,6 +252,18 @@ class NodeRewardsProgramCtrl {
             return;
         }
 
+        // When account does not have a public key in network
+        // generate public key from private key
+        if(!this.formData.mainPublicKey) {
+            if (this.common.isHW) {
+                this._Alert.accountHasNoPublicKey();
+                this.okPressed = false;
+                return;
+            } else {
+                this.formData.mainPublicKey = new nem.crypto.keyPair.create(this.common.privateKey).publicKey.toString();
+            }
+        }
+
         // Enroll validation and request codeWord
         const [isEnrolled, isEnrollmentAddressValid, codewordHash] = await Promise.all([
             this._nodeRewardsProgram.checkEnrollmentStatus(this.formData.mainPublicKey),
@@ -253,7 +271,7 @@ class NodeRewardsProgramCtrl {
             this._nodeRewardsProgram.getCodewordHash(this.formData.mainPublicKey)
         ])
 
-        if (isEnrolled) {
+        if (isEnrolled && this.formData.domainOrIP === this.enrollStatus.endpoint) {
             this._$timeout(() => {
                 this._Alert.addressEnrolled();
                 this.okPressed = false;
@@ -269,7 +287,16 @@ class NodeRewardsProgramCtrl {
             })
         }
 
-        if (!isEnrolled && isEnrollmentAddressValid) {
+        if (codewordHash.length !== 64) {
+            this._$timeout(() => {
+                this._Alert.invalidCodewordHash();
+                this.okPressed = false;
+                return;
+            })
+        }
+
+        if(!isEnrolled && isEnrollmentAddressValid && 64 === codewordHash.length) {
+            // Prepare transaction for enrollment
             const entity = this.prepareTransaction(codewordHash);
 
             try {
@@ -339,6 +366,12 @@ class NodeRewardsProgramCtrl {
      * Fetch payout history records
      */
     async selectPayoutHistory() {
+        this.payoutHistory = [];
+
+        if (!this.enrollStatus.nodeId) {
+            return;
+        }
+
         try {
             const payouts = await this._nodeRewardsProgram.getNodePayouts(this.enrollStatus.nodeId, this.currentPage);
 
@@ -352,9 +385,7 @@ class NodeRewardsProgramCtrl {
                 })
             })
         } catch (error) {
-            this._$timeout(() => {
-                this.payoutHistory = [];
-            })
+            console.log(error);
         }
     }
 

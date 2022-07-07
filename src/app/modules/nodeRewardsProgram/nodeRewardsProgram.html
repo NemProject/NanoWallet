@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-8 col-md-12">
+          <div class="col-lg-12 col-md-12">
             <div class="panel-heading">
               <!-- TABS -->
               <ul class="nav nav-tabs">
@@ -57,7 +57,7 @@
 
             <div class="panel-body">
               <!-- Status Tab -->
-              <div ng-show="$ctrl.isTabSelected($ctrl.tab.status)">
+              <div class="col-lg-8" ng-show="$ctrl.isTabSelected($ctrl.tab.status)">
                   <!-- NODE NAME -->
                   <fieldset class="form-group">
                     <div class="input-group">
@@ -96,6 +96,15 @@
                       <input class="form-control" ng-model="$ctrl.enrollStatus.remotePublicKey" readonly />
                     </div>
                   </fieldset>
+                  <!-- Last Payout Round -->
+                  <fieldset class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <label>{{ 'STATUS_LAST_PAYOUT_ROUND_NAME' | translate }}:</label>
+                      </span>
+                      <input class="form-control" ng-model="$ctrl.enrollStatus.lastPayoutRound" readonly />
+                    </div>
+                  </fieldset>
                   <!-- Total Rewards -->
                   <fieldset class="form-group">
                     <div class="input-group">
@@ -111,7 +120,7 @@
               </div>
 
               <!-- Enroll To Program Tab -->
-              <div ng-show="$ctrl.isTabSelected($ctrl.tab.enroll)">
+              <div class="col-lg-8" ng-show="$ctrl.isTabSelected($ctrl.tab.enroll)">
                 <!-- Enroll Address Field -->
                 <fieldset class="form-group">
                   <div class="input-group">
@@ -135,7 +144,7 @@
                 <!-- Password Field -->
                 <password-input common="$ctrl.common"></password-input>
                 <!-- Enroll button is disabled if already pressed or no password -->
-                <button class="btn btn-success" type="submit" ng-disabled="$ctrl.okPressed || !$ctrl.common.password.length || $ctrl.formData.enrollAddress.length !== 40" ng-click="$ctrl.sendEnroll()"
+                <button class="btn btn-success" type="submit" ng-disabled="$ctrl.okPressed || ($ctrl._Wallet.algo !== 'trezor' && $ctrl._Wallet.algo !== 'ledger') && !$ctrl.common.password.length || $ctrl.formData.enrollAddress.length !== 40" ng-click="$ctrl.sendEnroll()"
                 >
                   <i class="fa fa-send"></i> {{ 'ENROLL_TO_PROGRAM_BUTTON_NAME' | translate }}
                 </button>

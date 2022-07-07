@@ -12,7 +12,8 @@ describe('Node rewards program module tests', () => {
         remotePublicKey: 'ca37a2ee96b94fd5e7879105733c97a21ffc2c00d961b2995a59a82463708e6a',
         mainPublicKey: '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d',
         status: 'active',
-        totalRewardsEarned: 12000000
+        totalRewardsEarned: 12000000,
+        lastPayoutRound: 12
     };
 
     beforeEach(() => {
@@ -314,7 +315,34 @@ describe('Node rewards program module tests', () => {
     })
 
     describe('selectStatusTab', () => {
-        it('returns default enroll status when no accounts have enrolled', async (done) => {
+        const expectedEnrollStatus = {
+            nodeName: '-',
+            status: false,
+            endpoint: '-',
+            publicKey: '-',
+            remotePublicKey: '-',
+            totalReward: '-',
+            lastPayoutRound: '-',
+        };
+
+        it('returns default enroll status when public key does not exist', async (done) => {
+            // Arrange:
+            const ctrl = $controller('NodeRewardsProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            ctrl.formData.mainPublicKey = '';
+
+            // Act:
+            await ctrl.selectStatusTab();
+            $timeout.flush();
+
+            // Assert:
+            expect(ctrl.enrollStatus).toEqual(expectedEnrollStatus);
+            done();
+        })
+
+        it('returns default enroll status when node reward service throws error', async (done) => {
             // Arrange:
             spyOn(NodeRewardsProgram, 'getNodeInfo').and.returnValue(Promise.reject('error'));
 
@@ -327,15 +355,6 @@ describe('Node rewards program module tests', () => {
             $timeout.flush();
 
             // Assert:
-            const expectedEnrollStatus = {
-                nodeName: '-',
-                status: false,
-                endpoint: '-',
-                publicKey: '-',
-                remotePublicKey: '-',
-                totalReward: '-',
-            };
-
             expect(ctrl.enrollStatus).toEqual(expectedEnrollStatus);
             done();
         })
@@ -356,11 +375,12 @@ describe('Node rewards program module tests', () => {
             const expectedEnrollStatus = {
                 nodeName: mockEnrollStatus.name,
                 status: mockEnrollStatus.status,
-                endpoint: mockEnrollStatus.endpoint,
+                endpoint: new URL(mockEnrollStatus.endpoint).hostname,
                 publicKey: mockEnrollStatus.mainPublicKey,
                 remotePublicKey: mockEnrollStatus.remotePublicKey,
                 totalReward: ctrl.computeXEMBalance(mockEnrollStatus.totalRewardsEarned),
-                nodeId: mockEnrollStatus.id
+                nodeId: mockEnrollStatus.id,
+                lastPayoutRound: mockEnrollStatus.lastPayoutRound,
             };
 
             expect(ctrl.enrollStatus).toEqual(expectedEnrollStatus);
@@ -369,15 +389,42 @@ describe('Node rewards program module tests', () => {
     })
 
     describe('sendEnroll', () => {
-        it('returns alert when account enrolled or enrollment address incorrect', async (done) => {
+        it('returns alert when account enrolled and new domain name same as previously registered', async (done) => {
+            // Arrange:
+            spyOn(Wallet, 'decrypt').and.returnValue(true);
+
+            spyOn(NodeRewardsProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(true));
+            spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(true));
+            spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('40DA0977BE27B03B61FBE461225007E1528FD87F20A92BF8E031CDA59C4592E1'));
+
+            spyOn(Alert, 'addressEnrolled');
+
+            const ctrl = $controller('NodeRewardsProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            ctrl.enrollStatus.endpoint = 'old.domain.name';
+
+            ctrl.formData.domainOrIP = 'old.domain.name';
+
+            // Act:
+            await ctrl.sendEnroll();
+
+            $timeout.flush();
+
+            // Assert:
+            expect(Alert.addressEnrolled).toHaveBeenCalled();
+            done();
+        })
+
+        it('returns alert when enrollment address incorrect', async (done) => {
             // Arrange:
             spyOn(Wallet, 'decrypt').and.returnValue(true);
 
             spyOn(NodeRewardsProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(true));
             spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(false));
-            spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('hash'));
+            spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('40DA0977BE27B03B61FBE461225007E1528FD87F20A92BF8E031CDA59C4592E1'));
 
-            spyOn(Alert, 'addressEnrolled');
             spyOn(Alert, 'invalidEnrollmentAddress');
 
             const ctrl = $controller('NodeRewardsProgramCtrl', {
@@ -390,11 +437,62 @@ describe('Node rewards program module tests', () => {
             $timeout.flush();
 
             // Assert:
-            expect(Alert.addressEnrolled).toHaveBeenCalled();
             expect(Alert.invalidEnrollmentAddress).toHaveBeenCalled();
             expect(ctrl.okPressed).toEqual(false);
             done();
         });
+
+        it('returns alert when codeword hash is empty', async (done) => {
+            // Arrange:
+            spyOn(Wallet, 'decrypt').and.returnValue(true);
+
+            spyOn(NodeRewardsProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(false));
+            spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(true));
+            spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('0'));
+
+            spyOn(Alert, 'invalidCodewordHash');
+
+            const ctrl = $controller('NodeRewardsProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            // Act:
+            await ctrl.sendEnroll();
+
+            $timeout.flush();
+
+            // Assert:
+            expect(Alert.invalidCodewordHash).toHaveBeenCalled();
+            expect(ctrl.okPressed).toEqual(false);
+            done();
+        });
+
+        it('returns alert when main public key is not exist (hardware wallet)', async (done) => {
+            // Arrange:
+            spyOn(Wallet, 'decrypt').and.returnValue(true);
+
+            spyOn(Alert, 'accountHasNoPublicKey');
+
+            const ctrl = $controller('NodeRewardsProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            ctrl.formData.mainPublicKey = '';
+
+            ctrl.common = {
+                password: '',
+                privateKey: '',
+                isHW: true
+            }
+
+            // Act:
+            await ctrl.sendEnroll();
+
+            // Assert:
+            expect(Alert.accountHasNoPublicKey).toHaveBeenCalled();
+            expect(ctrl.okPressed).toEqual(false);
+            done();
+        })
 
         it('returns transaction object and announce transaction', async (done) => {
             // Arrange:
@@ -403,13 +501,21 @@ describe('Node rewards program module tests', () => {
 
             spyOn(NodeRewardsProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(false));
             spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(true));
-            spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('hash'));
+            spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('40DA0977BE27B03B61FBE461225007E1528FD87F20A92BF8E031CDA59C4592E1'));
 
             const ctrl = $controller('NodeRewardsProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
             spyOn(ctrl, 'prepareTransaction');
+
+            ctrl.formData.mainPublicKey = '';
+
+            ctrl.common = {
+                password: '',
+                privateKey: '3c11dc7bc6d8cda5c75b041975362d87eb7de5aef1316f432a1bbfe3e9f19ffb',
+                isHW: false
+            }
 
             // Act:
             await ctrl.sendEnroll();
@@ -418,6 +524,7 @@ describe('Node rewards program module tests', () => {
 
             // Assert:
             expect(Wallet.transact).toHaveBeenCalled();
+            expect(ctrl.formData.mainPublicKey).toEqual('b6405c6d3e96228e8a57c7c84013600486dfd64a7bf14ed7c1daccfbd391f386');
             expect(ctrl.prepareTransaction).toHaveBeenCalled();
             expect(ctrl.okPressed).toEqual(false);
             done();
@@ -462,9 +569,9 @@ describe('Node rewards program module tests', () => {
             ctrl.selectEnrollTab();
 
             // Assert:
-            expect(ctrl.formData.domainOrIP).toEqual(mockEnrollStatus.endpoint);
+            expect(ctrl.formData.domainOrIP).toEqual(new URL(mockEnrollStatus.endpoint).hostname);
             expect(ctrl.preparedTransaction.type).toEqual(nem.model.transactionTypes.transfer);
-            expect(ctrl.preparedTransaction.fee).toEqual(250000);
+            expect(ctrl.preparedTransaction.fee).toEqual(200000);
             expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.domainOrIP} ${'0'.repeat(64)}`));
             done()
         })
@@ -515,6 +622,38 @@ describe('Node rewards program module tests', () => {
             page.forEach(pageInfo => {
                 runBasicPaginationTests(pageInfo);
             })
+        })
+
+        it('returns empty array when node id is not exist', async (done) => {
+            // Arrange:
+            const ctrl = $controller('NodeRewardsProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            // Act:
+            await ctrl.selectPayoutHistory();
+            $timeout.flush();
+
+            // Assert:
+            expect(ctrl.payoutHistory).toEqual([]);
+            done();
+        })
+
+        it('returns empty array when node reward services throws error', async (done) => {
+            // Arrange:
+            spyOn(NodeRewardsProgram, 'getNodePayouts').and.returnValue(Promise.reject('error'));
+
+            const ctrl = $controller('NodeRewardsProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            // Act:
+            await ctrl.selectPayoutHistory();
+            $timeout.flush();
+
+            // Assert:
+            expect(ctrl.payoutHistory).toEqual([]);
+            done();
         })
 
         it('returns payout history records', async (done) => {

@@ -665,6 +665,20 @@ export default class Alert {
         });
     }
 
+    invalidCodewordHash() {
+        this._ngToast.create({
+            content: this._$filter('translate')('INVALID_CODEWORD_HASH'),
+            className: 'danger',
+        });
+    }
+
+    accountHasNoPublicKey() {
+        this._ngToast.create({
+            content: this._$filter("translate")("ACCOUNT_MISSING_PUBLICKEY"),
+            className: 'danger'
+        });
+    }
+
     /***
      * Success alerts
      */
