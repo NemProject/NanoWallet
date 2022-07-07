@@ -1,8 +1,8 @@
 import AccountDataFixture from '../data/accountData';
 import nem from 'nem-sdk';
 
-describe('Node rewards program module tests', () => {
-    let $controller, $rootScope, $timeout, DataStore, Nodes, NodeRewardsProgram, Alert, Wallet;
+describe('SuperNode program module tests', () => {
+    let $controller, $rootScope, $timeout, DataStore, Nodes, SuperNodeProgram, Alert, Wallet;
 
     const mockEnrollStatus = {
         id: 1,
@@ -19,13 +19,13 @@ describe('Node rewards program module tests', () => {
     beforeEach(() => {
         angular.mock.module('app');
 
-        angular.mock.inject((_$controller_, _$rootScope_, _$timeout_, _DataStore_, _Nodes_, _NodeRewardsProgram_, _Alert_, _Wallet_) => {
+        angular.mock.inject((_$controller_, _$rootScope_, _$timeout_, _DataStore_, _Nodes_, _SuperNodeProgram_, _Alert_, _Wallet_) => {
             $controller = _$controller_;
             $rootScope = _$rootScope_;
             $timeout = _$timeout_;
             DataStore = _DataStore_;
             Nodes = _Nodes_;
-            NodeRewardsProgram = _NodeRewardsProgram_;
+            SuperNodeProgram = _SuperNodeProgram_;
             Alert = _Alert_;
             Wallet = _Wallet_;
         })
@@ -38,7 +38,7 @@ describe('Node rewards program module tests', () => {
     describe('getAccount', () => {
         it('returns normal account and balance', () => {
             // Arrange:
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -60,7 +60,7 @@ describe('Node rewards program module tests', () => {
             // Arrange:
             DataStore.account.metaData = AccountDataFixture.mainnetCosignerAccountData;
 
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -90,7 +90,7 @@ describe('Node rewards program module tests', () => {
     describe('setSelectedAccountInfo', () => {
         const runBasicSetSelectedAccountInfoTests = selectedAccount => {
             // Arrange:
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -127,7 +127,7 @@ describe('Node rewards program module tests', () => {
     describe('computeXEMBalance', () => {
         it('returns formatted XEM balance in string (6 divisibility)', () => {
             // Arrange:
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -143,7 +143,7 @@ describe('Node rewards program module tests', () => {
         const runBasicTabSelectedTests = ({selectedTab, isTabToTestSelected, expectedResult}) => {
             it(`returns ${expectedResult} when selected tab ${expectedResult ? 'matched' : 'unmatched'} with current tab`, () => {
                 // Arrange:
-                const ctrl = $controller('NodeRewardsProgramCtrl', {
+                const ctrl = $controller('SuperNodeProgramCtrl', {
                     $scope: $rootScope.$new()
                 });
 
@@ -180,7 +180,7 @@ describe('Node rewards program module tests', () => {
         const runBasicSetTabTests = (selectedTab, fn) => {
             it(`${fn} called when ${selectedTab} tab selected`, () => {
                 // Arrange:
-                const ctrl = $controller('NodeRewardsProgramCtrl', {
+                const ctrl = $controller('SuperNodeProgramCtrl', {
                     $scope: $rootScope.$new()
                 });
 
@@ -220,7 +220,7 @@ describe('Node rewards program module tests', () => {
     describe('resetTab', () => {
         it('returns to status tab as default', () => {
             // Arrange:
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -238,7 +238,7 @@ describe('Node rewards program module tests', () => {
     describe('onChangeAccount', () => {
         it('returns selected account info', () => {
             // Arrange:
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -258,7 +258,7 @@ describe('Node rewards program module tests', () => {
     describe('prepareTransaction', () => {
         it('returns normal account transaction object', () => {
             // Arrange:
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -280,7 +280,7 @@ describe('Node rewards program module tests', () => {
             // Arrange:
             DataStore.account.metaData = AccountDataFixture.mainnetCosignerAccountData;
 
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -302,7 +302,7 @@ describe('Node rewards program module tests', () => {
 
         it('returns transaction object provided codewordHash for message payload', () => {
             // Arrange:
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -327,7 +327,7 @@ describe('Node rewards program module tests', () => {
 
         it('returns default enroll status when public key does not exist', async (done) => {
             // Arrange:
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -342,11 +342,11 @@ describe('Node rewards program module tests', () => {
             done();
         })
 
-        it('returns default enroll status when node reward service throws error', async (done) => {
+        it('returns default enroll status when super node service throws error', async (done) => {
             // Arrange:
-            spyOn(NodeRewardsProgram, 'getNodeInfo').and.returnValue(Promise.reject('error'));
+            spyOn(SuperNodeProgram, 'getNodeInfo').and.returnValue(Promise.reject('error'));
 
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -361,9 +361,9 @@ describe('Node rewards program module tests', () => {
 
         it('returns enroll status when accounts enrolled', async (done) => {
             // Arrange:
-            spyOn(NodeRewardsProgram, 'getNodeInfo').and.returnValue(Promise.resolve(mockEnrollStatus));
+            spyOn(SuperNodeProgram, 'getNodeInfo').and.returnValue(Promise.resolve(mockEnrollStatus));
 
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -393,13 +393,13 @@ describe('Node rewards program module tests', () => {
             // Arrange:
             spyOn(Wallet, 'decrypt').and.returnValue(true);
 
-            spyOn(NodeRewardsProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(true));
-            spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(true));
-            spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('40DA0977BE27B03B61FBE461225007E1528FD87F20A92BF8E031CDA59C4592E1'));
+            spyOn(SuperNodeProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(true));
+            spyOn(SuperNodeProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(true));
+            spyOn(SuperNodeProgram, 'getCodewordHash').and.returnValue(Promise.resolve('40DA0977BE27B03B61FBE461225007E1528FD87F20A92BF8E031CDA59C4592E1'));
 
             spyOn(Alert, 'addressEnrolled');
 
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -421,13 +421,13 @@ describe('Node rewards program module tests', () => {
             // Arrange:
             spyOn(Wallet, 'decrypt').and.returnValue(true);
 
-            spyOn(NodeRewardsProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(true));
-            spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(false));
-            spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('40DA0977BE27B03B61FBE461225007E1528FD87F20A92BF8E031CDA59C4592E1'));
+            spyOn(SuperNodeProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(true));
+            spyOn(SuperNodeProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(false));
+            spyOn(SuperNodeProgram, 'getCodewordHash').and.returnValue(Promise.resolve('40DA0977BE27B03B61FBE461225007E1528FD87F20A92BF8E031CDA59C4592E1'));
 
             spyOn(Alert, 'invalidEnrollmentAddress');
 
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -446,13 +446,13 @@ describe('Node rewards program module tests', () => {
             // Arrange:
             spyOn(Wallet, 'decrypt').and.returnValue(true);
 
-            spyOn(NodeRewardsProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(false));
-            spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(true));
-            spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('0'));
+            spyOn(SuperNodeProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(false));
+            spyOn(SuperNodeProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(true));
+            spyOn(SuperNodeProgram, 'getCodewordHash').and.returnValue(Promise.resolve('0'));
 
             spyOn(Alert, 'invalidCodewordHash');
 
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -473,7 +473,7 @@ describe('Node rewards program module tests', () => {
 
             spyOn(Alert, 'accountHasNoPublicKey');
 
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -499,11 +499,11 @@ describe('Node rewards program module tests', () => {
             spyOn(Wallet, 'decrypt').and.returnValue(true);
             spyOn(Wallet, 'transact');
 
-            spyOn(NodeRewardsProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(false));
-            spyOn(NodeRewardsProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(true));
-            spyOn(NodeRewardsProgram, 'getCodewordHash').and.returnValue(Promise.resolve('40DA0977BE27B03B61FBE461225007E1528FD87F20A92BF8E031CDA59C4592E1'));
+            spyOn(SuperNodeProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(false));
+            spyOn(SuperNodeProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(true));
+            spyOn(SuperNodeProgram, 'getCodewordHash').and.returnValue(Promise.resolve('40DA0977BE27B03B61FBE461225007E1528FD87F20A92BF8E031CDA59C4592E1'));
 
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -534,9 +534,9 @@ describe('Node rewards program module tests', () => {
     describe('selectEnrollTab', () => {
         it('set IP or domain to empty when no accounts have enrolled', async (done) => {
             // Arrange:
-            spyOn(NodeRewardsProgram, 'getNodeInfo').and.returnValue(Promise.reject('error'));
+            spyOn(SuperNodeProgram, 'getNodeInfo').and.returnValue(Promise.reject('error'));
 
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -556,9 +556,9 @@ describe('Node rewards program module tests', () => {
 
         it('set IP or domain to exist endpoint when accounts enrolled', async (done) => {
             // Arrange:
-            spyOn(NodeRewardsProgram, 'getNodeInfo').and.returnValue(Promise.resolve(mockEnrollStatus));
+            spyOn(SuperNodeProgram, 'getNodeInfo').and.returnValue(Promise.resolve(mockEnrollStatus));
 
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -581,7 +581,7 @@ describe('Node rewards program module tests', () => {
         const runBasicPaginationTests = ({page, fn, expectedResult}) => {
             it(`returns ${page} page of payout history`, () => {
                 // Arrange:
-                const ctrl = $controller('NodeRewardsProgramCtrl', {
+                const ctrl = $controller('SuperNodeProgramCtrl', {
                     $scope: $rootScope.$new()
                 });
 
@@ -626,7 +626,7 @@ describe('Node rewards program module tests', () => {
 
         it('returns empty array when node id is not exist', async (done) => {
             // Arrange:
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -639,11 +639,11 @@ describe('Node rewards program module tests', () => {
             done();
         })
 
-        it('returns empty array when node reward services throws error', async (done) => {
+        it('returns empty array when super node services throws error', async (done) => {
             // Arrange:
-            spyOn(NodeRewardsProgram, 'getNodePayouts').and.returnValue(Promise.reject('error'));
+            spyOn(SuperNodeProgram, 'getNodePayouts').and.returnValue(Promise.reject('error'));
 
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 
@@ -683,10 +683,10 @@ describe('Node rewards program module tests', () => {
                 transactionHash: "4C5A91F8FE70A49506176634E30AF7436D42E8BB951CB2DE6E485175CC99781F"
             }];
 
-            spyOn(NodeRewardsProgram, 'getNodeInfo').and.returnValue(Promise.resolve(mockEnrollStatus));
-            spyOn(NodeRewardsProgram, 'getNodePayouts').and.returnValue(Promise.resolve(mockPayouts));
+            spyOn(SuperNodeProgram, 'getNodeInfo').and.returnValue(Promise.resolve(mockEnrollStatus));
+            spyOn(SuperNodeProgram, 'getNodePayouts').and.returnValue(Promise.resolve(mockPayouts));
 
-            const ctrl = $controller('NodeRewardsProgramCtrl', {
+            const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
 

@@ -1,13 +1,13 @@
 import nem from 'nem-sdk';
 
-class NodeRewardsProgramCtrl {
+class SuperNodeProgramCtrl {
 
     /**
      * Initialize dependencies and properties
      *
      * @params {services} - Angular services to inject
      */
-    constructor($filter, Wallet, DataStore, $timeout, Alert, NodeRewardsProgram) {
+    constructor($filter, Wallet, DataStore, $timeout, Alert, SuperNodeProgram) {
         'ngInject';
 
         //// Module dependencies region ////
@@ -17,7 +17,7 @@ class NodeRewardsProgramCtrl {
         this._DataStore = DataStore;
         this._$timeout = $timeout;
         this._Alert = Alert;
-        this._nodeRewardsProgram = NodeRewardsProgram;
+        this._superNodeProgram = SuperNodeProgram;
 
         //// End dependencies region ////
 
@@ -219,7 +219,7 @@ class NodeRewardsProgramCtrl {
         }
 
         try {
-            const result = await this._nodeRewardsProgram.getNodeInfo(this.formData.mainPublicKey);
+            const result = await this._superNodeProgram.getNodeInfo(this.formData.mainPublicKey);
 
             this._$timeout(() => {
                 this.enrollStatus = {
@@ -266,9 +266,9 @@ class NodeRewardsProgramCtrl {
 
         // Enroll validation and request codeWord
         const [isEnrolled, isEnrollmentAddressValid, codewordHash] = await Promise.all([
-            this._nodeRewardsProgram.checkEnrollmentStatus(this.formData.mainPublicKey),
-            this._nodeRewardsProgram.checkEnrollmentAddress(this.formData.enrollAddress),
-            this._nodeRewardsProgram.getCodewordHash(this.formData.mainPublicKey)
+            this._superNodeProgram.checkEnrollmentStatus(this.formData.mainPublicKey),
+            this._superNodeProgram.checkEnrollmentAddress(this.formData.enrollAddress),
+            this._superNodeProgram.getCodewordHash(this.formData.mainPublicKey)
         ])
 
         if (isEnrolled && this.formData.domainOrIP === this.enrollStatus.endpoint) {
@@ -373,7 +373,7 @@ class NodeRewardsProgramCtrl {
         }
 
         try {
-            const payouts = await this._nodeRewardsProgram.getNodePayouts(this.enrollStatus.nodeId, this.currentPage);
+            const payouts = await this._superNodeProgram.getNodePayouts(this.enrollStatus.nodeId, this.currentPage);
 
             this._$timeout(() => {
                 this.payoutHistory = payouts.map(item => {
@@ -392,4 +392,4 @@ class NodeRewardsProgramCtrl {
     //// End methods region ////
 }
 
-export default NodeRewardsProgramCtrl;
+export default SuperNodeProgramCtrl;
