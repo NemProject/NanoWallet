@@ -325,7 +325,7 @@ describe('Node rewards program module tests', () => {
             lastPayoutRound: '-',
         };
 
-        it('returns default enroll status when public key is not exist', async (done) => {
+        it('returns default enroll status when public key does not exist', async (done) => {
             // Arrange:
             const ctrl = $controller('NodeRewardsProgramCtrl', {
                 $scope: $rootScope.$new()

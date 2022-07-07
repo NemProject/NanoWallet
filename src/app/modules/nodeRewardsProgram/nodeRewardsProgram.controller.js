@@ -295,7 +295,7 @@ class NodeRewardsProgramCtrl {
             })
         }
 
-        if(!isEnrolled && isEnrollmentAddressValid && codewordHash.length === 64) {
+        if(!isEnrolled && isEnrollmentAddressValid && 64 === codewordHash.length) {
             // Prepare transaction for enrollment
             const entity = this.prepareTransaction(codewordHash);
 
