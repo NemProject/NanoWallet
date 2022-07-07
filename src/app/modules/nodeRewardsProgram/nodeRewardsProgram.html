@@ -144,7 +144,7 @@
                 <!-- Password Field -->
                 <password-input common="$ctrl.common"></password-input>
                 <!-- Enroll button is disabled if already pressed or no password -->
-                <button class="btn btn-success" type="submit" ng-disabled="$ctrl.okPressed || !$ctrl.common.password.length || $ctrl.formData.enrollAddress.length !== 40" ng-click="$ctrl.sendEnroll()"
+                <button class="btn btn-success" type="submit" ng-disabled="$ctrl.okPressed || ($ctrl._Wallet.algo !== 'trezor' && $ctrl._Wallet.algo !== 'ledger') && !$ctrl.common.password.length || $ctrl.formData.enrollAddress.length !== 40" ng-click="$ctrl.sendEnroll()"
                 >
                   <i class="fa fa-send"></i> {{ 'ENROLL_TO_PROGRAM_BUTTON_NAME' | translate }}
                 </button>

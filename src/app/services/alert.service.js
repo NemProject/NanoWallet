@@ -672,6 +672,13 @@ export default class Alert {
         });
     }
 
+    accountHasNoPublicKey() {
+        this._ngToast.create({
+            content: this._$filter("translate")("ACCOUNT_MISSING_PUBLICKEY"),
+            className: 'danger'
+        });
+    }
+
     /***
      * Success alerts
      */

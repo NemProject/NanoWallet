@@ -255,7 +255,13 @@ class NodeRewardsProgramCtrl {
         // When account does not have a public key in network
         // generate public key from private key
         if(!this.formData.mainPublicKey) {
-            this.formData.mainPublicKey = new nem.crypto.keyPair.create(this.common.privateKey).publicKey.toString();
+            if (this.common.isHW) {
+                this._Alert.accountHasNoPublicKey();
+                this.okPressed = false;
+                return;
+            } else {
+                this.formData.mainPublicKey = new nem.crypto.keyPair.create(this.common.privateKey).publicKey.toString();
+            }
         }
 
         // Enroll validation and request codeWord

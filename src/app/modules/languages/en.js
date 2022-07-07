@@ -1085,6 +1085,7 @@ function EnglishProvider($translateProvider) {
         INVALID_ENROLLMENT_ADDRESS: 'Invalid enrollment address.',
         ADDRESS_ENROLLED: 'Current address already enrolled to this period.',
         INVALID_CODEWORD_HASH: 'Invalid codeword hash.',
+        ACCOUNT_MISSING_PUBLICKEY: 'You need to make a transaction to get a public key.',
     });
 }
 

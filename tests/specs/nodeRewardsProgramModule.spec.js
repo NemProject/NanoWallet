@@ -467,6 +467,33 @@ describe('Node rewards program module tests', () => {
             done();
         });
 
+        it('returns alert when main public key is not exist (hardware wallet)', async (done) => {
+            // Arrange:
+            spyOn(Wallet, 'decrypt').and.returnValue(true);
+
+            spyOn(Alert, 'accountHasNoPublicKey');
+
+            const ctrl = $controller('NodeRewardsProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            ctrl.formData.mainPublicKey = '';
+
+            ctrl.common = {
+                password: '',
+                privateKey: '',
+                isHW: true
+            }
+
+            // Act:
+            await ctrl.sendEnroll();
+
+            // Assert:
+            expect(Alert.accountHasNoPublicKey).toHaveBeenCalled();
+            expect(ctrl.okPressed).toEqual(false);
+            done();
+        })
+
         it('returns transaction object and announce transaction', async (done) => {
             // Arrange:
             spyOn(Wallet, 'decrypt').and.returnValue(true);
