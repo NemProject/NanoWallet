@@ -403,10 +403,10 @@ function EnglishProvider($translateProvider) {
         PORTAL_ADDRESS_BOOK_BTN: 'Manage address book',
         PORTAL_INVOICE_TEXT: 'Create an invoice to share via QR code',
         PORTAL_SIGNED_MSG_TEXT: 'Create and verify signed messages to authenticate account ownership without transacting.',
-        PORTAL_NODE_REWARDS_PROGRAM_TITLE: 'Node Rewards Program',
-        PORTAL_NODE_REWARDS_PROGRAM_TEXT: 'Use this module to enroll to NEM Node Rewards Program. Please, read more ',
-        PORTAL_NODE_REWARDS_PROGRAM_TEXT_LINK: 'here.',
-        PORTAL_NODE_REWARDS_PROGRAM_BTN_1: 'Check & Enroll to Program',
+        PORTAL_SUPER_NODE_PROGRAM_TITLE: 'SuperNode Program',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT: 'Enroll in the SuperNode Program to earn $XEM for securing the network. Minimum 10,000 XEM required.',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT_LINK: 'Read more here.',
+        PORTAL_SUPER_NODE_PROGRAM_BTN_1: 'Check & Enroll to Program',
 
         // ADDRESS BOOK MODULE
         ADDRESS_BOOK_TITLE: 'Address book',
@@ -1054,8 +1054,8 @@ function EnglishProvider($translateProvider) {
         POST_OPTIN_CONFIRM_MODAL_CHECKBOX_MULTISIG: "I confirm that the Symbol destination address matches the Symbol multisig account address",
         OPTIN_NIS1_PUBLIC_KEY: 'The public key you entered is a NIS1 key! You need to enter a Symbol public key.',
 
-        // NODE REWARDS PROGRAM MODULE
-        NODE_REWARDS_PROGRAM_TITLE: 'NODE REWARDS PROGRAM',
+        // SUPERNODE PROGRAM MODULE
+        SUPER_NODE_PROGRAM_TITLE: 'NEM SUPERNODE PROGRAM',
         ACCOUNT_NAME: 'Account',
         BALANCE_NAME: 'Balance',
         TAB_STATUS_NAME: 'Status',

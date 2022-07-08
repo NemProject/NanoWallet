@@ -1,9 +1,9 @@
 import nem from 'nem-sdk';
 
-const NODE_REWARDS_PROGRAM_API_BASE_URL = 'https://supernodesapi.nem.io';
+const SUPER_NODE_PROGRAM_API_BASE_URL = 'https://supernodesapi.nem.io';
 
-/** Service to enroll in the Node Rewards Program and to get the status related information */
-class NodeRewardsProgram {
+/** Service to enroll in the SuperNode Program and to get the status related information */
+class SuperNodeProgram {
 
     /**
      * Initialize dependencies and properties.
@@ -23,7 +23,7 @@ class NodeRewardsProgram {
 
         // Service properties region //
 
-        this.apiBaseUrl = NODE_REWARDS_PROGRAM_API_BASE_URL;
+        this.apiBaseUrl = SUPER_NODE_PROGRAM_API_BASE_URL;
         this.common = nem.model.objects.get('common');
 
         // End properties region //
@@ -54,7 +54,7 @@ class NodeRewardsProgram {
      *
      * @param {string} mainPublicKey - Delegated harvesting public key.
      * @param {string} host - IP or domain of the node.
-     * @param {string} enrollmentAddress - Node Rewards Program enrollment address.
+     * @param {string} enrollmentAddress - SuperNode Program enrollment address.
      * @param {string} [multisigAccountAddress] - Multisig account address. For multisig enrollment only.
      *
      * @return {Promise<object>} - Prepared enroll transaction.
@@ -165,4 +165,4 @@ class NodeRewardsProgram {
     // End methods region //
 }
 
-export default NodeRewardsProgram;
+export default SuperNodeProgram;
