@@ -25,53 +25,6 @@ describe('SuperNodeProgram service tests', () => {
         Wallet.use(WalletFixture.mainnetWallet);
     }));
 
-    describe('prepareEnrollTransaction()', () => {
-        it('should return valid enroll transaction', async (done) => {
-            // Arrange:
-            spyOn(SuperNodeProgram, 'getCodewordHash').and.returnValue(Promise.resolve('hash'));
-            const mainPublicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
-            const host = 'http://108.61.168.86:7890';
-            const enrollmentAddress = 'NCHESTYVD2P6P646AMY7WSNG73PCPZDUQNSD6JAK';
-            const expectedMessage = nem.utils.convert.utf8ToHex(`enroll ${host} hash`);
-            const transferTransactionType = 257;
-
-            // Act:
-            const transaction = await SuperNodeProgram.prepareEnrollTransaction(mainPublicKey, host, enrollmentAddress);
-
-            // Assert:
-            expect(transaction.type).toBe(transferTransactionType);
-            expect(transaction.recipient).toBe(enrollmentAddress);
-            expect(transaction.amount).toBe(0);
-            expect(transaction.mosaics).toBe(null);
-            expect(transaction.message.payload).toBe(expectedMessage);
-            done();
-        });
-
-        it('should return valid multisig enroll transaction', async (done) => {
-            // Arrange:
-            spyOn(SuperNodeProgram, 'getCodewordHash').and.returnValue(Promise.resolve('hash'));
-            const mainPublicKey = '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d';
-            const host = 'http://108.61.168.86:7890';
-            const enrollmentAddress = 'NCHESTYVD2P6P646AMY7WSNG73PCPZDUQNSD6JAK';
-            const multisigAddress = 'NDJJQBVYULBZTKR2UCERXYRWXOUWVYH6ATI6OIAA';
-            const expectedMessage = nem.utils.convert.utf8ToHex(`enroll ${host} hash`);
-            const transferTransactionType = 257;
-            const multisigTransactionType = 4100;
-
-            // Act:
-            const transaction = await SuperNodeProgram.prepareEnrollTransaction(mainPublicKey, host, enrollmentAddress, multisigAddress);
-
-            // Assert:
-            expect(transaction.type).toBe(multisigTransactionType);
-            expect(transaction.otherTrans.type).toBe(transferTransactionType);
-            expect(transaction.otherTrans.recipient).toBe(enrollmentAddress);
-            expect(transaction.otherTrans.amount).toBe(0);
-            expect(transaction.otherTrans.mosaics).toBe(null);
-            expect(transaction.otherTrans.message.payload).toBe(expectedMessage);
-            done();
-        });
-    });
-
     describe('checkEnrollmentAddress()', () => {
         it('should return true when API returns "true" string', async (done) => {
             // Arrange:

@@ -50,39 +50,6 @@ class SuperNodeProgram {
     }
 
     /**
-     * Prepare the enroll transaction.
-     *
-     * @param {string} mainPublicKey - Delegated harvesting public key.
-     * @param {string} host - IP or domain of the node.
-     * @param {string} enrollmentAddress - SuperNode Program enrollment address.
-     * @param {string} [multisigAccountAddress] - Multisig account address. For multisig enrollment only.
-     *
-     * @return {Promise<object>} - Prepared enroll transaction.
-     */
-    async prepareEnrollTransaction(mainPublicKey, host, enrollmentAddress, multisigAccountAddress) {
-        // Create a new transaction object
-        const transferTransaction = nem.model.objects.get('transferTransaction');
-
-        // Set enrollment address as recipient
-        transferTransaction.recipient = enrollmentAddress.toUpperCase().replace(/-/g, '');
-
-        // Set multisig, if selected
-        if (multisigAccountAddress) {
-            transferTransaction.isMultisig = true;
-            transferTransaction.multisigAccount = multisigAccountAddress.toUpperCase().replace(/-/g, '');
-        }
-
-        // Set the message
-        const hash = await this.getCodewordHash(mainPublicKey);
-        transferTransaction.message = `enroll ${host} ${hash}`;
-
-        // Set no mosaics
-        transferTransaction.mosaics = null;
-
-        return nem.model.transactions.prepare('transferTransaction')(this.common, transferTransaction, this._Wallet.network);
-    }
-
-    /**
      * Checks if an address is the current enrollment address.
      *
      * @param {string} address - Address to check.
