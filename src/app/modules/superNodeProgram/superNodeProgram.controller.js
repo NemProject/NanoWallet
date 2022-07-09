@@ -295,7 +295,7 @@ class SuperNodeProgramCtrl {
             })
         }
 
-        if(!isEnrolled && isEnrollmentAddressValid && 64 === codewordHash.length) {
+        if((!isEnrolled || isEnrolled && this.formData.domainOrIP !== this.enrollStatus.endpoint) && isEnrollmentAddressValid && 64 === codewordHash.length) {
             // Prepare transaction for enrollment
             const entity = this.prepareTransaction(codewordHash);
 

@@ -403,6 +403,8 @@ describe('SuperNode program module tests', () => {
                 $scope: $rootScope.$new()
             });
 
+            spyOn(ctrl, 'prepareTransaction');
+
             ctrl.enrollStatus.endpoint = 'old.domain.name';
 
             ctrl.formData.domainOrIP = 'old.domain.name';
@@ -414,6 +416,7 @@ describe('SuperNode program module tests', () => {
 
             // Assert:
             expect(Alert.addressEnrolled).toHaveBeenCalled();
+            expect(ctrl.prepareTransaction).not.toHaveBeenCalled();
             done();
         })
 
@@ -431,6 +434,8 @@ describe('SuperNode program module tests', () => {
                 $scope: $rootScope.$new()
             });
 
+            spyOn(ctrl, 'prepareTransaction');
+
             // Act:
             await ctrl.sendEnroll();
 
@@ -439,6 +444,7 @@ describe('SuperNode program module tests', () => {
             // Assert:
             expect(Alert.invalidEnrollmentAddress).toHaveBeenCalled();
             expect(ctrl.okPressed).toEqual(false);
+            expect(ctrl.prepareTransaction).not.toHaveBeenCalled();
             done();
         });
 
@@ -456,6 +462,8 @@ describe('SuperNode program module tests', () => {
                 $scope: $rootScope.$new()
             });
 
+            spyOn(ctrl, 'prepareTransaction');
+
             // Act:
             await ctrl.sendEnroll();
 
@@ -464,6 +472,7 @@ describe('SuperNode program module tests', () => {
             // Assert:
             expect(Alert.invalidCodewordHash).toHaveBeenCalled();
             expect(ctrl.okPressed).toEqual(false);
+            expect(ctrl.prepareTransaction).not.toHaveBeenCalled();
             done();
         });
 
@@ -476,6 +485,8 @@ describe('SuperNode program module tests', () => {
             const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
+
+            spyOn(ctrl, 'prepareTransaction');
 
             ctrl.formData.mainPublicKey = '';
 
@@ -491,6 +502,7 @@ describe('SuperNode program module tests', () => {
             // Assert:
             expect(Alert.accountHasNoPublicKey).toHaveBeenCalled();
             expect(ctrl.okPressed).toEqual(false);
+            expect(ctrl.prepareTransaction).not.toHaveBeenCalled();
             done();
         })
 
@@ -516,6 +528,46 @@ describe('SuperNode program module tests', () => {
                 privateKey: '3c11dc7bc6d8cda5c75b041975362d87eb7de5aef1316f432a1bbfe3e9f19ffb',
                 isHW: false
             }
+
+            // Act:
+            await ctrl.sendEnroll();
+
+            $timeout.flush();
+
+            // Assert:
+            expect(Wallet.transact).toHaveBeenCalled();
+            expect(ctrl.formData.mainPublicKey).toEqual('b6405c6d3e96228e8a57c7c84013600486dfd64a7bf14ed7c1daccfbd391f386');
+            expect(ctrl.prepareTransaction).toHaveBeenCalled();
+            expect(ctrl.okPressed).toEqual(false);
+            done();
+        });
+
+        it('successful announce transaction when enrolled account update domain', async (done) => {
+            // Arrange:
+            spyOn(Wallet, 'decrypt').and.returnValue(true);
+            spyOn(Wallet, 'transact');
+
+            spyOn(SuperNodeProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(true));
+            spyOn(SuperNodeProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(true));
+            spyOn(SuperNodeProgram, 'getCodewordHash').and.returnValue(Promise.resolve('40DA0977BE27B03B61FBE461225007E1528FD87F20A92BF8E031CDA59C4592E1'));
+
+            const ctrl = $controller('SuperNodeProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            spyOn(ctrl, 'prepareTransaction');
+
+            ctrl.formData.mainPublicKey = '';
+
+            ctrl.common = {
+                password: '',
+                privateKey: '3c11dc7bc6d8cda5c75b041975362d87eb7de5aef1316f432a1bbfe3e9f19ffb',
+                isHW: false
+            }
+
+            ctrl.enrollStatus.endpoint = 'old.domain.name';
+
+            ctrl.formData.domainOrIP = 'new.domain.name';
 
             // Act:
             await ctrl.sendEnroll();
