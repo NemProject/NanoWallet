@@ -204,7 +204,7 @@ describe('SuperNodeProgram service tests', () => {
             const baseUrl = SUPER_NODE_PROGRAM_API_BASE_URL;
             const nodeId = 1;
             const pageNumber = 0;
-            const count = 15;
+            const count = 10;
             const offset = 0;
             const expectedEndpoint = `${baseUrl}/node/${nodeId}/payouts?count=${count}&offset=${offset}`;
 
@@ -222,8 +222,8 @@ describe('SuperNodeProgram service tests', () => {
             const baseUrl = SUPER_NODE_PROGRAM_API_BASE_URL;
             const nodeId = 1;
             const pageNumber = 4;
-            const count = 15;
-            const offset = 60;
+            const count = 10;
+            const offset = 40;
             const expectedEndpoint = `${baseUrl}/node/${nodeId}/payouts?count=${count}&offset=${offset}`;
 
             // Act:

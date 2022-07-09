@@ -135,11 +135,11 @@ class SuperNodeProgram {
      *
      * @param {string} nodeId - Id of the node to search.
      * @param {number} pageNumber - Page number to return.
+     * @param {number} count - record size.
      *
      * @return {Promise<Array<object>>} - List of payouts.
      */
-    async getNodePayouts(nodeId, pageNumber) {
-        const count = 15;
+    async getNodePayouts(nodeId, pageNumber, count = 10) {
         const offset = count * pageNumber;
         const response = await this._get(`${this.apiBaseUrl}/node/${nodeId}/payouts?count=${count}&offset=${offset}`, 'failed_to_get_payouts_page');
 
