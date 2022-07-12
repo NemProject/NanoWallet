@@ -264,6 +264,14 @@ class SuperNodeProgramCtrl {
             }
         }
 
+        // Validation for domain: protocol and port not required
+        const regex = new RegExp(/((https?:\/\/))|((:\d{1,4}))/);
+        if (regex.test(this.formData.nodeHost)) {
+            this._Alert.invalidFormatNodeHost();
+            this.okPressed = false;
+            return;
+        }
+
         // Enroll validation and request codeWord
         const [isEnrolled, isEnrollmentAddressValid, codewordHash] = await Promise.all([
             this._superNodeProgram.checkEnrollmentStatus(this.formData.mainPublicKey),

@@ -679,6 +679,13 @@ export default class Alert {
         });
     }
 
+    invalidFormatNodeHost() {
+        this._ngToast.create({
+            content: this._$filter('translate')('INVALID_FORMAT_NODE_HOST'),
+            className: 'danger',
+        });
+    }
+
     /***
      * Success alerts
      */

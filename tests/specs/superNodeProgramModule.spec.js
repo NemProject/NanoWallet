@@ -506,6 +506,30 @@ describe('SuperNode program module tests', () => {
             done();
         })
 
+        it('returns alert when form data node host content protocol or port', async (done) => {
+            // Arrange:
+            spyOn(Wallet, 'decrypt').and.returnValue(true);
+
+            spyOn(Alert, 'invalidFormatNodeHost');
+
+            const ctrl = $controller('SuperNodeProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            spyOn(ctrl, 'prepareTransaction');
+
+            ctrl.formData.nodeHost = 'http://old.domain.name:7890';
+
+            // Act:
+            await ctrl.sendEnroll();
+
+            // Assert:
+            expect(Alert.invalidFormatNodeHost).toHaveBeenCalled();
+            expect(ctrl.okPressed).toEqual(false);
+            expect(ctrl.prepareTransaction).not.toHaveBeenCalled();
+            done();
+        })
+
         it('returns transaction object and announce transaction', async (done) => {
             // Arrange:
             spyOn(Wallet, 'decrypt').and.returnValue(true);

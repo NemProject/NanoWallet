@@ -1085,6 +1085,7 @@ function EnglishProvider($translateProvider) {
         ADDRESS_ENROLLED: 'Current address already enrolled to this period.',
         INVALID_CODEWORD_HASH: 'Invalid codeword hash.',
         ACCOUNT_MISSING_PUBLICKEY: 'You need to make a transaction to get a public key.',
+        INVALID_FORMAT_NODE_HOST: 'Protocol (http://) or port (:7890) is not required.',
     });
 }
 
