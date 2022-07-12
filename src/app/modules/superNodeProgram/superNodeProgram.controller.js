@@ -33,7 +33,7 @@ class SuperNodeProgramCtrl {
     init () {
         // Form use for enroll program
         this.formData = {
-            domainOrIP: '',
+            nodeHost: '',
             enrollAddress: '',
             isMultisig: false,
             mainPublicKey: '',
@@ -50,7 +50,7 @@ class SuperNodeProgramCtrl {
             name: 'TAB_STATUS_NAME',
         }, {
             key: this.tab.enroll,
-            name: 'TAB_ENROLL_TO_PROGRAM_NAME',
+            name: 'TAB_ENROLL_IN_PROGRAM_NAME',
         }, {
             key: this.tab.payout,
             name: 'TAB_PAYOUT_HISTORY_NAME',
@@ -183,7 +183,7 @@ class SuperNodeProgramCtrl {
 
         // If codewordHash is not provided, use the default one to make sure we have the right message length
         // to calculate transaction fees
-        transferTransaction.message = `enroll ${this.formData.domainOrIP} ${codewordHash ? codewordHash :'0'.repeat(64)}`;
+        transferTransaction.message = `enroll ${this.formData.nodeHost} ${codewordHash ? codewordHash :'0'.repeat(64)}`;
 
         // Set multisig, if selected
         if (this.formData.isMultisig) {
@@ -324,7 +324,7 @@ class SuperNodeProgramCtrl {
      */
     selectEnrollTab() {
         if (this.enrollStatus.endpoint !== '-') {
-            this.formData.domainOrIP = this.enrollStatus.endpoint;
+            this.formData.nodeHost = this.enrollStatus.endpoint;
             // Update Fee view
             this.prepareTransaction();
         }

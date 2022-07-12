@@ -406,7 +406,7 @@ function EnglishProvider($translateProvider) {
         PORTAL_SUPER_NODE_PROGRAM_TITLE: 'SuperNode Program',
         PORTAL_SUPER_NODE_PROGRAM_TEXT: 'Enroll in the SuperNode Program to earn $XEM for securing the network. Minimum 10,000 XEM required.',
         PORTAL_SUPER_NODE_PROGRAM_TEXT_LINK: 'Read more here.',
-        PORTAL_SUPER_NODE_PROGRAM_BTN_1: 'Check & Enroll to Program',
+        PORTAL_SUPER_NODE_PROGRAM_BTN_1: 'Check & Enroll in Program',
 
         // ADDRESS BOOK MODULE
         ADDRESS_BOOK_TITLE: 'Address book',
@@ -1059,7 +1059,7 @@ function EnglishProvider($translateProvider) {
         ACCOUNT_NAME: 'Account',
         BALANCE_NAME: 'Balance',
         TAB_STATUS_NAME: 'Status',
-        TAB_ENROLL_TO_PROGRAM_NAME: 'Enroll to Program',
+        TAB_ENROLL_IN_PROGRAM_NAME: 'Enroll in Program',
         TAB_PAYOUT_HISTORY_NAME: 'Payout History',
 
         STATUS_NODE_NAME: 'Node Name',
@@ -1071,10 +1071,9 @@ function EnglishProvider($translateProvider) {
         STATUS_LAST_PAYOUT_ROUND_NAME: 'Last Payout Round',
         STATUS_TOTAL_REWARDS_NAME: 'Total Rewards',
 
-        ENROLL_TO_PROGRAM_ADDRESS_NAME: 'Enroll Address',
-        ENROLL_TO_PROGRAM_IP_DOMAIN_NAME: 'Node IP or Domain',
-        ENROLL_TO_PROGRAM_FEE_NAME: 'Fee',
-        ENROLL_TO_PROGRAM_BUTTON_NAME: 'Enroll to Program',
+        ENROLL_IN_PROGRAM_ADDRESS_NAME: 'Enroll Address',
+        ENROLL_IN_PROGRAM_NODE_HOST: 'Node Host',
+        ENROLL_IN_PROGRAM_BUTTON_NAME: 'Enroll in Program',
 
         PAYOUT_HISTORY_FROM_NAME: 'From Round',
         PAYOUT_HISTORY_TO_NAME: 'To Round',

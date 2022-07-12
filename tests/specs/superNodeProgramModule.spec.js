@@ -273,7 +273,7 @@ describe('SuperNode program module tests', () => {
             expect(ctrl.preparedTransaction.fee).toEqual(200000);
             expect(ctrl.preparedTransaction.amount).toEqual(0);
             expect(ctrl.preparedTransaction.mosaics).toEqual(null);
-            expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.domainOrIP} ${'0'.repeat(64)}`));
+            expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.nodeHost} ${'0'.repeat(64)}`));
         })
 
         it('returns multisig account transaction object', () => {
@@ -297,7 +297,7 @@ describe('SuperNode program module tests', () => {
             expect(ctrl.preparedTransaction.otherTrans.fee).toEqual(200000);
             expect(ctrl.preparedTransaction.otherTrans.amount).toEqual(0);
             expect(ctrl.preparedTransaction.otherTrans.mosaics).toEqual(null);
-            expect(ctrl.preparedTransaction.otherTrans.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.domainOrIP} ${'0'.repeat(64)}`));
+            expect(ctrl.preparedTransaction.otherTrans.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.nodeHost} ${'0'.repeat(64)}`));
         })
 
         it('returns transaction object provided codewordHash for message payload', () => {
@@ -310,7 +310,7 @@ describe('SuperNode program module tests', () => {
             ctrl.prepareTransaction('hash');
 
             // Assert:
-            expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.domainOrIP} hash`));
+            expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.nodeHost} hash`));
         })
     })
 
@@ -407,7 +407,7 @@ describe('SuperNode program module tests', () => {
 
             ctrl.enrollStatus.endpoint = 'old.domain.name';
 
-            ctrl.formData.domainOrIP = 'old.domain.name';
+            ctrl.formData.nodeHost = 'old.domain.name';
 
             // Act:
             await ctrl.sendEnroll();
@@ -567,7 +567,7 @@ describe('SuperNode program module tests', () => {
 
             ctrl.enrollStatus.endpoint = 'old.domain.name';
 
-            ctrl.formData.domainOrIP = 'new.domain.name';
+            ctrl.formData.nodeHost = 'new.domain.name';
 
             // Act:
             await ctrl.sendEnroll();
@@ -599,10 +599,10 @@ describe('SuperNode program module tests', () => {
             ctrl.selectEnrollTab();
 
             // Assert:
-            expect(ctrl.formData.domainOrIP).toEqual('');
+            expect(ctrl.formData.nodeHost).toEqual('');
             expect(ctrl.preparedTransaction.type).toEqual(nem.model.transactionTypes.transfer);
             expect(ctrl.preparedTransaction.fee).toEqual(200000);
-            expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.domainOrIP} ${'0'.repeat(64)}`));
+            expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.nodeHost} ${'0'.repeat(64)}`));
             done();
         })
 
@@ -621,10 +621,10 @@ describe('SuperNode program module tests', () => {
             ctrl.selectEnrollTab();
 
             // Assert:
-            expect(ctrl.formData.domainOrIP).toEqual(new URL(mockEnrollStatus.endpoint).hostname);
+            expect(ctrl.formData.nodeHost).toEqual(new URL(mockEnrollStatus.endpoint).hostname);
             expect(ctrl.preparedTransaction.type).toEqual(nem.model.transactionTypes.transfer);
             expect(ctrl.preparedTransaction.fee).toEqual(200000);
-            expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.domainOrIP} ${'0'.repeat(64)}`));
+            expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.nodeHost} ${'0'.repeat(64)}`));
             done()
         })
     })
