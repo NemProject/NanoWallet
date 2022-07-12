@@ -271,7 +271,9 @@ class SuperNodeProgramCtrl {
             this._superNodeProgram.getCodewordHash(this.formData.mainPublicKey)
         ])
 
-        if (isEnrolled && this.formData.domainOrIP === this.enrollStatus.endpoint) {
+        const isEnrolledWithSameDomain = isEnrolled && this.formData.nodeHost === this.enrollStatus.endpoint;
+
+        if (isEnrolledWithSameDomain) {
             this._$timeout(() => {
                 this._Alert.addressEnrolled();
                 this.okPressed = false;
@@ -295,7 +297,7 @@ class SuperNodeProgramCtrl {
             })
         }
 
-        if((!isEnrolled || isEnrolled && this.formData.domainOrIP !== this.enrollStatus.endpoint) && isEnrollmentAddressValid && 64 === codewordHash.length) {
+        if(!isEnrolledWithSameDomain && isEnrollmentAddressValid && 64 === codewordHash.length) {
             // Prepare transaction for enrollment
             const entity = this.prepareTransaction(codewordHash);
 
