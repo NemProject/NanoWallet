@@ -1005,8 +1005,8 @@ function SpanishProvider($translateProvider) {
         ENROLL_IN_PROGRAM_NODE_HOST: 'Host de Nodo',
         ENROLL_IN_PROGRAM_BUTTON_NAME: 'Regístrate en el programa',
 
-        PAYOUT_HISTORY_FROM_NAME: 'Desde la ronda',
-        PAYOUT_HISTORY_TO_NAME: 'A la ronda ',
+        PAYOUT_HISTORY_FROM_NAME: 'Desde Ronda',
+        PAYOUT_HISTORY_TO_NAME: 'A Ronda',
         PAYOUT_HISTORY_AMOUNT_NAME: 'Monto',
         PAYOUT_HISTORY_TRANSACTION_HASH_NAME: 'Hash de transacción',
         PAYOUT_HISTORY_DATE_NAME: 'Fecha',
