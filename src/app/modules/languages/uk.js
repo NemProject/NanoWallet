@@ -400,6 +400,10 @@ function UkrainianProvider($translateProvider) {
         PORTAL_ADDRESS_BOOK_BTN: 'Управління адресною книгою',
         PORTAL_INVOICE_TEXT: 'Створити рахунок-фактуру для передачі за допомогою QR коду',
         PORTAL_SIGNED_MSG_TEXT: 'Створити та підтвердити підписані повідомлення для автентифікації права власності на обліковий запис без здійснення транзакції.',
+        PORTAL_SUPER_NODE_PROGRAM_TITLE: 'ПРОГРАМА СУПЕРНОД NEM',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT: 'Зареєструйтеся в програмі SuperNode і заробляйте $XEM, поліпшуючи безпеку мережі. Для реєстрації необхідно мінімум 10 000 XEM.',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT_LINK: 'Детальніше тут.',
+        PORTAL_SUPER_NODE_PROGRAM_BTN_1: 'Перевірити та зареєструватися в програмі.',
 
         // ADDRESS BOOK MODULE
         ADDRESS_BOOK_TITLE: 'Адресна книга',
@@ -1047,6 +1051,39 @@ function UkrainianProvider($translateProvider) {
         POST_OPTIN_ERROR_INVALID_KEY:           'Неправильний ключ',
         POST_OPTIN_CONFIRM_MODAL_TEXT_MULTISIG: "Переконайтесь, що адреса призначення Symbol - це адреса вашого мультисиг акаунту Symbol. Якщо вони не збігаються, будь ласка, почніть процес знову та надайте дійсний відкритий ключ мультисиг акаунту Symbol.",
         POST_OPTIN_CONFIRM_MODAL_CHECKBOX_MULTISIG: "Я підтверджую, що адреса призначення співпадає з адресою мультисиг акаунту Symbol",
+
+        // SUPERNODE PROGRAM MODULE
+        SUPER_NODE_PROGRAM_TITLE: 'ПРОГРАМА СУПЕРНОД NEM',
+        ACCOUNT_NAME: 'Акаунт',
+        BALANCE_NAME: 'Баланс',
+        TAB_STATUS_NAME: 'Статус',
+        TAB_ENROLL_IN_PROGRAM_NAME: 'Зареєструватися у програмі',
+        TAB_PAYOUT_HISTORY_NAME: 'Історія виплат',
+
+        STATUS_NODE_NAME: 'Ім\'я ноди',
+        STATUS_NAME: 'Статус',
+        STATUS_ACTIVE_NAME: 'Активний',
+        STATUS_INACTIVE_NAME: 'Неактивний',
+        STATUS_PUBLIC_KEY_NAME: 'Відкритий (публічний) ключ',
+        STATUS_REMOTE_PUBLIC_KEY_NAME: 'Віддалений відкритий (публічний) ключ',
+        STATUS_LAST_PAYOUT_ROUND_NAME: 'Останній раунд виплат',
+        STATUS_TOTAL_REWARDS_NAME: 'Сума винагород',
+
+        ENROLL_IN_PROGRAM_ADDRESS_NAME: 'Адреса реєстрації',
+        ENROLL_IN_PROGRAM_NODE_HOST: 'Хост ноди',
+        ENROLL_IN_PROGRAM_BUTTON_NAME: 'Зареєструватися у програмі',
+
+        PAYOUT_HISTORY_FROM_NAME: 'Від раунда',
+        PAYOUT_HISTORY_TO_NAME: 'До раунда',
+        PAYOUT_HISTORY_AMOUNT_NAME: 'Сума',
+        PAYOUT_HISTORY_TRANSACTION_HASH_NAME: 'Хеш транзакції',
+        PAYOUT_HISTORY_DATE_NAME: 'Дата',
+
+        INVALID_ENROLLMENT_ADDRESS: 'Недійсна адреса реєстрації.',
+        ADDRESS_ENROLLED: 'Поточна адреса вже зареєстрована на цей період.',
+        INVALID_CODEWORD_HASH: 'Недійсний хеш кодового слова.',
+        ACCOUNT_MISSING_PUBLICKEY: 'Вам потрібно здійснити хоча б одну транзакцію, щоб отримати відкритий (публічний) ключ.',
+        INVALID_FORMAT_NODE_HOST: 'Протокол (http://) і порт (:7890) заборонені.',
     });
 
 }
