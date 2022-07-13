@@ -397,7 +397,7 @@ function ItalianProvider($translateProvider) {
         PORTAL_ADDRESS_BOOK_BTN: 'Gestisci rubrica',
         PORTAL_INVOICE_TEXT: 'Crea una fattura da condividere con il codice QR',
         PORTAL_SUPER_NODE_PROGRAM_TITLE: 'PROGRAMMA SUPERNODO',
-        PORTAL_SUPER_NODE_PROGRAM_TEXT: 'Iscriviti al programma SuperNode per guadagnare $XEM in cambio della protezione della rete.  È richiesto un minimo di 10.000 XEM.',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT: 'Iscriviti al programma SuperNode per guadagnare $XEM quale ricompensa per aver contribuito a rendere più sicura la rete. È richiesto un minimo di 10.000 XEM.',
         PORTAL_SUPER_NODE_PROGRAM_TEXT_LINK: 'Leggi di più qui.',
         PORTAL_SUPER_NODE_PROGRAM_BTN_1: 'Verifica e registrati nel programma',
 
