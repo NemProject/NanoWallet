@@ -400,7 +400,7 @@ function PolishProvider($translateProvider) {
         PORTAL_ADDRESS_BOOK_BTN: 'Zarządzaj książką adresową',
         PORTAL_INVOICE_TEXT: 'Create an invoice to share via QR code',
         PORTAL_SUPER_NODE_PROGRAM_TITLE: 'PROGRAM NEM SUPERNODE',
-        PORTAL_SUPER_NODE_PROGRAM_TEXT: 'Przystąp do Programu dla SuperNode ów aby zyskać $XEM w zamian za zabezpieczenie sieci. Wymagane minimum 10,000 XEM.',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT: 'Przystąp do Programu dla SuperNode\'ów aby zyskać $XEM w zamian za zabezpieczenie sieci. Wymagane minimum 10,000 XEM.',
         PORTAL_SUPER_NODE_PROGRAM_TEXT_LINK: 'Czytaj więcej tutaj.',
         PORTAL_SUPER_NODE_PROGRAM_BTN_1: 'Sprawdź i przystąp do Programu',
 
