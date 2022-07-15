@@ -230,7 +230,7 @@ class SuperNodeProgramCtrl {
                     remotePublicKey: result.remotePublicKey,
                     totalReward: this.computeXEMBalance(result.totalRewardsEarned),
                     nodeId: result.id,
-                    lastPayoutRound: result.lastPayoutRound,
+                    lastPayoutRound: result.lastPayoutRound === -1 ? "-" : result.lastPayoutRound,
                 }
 
                 this.lastPage = Math.ceil(result.rewardCount/15);

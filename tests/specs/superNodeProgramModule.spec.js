@@ -314,7 +314,7 @@ describe('SuperNode program module tests', () => {
     })
 
     describe('selectStatusTab', () => {
-        const expectedEnrollStatus = {
+        const expectedEnrollStatusWithoutResponse = {
             nodeName: '-',
             status: false,
             endpoint: '-',
@@ -322,6 +322,17 @@ describe('SuperNode program module tests', () => {
             remotePublicKey: '-',
             totalReward: '-',
             lastPayoutRound: '-',
+        };
+
+        const expectedEnrollStatusWithResponse = {
+            nodeName: mockEnrollStatus.name,
+            status: mockEnrollStatus.status,
+            endpoint: 'superlong.domain.name',
+            publicKey: mockEnrollStatus.mainPublicKey,
+            remotePublicKey: mockEnrollStatus.remotePublicKey,
+            totalReward: '12.000000',
+            nodeId: mockEnrollStatus.id,
+            lastPayoutRound: mockEnrollStatus.lastPayoutRound,
         };
 
         it('returns default enroll status when public key does not exist', async (done) => {
@@ -337,7 +348,7 @@ describe('SuperNode program module tests', () => {
             $timeout.flush();
 
             // Assert:
-            expect(ctrl.enrollStatus).toEqual(expectedEnrollStatus);
+            expect(ctrl.enrollStatus).toEqual(expectedEnrollStatusWithoutResponse);
             done();
         })
 
@@ -354,7 +365,7 @@ describe('SuperNode program module tests', () => {
             $timeout.flush();
 
             // Assert:
-            expect(ctrl.enrollStatus).toEqual(expectedEnrollStatus);
+            expect(ctrl.enrollStatus).toEqual(expectedEnrollStatusWithoutResponse);
             done();
         })
 
@@ -371,18 +382,30 @@ describe('SuperNode program module tests', () => {
             $timeout.flush();
 
             // Assert:
-            const expectedEnrollStatus = {
-                nodeName: mockEnrollStatus.name,
-                status: mockEnrollStatus.status,
-                endpoint: new URL(mockEnrollStatus.endpoint).hostname,
-                publicKey: mockEnrollStatus.mainPublicKey,
-                remotePublicKey: mockEnrollStatus.remotePublicKey,
-                totalReward: ctrl.computeXEMBalance(mockEnrollStatus.totalRewardsEarned),
-                nodeId: mockEnrollStatus.id,
-                lastPayoutRound: mockEnrollStatus.lastPayoutRound,
-            };
+            expect(ctrl.enrollStatus).toEqual(expectedEnrollStatusWithResponse);
+            done();
+        })
 
-            expect(ctrl.enrollStatus).toEqual(expectedEnrollStatus);
+        it('returns enroll status when enrolled status contain null value', async (done) => {
+            // Arrange:
+            spyOn(SuperNodeProgram, 'getNodeInfo').and.returnValue(Promise.resolve({
+                ...mockEnrollStatus,
+                lastPayoutRound: -1
+            }));
+
+            const ctrl = $controller('SuperNodeProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            // Act:
+            await ctrl.selectStatusTab();
+            $timeout.flush();
+
+            // Assert:
+            expect(ctrl.enrollStatus).toEqual({
+                ...expectedEnrollStatusWithResponse,
+                lastPayoutRound: '-'
+            });
             done();
         })
     })
