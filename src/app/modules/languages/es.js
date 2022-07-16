@@ -719,7 +719,7 @@ function SpanishProvider($translateProvider) {
         FAQ_ANSWER_6_WEBSITE: 'Sitio web oficial',
         FAQ_ANSWER_6_BTT: 'Hilo ficial de BitcoinTalk',
         FAQ_QUESTION_7: 'No se muestra nada en el escritorio',
-        FAQ_ANSWER_7: 'Por favor asegúrate de verificar el círculo del nodo en la barra de navegación superior. <br> El círculo rojo significa que la conexión al nodo falló. <br> Haz clic en "Nodo" y selecciona otro de la lista desplegable o usa un nodo personalizado. <br> <a href="https://supernodes.nem.io" target="_blank">Supernodes.nem.io</a> tiene una lista de nodos que puedes usar.</a>',
+        FAQ_ANSWER_7: 'Por favor asegúrate de verificar el círculo del nodo en la barra de navegación superior. <br> El círculo rojo significa que la conexión al nodo falló. <br> Haz clic en "Nodo" y selecciona otro de la lista desplegable o usa un nodo personalizado. <br> <a href="https://www.nem.io/supernode" target="_blank">Supernode</a> tiene una lista de nodos que puedes usar.</a>',
         FAQ_QUESTION_8: 'Los cofirmantes no pueden ver la transacción para firmar',
         FAQ_ANSWER_8: 'En este caso ve a "Servicios", busca "Cuentas multifirma y multiusuario " y haz clic en "Firmar transacciones multifirma ".',
         FAQ_QUESTION_9: '¿Cuáles son las mejores prácticas de seguridad?',

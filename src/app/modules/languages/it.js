@@ -719,7 +719,7 @@ function ItalianProvider($translateProvider) {
         FAQ_ANSWER_6_WEBSITE: 'Sito ufficiale',
         FAQ_ANSWER_6_BTT: 'Argomento ufficiale su BitcoinTalk',
         FAQ_QUESTION_7: 'Nulla viene visualizzato sul pannello.',
-        FAQ_ANSWER_7: 'Si prega di controllare il cerchio del nodo nella barra di navigazione in alto. <br> Cerchio rosso indica che la connessione al nodo non è riuscita. <br> Fai clic sul "Nodo" e seleziona un altro dall"elenco o utilizza un nodo personalizzato. <br> <a href="https://supernodes.nem.io" target="_blank"> Supernodes.nem.io </a> ha un elenco di nodi che puoi utilizzare.</a>',
+        FAQ_ANSWER_7: 'Si prega di controllare il cerchio del nodo nella barra di navigazione in alto. <br> Cerchio rosso indica che la connessione al nodo non è riuscita. <br> Fai clic sul "Nodo" e seleziona un altro dall"elenco o utilizza un nodo personalizzato. <br> <a href="https://www.nem.io/supernode" target="_blank"> Supernode </a> ha un elenco di nodi che puoi utilizzare.</a>',
         FAQ_QUESTION_8: 'I pignoratori non possono vedere la transazione da firmare.',
         FAQ_ANSWER_8: 'In questo caso, andare su "Servizi", cercare "Account multi-firma o multi-utente" e fare clic su "Firma transazioni multi-firma".',
         FAQ_QUESTION_9: 'Quali sono le migliori pratiche di sicurezza?',

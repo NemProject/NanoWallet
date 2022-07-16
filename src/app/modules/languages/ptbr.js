@@ -719,7 +719,7 @@ function PortugueseBRProvider($translateProvider) {
         FAQ_ANSWER_6_WEBSITE: 'Website oficial',
         FAQ_ANSWER_6_BTT: 'Assunto oficial na BitcoinTalk',
         FAQ_QUESTION_7: 'Nada é exibido no painel.',
-        FAQ_ANSWER_7: 'Por favor, verifique o círculo do nodo na barra de navegação do topo. <br> Círculo vermelho significa que a conexão com o nodo falhou. <br> Clique no "Nodo" e selecione outro da lista ou use um nodo customizado. <br> <a href="https://supernodes.nem.io" target="_blank">Supernodes.nem.io</a> possui uma lista de nodos que você pode utilizar.</a>',
+        FAQ_ANSWER_7: 'Por favor, verifique o círculo do nodo na barra de navegação do topo. <br> Círculo vermelho significa que a conexão com o nodo falhou. <br> Clique no "Nodo" e selecione outro da lista ou use um nodo customizado. <br> <a href="https://www.nem.io/supernode" target="_blank">Supernode</a> possui uma lista de nodos que você pode utilizar.</a>',
         FAQ_QUESTION_8: 'Cosignatários não podem ver a transação para assinar.',
         FAQ_ANSWER_8: 'Neste caso vá para "Serviços", procure por "Contas Multiassinatura ou Multiusuários" e clique em "Assinar transações multiassinatura".',
         FAQ_QUESTION_9: 'Quais são as melhores práticas de segurança?',

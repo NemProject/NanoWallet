@@ -729,7 +729,7 @@ function DutchProvider($translateProvider) {
         FAQ_ANSWER_6_WEBSITE: 'Officiële website',
         FAQ_ANSWER_6_BTT: 'Officiële BitcoinTalk thread',
         FAQ_QUESTION_7: 'Er is niets weergegeven op het dashboard',
-        FAQ_ANSWER_7: 'Controleer de node-circel in de navigatiebar. <br> Rood betekent dat de connectie met de node is mislukt. <br> Klik op "Node" en selcteer een andere van de lijst of gebruik een aangepaste node. <br> <a href="https://supernodes.nem.io" target="_blank">Supernodes.nem.io</a> bevat een lijst met nodes die je kunt gebruiken.</a>',
+        FAQ_ANSWER_7: 'Controleer de node-circel in de navigatiebar. <br> Rood betekent dat de connectie met de node is mislukt. <br> Klik op "Node" en selcteer een andere van de lijst of gebruik een aangepaste node. <br> <a href="https://www.nem.io/supernode" target="_blank">Supernode</a> bevat een lijst met nodes die je kunt gebruiken.</a>',
         FAQ_QUESTION_8: 'Mede-ondertekenaars kunnen de transactie die getekend moet worden niet zien',
         FAQ_ANSWER_8: 'Ga in dit geval naar "Diensten", ga naar "Multi-handtekening en multi-gebruiker accounts" en klik op "Teken een multi-handtekening transactie".',
         FAQ_QUESTION_9: 'Wat zijn de beste veiligheidsoverwegingen?',

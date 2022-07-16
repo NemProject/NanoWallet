@@ -738,7 +738,7 @@ function JapaneseProvider($translateProvider) {
       FAQ_ANSWER_6_WEBSITE: "公式ウェブサイト",
       FAQ_ANSWER_6_BTT: "公式 BitcoinTalk スレッド",
       FAQ_QUESTION_7: 'ダッシュボードに何も表示されません',
-      FAQ_ANSWER_7: 'トップのナビゲーションバーにあるノードの円アイコンを確認してください。<br>赤い円はノードへの接続に失敗していることを表します。<br>"ノード"をクリックし、ほかのノードをドロップダウンリストから選択するかカスタムノードを指定してください。<br><a href="https://supernodes.nem.io" target="_blank">Supernodes.nem.io</a>に利用可能なノードが掲載されています。</a>',
+      FAQ_ANSWER_7: 'トップのナビゲーションバーにあるノードの円アイコンを確認してください。<br>赤い円はノードへの接続に失敗していることを表します。<br>"ノード"をクリックし、ほかのノードをドロップダウンリストから選択するかカスタムノードを指定してください。<br><a href="https://www.nem.io/supernode" target="_blank">Supernode</a>に利用可能なノードが掲載されています。</a>',
       FAQ_QUESTION_8: '連署者に署名してほしいトランザクション表示されません。',
       FAQ_ANSWER_8: 'この場合、"サービス"へ移動し、"マルチシグおよびマルチユーザーアカウント"の項目から"マルチシグトランザクションの署名"を選択してください。',
       FAQ_QUESTION_9: '最適なセキュリティは？',

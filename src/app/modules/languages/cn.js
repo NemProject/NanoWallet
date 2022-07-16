@@ -727,7 +727,7 @@ function ChineseProvider($translateProvider) {
         FAQ_ANSWER_6_WEBSITE: '官方网站',
         FAQ_ANSWER_6_BTT: '官方BTT帖子',
         FAQ_QUESTION_7: '仪表板上没有显示任何内容',
-        FAQ_ANSWER_7: '请您务必检查顶部导航栏中的节点圆. <br> 红色圆圈表示与节点的连接失败. <br> 点击“节点”并从下拉列表中选择另一个或使用自定义节点。. <br> <a href="https://supernodes.nem.io" target="_blank">Supernodes.nem.io</a> 有很多可以使用的节点.</a>',
+        FAQ_ANSWER_7: '请您务必检查顶部导航栏中的节点圆. <br> 红色圆圈表示与节点的连接失败. <br> 点击“节点”并从下拉列表中选择另一个或使用自定义节点。. <br> <a href="https://www.nem.io/supernode" target="_blank">Supernode</a> 有很多可以使用的节点.</a>',
         FAQ_QUESTION_8: '签署人不会看到签署交易。',
         FAQ_ANSWER_8: '在这种情况下，请转到“服务”, 寻找“多重签名和多用户帐户”并点击“签署多重交易”.',
         FAQ_QUESTION_9: '什么是最好的安全措施 ?',

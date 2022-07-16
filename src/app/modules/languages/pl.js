@@ -724,7 +724,7 @@ function PolishProvider($translateProvider) {
         FAQ_ANSWER_6_WEBSITE: 'Oficjalna strona',
         FAQ_ANSWER_6_BTT: 'Oficjalny wątek BitcoinTalk',
         FAQ_QUESTION_7: 'Nothing is shown on the dashboard',
-        FAQ_ANSWER_7: 'Please be sure to check the node circle in the top navigation bar. <br> Red circle means that connection to the node failed. <br> Click on "Node" and select another one from the dropdown list or use a custom node. <br> <a href="https://supernodes.nem.io" target="_blank">Supernodes.nem.io</a> has a lot of nodes that you can use.</a>',
+        FAQ_ANSWER_7: 'Please be sure to check the node circle in the top navigation bar. <br> Red circle means that connection to the node failed. <br> Click on "Node" and select another one from the dropdown list or use a custom node. <br> <a href="https://www.nem.io/supernode" target="_blank">Supernode</a> has a lot of nodes that you can use.</a>',
         FAQ_QUESTION_8: 'Cosignatories cannot see the transaction to sign',
         FAQ_ANSWER_8: 'In this case go to "Services", look for "Multisignature and Multi-User Accounts" and click on "Sign multisig transactions".',
         FAQ_QUESTION_9: 'What are the best security practices ?',
