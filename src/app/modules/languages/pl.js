@@ -399,6 +399,10 @@ function PolishProvider($translateProvider) {
         PORTAL_ADDRESS_BOOK_TEXT: 'Przydziel etykiety do adresu\' by prosto zarządzać swoimi kontaktami.',
         PORTAL_ADDRESS_BOOK_BTN: 'Zarządzaj książką adresową',
         PORTAL_INVOICE_TEXT: 'Create an invoice to share via QR code',
+        PORTAL_SUPER_NODE_PROGRAM_TITLE: 'PROGRAM NEM SUPERNODE',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT: 'Przystąp do Programu dla SuperNode\'ów aby zyskać $XEM w zamian za zabezpieczenie sieci. Wymagane minimum 10,000 XEM.',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT_LINK: 'Czytaj więcej tutaj.',
+        PORTAL_SUPER_NODE_PROGRAM_BTN_1: 'Sprawdź i przystąp do Programu',
 
         // ADDRESS BOOK MODULE
         ADDRESS_BOOK_TITLE: 'Książka adresowa',
@@ -720,7 +724,7 @@ function PolishProvider($translateProvider) {
         FAQ_ANSWER_6_WEBSITE: 'Oficjalna strona',
         FAQ_ANSWER_6_BTT: 'Oficjalny wątek BitcoinTalk',
         FAQ_QUESTION_7: 'Nothing is shown on the dashboard',
-        FAQ_ANSWER_7: 'Please be sure to check the node circle in the top navigation bar. <br> Red circle means that connection to the node failed. <br> Click on "Node" and select another one from the dropdown list or use a custom node. <br> <a href="https://supernodes.nem.io" target="_blank">Supernodes.nem.io</a> has a lot of nodes that you can use.</a>',
+        FAQ_ANSWER_7: 'Please be sure to check the node circle in the top navigation bar. <br> Red circle means that connection to the node failed. <br> Click on "Node" and select another one from the dropdown list or use a custom node. <br> <a href="https://www.nem.io/supernode" target="_blank">Supernode</a> has a lot of nodes that you can use.</a>',
         FAQ_QUESTION_8: 'Cosignatories cannot see the transaction to sign',
         FAQ_ANSWER_8: 'In this case go to "Services", look for "Multisignature and Multi-User Accounts" and click on "Sign multisig transactions".',
         FAQ_QUESTION_9: 'What are the best security practices ?',
@@ -1048,6 +1052,39 @@ function PolishProvider($translateProvider) {
         POST_OPTIN_ERROR_INVALID_KEY:           'Niepoprawny klucz',
         POST_OPTIN_CONFIRM_MODAL_TEXT_MULTISIG: "Zweryfikuj, że zaprezentowany docelowy adres Symbol jest Twoim adresem z multipodpisem. Jeśli adresy nie są takie same zacznij proces od początku i wprowadź poprawny klucz publiczny Twojego konta Symbol z multipodpisem.",
         POST_OPTIN_CONFIRM_MODAL_CHECKBOX_MULTISIG: "Potwierdzam, że prezentowany adres do wypłaty w sieci Symbol zgadza się z moim adresem konta Symbol z multipodpisem.",
+
+        // SUPERNODE PROGRAM MODULE
+        SUPER_NODE_PROGRAM_TITLE: 'PROGRAM NEM SUPERNODE',
+        ACCOUNT_NAME: 'Konto',
+        BALANCE_NAME: 'Saldo',
+        TAB_STATUS_NAME: 'Status',
+        TAB_ENROLL_IN_PROGRAM_NAME: 'Przystąp do Programu',
+        TAB_PAYOUT_HISTORY_NAME: 'Historia płatności',
+
+        STATUS_NODE_NAME: 'Nazwa serwera',
+        STATUS_NAME: 'Status',
+        STATUS_ACTIVE_NAME: 'Aktywny',
+        STATUS_INACTIVE_NAME: 'Nieaktywny',
+        STATUS_PUBLIC_KEY_NAME: 'Klucz publiczny',
+        STATUS_REMOTE_PUBLIC_KEY_NAME: 'Zdalny klucz publiczny',
+        STATUS_LAST_PAYOUT_ROUND_NAME: 'Ostatnia runda wypłat',
+        STATUS_TOTAL_REWARDS_NAME: 'Suma nagród',
+
+        ENROLL_IN_PROGRAM_ADDRESS_NAME: 'Adres do zapisów',
+        ENROLL_IN_PROGRAM_NODE_HOST: 'Host serwera',
+        ENROLL_IN_PROGRAM_BUTTON_NAME: 'Przystąp do Programu',
+
+        PAYOUT_HISTORY_FROM_NAME: 'Od rundy',
+        PAYOUT_HISTORY_TO_NAME: 'Do rundy',
+        PAYOUT_HISTORY_AMOUNT_NAME: 'Kwota',
+        PAYOUT_HISTORY_TRANSACTION_HASH_NAME: 'Hasz transakcji',
+        PAYOUT_HISTORY_DATE_NAME: 'Data',
+
+        INVALID_ENROLLMENT_ADDRESS: 'Niepoprawny adres do zapisów.',
+        ADDRESS_ENROLLED: 'Wybrany adres już zapisał się w obecnym okresie.',
+        INVALID_CODEWORD_HASH: 'Niepoprawny hash słowa kodowego.',
+        ACCOUNT_MISSING_PUBLICKEY: 'Musisz zrobić transakcje wychodzącą aby uzyskać klucz publiczny.',
+        INVALID_FORMAT_NODE_HOST: 'Protokół (http://) i port (:7890) nie są dozwolone.',
     });
 
 }

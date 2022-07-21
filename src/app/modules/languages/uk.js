@@ -400,6 +400,10 @@ function UkrainianProvider($translateProvider) {
         PORTAL_ADDRESS_BOOK_BTN: 'Управління адресною книгою',
         PORTAL_INVOICE_TEXT: 'Створити рахунок-фактуру для передачі за допомогою QR коду',
         PORTAL_SIGNED_MSG_TEXT: 'Створити та підтвердити підписані повідомлення для автентифікації права власності на обліковий запис без здійснення транзакції.',
+        PORTAL_SUPER_NODE_PROGRAM_TITLE: 'ПРОГРАМА СУПЕРНОД NEM',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT: 'Зареєструйтеся в програмі SuperNode і заробляйте $XEM, поліпшуючи безпеку мережі. Для реєстрації необхідно мінімум 10 000 XEM.',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT_LINK: 'Детальніше тут.',
+        PORTAL_SUPER_NODE_PROGRAM_BTN_1: 'Перевірити та зареєструватися в програмі.',
 
         // ADDRESS BOOK MODULE
         ADDRESS_BOOK_TITLE: 'Адресна книга',
@@ -726,7 +730,7 @@ function UkrainianProvider($translateProvider) {
         FAQ_ANSWER_6_WEBSITE: 'Офіційному вебсайті',
         FAQ_ANSWER_6_BTT: 'Офіційній сторінці на BitcoinTalk',
         FAQ_QUESTION_7: 'На інформаційній панелі нічого не відображається',
-        FAQ_ANSWER_7: 'Будь-ласка, перевірте колір кола, яке знаходиться на верхній навігаційній панелі та відображає стан вузла. <br> Червоне коло означає, що немає підключення до вузла. <br> Натисніть на кнопку "Вузол" та виберіть інший з випадаючого списку, або вкажіть свій вузол. <br> <a href="https://supernodes.nem.io" target="_blank">Supernodes.nem.io</a> містить перелік вузлів, які Ви можете використовувати.</a>',
+        FAQ_ANSWER_7: 'Будь-ласка, перевірте колір кола, яке знаходиться на верхній навігаційній панелі та відображає стан вузла. <br> Червоне коло означає, що немає підключення до вузла. <br> Натисніть на кнопку "Вузол" та виберіть інший з випадаючого списку, або вкажіть свій вузол. <br> <a href="https://www.nem.io/supernode" target="_blank">Supernode</a> містить перелік вузлів, які Ви можете використовувати.</a>',
         FAQ_QUESTION_8: 'У підписантів не відображається транзакція, яку їм треба підписати',
         FAQ_ANSWER_8: 'У цьому випадку треба перейти до меню "Сервіси", знайти розділ "Мультипідписи та Багатокористувацькі облікові записи" та натиснути на "Підписати мультипідписні транзакції".',
         FAQ_QUESTION_9: 'Які найкращі практики з безпеки ?',
@@ -1047,6 +1051,39 @@ function UkrainianProvider($translateProvider) {
         POST_OPTIN_ERROR_INVALID_KEY:           'Неправильний ключ',
         POST_OPTIN_CONFIRM_MODAL_TEXT_MULTISIG: "Переконайтесь, що адреса призначення Symbol - це адреса вашого мультисиг акаунту Symbol. Якщо вони не збігаються, будь ласка, почніть процес знову та надайте дійсний відкритий ключ мультисиг акаунту Symbol.",
         POST_OPTIN_CONFIRM_MODAL_CHECKBOX_MULTISIG: "Я підтверджую, що адреса призначення співпадає з адресою мультисиг акаунту Symbol",
+
+        // SUPERNODE PROGRAM MODULE
+        SUPER_NODE_PROGRAM_TITLE: 'ПРОГРАМА СУПЕРНОД NEM',
+        ACCOUNT_NAME: 'Акаунт',
+        BALANCE_NAME: 'Баланс',
+        TAB_STATUS_NAME: 'Статус',
+        TAB_ENROLL_IN_PROGRAM_NAME: 'Зареєструватися у програмі',
+        TAB_PAYOUT_HISTORY_NAME: 'Історія виплат',
+
+        STATUS_NODE_NAME: 'Ім\'я ноди',
+        STATUS_NAME: 'Статус',
+        STATUS_ACTIVE_NAME: 'Активний',
+        STATUS_INACTIVE_NAME: 'Неактивний',
+        STATUS_PUBLIC_KEY_NAME: 'Відкритий (публічний) ключ',
+        STATUS_REMOTE_PUBLIC_KEY_NAME: 'Віддалений відкритий (публічний) ключ',
+        STATUS_LAST_PAYOUT_ROUND_NAME: 'Останній раунд виплат',
+        STATUS_TOTAL_REWARDS_NAME: 'Сума винагород',
+
+        ENROLL_IN_PROGRAM_ADDRESS_NAME: 'Адреса реєстрації',
+        ENROLL_IN_PROGRAM_NODE_HOST: 'Хост ноди',
+        ENROLL_IN_PROGRAM_BUTTON_NAME: 'Зареєструватися у програмі',
+
+        PAYOUT_HISTORY_FROM_NAME: 'Від раунда',
+        PAYOUT_HISTORY_TO_NAME: 'До раунда',
+        PAYOUT_HISTORY_AMOUNT_NAME: 'Сума',
+        PAYOUT_HISTORY_TRANSACTION_HASH_NAME: 'Хеш транзакції',
+        PAYOUT_HISTORY_DATE_NAME: 'Дата',
+
+        INVALID_ENROLLMENT_ADDRESS: 'Недійсна адреса реєстрації.',
+        ADDRESS_ENROLLED: 'Поточна адреса вже зареєстрована на цей період.',
+        INVALID_CODEWORD_HASH: 'Недійсний хеш кодового слова.',
+        ACCOUNT_MISSING_PUBLICKEY: 'Вам потрібно здійснити хоча б одну транзакцію, щоб отримати відкритий (публічний) ключ.',
+        INVALID_FORMAT_NODE_HOST: 'Протокол (http://) і порт (:7890) заборонені.',
     });
 
 }

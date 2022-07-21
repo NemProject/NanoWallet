@@ -396,6 +396,10 @@ function SpanishProvider($translateProvider) {
         PORTAL_ADDRESS_BOOK_TEXT: 'Asignar etiquetas a las direcciones para realizar un seguimiento de sus contactos fácilmente.',
         PORTAL_ADDRESS_BOOK_BTN: 'Administrar libreta de direcciones',
         PORTAL_INVOICE_TEXT: 'Crear una factura para compartir a través del código QR',
+        PORTAL_SUPER_NODE_PROGRAM_TITLE: 'PROGRAMA SUPERNODOS NEM',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT: 'Únete al programa SuperNodo para ganar $XEM por segurizar la red.  Se requiere un mínimo de 10,000 XEM.',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT_LINK: 'Leer más aquí.',
+        PORTAL_SUPER_NODE_PROGRAM_BTN_1: 'Verifica e inscríbete en el programa',
 
         // ADDRESS BOOK MODULE
         ADDRESS_BOOK_TITLE: 'Libreta de direcciones',
@@ -715,7 +719,7 @@ function SpanishProvider($translateProvider) {
         FAQ_ANSWER_6_WEBSITE: 'Sitio web oficial',
         FAQ_ANSWER_6_BTT: 'Hilo ficial de BitcoinTalk',
         FAQ_QUESTION_7: 'No se muestra nada en el escritorio',
-        FAQ_ANSWER_7: 'Por favor asegúrate de verificar el círculo del nodo en la barra de navegación superior. <br> El círculo rojo significa que la conexión al nodo falló. <br> Haz clic en "Nodo" y selecciona otro de la lista desplegable o usa un nodo personalizado. <br> <a href="https://supernodes.nem.io" target="_blank">Supernodes.nem.io</a> tiene una lista de nodos que puedes usar.</a>',
+        FAQ_ANSWER_7: 'Por favor asegúrate de verificar el círculo del nodo en la barra de navegación superior. <br> El círculo rojo significa que la conexión al nodo falló. <br> Haz clic en "Nodo" y selecciona otro de la lista desplegable o usa un nodo personalizado. <br> <a href="https://www.nem.io/supernode" target="_blank">Supernode</a> tiene una lista de nodos que puedes usar.</a>',
         FAQ_QUESTION_8: 'Los cofirmantes no pueden ver la transacción para firmar',
         FAQ_ANSWER_8: 'En este caso ve a "Servicios", busca "Cuentas multifirma y multiusuario " y haz clic en "Firmar transacciones multifirma ".',
         FAQ_QUESTION_9: '¿Cuáles son las mejores prácticas de seguridad?',
@@ -976,9 +980,42 @@ function SpanishProvider($translateProvider) {
         POST_OPTIN_CONFIRM_MODAL_TEXT:          'Por favor verifica que la dirección de Symbol destino es la misma dirección que tu cuenta de Symbol. Puedes encontrar la dirección de tu cuenta de Symbol  en la página de inicio de tu billetera de Symbol. Si no son la misma, por favor empieza el proceso de nuevo y entra una llave publica de Symbol valida para tu cuenta!',
         POST_OPTIN_CONFIRM_MODAL_CHECKBOX:      'Confirmo que la dirección de Symbol destino es la misma que la dirección de mi cuenta de Symbol',
         OPTIN_NIS1_PUBLIC_KEY:                  'La llave publica que has entrado es una llave de NIS1! Debes poner una llave publica de Symbol',
-        POST_OPTIN_ERROR_INVALID_KEY:           'Llave inválida',   
+        POST_OPTIN_ERROR_INVALID_KEY:           'Llave inválida',
         POST_OPTIN_CONFIRM_MODAL_TEXT_MULTISIG: "Por favor verifica que la dirección destino de Symbol coincide con la de tu dirección multisig. Si no coinciden, por favor inicia el proceso de nuevo e introduce la llave pública válida  de la cuenta multisig.",
         POST_OPTIN_CONFIRM_MODAL_CHECKBOX_MULTISIG: "Confirmo que la dirección destino de Symbol coincide con la dirección de mi cuenta multisig.",
+
+        // SUPERNODE PROGRAM MODULE
+        SUPER_NODE_PROGRAM_TITLE: 'PROGRAMA SUPERNODOS NEM',
+        ACCOUNT_NAME: 'Cuenta',
+        BALANCE_NAME: 'Balance',
+        TAB_STATUS_NAME: 'Estado',
+        TAB_ENROLL_IN_PROGRAM_NAME: 'Regístrate en el programa',
+        TAB_PAYOUT_HISTORY_NAME: 'Historial de pagos acreditados',
+
+        STATUS_NODE_NAME: 'Nombre del nodo',
+        STATUS_NAME: 'Estado',
+        STATUS_ACTIVE_NAME: 'Activo',
+        STATUS_INACTIVE_NAME: 'Inactivo',
+        STATUS_PUBLIC_KEY_NAME: 'Llave pública',
+        STATUS_REMOTE_PUBLIC_KEY_NAME: 'Clave pública Remota',
+        STATUS_LAST_PAYOUT_ROUND_NAME: 'Última Ronda de Pago',
+        STATUS_TOTAL_REWARDS_NAME: 'Recompensas Totales',
+
+        ENROLL_IN_PROGRAM_ADDRESS_NAME: 'Dirección de Registro',
+        ENROLL_IN_PROGRAM_NODE_HOST: 'Host de Nodo',
+        ENROLL_IN_PROGRAM_BUTTON_NAME: 'Regístrate en el programa',
+
+        PAYOUT_HISTORY_FROM_NAME: 'Desde Ronda',
+        PAYOUT_HISTORY_TO_NAME: 'A Ronda',
+        PAYOUT_HISTORY_AMOUNT_NAME: 'Monto',
+        PAYOUT_HISTORY_TRANSACTION_HASH_NAME: 'Hash de transacción',
+        PAYOUT_HISTORY_DATE_NAME: 'Fecha',
+
+        INVALID_ENROLLMENT_ADDRESS: 'Dirección de registro no válida.',
+        ADDRESS_ENROLLED: 'Dirección actual ya registrada para este período.',
+        INVALID_CODEWORD_HASH: 'Código de hash no válido.',
+        ACCOUNT_MISSING_PUBLICKEY: 'Necesitas hacer una transacción para obtener una clave pública.',
+        INVALID_FORMAT_NODE_HOST: 'El protocolo (http: //) y el puerto (: 7890) no están permitidos.',
     });
 
 }

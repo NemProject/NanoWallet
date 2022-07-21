@@ -1,6 +1,6 @@
 import nem from 'nem-sdk';
 
-const SUPER_NODE_PROGRAM_API_BASE_URL = 'https://supernodesapi.nem.io';
+const SUPER_NODE_PROGRAM_API_BASE_URL = 'https://nem.io/supernode/api';
 
 /** Service to enroll in the SuperNode Program and to get the status related information */
 class SuperNodeProgram {

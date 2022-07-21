@@ -397,6 +397,10 @@ function RussianProvider($translateProvider) {
         PORTAL_ADDRESS_BOOK_TEXT: 'Назначьте метки адресам, чтобы легко отслеживать контакты.',
         PORTAL_ADDRESS_BOOK_BTN: 'Управление адресной книгой',
         PORTAL_INVOICE_TEXT: 'Create an invoice to share via QR code',
+        PORTAL_SUPER_NODE_PROGRAM_TITLE: 'ПРОГРАММА СУПЕРНОД NEM',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT: 'Присоединяйтесь к программе SuperNode, чтобы получить $XEM в обмен на защиту вашей сети.  Требуется минимум 10 000 XEM.',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT_LINK: 'Подробнее здесь.',
+        PORTAL_SUPER_NODE_PROGRAM_BTN_1: 'Проверить и зарегистрироваться в программе',
 
         // ADDRESS BOOK MODULE
         ADDRESS_BOOK_TITLE: 'Адресная книга',
@@ -718,7 +722,7 @@ function RussianProvider($translateProvider) {
         FAQ_ANSWER_6_WEBSITE: 'Official website',
         FAQ_ANSWER_6_BTT: 'Official BitcoinTalk thread',
         FAQ_QUESTION_7: 'Nothing is shown on the dashboard',
-        FAQ_ANSWER_7: 'Please be sure to check the node circle in the top navigation bar. <br> Red circle means that connection to the node failed. <br> Click on "Node" and select another one from the dropdown list or use a custom node. <br> <a href="https://supernodes.nem.io" target="_blank">Supernodes.nem.io</a> has a lot of nodes that you can use.</a>',
+        FAQ_ANSWER_7: 'Please be sure to check the node circle in the top navigation bar. <br> Red circle means that connection to the node failed. <br> Click on "Node" and select another one from the dropdown list or use a custom node. <br> <a href="https://www.nem.io/supernode" target="_blank">Supernode</a> has a lot of nodes that you can use.</a>',
         FAQ_QUESTION_8: 'Cosignatories cannot see the transaction to sign',
         FAQ_ANSWER_8: 'In this case go to "Services", look for "Multisignature and Multi-User Accounts" and click on "Sign multisig transactions".',
         FAQ_QUESTION_9: 'What are the best security practices ?',
@@ -947,6 +951,39 @@ function RussianProvider($translateProvider) {
         POST_OPTIN_ERROR_INVALID_KEY:           'Неправильный ключ',
         POST_OPTIN_CONFIRM_MODAL_TEXT_MULTISIG: "Убедитесь, что в качестве адреса назначения Symbol указан адрес вашего мультисиг аккаунта Symbol. Если он не совпадает, начните процесс снова и предоставьте корректный публичный ключ от мультисиг аккаунта Symbol.",
         POST_OPTIN_CONFIRM_MODAL_CHECKBOX_MULTISIG: "Я подтверждаю, что адрес назначения совпадает с адресом мультисиг аккаунта Symbol",
+
+        // SUPERNODE PROGRAM MODULE
+        SUPER_NODE_PROGRAM_TITLE: 'ПРОГРАММА СУПЕРНОД NEM',
+        ACCOUNT_NAME: 'Аккаунт',
+        BALANCE_NAME: 'Баланс',
+        TAB_STATUS_NAME: 'Статус',
+        TAB_ENROLL_IN_PROGRAM_NAME: 'Зарегистрироваться в программе',
+        TAB_PAYOUT_HISTORY_NAME: 'История выплат',
+
+        STATUS_NODE_NAME: 'Имя ноды',
+        STATUS_NAME: 'Статус',
+        STATUS_ACTIVE_NAME: 'Активный',
+        STATUS_INACTIVE_NAME: 'Неактивный',
+        STATUS_PUBLIC_KEY_NAME: 'Публичный ключ',
+        STATUS_REMOTE_PUBLIC_KEY_NAME: 'Удаленный публичный ключ',
+        STATUS_LAST_PAYOUT_ROUND_NAME: 'Последний раунд выплат',
+        STATUS_TOTAL_REWARDS_NAME: 'Сумма вознаграждений',
+
+        ENROLL_IN_PROGRAM_ADDRESS_NAME: 'Адрес регистрации',
+        ENROLL_IN_PROGRAM_NODE_HOST: 'Хост ноды',
+        ENROLL_IN_PROGRAM_BUTTON_NAME: 'Зарегистрироваться в программе',
+
+        PAYOUT_HISTORY_FROM_NAME: 'От раунда',
+        PAYOUT_HISTORY_TO_NAME: 'В раунд',
+        PAYOUT_HISTORY_AMOUNT_NAME: 'Сумма',
+        PAYOUT_HISTORY_TRANSACTION_HASH_NAME: 'Хэш транзакции',
+        PAYOUT_HISTORY_DATE_NAME: 'Дата',
+
+        INVALID_ENROLLMENT_ADDRESS: 'Недействительный адрес регистрации.',
+        ADDRESS_ENROLLED: 'Текущий адрес уже зарегистрирован на этот период.',
+        INVALID_CODEWORD_HASH: 'Недействительный хэш кодового слова.',
+        ACCOUNT_MISSING_PUBLICKEY: 'Вам нужно совершить хотя бы одну транзакцию, чтобы получить публичный ключ.',
+        INVALID_FORMAT_NODE_HOST: 'Протокол (http://) и порт (:7890) запрещены.',
 });
 
 }

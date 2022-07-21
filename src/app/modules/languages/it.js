@@ -396,6 +396,10 @@ function ItalianProvider($translateProvider) {
         PORTAL_ADDRESS_BOOK_TEXT: 'Associe nomes de etiqueta aos endereços para gerenciar mais facilmente os seus contatos.',
         PORTAL_ADDRESS_BOOK_BTN: 'Gestisci rubrica',
         PORTAL_INVOICE_TEXT: 'Crea una fattura da condividere con il codice QR',
+        PORTAL_SUPER_NODE_PROGRAM_TITLE: 'PROGRAMMA SUPERNODO',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT: 'Iscriviti al programma SuperNode per guadagnare $XEM quale ricompensa per aver contribuito a rendere più sicura la rete. È richiesto un minimo di 10.000 XEM.',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT_LINK: 'Leggi di più qui.',
+        PORTAL_SUPER_NODE_PROGRAM_BTN_1: 'Verifica e registrati nel programma',
 
         // ADDRESS BOOK MODULE
         ADDRESS_BOOK_TITLE: "Rubrica",
@@ -715,7 +719,7 @@ function ItalianProvider($translateProvider) {
         FAQ_ANSWER_6_WEBSITE: 'Sito ufficiale',
         FAQ_ANSWER_6_BTT: 'Argomento ufficiale su BitcoinTalk',
         FAQ_QUESTION_7: 'Nulla viene visualizzato sul pannello.',
-        FAQ_ANSWER_7: 'Si prega di controllare il cerchio del nodo nella barra di navigazione in alto. <br> Cerchio rosso indica che la connessione al nodo non è riuscita. <br> Fai clic sul "Nodo" e seleziona un altro dall"elenco o utilizza un nodo personalizzato. <br> <a href="https://supernodes.nem.io" target="_blank"> Supernodes.nem.io </a> ha un elenco di nodi che puoi utilizzare.</a>',
+        FAQ_ANSWER_7: 'Si prega di controllare il cerchio del nodo nella barra di navigazione in alto. <br> Cerchio rosso indica che la connessione al nodo non è riuscita. <br> Fai clic sul "Nodo" e seleziona un altro dall"elenco o utilizza un nodo personalizzato. <br> <a href="https://www.nem.io/supernode" target="_blank"> Supernode </a> ha un elenco di nodi che puoi utilizzare.</a>',
         FAQ_QUESTION_8: 'I pignoratori non possono vedere la transazione da firmare.',
         FAQ_ANSWER_8: 'In questo caso, andare su "Servizi", cercare "Account multi-firma o multi-utente" e fare clic su "Firma transazioni multi-firma".',
         FAQ_QUESTION_9: 'Quali sono le migliori pratiche di sicurezza?',
@@ -941,6 +945,39 @@ function ItalianProvider($translateProvider) {
         POST_OPTIN_ERROR_INVALID_KEY:           ' Chiave non valida',
         POST_OPTIN_CONFIRM_MODAL_TEXT_MULTISIG: "Please verify that the Symbol destination address is your Symbol multisig account address. If it doesn’t match, please start the process again and provide a valid Symbol public key of the multisig account.",
         POST_OPTIN_CONFIRM_MODAL_CHECKBOX_MULTISIG: "I confirm that the Symbol destination address matches the Symbol multisig account address",
+
+        // SUPERNODE PROGRAM MODULE
+        SUPER_NODE_PROGRAM_TITLE: 'PROGRAMMA SUPERNODO NEM',
+        ACCOUNT_NAME: 'Conto',
+        BALANCE_NAME: 'Saldo',
+        TAB_STATUS_NAME: 'Stato',
+        TAB_ENROLL_IN_PROGRAM_NAME: 'Iscriviti al programma',
+        TAB_PAYOUT_HISTORY_NAME: 'Storico dei premi accreditati',
+
+        STATUS_NODE_NAME: 'Nome del nodo',
+        STATUS_NAME: 'Stato',
+        STATUS_ACTIVE_NAME: 'Attivo',
+        STATUS_INACTIVE_NAME: 'Non Attivo',
+        STATUS_PUBLIC_KEY_NAME: 'Chiave Pubblica',
+        STATUS_REMOTE_PUBLIC_KEY_NAME: 'Chiave Pubblica Remota',
+        STATUS_LAST_PAYOUT_ROUND_NAME: 'Ultimo Round di Pagamento',
+        STATUS_TOTAL_REWARDS_NAME: 'Ricompense Totali',
+
+        ENROLL_IN_PROGRAM_ADDRESS_NAME: 'Indirizzo di Registrazione',
+        ENROLL_IN_PROGRAM_NODE_HOST: 'Host del nodo',
+        ENROLL_IN_PROGRAM_BUTTON_NAME: 'Iscriviti al programma',
+
+        PAYOUT_HISTORY_FROM_NAME: 'Dal Round',
+        PAYOUT_HISTORY_TO_NAME: 'Al Round',
+        PAYOUT_HISTORY_AMOUNT_NAME: 'Ammontare',
+        PAYOUT_HISTORY_TRANSACTION_HASH_NAME: 'Hash della Transazione',
+        PAYOUT_HISTORY_DATE_NAME: 'Data',
+
+        INVALID_ENROLLMENT_ADDRESS: 'Indirizzo di registrazione non valido.',
+        ADDRESS_ENROLLED: 'Indirizzo attuale già iscritto a questo periodo.',
+        INVALID_CODEWORD_HASH: 'Hash della parola di codice non valido.',
+        ACCOUNT_MISSING_PUBLICKEY: 'Devi effettuare una transazione per ottenere una chiave pubblica.',
+        INVALID_FORMAT_NODE_HOST: 'Il protocollo (http://) e la porta (:7890) non sono consentiti.',
 });
 
 }
