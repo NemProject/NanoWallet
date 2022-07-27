@@ -386,7 +386,7 @@ describe('SuperNode program module tests', () => {
             done();
         })
 
-        it('returns enroll status when enrolled status contain null value', async (done) => {
+        it('returns enroll status when no payouts have been completed', async (done) => {
             // Arrange:
             spyOn(SuperNodeProgram, 'getNodeInfo').and.returnValue(Promise.resolve({
                 ...mockEnrollStatus,

@@ -1,8 +1,7 @@
 import WalletFixture from '../data/wallet';
-import nem from 'nem-sdk';
 import { runPromiseErrorTest } from '../helper';
 
-const SUPER_NODE_PROGRAM_API_BASE_URL = 'https://supernodesapi.nem.io';
+const SUPER_NODE_PROGRAM_API_BASE_URL = 'https://nem.io/supernode/api';
 
 function mockFetch(returnValue, ok = true) {
     return spyOn(window, 'fetch').and.returnValue(Promise.resolve({
