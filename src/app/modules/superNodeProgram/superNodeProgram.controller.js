@@ -33,7 +33,7 @@ class SuperNodeProgramCtrl {
     init () {
         // Form use for enroll program
         this.formData = {
-            domainOrIP: '',
+            nodeHost: '',
             enrollAddress: '',
             isMultisig: false,
             mainPublicKey: '',
@@ -50,7 +50,7 @@ class SuperNodeProgramCtrl {
             name: 'TAB_STATUS_NAME',
         }, {
             key: this.tab.enroll,
-            name: 'TAB_ENROLL_TO_PROGRAM_NAME',
+            name: 'TAB_ENROLL_IN_PROGRAM_NAME',
         }, {
             key: this.tab.payout,
             name: 'TAB_PAYOUT_HISTORY_NAME',
@@ -183,7 +183,7 @@ class SuperNodeProgramCtrl {
 
         // If codewordHash is not provided, use the default one to make sure we have the right message length
         // to calculate transaction fees
-        transferTransaction.message = `enroll ${this.formData.domainOrIP} ${codewordHash ? codewordHash :'0'.repeat(64)}`;
+        transferTransaction.message = `enroll ${this.formData.nodeHost} ${codewordHash ? codewordHash :'0'.repeat(64)}`;
 
         // Set multisig, if selected
         if (this.formData.isMultisig) {
@@ -230,7 +230,7 @@ class SuperNodeProgramCtrl {
                     remotePublicKey: result.remotePublicKey,
                     totalReward: this.computeXEMBalance(result.totalRewardsEarned),
                     nodeId: result.id,
-                    lastPayoutRound: result.lastPayoutRound,
+                    lastPayoutRound: result.lastPayoutRound === -1 ? "-" : result.lastPayoutRound,
                 }
 
                 this.lastPage = Math.ceil(result.rewardCount/15);
@@ -264,6 +264,14 @@ class SuperNodeProgramCtrl {
             }
         }
 
+        // Validation for domain: protocol and port not required
+        const regex = new RegExp(/((https?:\/\/))|((:\d{1,4}))/);
+        if (regex.test(this.formData.nodeHost)) {
+            this._Alert.invalidFormatNodeHost();
+            this.okPressed = false;
+            return;
+        }
+
         // Enroll validation and request codeWord
         const [isEnrolled, isEnrollmentAddressValid, codewordHash] = await Promise.all([
             this._superNodeProgram.checkEnrollmentStatus(this.formData.mainPublicKey),
@@ -271,7 +279,9 @@ class SuperNodeProgramCtrl {
             this._superNodeProgram.getCodewordHash(this.formData.mainPublicKey)
         ])
 
-        if (isEnrolled && this.formData.domainOrIP === this.enrollStatus.endpoint) {
+        const isEnrolledWithSameDomain = isEnrolled && this.formData.nodeHost === this.enrollStatus.endpoint;
+
+        if (isEnrolledWithSameDomain) {
             this._$timeout(() => {
                 this._Alert.addressEnrolled();
                 this.okPressed = false;
@@ -295,7 +305,7 @@ class SuperNodeProgramCtrl {
             })
         }
 
-        if(!isEnrolled && isEnrollmentAddressValid && 64 === codewordHash.length) {
+        if(!isEnrolledWithSameDomain && isEnrollmentAddressValid && 64 === codewordHash.length) {
             // Prepare transaction for enrollment
             const entity = this.prepareTransaction(codewordHash);
 
@@ -324,7 +334,7 @@ class SuperNodeProgramCtrl {
      */
     selectEnrollTab() {
         if (this.enrollStatus.endpoint !== '-') {
-            this.formData.domainOrIP = this.enrollStatus.endpoint;
+            this.formData.nodeHost = this.enrollStatus.endpoint;
             // Update Fee view
             this.prepareTransaction();
         }

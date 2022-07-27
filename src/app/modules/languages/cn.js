@@ -402,6 +402,10 @@ function ChineseProvider($translateProvider) {
         PORTAL_ADDRESS_BOOK_TEXT: ' 将标签分配给地址以轻松跟踪联系人.',
         PORTAL_ADDRESS_BOOK_BTN: '地址簿管理',
         PORTAL_INVOICE_TEXT: '创建账单以通过QR码共享',
+        PORTAL_SUPER_NODE_PROGRAM_TITLE: '超级节点活动',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT: '参与超级节点活动以获得$XEM和保护网络，最低参与资格只需 10,000 XEM 起。',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT_LINK: '点击此处.',
+        PORTAL_SUPER_NODE_PROGRAM_BTN_1: '查看超级节点活动',
 
         // ADDRESS BOOK MODULE
         ADDRESS_BOOK_TITLE: '地址簿”',
@@ -723,7 +727,7 @@ function ChineseProvider($translateProvider) {
         FAQ_ANSWER_6_WEBSITE: '官方网站',
         FAQ_ANSWER_6_BTT: '官方BTT帖子',
         FAQ_QUESTION_7: '仪表板上没有显示任何内容',
-        FAQ_ANSWER_7: '请您务必检查顶部导航栏中的节点圆. <br> 红色圆圈表示与节点的连接失败. <br> 点击“节点”并从下拉列表中选择另一个或使用自定义节点。. <br> <a href="https://supernodes.nem.io" target="_blank">Supernodes.nem.io</a> 有很多可以使用的节点.</a>',
+        FAQ_ANSWER_7: '请您务必检查顶部导航栏中的节点圆. <br> 红色圆圈表示与节点的连接失败. <br> 点击“节点”并从下拉列表中选择另一个或使用自定义节点。. <br> <a href="https://www.nem.io/supernode" target="_blank">Supernode</a> 有很多可以使用的节点.</a>',
         FAQ_QUESTION_8: '签署人不会看到签署交易。',
         FAQ_ANSWER_8: '在这种情况下，请转到“服务”, 寻找“多重签名和多用户帐户”并点击“签署多重交易”.',
         FAQ_QUESTION_9: '什么是最好的安全措施 ?',
@@ -992,7 +996,40 @@ function ChineseProvider($translateProvider) {
         POST_OPTIN_CONFIRM_MODAL_CHECKBOX: "我确认Symbol目标地址与我的Symbol帐户地址匹配",
         POST_OPTIN_CONFIRM_MODAL_TEXT_MULTISIG: "请确认 Symbol 目标地址是您的 Symbol 多重签名帐户地址。如果不匹配，请重新开始该过程并提供多重签名帐户的有效Symbol公钥。",
         POST_OPTIN_CONFIRM_MODAL_CHECKBOX_MULTISIG: "我确认 Symbol 目标地址与 Symbol 多重签名帐户地址匹配",
-        OPTIN_NIS1_PUBLIC_KEY: '您输入的公钥是 NIS1 密钥！您需要输入一个Symbol公钥。'
+        OPTIN_NIS1_PUBLIC_KEY: '您输入的公钥是 NIS1 密钥！您需要输入一个Symbol公钥。',
+
+        // SUPERNODE PROGRAM MODULE
+        SUPER_NODE_PROGRAM_TITLE: '超级节点活动',
+        ACCOUNT_NAME: '帐户',
+        BALANCE_NAME: '余额',
+        TAB_STATUS_NAME: '状态',
+        TAB_ENROLL_IN_PROGRAM_NAME: '参与活动',
+        TAB_PAYOUT_HISTORY_NAME: '支付历史',
+
+        STATUS_NODE_NAME: '节点名字',
+        STATUS_NAME: '状态',
+        STATUS_ACTIVE_NAME: '活跃',
+        STATUS_INACTIVE_NAME: '待用',
+        STATUS_PUBLIC_KEY_NAME: '公钥',
+        STATUS_REMOTE_PUBLIC_KEY_NAME: '远程公钥',
+        STATUS_LAST_PAYOUT_ROUND_NAME: '最后一轮支付',
+        STATUS_TOTAL_REWARDS_NAME: '总奖励',
+
+        ENROLL_IN_PROGRAM_ADDRESS_NAME: '参与地址',
+        ENROLL_IN_PROGRAM_NODE_HOST: '节点主机',
+        ENROLL_IN_PROGRAM_BUTTON_NAME: '参与',
+
+        PAYOUT_HISTORY_FROM_NAME: '从',
+        PAYOUT_HISTORY_TO_NAME: '至',
+        PAYOUT_HISTORY_AMOUNT_NAME: '量',
+        PAYOUT_HISTORY_TRANSACTION_HASH_NAME: '交易哈希',
+        PAYOUT_HISTORY_DATE_NAME: '日期',
+
+        INVALID_ENROLLMENT_ADDRESS: '注册地址无效.',
+        ADDRESS_ENROLLED: '当前地址已注册.',
+        INVALID_CODEWORD_HASH: 'codeword哈希无效.',
+        ACCOUNT_MISSING_PUBLICKEY: '这账户必须进行一次交易来获取公钥.',
+        INVALID_FORMAT_NODE_HOST: '不允许使用协议 (http://) 和端口 (:7890).',
     });
 
 }

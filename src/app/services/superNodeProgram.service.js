@@ -1,6 +1,6 @@
 import nem from 'nem-sdk';
 
-const SUPER_NODE_PROGRAM_API_BASE_URL = 'https://supernodesapi.nem.io';
+const SUPER_NODE_PROGRAM_API_BASE_URL = 'https://nem.io/supernode/api';
 
 /** Service to enroll in the SuperNode Program and to get the status related information */
 class SuperNodeProgram {
@@ -47,39 +47,6 @@ class SuperNodeProgram {
         }
 
         return response;
-    }
-
-    /**
-     * Prepare the enroll transaction.
-     *
-     * @param {string} mainPublicKey - Delegated harvesting public key.
-     * @param {string} host - IP or domain of the node.
-     * @param {string} enrollmentAddress - SuperNode Program enrollment address.
-     * @param {string} [multisigAccountAddress] - Multisig account address. For multisig enrollment only.
-     *
-     * @return {Promise<object>} - Prepared enroll transaction.
-     */
-    async prepareEnrollTransaction(mainPublicKey, host, enrollmentAddress, multisigAccountAddress) {
-        // Create a new transaction object
-        const transferTransaction = nem.model.objects.get('transferTransaction');
-
-        // Set enrollment address as recipient
-        transferTransaction.recipient = enrollmentAddress.toUpperCase().replace(/-/g, '');
-
-        // Set multisig, if selected
-        if (multisigAccountAddress) {
-            transferTransaction.isMultisig = true;
-            transferTransaction.multisigAccount = multisigAccountAddress.toUpperCase().replace(/-/g, '');
-        }
-
-        // Set the message
-        const hash = await this.getCodewordHash(mainPublicKey);
-        transferTransaction.message = `enroll ${host} ${hash}`;
-
-        // Set no mosaics
-        transferTransaction.mosaics = null;
-
-        return nem.model.transactions.prepare('transferTransaction')(this.common, transferTransaction, this._Wallet.network);
     }
 
     /**
@@ -135,11 +102,11 @@ class SuperNodeProgram {
      *
      * @param {string} nodeId - Id of the node to search.
      * @param {number} pageNumber - Page number to return.
+     * @param {number} count - record size.
      *
      * @return {Promise<Array<object>>} - List of payouts.
      */
-    async getNodePayouts(nodeId, pageNumber) {
-        const count = 15;
+    async getNodePayouts(nodeId, pageNumber, count = 10) {
         const offset = count * pageNumber;
         const response = await this._get(`${this.apiBaseUrl}/node/${nodeId}/payouts?count=${count}&offset=${offset}`, 'failed_to_get_payouts_page');
 

@@ -406,7 +406,7 @@ function EnglishProvider($translateProvider) {
         PORTAL_SUPER_NODE_PROGRAM_TITLE: 'SuperNode Program',
         PORTAL_SUPER_NODE_PROGRAM_TEXT: 'Enroll in the SuperNode Program to earn $XEM for securing the network. Minimum 10,000 XEM required.',
         PORTAL_SUPER_NODE_PROGRAM_TEXT_LINK: 'Read more here.',
-        PORTAL_SUPER_NODE_PROGRAM_BTN_1: 'Check & Enroll to Program',
+        PORTAL_SUPER_NODE_PROGRAM_BTN_1: 'Check & Enroll in Program',
 
         // ADDRESS BOOK MODULE
         ADDRESS_BOOK_TITLE: 'Address book',
@@ -733,7 +733,7 @@ function EnglishProvider($translateProvider) {
         FAQ_ANSWER_6_WEBSITE: 'Official website',
         FAQ_ANSWER_6_BTT: 'Official BitcoinTalk thread',
         FAQ_QUESTION_7: 'Nothing is shown on the dashboard',
-        FAQ_ANSWER_7: 'Please be sure to check the node circle in the top navigation bar. <br> Red circle means that connection to the node failed. <br> Click on "Node" and select another one from the dropdown list or use a custom node. <br> <a href="https://supernodes.nem.io" target="_blank">Supernodes.nem.io</a> has a lot of nodes that you can use.</a>',
+        FAQ_ANSWER_7: 'Please be sure to check the node circle in the top navigation bar. <br> Red circle means that connection to the node failed. <br> Click on "Node" and select another one from the dropdown list or use a custom node. <br> <a href="https://www.nem.io/supernode" target="_blank">Supernode</a> has a lot of nodes that you can use.</a>',
         FAQ_QUESTION_8: 'Cosignatories cannot see the transaction to sign',
         FAQ_ANSWER_8: 'In this case go to "Services", look for "Multisignature and Multi-User Accounts" and click on "Sign multisig transactions".',
         FAQ_QUESTION_9: 'What are the best security practices ?',
@@ -1059,7 +1059,7 @@ function EnglishProvider($translateProvider) {
         ACCOUNT_NAME: 'Account',
         BALANCE_NAME: 'Balance',
         TAB_STATUS_NAME: 'Status',
-        TAB_ENROLL_TO_PROGRAM_NAME: 'Enroll to Program',
+        TAB_ENROLL_IN_PROGRAM_NAME: 'Enroll in Program',
         TAB_PAYOUT_HISTORY_NAME: 'Payout History',
 
         STATUS_NODE_NAME: 'Node Name',
@@ -1071,10 +1071,9 @@ function EnglishProvider($translateProvider) {
         STATUS_LAST_PAYOUT_ROUND_NAME: 'Last Payout Round',
         STATUS_TOTAL_REWARDS_NAME: 'Total Rewards',
 
-        ENROLL_TO_PROGRAM_ADDRESS_NAME: 'Enroll Address',
-        ENROLL_TO_PROGRAM_IP_DOMAIN_NAME: 'Node IP or Domain',
-        ENROLL_TO_PROGRAM_FEE_NAME: 'Fee',
-        ENROLL_TO_PROGRAM_BUTTON_NAME: 'Enroll to Program',
+        ENROLL_IN_PROGRAM_ADDRESS_NAME: 'Enroll Address',
+        ENROLL_IN_PROGRAM_NODE_HOST: 'Node Host',
+        ENROLL_IN_PROGRAM_BUTTON_NAME: 'Enroll in Program',
 
         PAYOUT_HISTORY_FROM_NAME: 'From Round',
         PAYOUT_HISTORY_TO_NAME: 'To Round',
@@ -1086,6 +1085,7 @@ function EnglishProvider($translateProvider) {
         ADDRESS_ENROLLED: 'Current address already enrolled to this period.',
         INVALID_CODEWORD_HASH: 'Invalid codeword hash.',
         ACCOUNT_MISSING_PUBLICKEY: 'You need to make a transaction to get a public key.',
+        INVALID_FORMAT_NODE_HOST: 'Protocol (http://) and port (:7890) are not allowed.',
     });
 }
 

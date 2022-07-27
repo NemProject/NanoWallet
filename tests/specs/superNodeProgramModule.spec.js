@@ -12,8 +12,7 @@ describe('SuperNode program module tests', () => {
         remotePublicKey: 'ca37a2ee96b94fd5e7879105733c97a21ffc2c00d961b2995a59a82463708e6a',
         mainPublicKey: '00a30788dc1f042da959309639a884d8f6a87086cda10300d2a7c3a0e0891a4d',
         status: 'active',
-        totalRewardsEarned: 12000000,
-        lastPayoutRound: 12
+        totalRewardsEarned: 12000000
     };
 
     beforeEach(() => {
@@ -273,7 +272,7 @@ describe('SuperNode program module tests', () => {
             expect(ctrl.preparedTransaction.fee).toEqual(200000);
             expect(ctrl.preparedTransaction.amount).toEqual(0);
             expect(ctrl.preparedTransaction.mosaics).toEqual(null);
-            expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.domainOrIP} ${'0'.repeat(64)}`));
+            expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.nodeHost} ${'0'.repeat(64)}`));
         })
 
         it('returns multisig account transaction object', () => {
@@ -297,7 +296,7 @@ describe('SuperNode program module tests', () => {
             expect(ctrl.preparedTransaction.otherTrans.fee).toEqual(200000);
             expect(ctrl.preparedTransaction.otherTrans.amount).toEqual(0);
             expect(ctrl.preparedTransaction.otherTrans.mosaics).toEqual(null);
-            expect(ctrl.preparedTransaction.otherTrans.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.domainOrIP} ${'0'.repeat(64)}`));
+            expect(ctrl.preparedTransaction.otherTrans.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.nodeHost} ${'0'.repeat(64)}`));
         })
 
         it('returns transaction object provided codewordHash for message payload', () => {
@@ -310,12 +309,12 @@ describe('SuperNode program module tests', () => {
             ctrl.prepareTransaction('hash');
 
             // Assert:
-            expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.domainOrIP} hash`));
+            expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.nodeHost} hash`));
         })
     })
 
     describe('selectStatusTab', () => {
-        const expectedEnrollStatus = {
+        const expectedEnrollStatusWithoutResponse = {
             nodeName: '-',
             status: false,
             endpoint: '-',
@@ -323,6 +322,17 @@ describe('SuperNode program module tests', () => {
             remotePublicKey: '-',
             totalReward: '-',
             lastPayoutRound: '-',
+        };
+
+        const expectedEnrollStatusWithResponse = {
+            nodeName: mockEnrollStatus.name,
+            status: mockEnrollStatus.status,
+            endpoint: 'superlong.domain.name',
+            publicKey: mockEnrollStatus.mainPublicKey,
+            remotePublicKey: mockEnrollStatus.remotePublicKey,
+            totalReward: '12.000000',
+            nodeId: mockEnrollStatus.id,
+            lastPayoutRound: mockEnrollStatus.lastPayoutRound,
         };
 
         it('returns default enroll status when public key does not exist', async (done) => {
@@ -338,7 +348,7 @@ describe('SuperNode program module tests', () => {
             $timeout.flush();
 
             // Assert:
-            expect(ctrl.enrollStatus).toEqual(expectedEnrollStatus);
+            expect(ctrl.enrollStatus).toEqual(expectedEnrollStatusWithoutResponse);
             done();
         })
 
@@ -355,7 +365,7 @@ describe('SuperNode program module tests', () => {
             $timeout.flush();
 
             // Assert:
-            expect(ctrl.enrollStatus).toEqual(expectedEnrollStatus);
+            expect(ctrl.enrollStatus).toEqual(expectedEnrollStatusWithoutResponse);
             done();
         })
 
@@ -372,18 +382,30 @@ describe('SuperNode program module tests', () => {
             $timeout.flush();
 
             // Assert:
-            const expectedEnrollStatus = {
-                nodeName: mockEnrollStatus.name,
-                status: mockEnrollStatus.status,
-                endpoint: new URL(mockEnrollStatus.endpoint).hostname,
-                publicKey: mockEnrollStatus.mainPublicKey,
-                remotePublicKey: mockEnrollStatus.remotePublicKey,
-                totalReward: ctrl.computeXEMBalance(mockEnrollStatus.totalRewardsEarned),
-                nodeId: mockEnrollStatus.id,
-                lastPayoutRound: mockEnrollStatus.lastPayoutRound,
-            };
+            expect(ctrl.enrollStatus).toEqual(expectedEnrollStatusWithResponse);
+            done();
+        })
 
-            expect(ctrl.enrollStatus).toEqual(expectedEnrollStatus);
+        it('returns enroll status when no payouts have been completed', async (done) => {
+            // Arrange:
+            spyOn(SuperNodeProgram, 'getNodeInfo').and.returnValue(Promise.resolve({
+                ...mockEnrollStatus,
+                lastPayoutRound: -1
+            }));
+
+            const ctrl = $controller('SuperNodeProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            // Act:
+            await ctrl.selectStatusTab();
+            $timeout.flush();
+
+            // Assert:
+            expect(ctrl.enrollStatus).toEqual({
+                ...expectedEnrollStatusWithResponse,
+                lastPayoutRound: '-'
+            });
             done();
         })
     })
@@ -403,9 +425,11 @@ describe('SuperNode program module tests', () => {
                 $scope: $rootScope.$new()
             });
 
+            spyOn(ctrl, 'prepareTransaction');
+
             ctrl.enrollStatus.endpoint = 'old.domain.name';
 
-            ctrl.formData.domainOrIP = 'old.domain.name';
+            ctrl.formData.nodeHost = 'old.domain.name';
 
             // Act:
             await ctrl.sendEnroll();
@@ -414,6 +438,7 @@ describe('SuperNode program module tests', () => {
 
             // Assert:
             expect(Alert.addressEnrolled).toHaveBeenCalled();
+            expect(ctrl.prepareTransaction).not.toHaveBeenCalled();
             done();
         })
 
@@ -431,6 +456,8 @@ describe('SuperNode program module tests', () => {
                 $scope: $rootScope.$new()
             });
 
+            spyOn(ctrl, 'prepareTransaction');
+
             // Act:
             await ctrl.sendEnroll();
 
@@ -439,6 +466,7 @@ describe('SuperNode program module tests', () => {
             // Assert:
             expect(Alert.invalidEnrollmentAddress).toHaveBeenCalled();
             expect(ctrl.okPressed).toEqual(false);
+            expect(ctrl.prepareTransaction).not.toHaveBeenCalled();
             done();
         });
 
@@ -456,6 +484,8 @@ describe('SuperNode program module tests', () => {
                 $scope: $rootScope.$new()
             });
 
+            spyOn(ctrl, 'prepareTransaction');
+
             // Act:
             await ctrl.sendEnroll();
 
@@ -464,6 +494,7 @@ describe('SuperNode program module tests', () => {
             // Assert:
             expect(Alert.invalidCodewordHash).toHaveBeenCalled();
             expect(ctrl.okPressed).toEqual(false);
+            expect(ctrl.prepareTransaction).not.toHaveBeenCalled();
             done();
         });
 
@@ -476,6 +507,8 @@ describe('SuperNode program module tests', () => {
             const ctrl = $controller('SuperNodeProgramCtrl', {
                 $scope: $rootScope.$new()
             });
+
+            spyOn(ctrl, 'prepareTransaction');
 
             ctrl.formData.mainPublicKey = '';
 
@@ -491,6 +524,31 @@ describe('SuperNode program module tests', () => {
             // Assert:
             expect(Alert.accountHasNoPublicKey).toHaveBeenCalled();
             expect(ctrl.okPressed).toEqual(false);
+            expect(ctrl.prepareTransaction).not.toHaveBeenCalled();
+            done();
+        })
+
+        it('returns alert when form data node host content protocol or port', async (done) => {
+            // Arrange:
+            spyOn(Wallet, 'decrypt').and.returnValue(true);
+
+            spyOn(Alert, 'invalidFormatNodeHost');
+
+            const ctrl = $controller('SuperNodeProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            spyOn(ctrl, 'prepareTransaction');
+
+            ctrl.formData.nodeHost = 'http://old.domain.name:7890';
+
+            // Act:
+            await ctrl.sendEnroll();
+
+            // Assert:
+            expect(Alert.invalidFormatNodeHost).toHaveBeenCalled();
+            expect(ctrl.okPressed).toEqual(false);
+            expect(ctrl.prepareTransaction).not.toHaveBeenCalled();
             done();
         })
 
@@ -529,6 +587,46 @@ describe('SuperNode program module tests', () => {
             expect(ctrl.okPressed).toEqual(false);
             done();
         });
+
+        it('successful announce transaction when enrolled account update domain', async (done) => {
+            // Arrange:
+            spyOn(Wallet, 'decrypt').and.returnValue(true);
+            spyOn(Wallet, 'transact');
+
+            spyOn(SuperNodeProgram, 'checkEnrollmentStatus').and.returnValue(Promise.resolve(true));
+            spyOn(SuperNodeProgram, 'checkEnrollmentAddress').and.returnValue(Promise.resolve(true));
+            spyOn(SuperNodeProgram, 'getCodewordHash').and.returnValue(Promise.resolve('40DA0977BE27B03B61FBE461225007E1528FD87F20A92BF8E031CDA59C4592E1'));
+
+            const ctrl = $controller('SuperNodeProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            spyOn(ctrl, 'prepareTransaction');
+
+            ctrl.formData.mainPublicKey = '';
+
+            ctrl.common = {
+                password: '',
+                privateKey: '3c11dc7bc6d8cda5c75b041975362d87eb7de5aef1316f432a1bbfe3e9f19ffb',
+                isHW: false
+            }
+
+            ctrl.enrollStatus.endpoint = 'old.domain.name';
+
+            ctrl.formData.nodeHost = 'new.domain.name';
+
+            // Act:
+            await ctrl.sendEnroll();
+
+            $timeout.flush();
+
+            // Assert:
+            expect(Wallet.transact).toHaveBeenCalled();
+            expect(ctrl.formData.mainPublicKey).toEqual('b6405c6d3e96228e8a57c7c84013600486dfd64a7bf14ed7c1daccfbd391f386');
+            expect(ctrl.prepareTransaction).toHaveBeenCalled();
+            expect(ctrl.okPressed).toEqual(false);
+            done();
+        });
     })
 
     describe('selectEnrollTab', () => {
@@ -547,10 +645,10 @@ describe('SuperNode program module tests', () => {
             ctrl.selectEnrollTab();
 
             // Assert:
-            expect(ctrl.formData.domainOrIP).toEqual('');
+            expect(ctrl.formData.nodeHost).toEqual('');
             expect(ctrl.preparedTransaction.type).toEqual(nem.model.transactionTypes.transfer);
             expect(ctrl.preparedTransaction.fee).toEqual(200000);
-            expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.domainOrIP} ${'0'.repeat(64)}`));
+            expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.nodeHost} ${'0'.repeat(64)}`));
             done();
         })
 
@@ -569,10 +667,10 @@ describe('SuperNode program module tests', () => {
             ctrl.selectEnrollTab();
 
             // Assert:
-            expect(ctrl.formData.domainOrIP).toEqual(new URL(mockEnrollStatus.endpoint).hostname);
+            expect(ctrl.formData.nodeHost).toEqual(new URL(mockEnrollStatus.endpoint).hostname);
             expect(ctrl.preparedTransaction.type).toEqual(nem.model.transactionTypes.transfer);
             expect(ctrl.preparedTransaction.fee).toEqual(200000);
-            expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.domainOrIP} ${'0'.repeat(64)}`));
+            expect(ctrl.preparedTransaction.message.payload).toEqual(nem.utils.convert.utf8ToHex(`enroll ${ctrl.formData.nodeHost} ${'0'.repeat(64)}`));
             done()
         })
     })

@@ -395,11 +395,15 @@ function DutchProvider($translateProvider) {
         PORTAL_APOSTILLE_TITLE: 'Apostille',
         PORTAL_APOSTILLE_TEXT: 'Gebruik de NEM Apostille-dienst om blockchain gebaseerde notariële aktes te maken met een tijdstempel en het volgen en controleren van de bestandsechtheid.',
         PORTAL_APOSTILLE_BTN_1: 'Creëer',
-	PORTAL_APOSTILLE_BTN_2: 'Verifieer',
+        PORTAL_APOSTILLE_BTN_2: 'Verifieer',
         PORTAL_ADDRESS_BOOK_TEXT: 'Ken labels toe aan adressen om je contacten gemakkelijk bij te houden.',
         PORTAL_ADDRESS_BOOK_BTN: 'Beheer adressenboek',
         PORTAL_INVOICE_TEXT: 'Creëer een factuur om via QR code te delen',
- 	PORTAL_SIGNED_MSG_TEXT: 'Creëer en verifieer een ondertekend bericht om het accounteigendom te verifiëren zonder transacties uit te voeren.',
+        PORTAL_SIGNED_MSG_TEXT: 'Creëer en verifieer een ondertekend bericht om het accounteigendom te verifiëren zonder transacties uit te voeren.',
+        PORTAL_SUPER_NODE_PROGRAM_TITLE: 'SuperNode Program',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT: 'Enroll in the SuperNode Program to earn $XEM for securing the network. Minimum 10,000 XEM required.',
+        PORTAL_SUPER_NODE_PROGRAM_TEXT_LINK: 'Read more here.',
+        PORTAL_SUPER_NODE_PROGRAM_BTN_1: 'Check & Enroll in Program',
 
         // ADDRESS BOOK MODULE
         ADDRESS_BOOK_TITLE: 'Adressenboek',
@@ -725,7 +729,7 @@ function DutchProvider($translateProvider) {
         FAQ_ANSWER_6_WEBSITE: 'Officiële website',
         FAQ_ANSWER_6_BTT: 'Officiële BitcoinTalk thread',
         FAQ_QUESTION_7: 'Er is niets weergegeven op het dashboard',
-        FAQ_ANSWER_7: 'Controleer de node-circel in de navigatiebar. <br> Rood betekent dat de connectie met de node is mislukt. <br> Klik op "Node" en selcteer een andere van de lijst of gebruik een aangepaste node. <br> <a href="https://supernodes.nem.io" target="_blank">Supernodes.nem.io</a> bevat een lijst met nodes die je kunt gebruiken.</a>',
+        FAQ_ANSWER_7: 'Controleer de node-circel in de navigatiebar. <br> Rood betekent dat de connectie met de node is mislukt. <br> Klik op "Node" en selcteer een andere van de lijst of gebruik een aangepaste node. <br> <a href="https://www.nem.io/supernode" target="_blank">Supernode</a> bevat een lijst met nodes die je kunt gebruiken.</a>',
         FAQ_QUESTION_8: 'Mede-ondertekenaars kunnen de transactie die getekend moet worden niet zien',
         FAQ_ANSWER_8: 'Ga in dit geval naar "Diensten", ga naar "Multi-handtekening en multi-gebruiker accounts" en klik op "Teken een multi-handtekening transactie".',
         FAQ_QUESTION_9: 'Wat zijn de beste veiligheidsoverwegingen?',
@@ -1004,7 +1008,40 @@ function DutchProvider($translateProvider) {
         POST_OPTIN_CONFIRM_MODAL_CHECKBOX: "I confirm that the Symbol destination address matches my Symbol account address",
         POST_OPTIN_CONFIRM_MODAL_TEXT_MULTISIG: "Please verify that the Symbol destination address is your Symbol multisig account address. If it doesn’t match, please start the process again and provide a valid Symbol public key of the multisig account.",
         POST_OPTIN_CONFIRM_MODAL_CHECKBOX_MULTISIG: "I confirm that the Symbol destination address matches the Symbol multisig account address",
-        OPTIN_NIS1_PUBLIC_KEY: 'The public key you entered is a NIS1 key! You need to enter a Symbol public key.'
+        OPTIN_NIS1_PUBLIC_KEY: 'The public key you entered is a NIS1 key! You need to enter a Symbol public key.',
+
+        // SUPERNODE PROGRAM MODULE
+        SUPER_NODE_PROGRAM_TITLE: 'NEM SUPERNODE PROGRAM',
+        ACCOUNT_NAME: 'Account',
+        BALANCE_NAME: 'Balance',
+        TAB_STATUS_NAME: 'Status',
+        TAB_ENROLL_IN_PROGRAM_NAME: 'Enroll in Program',
+        TAB_PAYOUT_HISTORY_NAME: 'Payout History',
+
+        STATUS_NODE_NAME: 'Node Name',
+        STATUS_NAME: 'Status',
+        STATUS_ACTIVE_NAME: 'Active',
+        STATUS_INACTIVE_NAME: 'Inactive',
+        STATUS_PUBLIC_KEY_NAME: 'Public Key',
+        STATUS_REMOTE_PUBLIC_KEY_NAME: 'Remote Public Key',
+        STATUS_LAST_PAYOUT_ROUND_NAME: 'Last Payout Round',
+        STATUS_TOTAL_REWARDS_NAME: 'Total Rewards',
+
+        ENROLL_IN_PROGRAM_ADDRESS_NAME: 'Enroll Address',
+        ENROLL_IN_PROGRAM_NODE_HOST: 'Node Host',
+        ENROLL_IN_PROGRAM_BUTTON_NAME: 'Enroll in Program',
+
+        PAYOUT_HISTORY_FROM_NAME: 'From Round',
+        PAYOUT_HISTORY_TO_NAME: 'To Round',
+        PAYOUT_HISTORY_AMOUNT_NAME: 'Amount',
+        PAYOUT_HISTORY_TRANSACTION_HASH_NAME: 'Transaction Hash',
+        PAYOUT_HISTORY_DATE_NAME: 'Date',
+
+        INVALID_ENROLLMENT_ADDRESS: 'Invalid enrollment address.',
+        ADDRESS_ENROLLED: 'Current address already enrolled to this period.',
+        INVALID_CODEWORD_HASH: 'Invalid codeword hash.',
+        ACCOUNT_MISSING_PUBLICKEY: 'You need to make a transaction to get a public key.',
+        INVALID_FORMAT_NODE_HOST: 'Protocol (http://) and port (:7890) are not allowed.',
     });
 }
 

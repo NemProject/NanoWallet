@@ -404,6 +404,10 @@ function JapaneseProvider($translateProvider) {
       PORTAL_ADDRESS_BOOK_BTN: 'アドレス帳の管理',
       PORTAL_INVOICE_TEXT: '共有するためのQRコード請求書を作成します',
       PORTAL_SIGNED_MSG_TEXT: 'トランザクションなしにアカウントの所有認証をするための署名済みメッセージの作成と検証を行います。',
+      PORTAL_SUPER_NODE_PROGRAM_TITLE: 'NEMスーパノードプログラム',
+      PORTAL_SUPER_NODE_PROGRAM_TEXT: 'スーパーノードプログラムに登録してネットワークの安全性を確保に貢献することで$XEMを獲得することができます。最低10,000XEMが必要です.',
+      PORTAL_SUPER_NODE_PROGRAM_TEXT_LINK: 'より詳しくはこちらをお読みください.',
+      PORTAL_SUPER_NODE_PROGRAM_BTN_1: '確認してプログラムに参加する',
 
       // ADDRESS BOOK MODULE
       ADDRESS_BOOK_TITLE: 'アドレス帳',
@@ -734,7 +738,7 @@ function JapaneseProvider($translateProvider) {
       FAQ_ANSWER_6_WEBSITE: "公式ウェブサイト",
       FAQ_ANSWER_6_BTT: "公式 BitcoinTalk スレッド",
       FAQ_QUESTION_7: 'ダッシュボードに何も表示されません',
-      FAQ_ANSWER_7: 'トップのナビゲーションバーにあるノードの円アイコンを確認してください。<br>赤い円はノードへの接続に失敗していることを表します。<br>"ノード"をクリックし、ほかのノードをドロップダウンリストから選択するかカスタムノードを指定してください。<br><a href="https://supernodes.nem.io" target="_blank">Supernodes.nem.io</a>に利用可能なノードが掲載されています。</a>',
+      FAQ_ANSWER_7: 'トップのナビゲーションバーにあるノードの円アイコンを確認してください。<br>赤い円はノードへの接続に失敗していることを表します。<br>"ノード"をクリックし、ほかのノードをドロップダウンリストから選択するかカスタムノードを指定してください。<br><a href="https://www.nem.io/supernode" target="_blank">Supernode</a>に利用可能なノードが掲載されています。</a>',
       FAQ_QUESTION_8: '連署者に署名してほしいトランザクション表示されません。',
       FAQ_ANSWER_8: 'この場合、"サービス"へ移動し、"マルチシグおよびマルチユーザーアカウント"の項目から"マルチシグトランザクションの署名"を選択してください。',
       FAQ_QUESTION_9: '最適なセキュリティは？',
@@ -1055,7 +1059,40 @@ function JapaneseProvider($translateProvider) {
       OPTIN_NIS1_PUBLIC_KEY:                  '一致しない場合は、再度手続きを開始し、あなたが所有するアカウントの有効なSymbol公開鍵を入力してください。"',
       POST_OPTIN_ERROR_INVALID_KEY:           'Symbolの送付先アドレスが、私のSymbolアカウントのアドレスと一致していることを確認します。',
       POST_OPTIN_CONFIRM_MODAL_TEXT_MULTISIG: 'Symbolの送信先アドレスが、Symbolのマルチシグアカウントのアドレスであることを確認してください。一致しない場合は、もう一度やり直してください。マルチシグアカウントの有効な公開鍵を入力してください。',
-      POST_OPTIN_CONFIRM_MODAL_CHECKBOX_MULTISIG: 'Symbolの送付先アドレスが、Symbolのマルチシグアカウントのアドレスと一致することを確認しました。'
+      POST_OPTIN_CONFIRM_MODAL_CHECKBOX_MULTISIG: 'Symbolの送付先アドレスが、Symbolのマルチシグアカウントのアドレスと一致することを確認しました。',
+
+      // SUPERNODE PROGRAM MODULE
+      SUPER_NODE_PROGRAM_TITLE: 'NEMスーパノードプログラム',
+      ACCOUNT_NAME: 'アカウント',
+      BALANCE_NAME: '残高',
+      TAB_STATUS_NAME: '状態',
+      TAB_ENROLL_IN_PROGRAM_NAME: 'プログラムへの参加',
+      TAB_PAYOUT_HISTORY_NAME: '支払履歴',
+
+      STATUS_NODE_NAME: 'ノード名',
+      STATUS_NAME: '状態',
+      STATUS_ACTIVE_NAME: 'アクティブ',
+      STATUS_INACTIVE_NAME: '非アクティブ',
+      STATUS_PUBLIC_KEY_NAME: 'パブリックキー',
+      STATUS_REMOTE_PUBLIC_KEY_NAME: 'リモートパブリックキー',
+      STATUS_LAST_PAYOUT_ROUND_NAME: '最新支払ラウンド',
+      STATUS_TOTAL_REWARDS_NAME: 'トータル履歴',
+
+      ENROLL_IN_PROGRAM_ADDRESS_NAME: '参加アドレス',
+      ENROLL_IN_PROGRAM_NODE_HOST: 'ノード主',
+      ENROLL_IN_PROGRAM_BUTTON_NAME: 'プログラムへの参加',
+
+      PAYOUT_HISTORY_FROM_NAME: '開始ラウンド',
+      PAYOUT_HISTORY_TO_NAME: '到達ラウンド',
+      PAYOUT_HISTORY_AMOUNT_NAME: '総量',
+      PAYOUT_HISTORY_TRANSACTION_HASH_NAME: 'トランザクションハッシユ',
+      PAYOUT_HISTORY_DATE_NAME: '日付',
+
+      INVALID_ENROLLMENT_ADDRESS: '無効登録アドレス.',
+      ADDRESS_ENROLLED: 'このアドレスは既に登録されています.',
+      INVALID_CODEWORD_HASH: '無効なハッシユ符号.',
+      ACCOUNT_MISSING_PUBLICKEY: '公開鍵の取得にはトランザクションを発生させる必要があります.',
+      INVALID_FORMAT_NODE_HOST: 'プロトコル(http://)、ポート(:7890)は使用不可.',
     });
 
 }
