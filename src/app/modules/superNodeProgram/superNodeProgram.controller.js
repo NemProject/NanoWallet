@@ -399,6 +399,36 @@ class SuperNodeProgramCtrl {
         }
     }
 
+    /**
+     * Validate enroll address input
+     */
+    isValid() {
+        const { enrollAddress } = this.formData;
+
+        if (enrollAddress.length !== 40 && enrollAddress.length !== 46) {
+            return false;
+        }
+
+        if (!nem.model.address.isValid(enrollAddress)) {
+            return false;
+        }
+
+        if (!nem.model.address.isFromNetwork(enrollAddress, this._Wallet.network)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * process address input
+     */
+    processInput() {
+        const { enrollAddress } = this.formData;
+
+        this.formData.enrollAddress = enrollAddress.toUpperCase().replace(/-/g, '');
+    }
+
     //// End methods region ////
 }
 

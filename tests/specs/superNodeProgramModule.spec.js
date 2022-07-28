@@ -1,4 +1,5 @@
 import AccountDataFixture from '../data/accountData';
+import WalletFixture from '../data/wallet';
 import nem from 'nem-sdk';
 
 describe('SuperNode program module tests', () => {
@@ -804,6 +805,70 @@ describe('SuperNode program module tests', () => {
                 });
                 done();
             })
+        })
+    })
+
+    describe('isValid', () => {
+        const runAddressValidTests = ({address, expectedResult}) => {
+            // Arrange:
+            const ctrl = $controller('SuperNodeProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            ctrl.formData.enrollAddress = address;
+
+            Wallet.use(WalletFixture.testnetWallet);
+
+            // Act:
+            const result = ctrl.isValid();
+
+            // Assert:
+            expect(result).toEqual(expectedResult);
+        };
+
+        it('returns false when address length less than 40', () => {
+            runAddressValidTests({
+                address: 'TESTADDRESS',
+                expectedResult: false
+            });
+        })
+
+        it('returns false when address invalid format', () => {
+            runAddressValidTests({
+                address: 'ZAZJ3KEPYAQ4G4Y6Q2IRZTQPU7RAKGYZULZURKTO',
+                expectedResult: false
+            });
+        })
+
+        it('returns false when address from other network', () => {
+            runAddressValidTests({
+                address: 'NAQ7RCYM4PRUAKA7AMBLN4NPBJEJMRCHHJYAVA72',
+                expectedResult: false
+            });
+        })
+
+        it('returns true when address is valid', () => {
+            runAddressValidTests({
+                address: 'TAZJ3KEPYAQ4G4Y6Q2IRZTQPU7RAKGYZULZURKTO',
+                expectedResult: true
+            });
+        })
+    })
+
+    describe('processInput', () => {
+        it('formatting address to upper case and remove dashes', () => {
+            // Arrange:
+            const ctrl = $controller('SuperNodeProgramCtrl', {
+                $scope: $rootScope.$new()
+            });
+
+            ctrl.formData.enrollAddress = 'tazj3k-epyaq4-g4y6q2-irztqp-u7rakg-yzulzu-rkto';
+
+            // Act:
+            ctrl.processInput();
+
+            // Assert:
+            expect(ctrl.formData.enrollAddress).toEqual('TAZJ3KEPYAQ4G4Y6Q2IRZTQPU7RAKGYZULZURKTO');
         })
     })
 })

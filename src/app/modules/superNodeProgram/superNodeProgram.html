@@ -127,7 +127,7 @@
                     <span class="input-group-btn">
                       <label>{{ 'ENROLL_IN_PROGRAM_ADDRESS_NAME' | translate }}:</label>
                     </span>
-                    <input class="form-control" ng-model="$ctrl.formData.enrollAddress" />
+                    <input class="form-control" ng-model="$ctrl.formData.enrollAddress" ng-class="!$ctrl.isValid() ? 'has-error' : ''" ng-change="$ctrl.processInput()" />
                   </div>
                 </fieldset>
                 <!-- Node IP Or Domain Field -->
