@@ -421,7 +421,7 @@ class SuperNodeProgramCtrl {
     }
 
     /**
-     * process address input
+     * Process address input
      */
     processInput() {
         const { enrollAddress } = this.formData;

@@ -835,7 +835,7 @@ describe('SuperNode program module tests', () => {
 
         it('returns false when address invalid format', () => {
             runAddressValidTests({
-                address: 'ZAZJ3KEPYAQ4G4Y6Q2IRZTQPU7RAKGYZULZURKTO',
+                address: 'TAZJ3KEPYAQ4G4Y6Q2IRZTQPU7RAKGYZULZURKTA',
                 expectedResult: false
             });
         })
@@ -850,6 +850,13 @@ describe('SuperNode program module tests', () => {
         it('returns true when address is valid', () => {
             runAddressValidTests({
                 address: 'TAZJ3KEPYAQ4G4Y6Q2IRZTQPU7RAKGYZULZURKTO',
+                expectedResult: true
+            });
+        })
+
+        it('returns true when valid address with dashes', () => {
+            runAddressValidTests({
+                address: 'TAZJ3K-EPYAQ4-G4Y6Q2-IRZTQP-U7RAKG-YZULZU-RKTO',
                 expectedResult: true
             });
         })
