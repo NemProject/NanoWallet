@@ -7,7 +7,7 @@ class MultisigImportanceTransferCtrl {
      *
      * @params {services} - Angular services to inject
      */
-    constructor(Wallet, Alert, $filter, DataStore, $timeout, Nodes) {
+    constructor(Wallet, Alert, $filter, DataStore, $timeout, Nodes, SuperNodeProgram) {
         'ngInject';
 
         //// Module dependencies region ////
@@ -18,9 +18,10 @@ class MultisigImportanceTransferCtrl {
         this._DataStore = DataStore;
         this._$timeout = $timeout;
         this._Nodes = Nodes;
+        this._superNodeProgram = SuperNodeProgram;
 
         //// End dependencies region ////
- 
+
         //// Module properties region ////
 
         // Form is an importance transfer transaction object
@@ -41,7 +42,7 @@ class MultisigImportanceTransferCtrl {
         // Prevent user to click twice on send when already processing
         this.okPressed = false;
 
-        // Store multisig account data 
+        // Store multisig account data
         this.multisigData = '';
 
         // Object to contain our password & private key data.
@@ -98,10 +99,16 @@ class MultisigImportanceTransferCtrl {
             this.nodes = this._Nodes.get();
         } else {
             this.nodes = [];
-            // Get supernodes
-            nem.com.requests.supernodes.all().then((data) => {
+            // Get superNodes with pageNumber 0
+            this._superNodeProgram.getNodes(0).then((data) => {
                 this._$timeout(() => {
-                    this.nodes = this._$filter('toEndpoint')(data.nodes);
+                    // shuffle nodes
+                    data.sort(() => Math.random() - 0.5);
+
+                    this.nodes = data.map((node) => {
+                        const { protocol, hostname, port } = new URL(node.endpoint);
+                        return nem.model.objects.create("endpoint")(`${protocol}//${hostname}`, Number(port))
+                    })
                 });
             },
             (err) => {
@@ -190,9 +197,9 @@ class MultisigImportanceTransferCtrl {
      */
     generateData() {
         // Get account private key for preparation or return
-        if (!this._Wallet.decrypt(this.common)) { 
+        if (!this._Wallet.decrypt(this.common)) {
             this.formData.multisigAccount = "";
-            return; 
+            return;
         }
 
         if (!this.formData.multisigAccount) return this.reset();
