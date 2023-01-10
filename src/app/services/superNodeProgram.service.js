@@ -134,7 +134,7 @@ class SuperNodeProgram {
      * @param {number} pageNumber
      * @param {number} count
      * @param {'all' | 'active' | 'stale' | 'inactive'} status
-     * @returns
+     * @returns {Promise<Array<object>>} - List of super nodes.
      */
     async getNodes(pageNumber, count = 50, status = 'active') {
         const offset = count * pageNumber;
@@ -142,7 +142,7 @@ class SuperNodeProgram {
 
         if (status !== 'all') {
             url += `&status=${status}`;
-        }
+        };
 
         const response = await this._get(url, 'failed_to_get_nodes');
 
