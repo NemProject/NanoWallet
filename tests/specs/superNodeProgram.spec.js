@@ -272,4 +272,92 @@ describe('SuperNodeProgram service tests', () => {
             done();
         });
     });
+
+    describe('getNodes()', () => {
+        it('should fetch to be called with valid endpoint url when pageNumber=0 passed', async (done) => {
+            // Arrange:
+            const mockedFetch = mockFetch([]);
+            const baseUrl = SUPER_NODE_PROGRAM_API_BASE_URL;
+            const pageNumber = 0;
+            const count = 50;
+            const offset = 0;
+            const status = 'active';
+            const expectedEndpoint = `${baseUrl}/nodes?count=${count}&offset=${offset}&status=${status}`;
+
+            // Act:
+            await SuperNodeProgram.getNodes(pageNumber);
+
+            // Assert:
+            expect(mockedFetch).toHaveBeenCalledWith(expectedEndpoint);
+            done();
+        });
+
+        it('should fetch to be called with valid endpoint url when pageNumber=4 passed', async (done) => {
+            // Arrange:
+            const mockedFetch = mockFetch([]);
+            const baseUrl = SUPER_NODE_PROGRAM_API_BASE_URL;
+            const pageNumber = 4;
+            const count = 50;
+            const offset = 200;
+            const status = 'active';
+            const expectedEndpoint = `${baseUrl}/nodes?count=${count}&offset=${offset}&status=${status}`;
+
+            // Act:
+            await SuperNodeProgram.getNodes(pageNumber);
+
+            // Assert:
+            expect(mockedFetch).toHaveBeenCalledWith(expectedEndpoint);
+            done();
+        });
+
+        it('should fetch to be called with valid endpoint url when pageNumber=0 and status=all passed', async (done) => {
+            // Arrange:
+            const mockedFetch = mockFetch([]);
+            const baseUrl = SUPER_NODE_PROGRAM_API_BASE_URL;
+            const pageNumber = 0;
+            const count = 50;
+            const offset = 0;
+            const status = 'all';
+            const expectedEndpoint = `${baseUrl}/nodes?count=${count}&offset=${offset}`;
+
+            // Act:
+            await SuperNodeProgram.getNodes(pageNumber, count, status);
+
+            // Assert:
+            expect(mockedFetch).toHaveBeenCalledWith(expectedEndpoint);
+            done();
+        });
+
+        it('should return valid DTO', async (done) => {
+            // Arrange:
+            const expectedDTO = new Array(15).fill({
+                endpoint: "http://localhost:7890",
+                id: 844,
+                name: 'superNode',
+                status: 'active'
+            });
+
+            const pageNumber = 0;
+            mockFetch(expectedDTO);
+
+            // Act:
+            const result = await SuperNodeProgram.getNodes(pageNumber);
+
+            // Assert:
+            expect(result).toEqual(expectedDTO);
+            done();
+        })
+
+        it('should throw an error when request failed', async (done) => {
+            // Arrange:
+            mockFetch(null, false);
+            const pageNumber = 1;
+            const expectedError = Error('failed_to_get_nodes');
+            const promiseToTest = SuperNodeProgram.getNodes(pageNumber);
+
+            // Act + Assert:
+            await runPromiseErrorTest(promiseToTest, expectedError);
+            done();
+        });
+    })
 });

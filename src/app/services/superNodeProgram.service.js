@@ -129,6 +129,26 @@ class SuperNodeProgram {
         return response.json();
     }
 
+    /**
+     * Gets nodes.
+     * @param {number} pageNumber
+     * @param {number} count
+     * @param {'all' | 'active' | 'stale' | 'inactive'} status
+     * @returns
+     */
+    async getNodes(pageNumber, count = 50, status = 'active') {
+        const offset = count * pageNumber;
+        let url = `${this.apiBaseUrl}/nodes?count=${count}&offset=${offset}`;
+
+        if (status !== 'all') {
+            url += `&status=${status}`;
+        }
+
+        const response = await this._get(url, 'failed_to_get_nodes');
+
+        return response.json();
+    }
+
     // End methods region //
 }
 
