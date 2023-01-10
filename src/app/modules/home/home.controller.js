@@ -28,7 +28,6 @@ class HomeCtrl {
         //// End properties region ////
 
         this.checkBrowser();
-        this.getGeolocation();
         this.checkLatestVersion();
     }
 
@@ -48,40 +47,6 @@ class HomeCtrl {
             $('#noSupportModal').modal({
               backdrop: 'static',
               keyboard: false
-            }); 
-        }
-    }
-
-    /**
-     * Get closest node from geolocation, if user agrees
-     */
-    getGeolocation() {
-        // If no mainnet node in local storage
-        if (navigator.geolocation && !this._storage.selectedMainnetNode) {
-            // Get position
-            navigator.geolocation.getCurrentPosition((res) => {
-                // Get the closest nodes
-                nem.com.requests.supernodes.nearest(res.coords).then((res) => {
-                    // Pick a random node in the array
-                    let node = res.data[Math.floor(Math.random()*res.data.length)];
-                    // Set the node in local storage
-                    this._storage.selectedMainnetNode = nem.model.objects.create("endpoint")("http://"+node.ip, 7890);
-                }, (err) => {
-                    // If error it will use default node
-                    console.log(err);
-                });
-            }, (err) => {
-                console.log(err);
-                // Get all the active supernodes
-                nem.com.requests.supernodes.get(1).then((res) => {
-                    // Pick a random node in the array
-                    let node = res.data[Math.floor(Math.random()*res.data.length)];
-                    // Set the node in local storage
-                    this._storage.selectedMainnetNode = nem.model.objects.create("endpoint")("http://"+node.ip, 7890);
-                }, (err) => {
-                    // If error it will use default node
-                    console.log(err);
-                });
             });
         }
     }
