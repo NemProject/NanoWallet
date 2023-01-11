@@ -52,7 +52,7 @@ export const assertSuperNodes = async ($controller, $rootScope, controlName, Wal
         "port": 7890
     });
 
-    spyOn(SuperNodeProgram, 'getRandomNodesEndpoint').and.returnValue(Promise.resolve(expectedDTO));
+    spyOn(SuperNodeProgram, 'getRandomNodes').and.returnValue(Promise.resolve(expectedDTO));
 
     setupMainnetWallet(Wallet, Nodes, DataBridge);
 
@@ -70,7 +70,7 @@ export const assertSuperNodes = async ($controller, $rootScope, controlName, Wal
 
 export const assertMainnetNodes = async ($controller, $rootScope, controlName, Wallet, Nodes, DataBridge, SuperNodeProgram, $timeout) => {
     // Arrange:
-    spyOn(SuperNodeProgram, 'getRandomNodesEndpoint').and.returnValue(Promise.reject('error'));
+    spyOn(SuperNodeProgram, 'getRandomNodes').and.returnValue(Promise.reject('error'));
 
     setupMainnetWallet(Wallet, Nodes, DataBridge);
 

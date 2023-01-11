@@ -88,7 +88,7 @@ class ImportanceTransferCtrl {
             this.nodes = this._Nodes.get();
         } else {
             this.nodes = [];
-            this._superNodeProgram.getRandomNodesEndpoint('active', 50).then((data) => {
+            this._superNodeProgram.getRandomNodes('active', 50).then((data) => {
                 this._$timeout(() => {
                     this.nodes = data;
                 });

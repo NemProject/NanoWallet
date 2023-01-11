@@ -401,7 +401,7 @@ describe('SuperNodeProgram service tests', () => {
         })
     });
 
-    describe('getRandomNodesEndpoint()', () => {
+    describe('getRandomNodes()', () => {
         it('returns 5 random node endpoint when status and number=5 is provided', async (done) => {
             // Arrange:
             const nodes = new Array(10).map(index => ({
@@ -414,7 +414,7 @@ describe('SuperNodeProgram service tests', () => {
             spyOn(SuperNodeProgram, 'getAllNodes').and.returnValue(Promise.resolve(nodes));
 
             // Act:
-            const result = await SuperNodeProgram.getRandomNodesEndpoint('active', 5);
+            const result = await SuperNodeProgram.getRandomNodes('active', 5);
 
             // Assert:
             expect(result.length).toEqual(5);

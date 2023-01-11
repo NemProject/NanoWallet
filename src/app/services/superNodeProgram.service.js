@@ -168,14 +168,14 @@ class SuperNodeProgram {
     /**
      * Get randoms super nodes
      * @param {'all' | 'active' | 'stale' | 'inactive'} status
-     * @param {number} number no of nodes
+     * @param {number} count no of nodes
      * @returns {array} list of super nodes endpoint
      */
-    async getRandomNodesEndpoint(status, number) {
+    async getRandomNodes(status, count) {
         const result = await this.getAllNodes(status);
 
         // shuffle nodes
-        const randomNodes = result.sort(() => Math.random() - 0.5).slice(0, number);
+        const randomNodes = result.sort(() => Math.random() - 0.5).slice(0, count);
 
         return randomNodes.map((node) => {
             const { protocol, hostname, port } = new URL(node.endpoint);
