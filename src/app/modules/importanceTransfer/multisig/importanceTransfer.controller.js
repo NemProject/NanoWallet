@@ -99,16 +99,9 @@ class MultisigImportanceTransferCtrl {
             this.nodes = this._Nodes.get();
         } else {
             this.nodes = [];
-            // Get superNodes with pageNumber 0
-            this._superNodeProgram.getNodes(0).then((data) => {
+            this._superNodeProgram.getRandomNodesEndpoint('active', 50).then((data) => {
                 this._$timeout(() => {
-                    // shuffle nodes
-                    data.sort(() => Math.random() - 0.5);
-
-                    this.nodes = data.map((node) => {
-                        const { protocol, hostname, port } = new URL(node.endpoint);
-                        return nem.model.objects.create("endpoint")(`${protocol}//${hostname}`, Number(port))
-                    })
+                    this.nodes = data;
                 });
             },
             (err) => {
