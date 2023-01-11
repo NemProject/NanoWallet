@@ -34,6 +34,10 @@ The step is easy, login to the wallet, selected "Service" from the top menu, and
 
 # Developers #
 
+### Node Requirement ###
+
+Node.js v10
+
 ### Build from source ###
 
 1) Install gulp
