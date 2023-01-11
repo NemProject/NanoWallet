@@ -150,7 +150,7 @@ describe('SuperNodeProgram service tests', () => {
     });
 
     describe('getNodePayouts()', () => {
-        it('should fetch to be called with valid endpoint url when nodeId and pageNumber=0 passed', async (done) => {
+        it('should call fetch with valid endpoint url when nodeId and pageNumber=0 passed', async (done) => {
             // Arrange:
             const mockedFetch = mockFetch([]);
             const baseUrl = SUPER_NODE_PROGRAM_API_BASE_URL;
@@ -168,7 +168,7 @@ describe('SuperNodeProgram service tests', () => {
             done();
         });
 
-        it('should fetch to be called with valid endpoint url when nodeId and pageNumber=4 passed', async (done) => {
+        it('should call fetch with valid endpoint url when nodeId and pageNumber=4 passed', async (done) => {
             // Arrange:
             const mockedFetch = mockFetch([]);
             const baseUrl = SUPER_NODE_PROGRAM_API_BASE_URL;
@@ -223,7 +223,7 @@ describe('SuperNodeProgram service tests', () => {
     });
 
     describe('getNodeInfo()', () => {
-        it('should fetch to be called with valid endpoint url', async (done) => {
+        it('should call fetch with valid endpoint url', async (done) => {
             // Arrange:
             const mockedFetch = mockFetch(null);
             const baseUrl = SUPER_NODE_PROGRAM_API_BASE_URL;
@@ -274,7 +274,7 @@ describe('SuperNodeProgram service tests', () => {
     });
 
     describe('getNodes()', () => {
-        it('should fetch to be called with valid endpoint url when pageNumber=0 passed', async (done) => {
+        it('should call fetch with valid endpoint url when pageNumber=0 passed', async (done) => {
             // Arrange:
             const mockedFetch = mockFetch([]);
             const baseUrl = SUPER_NODE_PROGRAM_API_BASE_URL;
@@ -292,7 +292,7 @@ describe('SuperNodeProgram service tests', () => {
             done();
         });
 
-        it('should fetch to be called with valid endpoint url when pageNumber=4 passed', async (done) => {
+        it('should call fetch with valid endpoint url when pageNumber=4 passed', async (done) => {
             // Arrange:
             const mockedFetch = mockFetch([]);
             const baseUrl = SUPER_NODE_PROGRAM_API_BASE_URL;
@@ -310,7 +310,7 @@ describe('SuperNodeProgram service tests', () => {
             done();
         });
 
-        it('should fetch to be called with valid endpoint url when pageNumber=0 and status=all passed', async (done) => {
+        it('should call fetch with valid endpoint url when pageNumber=0 and status=all passed', async (done) => {
             // Arrange:
             const mockedFetch = mockFetch([]);
             const baseUrl = SUPER_NODE_PROGRAM_API_BASE_URL;
@@ -359,5 +359,71 @@ describe('SuperNodeProgram service tests', () => {
             await runPromiseErrorTest(promiseToTest, expectedError);
             done();
         });
+    });
+
+    describe('getAllNodes()', () => {
+        it('should call fetch all nodes until the last page is empty', async (done) => {
+            // Arrange:
+            const page1Response = new Array(5).fill({
+                endpoint: "http://localhost:7890",
+                id: 1,
+                name: 'superNode',
+                status: 'all'
+            });
+
+            const page2Response = new Array(5).fill({
+                endpoint: "http://localhost:7890",
+                id: 2,
+                name: 'superNode',
+                status: 'all'
+            });
+
+            spyOn(SuperNodeProgram, 'getNodes').and.callFake((pageNumber) => {
+                if (pageNumber === 0) {
+                    return page1Response;
+                } else if (pageNumber === 1) {
+                    return page2Response;
+                } else {
+                    return [];
+                }
+            })
+
+            // Act:
+            const result = await SuperNodeProgram.getAllNodes();
+
+            // Assert:
+            expect(SuperNodeProgram.getNodes).toHaveBeenCalledWith(0, 100, 'all');
+            expect(SuperNodeProgram.getNodes).toHaveBeenCalledWith(1, 100, 'all');
+            expect(SuperNodeProgram.getNodes).toHaveBeenCalledWith(2, 100, 'all');
+            expect(SuperNodeProgram.getNodes).not.toHaveBeenCalledWith(3, 100, 'all');
+            expect(result).toEqual([...page1Response, ...page2Response]);
+            done();
+        })
+    });
+
+    describe('getRandomNodesEndpoint()', () => {
+        it('returns 5 random node endpoint when status and number=5 is provided', async (done) => {
+            // Arrange:
+            const nodes = new Array(10).map(index => ({
+                endpoint: "http://localhost:7890",
+                id: index,
+                name: 'superNode',
+                status: 'active'
+            }))
+
+            spyOn(SuperNodeProgram, 'getAllNodes').and.returnValue(Promise.resolve(nodes));
+
+            // Act:
+            const result = await SuperNodeProgram.getRandomNodesEndpoint('active', 5);
+
+            // Assert:
+            expect(result.length).toEqual(5);
+            result.forEach(node => {
+                expect(nodes.some(node)).toEqual(true);
+                expect(node.hasOwnProperty('host')).toEqual(true);
+                expect(node.hasOwnProperty('port')).toEqual(true);
+            });
+            done();
+        })
     })
 });

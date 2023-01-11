@@ -149,6 +149,40 @@ class SuperNodeProgram {
         return response.json();
     }
 
+    /**
+     * Recursively fetch all super nodes
+     * @param {'all' | 'active' | 'stale' | 'inactive'} status
+     * @param {number} pageNumber page number
+     * @returns {array} list of super nodes
+     */
+    async getAllNodes(status = 'all', pageNumber = 0) {
+        const result = await this.getNodes(pageNumber, 100, status);
+
+        if (result.length > 0) {
+            return result.concat(await this.getAllNodes(status, pageNumber + 1));
+        } else {
+            return result;
+        }
+    }
+
+    /**
+     * Get randoms super nodes
+     * @param {'all' | 'active' | 'stale' | 'inactive'} status
+     * @param {number} number no of nodes
+     * @returns {array} list of super nodes endpoint
+     */
+    async getRandomNodesEndpoint(status, number) {
+        const result = await this.getAllNodes(status);
+
+        // shuffle nodes
+        const randomNodes = result.sort(() => Math.random() - 0.5).slice(0, number);
+
+        return randomNodes.map((node) => {
+            const { protocol, hostname, port } = new URL(node.endpoint);
+            return nem.model.objects.create("endpoint")(`${protocol}//${hostname}`, Number(port))
+        });
+    }
+
     // End methods region //
 }
 
