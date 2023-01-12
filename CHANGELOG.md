@@ -8,6 +8,7 @@
         - It shows node harvesting status and total collected rewards
     - Fixed app code signing and notarization issues and updated the Readme
     - Symbol opt in module is no longer available
+    - Update SuperNode endpoint to fetch node for harvesting list
 
 ## Version 2.6.2
 
