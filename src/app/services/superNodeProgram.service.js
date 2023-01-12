@@ -129,6 +129,60 @@ class SuperNodeProgram {
         return response.json();
     }
 
+    /**
+     * Gets nodes.
+     * @param {number} pageNumber
+     * @param {number} count
+     * @param {'all' | 'active' | 'stale' | 'inactive'} status
+     * @returns {Promise<Array<object>>} - List of super nodes.
+     */
+    async getNodes(pageNumber, count = 50, status = 'active') {
+        const offset = count * pageNumber;
+        let url = `${this.apiBaseUrl}/nodes?count=${count}&offset=${offset}`;
+
+        if (status !== 'all') {
+            url += `&status=${status}`;
+        };
+
+        const response = await this._get(url, 'failed_to_get_nodes');
+
+        return response.json();
+    }
+
+    /**
+     * Recursively fetch all super nodes
+     * @param {'all' | 'active' | 'stale' | 'inactive'} status
+     * @param {number} pageNumber page number
+     * @returns {array} list of super nodes
+     */
+    async getAllNodes(status = 'all', pageNumber = 0) {
+        const result = await this.getNodes(pageNumber, 100, status);
+
+        if (result.length > 0) {
+            return result.concat(await this.getAllNodes(status, pageNumber + 1));
+        } else {
+            return result;
+        }
+    }
+
+    /**
+     * Get randoms super nodes
+     * @param {'all' | 'active' | 'stale' | 'inactive'} status
+     * @param {number} count no of nodes
+     * @returns {array} list of super nodes endpoint
+     */
+    async getRandomNodes(status, count) {
+        const result = await this.getAllNodes(status);
+
+        // shuffle nodes
+        const randomNodes = result.sort(() => Math.random() - 0.5).slice(0, count);
+
+        return randomNodes.map((node) => {
+            const { protocol, hostname, port } = new URL(node.endpoint);
+            return nem.model.objects.create("endpoint")(`${protocol}//${hostname}`, Number(port))
+        });
+    }
+
     // End methods region //
 }
 

@@ -1,33 +1,30 @@
-import WalletFixture from '../data/wallet';
-import AccountDataFixture from '../data/accountData';
+import {
+    assertSuperNodes,
+    assertTestnetNodes,
+    assertMainnetNodes,
+    setupTestnetWallet
+} from '../test/importanceTransferModuleTests';
 import nem from 'nem-sdk';
 
 describe('Importance transfer module tests', function() {
-    let $controller, $rootScope, Wallet, DataBridge, $q, $filter, Nodes;
+    let $controller, $rootScope, Wallet, DataBridge, Nodes, SuperNodeProgram, $timeout;
 
     beforeEach(angular.mock.module('app'));
 
-    beforeEach(angular.mock.inject(function(_$filter_, _$controller_, _$rootScope_, _Wallet_, _DataBridge_, _$q_, _Nodes_) {
+    beforeEach(angular.mock.inject(function(_$controller_, _$rootScope_, _$timeout_, _Wallet_, _DataBridge_, _Nodes_, _SuperNodeProgram_) {
         $controller = _$controller_;
         $rootScope = _$rootScope_;
+        $timeout = _$timeout_;
         Wallet = _Wallet_;
         DataBridge = _DataBridge_;
-        $q = _$q_;
-        $filter = _$filter_;
         Nodes = _Nodes_;
+        SuperNodeProgram = _SuperNodeProgram_;
     }));
-
-    function createDummyWalletContextTestnet(Wallet) {
-        Wallet.use(WalletFixture.testnetWallet);
-        Nodes.setDefault();
-        DataBridge.accountData = AccountDataFixture.testnetAccountData;
-    }
-
 
     it("Default properties initialized", function() {
         // Arrange:
         let scope = $rootScope.$new();
-        createDummyWalletContextTestnet(Wallet)
+        setupTestnetWallet(Wallet, Nodes, DataBridge);
         let ctrl = $controller('ImportanceTransferCtrl', {
             $scope: scope
         });
@@ -59,7 +56,7 @@ describe('Importance transfer module tests', function() {
     it("Can update remote account if custom key enabled", function() {
         // Arrange:
         let scope = $rootScope.$new();
-        createDummyWalletContextTestnet(Wallet)
+        setupTestnetWallet(Wallet, Nodes, DataBridge);
         let ctrl = $controller('ImportanceTransferCtrl', {
             $scope: scope
         });
@@ -75,7 +72,7 @@ describe('Importance transfer module tests', function() {
     it("Can update remote account if custom key enabled then disabled", function() {
         // Arrange:
         let scope = $rootScope.$new();
-        createDummyWalletContextTestnet(Wallet)
+        setupTestnetWallet(Wallet, Nodes, DataBridge);
         let ctrl = $controller('ImportanceTransferCtrl', {
             $scope: scope
         });
@@ -93,7 +90,7 @@ describe('Importance transfer module tests', function() {
     it("Can set mode to deactivate", function() {
         // Arrange:
         let scope = $rootScope.$new();
-        createDummyWalletContextTestnet(Wallet)
+        setupTestnetWallet(Wallet, Nodes, DataBridge);
         let ctrl = $controller('ImportanceTransferCtrl', {
             $scope: scope
         });
@@ -113,7 +110,7 @@ describe('Importance transfer module tests', function() {
     it("Can set mode to 'activate' after 'deactivate'", function() {
         // Arrange:
         let scope = $rootScope.$new();
-        createDummyWalletContextTestnet(Wallet)
+        setupTestnetWallet(Wallet, Nodes, DataBridge);
         let ctrl = $controller('ImportanceTransferCtrl', {
             $scope: scope
         });
@@ -131,4 +128,44 @@ describe('Importance transfer module tests', function() {
         });
     });
 
+    describe('setNodes', () => {
+        it("returns pre set testnet nodes when network id is not mainnet", () => {
+            assertTestnetNodes(
+                $controller,
+                $rootScope,
+                'ImportanceTransferCtrl',
+                Wallet,
+                Nodes,
+                DataBridge
+            );
+        });
+
+        it("returns superNodes when network id is mainnet", async (done) => {
+            await assertSuperNodes(
+                $controller,
+                $rootScope,
+                'ImportanceTransferCtrl',
+                Wallet,
+                Nodes,
+                DataBridge,
+                SuperNodeProgram,
+                $timeout
+            );
+            done()
+        });
+
+        it("returns pre set mainnet nodes when request superNodes fail", async (done) => {
+            await assertMainnetNodes(
+                $controller,
+                $rootScope,
+                'ImportanceTransferCtrl',
+                Wallet,
+                Nodes,
+                DataBridge,
+                SuperNodeProgram,
+                $timeout
+            );
+            done();
+        });
+    });
 });

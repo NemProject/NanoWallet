@@ -7,7 +7,7 @@ class ImportanceTransferCtrl {
      *
      * @params {services} - Angular services to inject
      */
-    constructor($location, Wallet, Alert, $filter, DataStore, $timeout, AppConstants, $localStorage, Nodes) {
+    constructor($location, Wallet, Alert, $filter, DataStore, $timeout, AppConstants, $localStorage, Nodes, SuperNodeProgram) {
         'ngInject';
 
         //// Module dependencies region ////
@@ -20,6 +20,7 @@ class ImportanceTransferCtrl {
         this._$timeout = $timeout;
         this._storage = $localStorage;
         this._Nodes = Nodes;
+        this._superNodeProgram = SuperNodeProgram;
 
         //// End dependencies region ////
 
@@ -87,10 +88,9 @@ class ImportanceTransferCtrl {
             this.nodes = this._Nodes.get();
         } else {
             this.nodes = [];
-            // Get supernodes
-            nem.com.requests.supernodes.all().then((data) => {
+            this._superNodeProgram.getRandomNodes('active', 50).then((data) => {
                 this._$timeout(() => {
-                    this.nodes = this._$filter('toEndpoint')(data.nodes);
+                    this.nodes = data;
                 });
             },
             (err) => {
@@ -99,7 +99,7 @@ class ImportanceTransferCtrl {
                     // Return default nodes
                     this.nodes = this._$filter('toEndpoint')(nem.model.nodes.mainnet);
                 });
-            });
+            })
         }
     }
 
@@ -170,7 +170,7 @@ class ImportanceTransferCtrl {
     revealDelegatedPrivateKey() {
         // Get account private key or return
         if (!this._Wallet.decrypt(this.commonDelegated)) return this.okPressed = false;
-        
+
         // Generate the bip32 seed for the new account
         this._Wallet.deriveRemote(this.commonDelegated).then((res) => {
             this._$timeout(() => {
