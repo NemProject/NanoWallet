@@ -88,6 +88,7 @@ npm run release
     export DESKTOP_APP_NOTARIZE=true
     export DESKTOP_APP_APPLE_ID=VALID_APPLE_DEV_ID
     export DESKTOP_APP_APPLE_PASSWORD=VALID_APPLE_DEV_PASSWORD
+    export DESKTOP_APP_APPLE_TEAM_ID=VALID_APPLE_TEAM_ID
     </pre>
 
     7.4 Enable auto discovery for code signing process to pick up the certificates from the keychain
