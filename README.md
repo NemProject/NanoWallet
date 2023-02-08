@@ -84,6 +84,8 @@ npm run release
 
     7.3 Starting with MacOS 10.14.5, all signed applications by new `Developer ID Certificate` will need to be notarized. This is an automated step in the process. You'll need to enable notarization by setting the following env vars.
 
+    Note: `DESKTOP_APP_APPLE_PASSWORD` is not the login password, you need generate a new [app-specific passwords](https://support.apple.com/en-us/HT204397) for that.
+
     <pre>
     export DESKTOP_APP_NOTARIZE=true
     export DESKTOP_APP_APPLE_ID=VALID_APPLE_DEV_ID
