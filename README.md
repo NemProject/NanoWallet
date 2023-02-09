@@ -2,7 +2,7 @@
 
 ### How to use the NEM Wallet ? ###
 
-After downloading the latest version here https://forum.nem.io/t/nano-wallet-beta-1-1-11-5-000-xem-bug-bounty/2791, extract the NEM-Wallet folder from the archive, then you can simply click on start.html to open the app in your default browser. No installation or local server needed.
+After downloading the latest version here https://github.com/NemProject/NanoWallet/releases, extract the NEM-Wallet folder from the archive, then you can simply click on start.html to open the app in your default browser. No installation or local server needed.
 
 ### How to import NCC wallet ? ###
 
