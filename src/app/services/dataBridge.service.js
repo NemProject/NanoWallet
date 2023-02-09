@@ -8,7 +8,7 @@ class DataBridge {
      *
      * @params {services} - Angular services to inject
      */
-    constructor(Alert, Wallet, $timeout, $filter, Nodes, DataStore) {
+    constructor(Alert, Wallet, $timeout, $interval, $filter, Nodes, DataStore) {
         'ngInject';
 
         //// Service dependencies region ////
@@ -17,6 +17,7 @@ class DataBridge {
         this._$timeout = $timeout;
         this._Wallet = Wallet;
         this._$filter = $filter;
+        this._$interval = $interval;
         this._Nodes = Nodes;
         this._DataStore = DataStore;
 
@@ -44,6 +45,11 @@ class DataBridge {
          * @type {object}
          */
         this.renewalAlertTriggeredFor = {};
+
+        /**
+         * Handler to an unconfirmed transaction trigger/polling loop.
+         */
+        this.unconfirmedTriggerLoop = undefined;
 
         //// End properties region ////
     }
@@ -312,6 +318,26 @@ class DataBridge {
                 }
             };
 
+            let triggerUnconfirmedTransactionsReception = () => {
+                try {
+                    let _address = this._Wallet.currentAccount.address;
+                    // copied from nem-sdk/com/websockets/account.js/requestRecentTransactions
+                    // TODO: call directly nem.com.websockets.requests.account.transactions.unconfirmed(connector) after it is implemented/exposed in nem-sdk
+                    connector.stompClient.send("/w/api/account/transfers/unconfirmed", {}, "{'account':'" + _address + "'}");
+                    for (let i = 0; i < this._DataStore.account.metaData.meta.cosignatoryOf.length; i++) {
+                        let _address = this._DataStore.account.metaData.meta.cosignatoryOf[i].address;
+                        // copied from nem-sdk/com/websockets/account.js/requestRecentTransactions
+                        // TODO: call directly nem.com.websockets.requests.account.transactions.unconfirmed(connector) after it is implemented/exposed in nem-sdk
+                        connector.stompClient.send("/w/api/account/transfers/unconfirmed", {}, "{'account':'" + _address + "'}");
+                    }
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+
+            this.unconfirmedTriggerLoop = this._$interval(() => {
+                triggerUnconfirmedTransactionsReception();
+            }, 10000);//every 10s
 
             // Set websockets callbacks
             nem.com.websockets.subscribe.account.transactions.confirmed(connector, confirmedCallback);
@@ -339,6 +365,9 @@ class DataBridge {
      * Reset DataBridge service properties
      */
     reset() {
+        if (this.unconfirmedTriggerLoop) {
+            this._$interval.cancel(this.unconfirmedTriggerLoop);
+        }
         this._DataStore.chain.time = undefined;
         clearInterval(this.timeSyncInterval)
     }
