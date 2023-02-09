@@ -30,7 +30,7 @@
     "browserify": "^13.0.0",
     "browserify-ngannotate": "^2.0.0",
     "bufferutil": "^4.0.1",
-    "chart.js": "2.1.6",
+    "chart.js": "2.9.4",
     "crypto-js": "^3.1.9-1",
     "electron": "11.1.0",
     "electron-builder": "22.9.1",
