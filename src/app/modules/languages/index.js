@@ -7,6 +7,9 @@ let app = angular.module('app.lang', ['pascalprecht.translate']);
 import EnglishProvider from './en';
 app.config(EnglishProvider);
 
+/*import FrenchProvider from './fr';
+app.config(FrenchProvider);*/
+
 import ChineseProvider from './cn';
 app.config(ChineseProvider);
 
@@ -30,6 +33,9 @@ app.config(RussianProvider);
 
 import DutchProvider from './nl';
 app.config(DutchProvider);
+
+import CroatianProvider from './hr';
+app.config(CroatianProvider);
 
 import SpanishProvider from './es';
 app.config(SpanishProvider);

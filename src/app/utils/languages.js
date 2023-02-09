@@ -10,12 +10,10 @@ let data =  [{
 }, {
     name: "German",
     key: "de"
-}, 
-  {
+}, {
     name: "Italian",
     key: "it"
-},              
- {
+}, {
     name: "Japanese",
     key: "jp"
 }, {
@@ -30,6 +28,12 @@ let data =  [{
 }, {
     name: "Русский",
     key: "ru"
+}, {
+    name: "Nederlands",
+    key: "nl"
+}, {
+    name: "Hrvatski",
+    key: "hr"
 }, {
     name: "Spanish",
     key: "es"
